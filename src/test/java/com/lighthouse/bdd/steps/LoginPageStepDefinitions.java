@@ -1,0 +1,75 @@
+package com.lighthouse.bdd.steps;
+
+import Pages.Pages;
+import Utils.SelenideTools;
+import com.codeborne.selenide.Selenide;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.testng.Assert;
+
+public class LoginPageStepDefinitions {
+
+    @When("Open Lighthouse")
+    public void openLighthouse(){
+        Pages.loginPage().openLighthouse();
+    }
+
+    @Then("Enter login {string} on login page")
+    public void enterLoginOnLoginPage(String login) {
+        Pages.loginPage().enterUserName(login);
+    }
+
+    @Then("Enter password {string} on login page")
+    public void enterPasswordOnLoginPage(String password) {
+        Pages.loginPage().enterPassword(password);
+    }
+
+    @When("Click the [Login] button")
+    public void clickOnTheButton() {
+        Pages.loginPage().clickOnLoginButton();
+    }
+
+    @Then("Validate the [Login] page elements")
+    public void validateTheLoginPageElements() {
+        Assert.assertEquals(Pages.loginPage().getTabName(),"Login");
+        Assert.assertEquals(Pages.loginPage().getLoginInputPlaceholder(),"Email");
+        Assert.assertEquals(Pages.loginPage().getPasswordInputPlaceholder(),"Password");
+        Assert.assertEquals(Pages.loginPage().getPasswordFieldType(),"password");
+        Assert.assertTrue(Pages.loginPage().isLoginButtonClickable());
+        Assert.assertTrue(Pages.loginPage().isLoginAssistanceButtonClickable());
+        Assert.assertTrue(Pages.loginPage().isCancelButtonClickable());
+    }
+
+    @Then("Validate that the \"Please fill out the field\" message appears")
+    public void validateThatTheMessageAppears() {
+        Assert.assertTrue(Pages.loginPage().isFillOutMessageDisplayed());
+    }
+
+    @And("CLick the [Cancel] button")
+    public void clickTheCancelButton() {
+        Pages.loginPage().clickCancelButton();
+    }
+
+    @Then("Validate that the {string} error message displayed")
+    public void validateThatTheErrorMessageDisplayed(String message) {
+        Assert.assertEquals(Pages.loginPage().getErrorMessageText().trim(),message);
+    }
+
+    @And("Click the [Login Assistance] button")
+    public void clickTheLoginAssistanceButton() {
+        Pages.loginPage().clickLoginAssistanceBtn();
+        SelenideTools.sleep(5);
+        Selenide.back();
+    }
+
+    @Then("The [Login] page is opened")
+    public void theLoginPageIsOpened() {
+        Assert.assertEquals(Pages.loginPage().getTabName(),"Login");
+    }
+
+    @Then("Select the {string} role on login page")
+    public void selectTheRoleOnLoginPage(String role) {
+        Pages.loginPage().selectRole(role);
+    }
+}
