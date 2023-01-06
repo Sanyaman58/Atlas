@@ -25,6 +25,10 @@ public class LoginPage extends PageTools {
 		SelenideTools.openUrl(Constants.URL);
 	}
 
+	public void openAtlas(){
+		SelenideTools.openUrl(Constants.ATLAS_URL);
+	}
+
 	public String getTabName() {
 		return Selenide.title();
 	}

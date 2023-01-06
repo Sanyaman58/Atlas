@@ -1,9 +1,11 @@
 package Pages;
 
 import Pages.admin.*;
+import Pages.atlas.AtlasDashboardManagementPage;
 import Utils.AllureLogger;
 
 public class Pages extends AllureLogger {
+    private static EmailVerificationPage emailVerificationPage;
     private static LoginPage loginPage;
     private static NewResearchPage newResearchPage;
     private static JurisdictionPage jurisdictionPage;
@@ -17,12 +19,21 @@ public class Pages extends AllureLogger {
     private static RequirementsAdminPage requirementsAdminPage;
     private static QuestionnaireAdminPage questionnaireAdminPage;
     private static EndsUpInStatesAdminPage endsUpInStatesAdminPage;
+    //                              Atlas                                  //
+    private static AtlasDashboardManagementPage atlasDashboardManagementPage;
 
     public static LoginPage loginPage() {
         if (loginPage == null) {
             loginPage = new LoginPage();
         }
         return loginPage;
+    }
+
+    public static EmailVerificationPage emailVerificationPage() {
+        if (emailVerificationPage == null) {
+            emailVerificationPage = new EmailVerificationPage();
+        }
+        return emailVerificationPage;
     }
 
     public static NewResearchPage newResearchPage() {
@@ -93,6 +104,13 @@ public class Pages extends AllureLogger {
             endsUpInStatesAdminPage = new EndsUpInStatesAdminPage();
         }
         return endsUpInStatesAdminPage;
+    }
+
+    public static AtlasDashboardManagementPage atlasDashboardManagementPage() {
+        if (atlasDashboardManagementPage == null) {
+            atlasDashboardManagementPage = new AtlasDashboardManagementPage();
+        }
+        return atlasDashboardManagementPage;
     }
 
 }

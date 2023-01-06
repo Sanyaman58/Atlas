@@ -1,8 +1,8 @@
-@C101
+@C122
 
-Feature: C101
+Feature: C122
 
-  Scenario: Verify the "Modify Existing Facility Research from Previous Answers" functionality
+  Scenario: Verify that user is able to update the status of existing configuration
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -15,8 +15,16 @@ Feature: C101
     And Enter random facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
-    Then Select "Georgia" state on the [Jurisdiction] page
+    When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
+    And Get the jurisdictions checkboxes values
+    Then Click the [Next] button on the [Jurisdiction] page
+    And Click on the [Surveillance Setup] breadcrumb
+    Then Select "Pharma Solutions USA" client from the client dropdown
+    And Newly created job with status "Incomplete" is displayed in the table on the [New Research] page
+    When Select newly created job on the [New Research] page
+    Then The [Jurisdiction] page is opened
+    When Select "Georgia" state on the [Jurisdiction] page
     And Get the jurisdictions checkboxes values
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
@@ -29,19 +37,8 @@ Feature: C101
     Then The [Configuration] page is opened
     Then Select "Pharma Solutions USA" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
-    #When Select already created job in the table on the [New Research] page
-    When Select already created job in the table on the [New Research] page
-    Then Click the [Copy From Research Job] button
-    When The [Jurisdiction] page is opened
-    Then Validate that previously selected jurisdictions are saved
-    And Click the [Next] button on the [Jurisdiction] page
-    Then The [Questionnaire] page is opened
-    And Click the [Next] button on the [Questionnaire] page
-    Then The [SaveSubmit Job] page is opened
-    Then Validate that the displayed on the [SaveSubmit Job] page jurisdictions correspond to the selected earlier
-    And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
-    When Click on the [Submit Job] button
-    Then The [View Results] page is opened
-    And Verify that newly created job with status "Saved" is displayed in the table on the [View Results] page
 
 
+
+
+    

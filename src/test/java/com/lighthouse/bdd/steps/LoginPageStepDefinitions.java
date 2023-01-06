@@ -1,5 +1,6 @@
 package com.lighthouse.bdd.steps;
 
+import Constants.Constants;
 import Pages.Pages;
 import Utils.SelenideTools;
 import com.codeborne.selenide.Selenide;
@@ -15,6 +16,11 @@ public class LoginPageStepDefinitions {
         Pages.loginPage().openLighthouse();
     }
 
+    @When("Open Atlas")
+    public void openAtlas(){
+        Pages.loginPage().openAtlas();
+    }
+
     @Then("Enter login {string} on login page")
     public void enterLoginOnLoginPage(String login) {
         Pages.loginPage().enterUserName(login);
@@ -28,6 +34,18 @@ public class LoginPageStepDefinitions {
     @When("Click the [Login] button")
     public void clickOnTheButton() {
         Pages.loginPage().clickOnLoginButton();
+
+        if(Pages.emailVerificationPage().verifyNotRecognizedPopOkButton()) {
+            Pages.emailVerificationPage().clickOnNotRecognizedPopOkButton();
+//            Pages.emailVerificationPage().openUrlInNewTab(Constants.outlookUrl);
+//            Pages.emailVerificationPage().clickOnSigninButton();
+//            Pages.emailVerificationPage().enterUserNameAndPassword(Constants.outlookUsername,Constants.outlookPassword);
+//            Pages.emailVerificationPage().clickOnInboxFirstEmail();
+//            //SelenideTools.switchToLastTab();
+//            SelenideTools.closeCurrentTab();
+//            Pages.emailVerificationPage().enterValidationCode();
+            Pages.emailVerificationPage().clickOnValidationCancelButton();
+        }
     }
 
     @Then("Validate the [Login] page elements")
@@ -72,4 +90,5 @@ public class LoginPageStepDefinitions {
     public void selectTheRoleOnLoginPage(String role) {
         Pages.loginPage().selectRole(role);
     }
+
 }

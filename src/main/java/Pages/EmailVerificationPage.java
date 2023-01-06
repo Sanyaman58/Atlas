@@ -15,8 +15,9 @@ public class EmailVerificationPage extends PageTools {
 	By inboxFirstEmail = By.xpath("(//span[text()='ATLAS Support at Pharma Solutions'])[1]");
 	By otpCode = By.xpath("//p/b");
 	By notRecognizedPopOkBtn= By.xpath("//a[@id='modal-danger-ok']");
-	By enterValidationCodeTxt = By.xpath("//input[@id='verificationCode'] | //input[@placeholder='Enter Validation Code']");
+	By enterValidationCodeTxt = By.xpath("//input[@id='verificationCode']");
 	By validationSubmitBtn = By.xpath("//button[@id='verificationcode__submit']");
+	By validationCanselBtn = By.xpath("//button[text()='Cancel']");
 	
 	
 	String getOtpCode = "";
@@ -66,6 +67,11 @@ public class EmailVerificationPage extends PageTools {
 	public void clickOnValidationSubmitButton() {
 		waitForElementVisibility(validationSubmitBtn);
 		click(validationSubmitBtn);
+	}
+
+	public void clickOnValidationCancelButton() {
+		waitForElementVisibility(validationCanselBtn);
+		click(validationCanselBtn);
 	}
 	
 	public Boolean verifyNotRecognizedPopOkButton() {

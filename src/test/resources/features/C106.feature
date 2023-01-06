@@ -3,16 +3,18 @@
 Feature: C106
 
   Scenario: Verify the navigation between pages
-    When Open Lighthouse
-#    Then Enter login "demo.user1@pharma.solutions" on login page
-#    Then Enter password "shanky@1234" on login page
-    Then Select the "External User" role on login page
-    When Click the [Login] button
-    Then The [Surveillance Setup] page is opened
+    When Open Atlas
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
+    And Click the [Login] button
+    Then Management Dashboard page is opened
+    When Click on the [Configuration] sidebar button
+    Then The [Configuration] page is opened
     When Click on the [Results] sidebar button
     Then The [View Results] page is opened
     When Click on the [Configuration] sidebar button
-    Then The [Surveillance Setup] page is opened
+    Then The [Configuration] page is opened
+    Then Select "Pharma Solutions USA" client from the client dropdown
     Then Enter random company name
     And Enter random facility name
     When Click [Submit new job] button

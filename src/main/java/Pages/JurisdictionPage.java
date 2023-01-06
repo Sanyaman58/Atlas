@@ -15,7 +15,7 @@ public class JurisdictionPage extends PageTools {
 	By requirementsChecksIncludeYesRadio = By.xpath("//input[@id='requirements_checks_include_yes']");
 	By requirementsChecksIncludeNoRadio = By.xpath("//input[@id='requirements_checks_include_no']");
 	By nextButton = By.xpath("//button[@id='save_juricdis']");
-	By jurisdictionBreadcrumb = By.xpath("//h3[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Jurisdictions')]");
+	By jurisdictionBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a[2]/span[contains(text(),'Jurisdictions')]");
 
 
 

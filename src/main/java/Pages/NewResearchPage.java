@@ -3,35 +3,43 @@ package Pages;
 import Utils.SelenideTools;
 import base.PageTools;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 
 public class NewResearchPage extends PageTools {
 
-	By surveillanceSetupPageTitle = By.xpath("//h3[contains(@class,'cardInner-heading')]/span[@class='active yellow' and contains(text(),'Surveillance Setup')]");
-	By companyLabelAsterisk = By.xpath("//div[@class='form-row']//div[@class='inner-box']//label[contains(text(),'Company')]/span[@class='red']");
-	By facilityLabelAsterisk = By.xpath("//div[@class='form-row']//div[@class='inner-box']//label[contains(text(),'Facility')]/span[@class='red']");
+	By surveillanceSetupPageTitle = By.xpath("//h2[text()='Surveillance Configuration']");
+	By companyLabelAsterisk = By.xpath("//div[@class='form-row']/label[contains(text(),'Company')]/span[@class='red']");
+	By facilityLabelAsterisk = By.xpath("//div[@class='form-row']/label[contains(text(),'Facility')]/span[@class='red']");
 	By companyNameInput = By.xpath("//input[@id='company_name']");
 	By facilityInput = By.xpath("//input[@id='facility_name']");
 	By helpTip = By.xpath("//span[@class='facility-tip']");
-	By alertMessage = By.xpath("//p[@id='alert-msg']");
+	By alertMessage = By.xpath("//p[@class='response-msg']");
+	By anotherAlertMessage = By.xpath("//p[@id='alert-btw-msg']");
+	By alertSubmittedJobMessage = By.xpath("//p[@class='response-msg-submitted-job']");
+
 	By errorMessage = By.xpath("//div[@id='text_error']");
 	By profileDropdown = By.xpath("//li[contains(@class,'profile-dropdown')]/a[@id='dropdown06']/i");
 	By logOutButton = By.xpath("//div[contains(@class,'dropdown-menu')]/a[text()='Logout']");
 	By alertOkButton = By.xpath("//div[@class='modal-content']/div[contains(@class,'modal-footer')]/button[text()='OK']");
+	By alertXButton = By.xpath("//div[@class='modal-content']//button[@class='close']");
 	By submitNewJobButton = By.xpath("//button[@id='submit-new']");
 	By copyFromResearchButton = By.xpath("//button[@id='copyfrom_research_job']");
 	By tableJobs = By.xpath("//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr");
 	By noDataInTable = By.xpath("//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td[text()='No data available in table']");
 	By tableJobsRadioButton = By.xpath("//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td/input[@name='copy_from_job_id']");
 	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')]");
-	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[3]/ul/li[1]/a");
+	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[1]/a");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[3]/ul/li[2]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[3]/ul/li[3]/a");
-	By surveillanceSetupBreadcrumb = By.xpath("//h3[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Surveillance Setup')]");
-
+	By surveillanceSetupBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Surveillance Setup')]");
+	By configurationDeleteButton = By.xpath("//button[contains(@class,'delete-job-research')]");
+	By alertYesDeleteButton = By.xpath("(//button[text()='Yes Delete'])[%s]");
+	By createdLabelSort = By.xpath("//table//tr/th[text()='Created']");
 	String companyName;
 	String facilityName;
+	static int yesButtonCounter = 0;
 	public void goBackInBrowser(){
 		Selenide.back();
 	}
@@ -114,6 +122,11 @@ public class NewResearchPage extends PageTools {
 		return getSelenideElement(helpTip).getAttribute("title");
 	}
 
+	public void sortByCreatedLabel(){
+		waitForElementVisibility(createdLabelSort);
+		click(createdLabelSort);
+	}
+
 	public void clickSubmitNewJobButton(){
 		waitForElementClickable(submitNewJobButton);
 		click(submitNewJobButton);
@@ -134,7 +147,18 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public String getAlertMessage(){
+		waitForElementVisibility(alertMessage);
 		return getElementText(alertMessage);
+	}
+
+	public String getSecondAlertMessage(){
+		waitForElementVisibility(anotherAlertMessage);
+		return getElementText(anotherAlertMessage);
+	}
+
+	public String getAlertSubmittedJobMessage(){
+		waitForElementVisibility(alertSubmittedJobMessage);
+		return getElementText(alertSubmittedJobMessage);
 	}
 	public String getErrorMessage(){
 		return getElementText(errorMessage).trim();
@@ -142,6 +166,10 @@ public class NewResearchPage extends PageTools {
 
 	public void clickAlertOkButton(){
 		click(alertOkButton);
+	}
+
+	public void clickAlertXButton(){
+		click(alertXButton);
 	}
 
 	public boolean isNewlyCreatedJobDisplayed(String status){
@@ -161,9 +189,20 @@ public class NewResearchPage extends PageTools {
 //				System.out.println(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)["+(i+1)+"]" +
 //						"/td[4]")).getText());
 			return true;}
-
 		}
 		return false;
+	}
+
+	public void selectNewlyCreatedJob() {
+		for (int i = 0; i < getElements(tableJobs).size(); i++) {
+			if (getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)[" + (i + 1) + "]" +
+					"/td[2]")).getText().equals(companyName)
+					&& getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)[" + (i + 1) + "]" +
+					"/td[3]")).getText().equals(facilityName)) {
+				getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)[" + (i + 1) + "]" +
+						"/td[1]/input")).click();
+			}
+		}
 	}
 
 	public void selectTheJobFromTheTable(int index){
@@ -176,8 +215,8 @@ public class NewResearchPage extends PageTools {
 					"/td[text()='"+companyName+"']"))
 					&& isElementExistsWithNoLog(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)["+i+"]" +
 					"/td[text()='"+facilityName+"']"))){
-				getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)["+i+"]/td/input[@name='copy_from_job_id']")).click();
-			}
+				getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr)[" + (i + 1) + "]" +
+						"/td[1]/input")).click();			}
 
 		}
 	}
@@ -210,6 +249,57 @@ public class NewResearchPage extends PageTools {
 	public void clickOnSurveillanceSetupBreadcrumb(){
 		waitForElementVisibility(surveillanceSetupBreadcrumb);
 		click(surveillanceSetupBreadcrumb);
+	}
+
+	public void clickOnTheDeleteButton(int number){
+		companyName = getElements(tableJobs).get(number).findElement(By.xpath("./td[2]")).getText();
+		facilityName = getElements(tableJobs).get(number).findElement(By.xpath("./td[3]")).getText();
+		getElements(configurationDeleteButton).get(number).click();
+	}
+
+	public void clickOnTheDeleteButton(String status){
+		for(int i = 0;i < getElements(tableJobs).size();i++){
+			if(getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)){
+				companyName = getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText();
+				facilityName = getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText();
+				getElements(configurationDeleteButton).get(i).click();
+				break;
+			}
+		}
+	}
+
+	public void clickYesDeleteButton(){
+		SelenideTools.sleep(1);
+		waitForElementClickable(alertYesDeleteButton, 1);
+		doubleClick(alertYesDeleteButton, 1);
+	}
+
+	public void clickYesDeleteButtonForTheSecondTime(){
+		SelenideTools.sleep(1);
+		waitForElementClickable(alertYesDeleteButton, 2);
+		doubleClick(alertYesDeleteButton, 2);
+	}
+
+	public void clickYesDeleteButtonForTheThirdTime(){
+		SelenideTools.sleep(1);
+		waitForElementClickable(alertYesDeleteButton, 3);
+		doubleClick(alertYesDeleteButton, 3);
+	}
+
+	public boolean verifyThatTheJobIsDeleted(){
+		for (SelenideElement element: getElements(tableJobs)) {
+			if(element.findElement(By.xpath("./td[2]")).getText().equals(companyName))
+				if(element.findElement(By.xpath("./td[3]")).getText().equals(facilityName))
+					return false;
+		}
+		return true;
+	}
+
+	public void clickYesDeleteButtonIfVisible(){
+		SelenideTools.sleep(1);
+		if(isElementVisible(alertYesDeleteButton)) {
+			doubleClick(alertYesDeleteButton);
+		}
 	}
 
 }

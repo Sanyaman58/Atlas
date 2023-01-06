@@ -3,10 +3,12 @@
 Feature: C108
 
   Scenario: Admin Homepage
-    When Open Lighthouse Admin
-    Then Enter login "research.admin@pharma.solutions" on login admin page
-    Then Enter password "shanky@1234" on login admin page
-    When Click the [Login] button on login admin page
+    When Open Atlas
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
+    And Click the [Login] button
+    Then Management Dashboard page is opened
+    When Click on the [Research] sidebar button
     Then The [Research Admin] page is opened
     When Click on the [Requirements] button on admin
     Then The [Requirements Admin] page is opened

@@ -3,18 +3,21 @@
 Feature: C100
 
   Scenario: Verify the "New Facility" creation functionality
-    When Open Lighthouse
-#    Then Enter login "demo.user1@pharma.solutions" on login page
-#    Then Enter password "shanky@1234" on login page
-    Then Select the "External User" role on login page
-    When Click the [Login] button
-    Then The [Surveillance Setup] page is opened
+    When Open Atlas
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
+    And Click the [Login] button
+    Then Management Dashboard page is opened
+    When Click on the [Configuration] sidebar button
+    Then The [Configuration] page is opened
+    Then Select "Pharma Solutions USA" client from the client dropdown
     When Validate fields on the [Surveillance Setup] page
     Then Click [Submit new job] button
     And Window with "Please enter all required fields" message is displayed
 #    Then Enter "Test" company name
 #    And Enter "Test" facility name
 #    Then The "Same Company Name and Facility name already exist" message is displayed
+    Then Select "Pharma Solutions USA" client from the client dropdown
     Then Enter random company name
     And Enter random facility name
     When Click [Submit new job] button
@@ -22,7 +25,6 @@ Feature: C100
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
     And Get the jurisdictions checkboxes values
-    And Select the [Yes] requirements checks include radio button
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     When Click on the [Jurisdiction] breadcrumb
@@ -45,7 +47,8 @@ Feature: C100
     Then Validate that the displayed on the [SaveSubmit Job] page jurisdictions correspond to the selected earlier
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Save Job] button
-    Then The [Surveillance Setup] page is opened
+    Then The [Configuration] page is opened
+    Then Select "Pharma Solutions USA" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
     Then Enter random company name
     And Enter random facility name
@@ -53,7 +56,6 @@ Feature: C100
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
-    And Select the [Yes] requirements checks include radio button
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     And Click the [Next] button on the [Questionnaire] page
