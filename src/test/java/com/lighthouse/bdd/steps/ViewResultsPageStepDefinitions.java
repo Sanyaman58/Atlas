@@ -45,4 +45,15 @@ public class ViewResultsPageStepDefinitions {
     public void verifyThatRecordsOnTheViewResultsPageAreSortedAlphabeticallyByLabel(String label) {
         Assert.assertTrue(Pages.viewResultsPage().verifyThatRecordsSortedByTheLabel(label));
     }
+
+    @When("Click on the [View] button of the newly created job on the [View Results] page")
+    public void clickOnTheViewButtonOfTheNewlyCreatedJobOnTheViewResultsPage() {
+        Pages.viewResultsPage().clickOnTheViewButtonOfTheNewlyCreatedJob();
+    }
+
+
+    @Then("The [Research Results] page is opened")
+    public void theResearchResultsPageIsOpened() {
+        Assert.assertTrue(Pages.viewResultsPage().isResearchResultsPageOpened());
+    }
 }

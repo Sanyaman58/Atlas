@@ -37,14 +37,14 @@ public class LoginPageStepDefinitions {
 
         if(Pages.emailVerificationPage().verifyNotRecognizedPopOkButton()) {
             Pages.emailVerificationPage().clickOnNotRecognizedPopOkButton();
-//            Pages.emailVerificationPage().openUrlInNewTab(Constants.outlookUrl);
-//            Pages.emailVerificationPage().clickOnSigninButton();
-//            Pages.emailVerificationPage().enterUserNameAndPassword(Constants.outlookUsername,Constants.outlookPassword);
-//            Pages.emailVerificationPage().clickOnInboxFirstEmail();
-//            //SelenideTools.switchToLastTab();
-//            SelenideTools.closeCurrentTab();
-//            Pages.emailVerificationPage().enterValidationCode();
-            Pages.emailVerificationPage().clickOnValidationCancelButton();
+            Pages.emailVerificationPage().openUrlInNewTab(Constants.outlookUrl);
+            Pages.emailVerificationPage().clickOnSigninButton();
+            Pages.emailVerificationPage().enterUserNameAndPassword(Constants.outlookUsername,Constants.outlookPassword);
+            Pages.emailVerificationPage().clickOnInboxFirstEmail();
+            SelenideTools.switchToFirstTab();
+            //SelenideTools.closeCurrentTab();
+            Pages.emailVerificationPage().enterValidationCode();
+            Pages.emailVerificationPage().clickOnValidationSubmitButton();
         }
     }
 

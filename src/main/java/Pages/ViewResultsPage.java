@@ -1,8 +1,11 @@
 package Pages;
 
+import Utils.SelenideTools;
 import base.PageTools;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.google.common.collect.Ordering;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -19,6 +22,10 @@ public class ViewResultsPage extends PageTools {
     By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th/div/label");
     By actionTableLabel = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th[last()]");
     By showResultsSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
+    By researchResults = By.xpath("//div[@id='viewResult']");
+    By researchResultsTable = By.xpath("//table[@id='DataTables_Table_1']");
+    By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr");
+    By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr/td");
 
 
     public boolean isViewResultsPageOpened(){
@@ -27,16 +34,29 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isNewlySubmittedJobDisplayed(String status){
+        SelenideTools.sleep(60);
+        System.out.println(Pages.newResearchPage().getCompanyName());
+        System.out.println(Pages.newResearchPage().getFacilityName());
         for(int i = 0;i < getElements(tableJobs).size();i++){
-            if(isElementExistsWithNoLog(By.xpath("(//table[@id='DataTables_Table_0_info']/table/tr)["+i+"]" +
-                    "/td[text()='"+Pages.newResearchPage().getCompanyName()+"']"))
-                    && isElementExistsWithNoLog(By.xpath("(//table[@id='DataTables_Table_0_info']/table/tr)["+i+"]" +
-                    "/td[text()='"+Pages.newResearchPage().getFacilityName()+"']"))
-                    && isElementExistsWithNoLog(By.xpath("(//table[@id='DataTables_Table_0_info']/table/tr)["+i+"]" +
-                    "/td[text()='"+status+"']")));
+            System.out.println(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText());
+            System.out.println(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText());
+            if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getCompanyName())
+                    && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getFacilityName())
+                    && (getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[5])["+(i+1)+"]")).getText().equals(status)
+                    || getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[5])["+(i+1)+"]")).getText().equals("Result Pending")))
             return true;
         }
         return false;
+    }
+
+    public void clickOnTheViewButtonOfTheNewlyCreatedJob(){
+        for(int i = 0; i < getElements(tableJobs).size(); i++){
+            if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getCompanyName())
+                    && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getFacilityName())) {
+                getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[" + (i + 1) + "]")).click();
+                break;
+            }
+        }
     }
 
     public List<String> getTableLabels(List<String> labels){
@@ -87,5 +107,24 @@ public class ViewResultsPage extends PageTools {
         List<String> sortedTableRecords = tableRecords;
         Collections.sort(sortedTableRecords);
         return sortedTableRecords.equals(tableRecords);
+    }
+
+    public boolean isResearchResultsPageOpened(){
+        SelenideTools.sleep(3);
+        return isElementVisible(researchResults);
+    }
+
+    public void getResearchResultsTableData(){
+        Assert.assertTrue(isElementVisible(researchResultsTable));
+        List<List<String>> tableRecords = new ArrayList<>();
+        for(int i = 0;i < getElements(researchResultsTableRecords).size(); i++){
+            List<String> singleRecord = new ArrayList<>();
+            for(int j = 0; j < getElements(By.xpath("//table[@id='DataTables_Table_1']/tbody/tr["+(i+1)+"]/td")).size(); j++){
+                singleRecord.add(getSelenideElement(By.xpath("//table[@id='DataTables_Table_1']/tbody/tr["+(i+1)+"]/td["+(j+1)+"]")).getText());
+                System.out.print(singleRecord.get(j)+" ");
+            }
+            System.out.println();
+            tableRecords.add(singleRecord);
+        }
     }
 }

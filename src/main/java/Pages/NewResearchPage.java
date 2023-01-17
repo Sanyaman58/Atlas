@@ -15,9 +15,11 @@ public class NewResearchPage extends PageTools {
 	By companyNameInput = By.xpath("//input[@id='company_name']");
 	By facilityInput = By.xpath("//input[@id='facility_name']");
 	By helpTip = By.xpath("//span[@class='facility-tip']");
-	By alertMessage = By.xpath("//p[@class='response-msg']");
+	By alertMessage = By.xpath("//p[@id='alert-msg']");
 	By anotherAlertMessage = By.xpath("//p[@id='alert-btw-msg']");
 	By alertSubmittedJobMessage = By.xpath("//p[@class='response-msg-submitted-job']");
+	By companyNameSelect = By.xpath("//select[@id='company_name']");
+	By facilityNameSelect = By.xpath("//select[@id='facility_name']");
 
 	By errorMessage = By.xpath("//div[@id='text_error']");
 	By profileDropdown = By.xpath("//li[contains(@class,'profile-dropdown')]/a[@id='dropdown06']/i");
@@ -76,6 +78,18 @@ public class NewResearchPage extends PageTools {
 		String name = RandomStringUtils.random(10,true,false);
 		type(name,companyNameInput);
 		companyName = name;
+	}
+
+	public void selectCompanyName(int index){
+		waitForElementClickable(companyNameSelect);
+		getSelenideElement(companyNameSelect).selectOption(index);
+		companyName = getSelenideElement(companyNameSelect).getText();
+	}
+
+	public void selectFacilityName(int index){
+		waitForElementClickable(facilityNameSelect);
+		getSelenideElement(facilityNameSelect).selectOption(index);
+		facilityName = getSelenideElement(facilityNameSelect).getText();
 	}
 
 	public String getCompanyName(){
@@ -206,7 +220,10 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public void selectTheJobFromTheTable(int index){
-		getElements(tableJobsRadioButton).get(index).click();
+		System.out.println(getElements(tableJobsRadioButton).size());
+		getElements(tableJobsRadioButton).get(index-1).click();
+		companyName = getElements(tableJobs).get(index-1).findElement(By.xpath("./td[2]")).getText();
+		facilityName = getElements(tableJobs).get(index-1).findElement(By.xpath("./td[3]")).getText();
 	}
 
 	public void selectTheJobFromTheTable(){

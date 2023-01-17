@@ -79,6 +79,7 @@ public class NewResearchPageStepDefinitions {
 
     @When("Select already created job by index {int} in the table on the [New Research] page")
     public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
+        SelenideTools.sleep(5);
         Pages.newResearchPage().selectTheJobFromTheTable(index);
     }
 
@@ -134,6 +135,11 @@ public class NewResearchPageStepDefinitions {
     @Then("Enter random company name")
     public void enterRandomCompanyName() {
         Pages.newResearchPage().enterRandomCompanyName();
+    }
+
+    @Then("Select {int} company name")
+    public void enterRandomCompanyName(int index) {
+        Pages.newResearchPage().selectCompanyName(index);
     }
 
     @And("Enter random facility name")
@@ -202,5 +208,15 @@ public class NewResearchPageStepDefinitions {
     @Then("Verify that second alert message with {string} message is displayed")
     public void verifyThatSecondAlertMessageWithMessageIsDisplayed(String message) {
         Assert.assertEquals(Pages.newResearchPage().getSecondAlertMessage(),message);
+    }
+
+    @Then("Select {int} facility name")
+    public void selectFacilityName(int index) {
+        Pages.newResearchPage().selectFacilityName(index);
+    }
+
+    @And("Get table records on [Research Results] page")
+    public void getTableRecordsOnResearchResultsPage() {
+        Pages.viewResultsPage().getResearchResultsTableData();
     }
 }
