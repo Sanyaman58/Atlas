@@ -216,6 +216,11 @@ public class PageTools extends AllureLogger {
         shouldBe(Condition.visible, by, args).selectOption(option);
     }
 
+    protected void selectOption(int option, By by, Object... args) {
+        logInfo(getPreviousMethodNameAsText() + " --> " + option + ", element --> " + byLocator(by, args));
+        shouldBe(Condition.visible, by, args).selectOption(option);
+    }
+
     protected void mouseHover(By by, Object... args) {
         logInfo(getPreviousMethodNameAsText() + ", element --> " + byLocator(by, args));
         shouldBe(Condition.visible, by, args).hover();

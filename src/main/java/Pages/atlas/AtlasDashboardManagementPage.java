@@ -67,4 +67,9 @@ public class AtlasDashboardManagementPage extends PageTools {
 		click(researchSidebarButton);
 	}
 
+	public void clickRequirementsViewSidebarButton(){
+		waitForElementVisibility(requirementsViewSidebarButton);
+		click(requirementsViewSidebarButton);
+	}
+
 }

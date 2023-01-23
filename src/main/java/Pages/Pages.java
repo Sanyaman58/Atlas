@@ -19,6 +19,9 @@ public class Pages extends AllureLogger {
     private static RequirementsAdminPage requirementsAdminPage;
     private static QuestionnaireAdminPage questionnaireAdminPage;
     private static EndsUpInStatesAdminPage endsUpInStatesAdminPage;
+
+    private static ActiveRequirementsAdminPage activeRequirementsAdminPage;
+
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
 
@@ -97,6 +100,13 @@ public class Pages extends AllureLogger {
             questionnaireAdminPage = new QuestionnaireAdminPage();
         }
         return questionnaireAdminPage;
+    }
+
+    public static ActiveRequirementsAdminPage activeRequirementsAdminPage() {
+        if (activeRequirementsAdminPage == null) {
+            activeRequirementsAdminPage = new ActiveRequirementsAdminPage();
+        }
+        return activeRequirementsAdminPage;
     }
 
     public static EndsUpInStatesAdminPage endsUpInStatesAdminPage() {

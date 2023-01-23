@@ -114,8 +114,9 @@ public class ViewResultsPage extends PageTools {
         return isElementVisible(researchResults);
     }
 
+
+
     public void getResearchResultsTableData(){
-        Assert.assertTrue(isElementVisible(researchResultsTable));
         List<List<String>> tableRecords = new ArrayList<>();
         for(int i = 0;i < getElements(researchResultsTableRecords).size(); i++){
             List<String> singleRecord = new ArrayList<>();

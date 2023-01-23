@@ -132,6 +132,15 @@ public class NewResearchPageStepDefinitions {
         SelenideTools.switchToLastTab();
     }
 
+    @When("Click on the [Requirements View] sidebar button")
+    public void clickOnTheCRequirementsViewSidebarButton() {
+        Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
+        Pages.atlasDashboardManagementPage().clickRequirementsViewSidebarButton();
+        SelenideTools.sleep(10);
+        SelenideTools.switchToLastTab();
+    }
+
     @Then("Enter random company name")
     public void enterRandomCompanyName() {
         Pages.newResearchPage().enterRandomCompanyName();
