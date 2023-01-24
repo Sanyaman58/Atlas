@@ -55,6 +55,10 @@ public class QuestionnairePage extends PageTools {
         //questionsAnswers.forEach((key, value) -> logInfo(key + " " + value));
     }
 
+    public void selectQuestion(int index){
+        getElements(answers).get(index+1).click();
+    }
+
     public HashMap<String, Boolean> getQuestionsAnswers(){
         return questionsAnswers;
     }

@@ -16,4 +16,8 @@ public class QuestionnaireAdminPageStepDefinitions {
         Pages.questionnaireAdminPage().isQuestionnaireVersionsPageOpened();
     }
 
+    @When("Select {int} question on the [Questionnaire] page")
+    public void selectQuestionOnTheQuestionnairePage(int index) {
+        Pages.questionnairePage().selectQuestion(index);
+    }
 }

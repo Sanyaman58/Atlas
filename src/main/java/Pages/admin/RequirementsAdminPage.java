@@ -66,6 +66,19 @@ public class RequirementsAdminPage extends PageTools {
 	By questionSelectionCheckboxes = By.xpath("(//section[@class='requirementInfo-wrapper'])[7]//div[@class='row']/div//input");
 	By selectorCriteriaSelects = By.xpath("(//section[@class='requirementInfo-wrapper'])[8]//select");
 	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
+	By newRequirementCategorySelect = By.xpath("//select[@id='Requirement_Category']");
+	By newRequirementTypeSelect = By.xpath("//select[@id='Requirement_Type']");
+	By createNewRequirementButton = By.xpath("//button[@id='start_new']");
+	By RES1QuestionCheckbox = By.xpath("//input[@id='RES1']");
+	By RES1ResidentState = By.xpath("//li[@id='res-container']/select");
+	By RES1InStateRadioButton = By.xpath("//input[@id='resident-requirement']/following-sibling::label");
+	By RES1OutOfStateRadioButton = By.xpath("//input[@id='non-resident-requirement']/following-sibling::label");
+
+	String requirementName;
+	String applicationName;
+	String state;
+	String RESState;
+	String selectedQuestionText;
 
 	public boolean isRequirementsAdminPageOpened(){
 		SelenideTools.sleep(2);
@@ -383,5 +396,71 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean isChangeNoteForCustomerWorking(){
 		return isElementClickable(changeNoteForCustomerInput);
+	}
+
+	public void selectNewRequirementCategory(String category){
+		waitForElementVisibility(newRequirementCategorySelect);
+		selectOption(category, newRequirementCategorySelect);
+	}
+
+	public void selectNewRequirementType(String type){
+		waitForElementVisibility(newRequirementTypeSelect);
+		selectOption(type, newRequirementTypeSelect);
+	}
+
+	public void clickCreateNewRequirementButton(){
+		waitForElementVisibility(createNewRequirementButton);
+		click(createNewRequirementButton);
+	}
+
+	public void enterRequirementName(String name){
+		waitForElementVisibility(requirementNameGeneralInformationInput);
+		type(name, requirementNameGeneralInformationInput);
+		requirementName = name;
+	}
+
+	public void enterApplicationName(String name){
+		waitForElementVisibility(applicationNameGeneralInformationInput);
+		type(name, applicationNameGeneralInformationInput);
+		applicationName = name;
+	}
+	public void selectJurisdiction(String jurisdiction){
+		waitForElementVisibility(jurisdictionGeneralInformationSelect);
+		selectOption(jurisdiction, jurisdictionGeneralInformationSelect);
+		state = jurisdiction;
+	}
+
+	public void checkRES1Question(){
+		waitForElementVisibility(RES1QuestionCheckbox);
+		if(!getSelenideElement(RES1QuestionCheckbox).isSelected())
+			click(RES1QuestionCheckbox);
+	}
+
+	public void selectRES1State(String state){
+		waitForElementVisibility(RES1ResidentState);
+		selectOption(state,RES1ResidentState);
+		RESState = state;
+	}
+
+	public void checkRESInStateCheckbox(){
+		waitForElementVisibility(RES1InStateRadioButton);
+		click(RES1InStateRadioButton);
+	}
+
+	public void checkRESOutOfStateCheckbox(){
+		waitForElementVisibility(RES1OutOfStateRadioButton);
+		click(RES1OutOfStateRadioButton);
+	}
+
+	public void checkQuestion(int index){
+		waitForElementVisibility(questionSelectionCheckboxes);
+		getElements(questionSelectionCheckboxes).get(index+1).click();
+		selectedQuestionText = getElements(questionSelectionCheckboxes).get(index+1).findElement(By.xpath("./following-sibling::span")).getText();
+		System.out.println(selectedQuestionText);
+	}
+
+	public void selectQuestionInTheSelectorCriteria(String yesOrNo){
+		waitForElementVisibility(selectorCriteriaSelects);
+		getElements(selectorCriteriaSelects).get(2).selectOption(selectedQuestionText);
 	}
 }

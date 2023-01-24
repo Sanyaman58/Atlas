@@ -4,6 +4,7 @@ import Pages.Pages;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 
 import java.util.List;
@@ -163,5 +164,54 @@ public class RequirementsAdminPageStepDefinitions {
     @And("Validate the Change Note for Customer] input on the [Requirements View] page")
     public void validateTheChangeNoteForCustomerInputOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().isChangeNoteForCustomerWorking());
+    }
+
+    @When("Select {string} Requirement Category in the [Add New Requirement] section")
+    public void selectRequirementCategoryInTheAddNewRequirementSection(String rCategory) {
+        Pages.requirementsAdminPage().selectNewRequirementCategory(rCategory);
+    }
+
+    @And("Select {string} Requirement Type in the [Add New Requirement] section")
+    public void selectRequirementTypeInTheAddNewRequirementSection(String rType) {
+        Pages.requirementsAdminPage().selectNewRequirementType(rType);
+    }
+
+    @And("Click the [Create New] button in the [Add New Requirement] section")
+    public void clickTheCreateNewButtonInTheAddNewRequirementSection() {
+        Pages.requirementsAdminPage().clickCreateNewRequirementButton();
+    }
+
+    @When("Enter random requirement name on the [Requirements View] page")
+    public void enterRandomRequirementNameOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().enterRequirementName(RandomStringUtils.random(10,true,false));
+    }
+
+    @And("Enter random application name on the [Requirements View] page")
+    public void enterRandomApplicationNameOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().enterApplicationName(RandomStringUtils.random(10,true,false));
+    }
+
+    @And("Select In-State radio button for the state {string} of the RES1 question on the [Requirement View] page")
+    public void selectInStateRadioButtonForTheStateOfTheRESQuestionOnTheRequirementViewPage(String state) {
+        Pages.requirementsAdminPage().checkRES1Question();
+        Pages.requirementsAdminPage().selectRES1State(state);
+        Pages.requirementsAdminPage().checkRESInStateCheckbox();
+    }
+
+    @And("Select Out-Of-State radio button for the state {string} of the RES1 question on the [Requirement View] page")
+    public void selectOutOfStateRadioButtonForTheStateOfTheRESQuestionOnTheRequirementViewPage(String state) {
+        Pages.requirementsAdminPage().checkRES1Question();
+        Pages.requirementsAdminPage().selectRES1State(state);
+        Pages.requirementsAdminPage().checkRESOutOfStateCheckbox();
+    }
+
+    @And("Check {int} question in the [Question Selection] section on the [Requirements View] page")
+    public void checkQuestionInTheQuestionSelectionSectionOnTheRequirementsViewPage(int index) {
+
+    }
+
+    @And("Select {string} jurisdiction in the [General Information] section on the [Requirements View] page")
+    public void selectStateInTheGeneralInformationSectionOnTheRequirementsViewPage(String state) {
+        Pages.requirementsAdminPage().selectJurisdiction(state);
     }
 }

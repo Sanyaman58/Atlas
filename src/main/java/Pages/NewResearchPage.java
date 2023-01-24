@@ -76,6 +76,7 @@ public class NewResearchPage extends PageTools {
 
 	public void enterRandomCompanyName(){
 		String name = RandomStringUtils.random(10,true,false);
+		waitForElementVisibility(companyNameInput);
 		type(name,companyNameInput);
 		companyName = name;
 	}

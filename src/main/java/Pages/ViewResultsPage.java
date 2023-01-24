@@ -26,6 +26,9 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTable = By.xpath("//table[@id='DataTables_Table_1']");
     By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr");
     By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr/td");
+    By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
+
+    List<List<String>> tableRecords;
 
 
     public boolean isViewResultsPageOpened(){
@@ -34,7 +37,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isNewlySubmittedJobDisplayed(String status){
-        SelenideTools.sleep(60);
+        SelenideTools.sleep(70);
         System.out.println(Pages.newResearchPage().getCompanyName());
         System.out.println(Pages.newResearchPage().getFacilityName());
         for(int i = 0;i < getElements(tableJobs).size();i++){
@@ -117,7 +120,7 @@ public class ViewResultsPage extends PageTools {
 
 
     public void getResearchResultsTableData(){
-        List<List<String>> tableRecords = new ArrayList<>();
+        tableRecords = new ArrayList<>();
         for(int i = 0;i < getElements(researchResultsTableRecords).size(); i++){
             List<String> singleRecord = new ArrayList<>();
             for(int j = 0; j < getElements(By.xpath("//table[@id='DataTables_Table_1']/tbody/tr["+(i+1)+"]/td")).size(); j++){
@@ -127,5 +130,20 @@ public class ViewResultsPage extends PageTools {
             System.out.println();
             tableRecords.add(singleRecord);
         }
+    }
+
+    public boolean isRequirementPresentInTheList(String jurisdiction, String aName, String rName){
+        for (List<String> tableRecord : tableRecords) {
+            if (tableRecord.contains(jurisdiction)
+                    || tableRecord.contains(aName)
+                    || tableRecord.contains(rName))
+                return true;
+        }
+        return false;
+    }
+
+    public void closeViewResultWindow(){
+        waitForElementClickable(closeViewResultsWindowButton);
+        click(closeViewResultsWindowButton);
     }
 }

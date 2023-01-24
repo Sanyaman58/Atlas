@@ -56,4 +56,14 @@ public class ViewResultsPageStepDefinitions {
     public void theResearchResultsPageIsOpened() {
         Assert.assertTrue(Pages.viewResultsPage().isResearchResultsPageOpened());
     }
+
+    @And("Verify that requirement with {string} jurisdiction, {string} application name and {string} requirement name is in the list")
+    public void verifyThatRequirementWithJurisdictionApplicationNameAndRequirementNameIsInTheList(String jurisdiction, String aName, String rName) {
+        Assert.assertTrue(Pages.viewResultsPage().isRequirementPresentInTheList(jurisdiction,aName,rName));
+    }
+
+    @When("Close [Research Results] window")
+    public void closeResearchResultsWindow() {
+        Pages.viewResultsPage().closeViewResultWindow();
+    }
 }
