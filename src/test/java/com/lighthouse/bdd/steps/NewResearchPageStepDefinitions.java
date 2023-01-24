@@ -96,6 +96,7 @@ public class NewResearchPageStepDefinitions {
     @When("Select {string} client from the client dropdown")
     public void selectClientFromTheClientDropdown(String client) {
         Pages.newResearchPage().selectClient(client);
+        SelenideTools.sleep(4);
     }
 
     @When("The client dropdown is visible and clickable")
@@ -163,7 +164,7 @@ public class NewResearchPageStepDefinitions {
 
     @When("Click on the delete button of any displayed configuration with status {string} on the [Configuration] page")
     public void clickOnTheDeleteButtonOfAnyDisplayedConfigurationOnTheConfigurationPage(String status) {
-        Pages.newResearchPage().clickOnTheDeleteButton(status);
+        Pages.newResearchPage().clickOnTheDeleteButtonWithStatus(status);
     }
 
     @Then("Verify that alert message with {string} message is displayed")
@@ -227,5 +228,15 @@ public class NewResearchPageStepDefinitions {
     @And("Get table records on [Research Results] page")
     public void getTableRecordsOnResearchResultsPage() {
         Pages.viewResultsPage().getResearchResultsTableData();
+    }
+
+    @Then("Delete newly created configuration with status {string}")
+    public void deleteNewlyCreatedConfiguration(String status) {
+        Pages.newResearchPage().clickOnTheDeleteButton(status);
+        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+        SelenideTools.sleep(10);
     }
 }

@@ -13,11 +13,11 @@ public class ResearchAdminPage extends PageTools {
 	By requirementsAdminButton = By.xpath("//a[@id='requirements']");
 	By questionnaireAdminButton = By.xpath("//a[@id='questionnaire']");
 	By endsUpInStateAdminButton = By.xpath("//a[@id='ends-up-states']");
-	By researchSidebarButton = By.xpath("//ul[@id='menu']//a[text()='Research']");
-	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']//a[text()='Requirements View']");
-	By notificationsSidebarButton = By.xpath("//ul[@id='menu']//a[text()='Notifications']");
-	By euiVersionsSidebarButton = By.xpath("//ul[@id='menu']//a[text()='EUI Versions']");
-	By questionnaireVersionsSidebarButton = By.xpath("//ul[@id='menu']//a[text()='Questionnaire Versions']");
+	By researchSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'research')])[last()]");
+	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']//a[contains(@href,'requirement-view')]");
+	By notificationsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'notifications')])[last()]");
+	By euiVersionsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'EUI')])[last()]");
+	By questionnaireVersionsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'versions/questionnaire')])[last()]");
 
 
 

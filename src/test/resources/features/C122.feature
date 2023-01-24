@@ -10,9 +10,9 @@ Feature: C122
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
-    Then Enter random company name
-    And Enter random facility name
+    Then Select "Adam Drugs" client from the client dropdown
+    Then Select 1 company name
+    And Select 2 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
@@ -20,7 +20,7 @@ Feature: C122
     And Get the jurisdictions checkboxes values
     Then Click the [Next] button on the [Jurisdiction] page
     And Click on the [Surveillance Setup] breadcrumb
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "Adam Drugs" client from the client dropdown
     And Newly created job with status "Incomplete" is displayed in the table on the [New Research] page
     When Select newly created job on the [New Research] page
     Then The [Jurisdiction] page is opened
@@ -35,8 +35,12 @@ Feature: C122
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Save Job] button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "Adam Drugs" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
+    Then Delete newly created configuration with status "Saved"
+    Then Select "Adam Drugs" client from the client dropdown
+    And Verify that the configuration is deleted on the [Configuration] page
+    
 
 
 

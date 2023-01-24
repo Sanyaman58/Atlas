@@ -17,7 +17,6 @@ Feature: C107
     And Click on Yes Delete button on the alert window for the second time
     Then Verify that alert message about submitted job deletion is displayed
     And Click on Yes Delete button on the alert window for the third time
-#    Then Verify that alert message with "Research job deleted successfully" message is displayed
     And Verify that the configuration is deleted on the [Configuration] page
 
 

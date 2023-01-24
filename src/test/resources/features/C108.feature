@@ -11,7 +11,7 @@ Feature: C108
     When Click on the [Research] sidebar button
     Then The [Research Admin] page is opened
     When Click on the [Requirements] button on admin
-    Then The [Requirements Admin] page is opened
+    Then The [Research Admin] page is opened
     When Click on the [Research] sidebar button on admin
     Then The [Research Admin] page is opened
     When Click on the [Research] sidebar button on admin
@@ -21,7 +21,7 @@ Feature: C108
     And Click on the [Ends Up In State] button on admin
     Then The [Ends Up In States Admin] page is opened
     When Click on the [Requirements View] sidebar button on admin
-    Then The [Requirements Admin] page is opened
+    Then The [Research Admin] page is opened
     When Click on the [Notifications] sidebar button on admin
     Then The [Research Notification] page is opened
     When Click on the [EUI Versions] sidebar button on admin

@@ -4,7 +4,7 @@ Feature: C99
 
   Scenario: Verify the Login page functionality
 
-    When Open Lighthouse
+    When Open Atlas
     Then The [Login] page is opened
     And Validate the [Login] page elements
     When Click the [Login Assistance] button
@@ -14,9 +14,9 @@ Feature: C99
     When Click the [Login] button
     Then Validate that the "Something went worng! Please try again" error message displayed
     And CLick the [Cancel] button
-    When Enter login "demo.user1@pharma.solutions" on login page
-    And Enter password "shanky@1234" on login page
+    When Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
     When Click the [Login] button
-    Then The [Surveillance Setup] page is opened
+    Then Management Dashboard page is opened
     When Log out from Lighthouse
     Then The [Login] page is opened

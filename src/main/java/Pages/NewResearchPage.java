@@ -15,7 +15,7 @@ public class NewResearchPage extends PageTools {
 	By companyNameInput = By.xpath("//input[@id='company_name']");
 	By facilityInput = By.xpath("//input[@id='facility_name']");
 	By helpTip = By.xpath("//span[@class='facility-tip']");
-	By alertMessage = By.xpath("//p[@id='alert-msg']");
+	By alertMessage = By.xpath("//p[@class='response-msg']");
 	By anotherAlertMessage = By.xpath("//p[@id='alert-btw-msg']");
 	By alertSubmittedJobMessage = By.xpath("//p[@class='response-msg-submitted-job']");
 	By companyNameSelect = By.xpath("//select[@id='company_name']");
@@ -240,8 +240,7 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public boolean isSelectClientVisibleAndClickable(){
-		return isElementVisible(clientDropdown)
-				&& isElementClickable(clientDropdown);
+		return isElementClickable(clientDropdown);
 	}
 
 	public void selectClient(String client){
@@ -276,6 +275,24 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public void clickOnTheDeleteButton(String status){
+		for(int i = 0;i < getElements(tableJobs).size();i++){
+			System.out.println(i);
+			System.out.println(getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText());
+			System.out.println(getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText());
+			System.out.println(getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText());
+			if(getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)
+				||getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText().equals(companyName)
+				||getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText().equals(facilityName)){
+				System.out.println("I'm here!");
+				companyName = getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText();
+				facilityName = getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText();
+				getElements(configurationDeleteButton).get(i).click();
+				break;
+			}
+		}
+	}
+
+	public void clickOnTheDeleteButtonWithStatus(String status){
 		for(int i = 0;i < getElements(tableJobs).size();i++){
 			if(getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)){
 				companyName = getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText();
@@ -315,8 +332,14 @@ public class NewResearchPage extends PageTools {
 
 	public void clickYesDeleteButtonIfVisible(){
 		SelenideTools.sleep(1);
-		if(isElementVisible(alertYesDeleteButton)) {
-			doubleClick(alertYesDeleteButton);
+		if(isElementVisible(alertYesDeleteButton,1)) {
+			doubleClick(alertYesDeleteButton, 1);
+		}
+		else if(isElementVisible(alertYesDeleteButton,2)){
+			doubleClick(alertYesDeleteButton, 2);
+		}
+		else if(isElementVisible(alertYesDeleteButton,3)){
+			doubleClick(alertYesDeleteButton, 3);
 		}
 	}
 
