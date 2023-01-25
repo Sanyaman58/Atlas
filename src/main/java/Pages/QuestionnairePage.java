@@ -15,7 +15,7 @@ public class QuestionnairePage extends PageTools {
     By questions = By.xpath("//div[@id='questionnaire-container']//li/label");
     By answers = By.xpath("//div[@id='questionnaire-container']//li/label/following-sibling::span/input[1]");
     By nextButton = By.xpath("//button[@id='save_questionnaires']");
-    By questionnaireBreadcrumb = By.xpath("//h3[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Questionnaire')]");
+    By questionnaireBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Questionnaire')]");
 
 
     HashMap<String,Boolean> questionsAnswers = new HashMap<>();

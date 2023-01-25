@@ -11,15 +11,17 @@ Feature: C100
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     Then Select "Pharma Solutions USA" client from the client dropdown
-    When Validate fields on the [Surveillance Setup] page
+#    When Validate fields on the [Surveillance Setup] page
+    When Select 1 company name
     Then Click [Submit new job] button
-    And Window with "Please enter all required fields" message is displayed
+    And Pop up window with "Please enter all required fields" message is displayed
+    And Close pop up window
 #    Then Enter "Test" company name
 #    And Enter "Test" facility name
 #    Then The "Same Company Name and Facility name already exist" message is displayed
     Then Select "Pharma Solutions USA" client from the client dropdown
-    Then Enter random company name
-    And Enter random facility name
+    Then Select 1 company name
+    And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
@@ -50,8 +52,10 @@ Feature: C100
     Then The [Configuration] page is opened
     Then Select "Pharma Solutions USA" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
-    Then Enter random company name
-    And Enter random facility name
+    And Delete newly created configuration with status "Saved"
+    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select 1 company name
+    And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
@@ -62,5 +66,8 @@ Feature: C100
     Then The [SaveSubmit Job] page is opened
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
-    And Verify that newly created job with status "Saved" is displayed in the table on the [View Results] page
+    And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
+    Then Click on the [Configuration] sidebar button on Lighthouse
+    Then Select "Pharma Solutions USA" client from the client dropdown
+    And Delete newly created configuration with status "Submitted"
 

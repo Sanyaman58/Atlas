@@ -15,13 +15,12 @@ Feature: C106
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     Then Select "Pharma Solutions USA" client from the client dropdown
-    Then Enter random company name
-    And Enter random facility name
+    Then Select 1 company name
+    And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
-    And Select the [Yes] requirements checks include radio button
     And Verify the breadcrumbs on the [Jurisdiction] page
     When Click the [Next] button on the [Jurisdiction] page
     Then Verify the breadcrumbs on the [Questionnaire] page

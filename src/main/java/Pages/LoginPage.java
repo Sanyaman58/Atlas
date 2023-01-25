@@ -18,6 +18,8 @@ public class LoginPage extends PageTools {
 	By fillOutFieldMessage = By.xpath("//*[contains(.,'Please fill out this field')]");
 	By errorMessage = By.xpath("//p[@class='error_msg']");
 	By roleSelect = By.xpath("//form[@method='POST']/div/select[@name='type']");
+	By atlasProfileDropDown = By.xpath("(//li[contains(@class,'profile-name')]/a/i[contains(@class,'fa-chevron-down')])[last()]");
+	By atlasLogOutButton = By.xpath("//a[text()='Logout']");
 
 
 
@@ -109,6 +111,13 @@ public class LoginPage extends PageTools {
 	public void clickOnLoginButton() {
 		waitForElementVisibility(loginBtn);
 		click(loginBtn);
+	}
+
+	public void logOutFromAtlas(){
+		waitForElementVisibility(atlasProfileDropDown);
+		click(atlasProfileDropDown);
+		waitForElementVisibility(atlasLogOutButton);
+		click(atlasLogOutButton);
 	}
 
 }

@@ -10,11 +10,8 @@ Feature: C127
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Test" client from the client dropdown
+    Then Select "Adam Drugs" client from the client dropdown
     Then Select already created job by index 1 in the table on the [New Research] page
-#    Then Select 1 company name
-#    Then Select 1 facility name
-#    When Click [Submit new job] button
     When Click the [Copy From Research Job] button
     Then The [Jurisdiction] page is opened
     When Select "Colorado" state on the [Jurisdiction] page

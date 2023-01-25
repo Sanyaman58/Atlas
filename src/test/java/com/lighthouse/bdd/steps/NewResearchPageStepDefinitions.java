@@ -239,4 +239,21 @@ public class NewResearchPageStepDefinitions {
         Pages.newResearchPage().clickYesDeleteButtonIfVisible();
         SelenideTools.sleep(10);
     }
+
+    @And("Pop up window with {string} message is displayed")
+    public void popUpWindowWithMessageIsDisplayed(String message) {
+        Assert.assertTrue(Pages.newResearchPage().isPopupMessageVisible());
+        Assert.assertEquals(Pages.newResearchPage().getPopUpMessage(),message);
+    }
+
+    @And("Close pop up window")
+    public void closePopUpWindow() {
+        Pages.newResearchPage().closePopUpWindow();
+        SelenideTools.refresh();
+    }
+
+    @Then("Click on the [Configuration] sidebar button on Lighthouse")
+    public void clickOnTheConfigurationSidebarButtonOnLighthouse() {
+        Pages.newResearchPage().clickConfigurationSidebarButton();
+    }
 }

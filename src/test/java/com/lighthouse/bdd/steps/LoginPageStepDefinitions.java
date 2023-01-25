@@ -91,4 +91,8 @@ public class LoginPageStepDefinitions {
         Pages.loginPage().selectRole(role);
     }
 
+    @When("Log out from Atlas")
+    public void logOutFromAtlas() {
+        Pages.loginPage().logOutFromAtlas();
+    }
 }

@@ -16,11 +16,12 @@ public class NewResearchPage extends PageTools {
 	By facilityInput = By.xpath("//input[@id='facility_name']");
 	By helpTip = By.xpath("//span[@class='facility-tip']");
 	By alertMessage = By.xpath("//p[@class='response-msg']");
+	By popUpMessage = By.xpath("//p[@id='alert-msg']");
+	By popUpCloseButton = By.xpath("//div[@id='alert-modal']//button[@class='close']");
 	By anotherAlertMessage = By.xpath("//p[@id='alert-btw-msg']");
 	By alertSubmittedJobMessage = By.xpath("//p[@class='response-msg-submitted-job']");
 	By companyNameSelect = By.xpath("//select[@id='company_name']");
 	By facilityNameSelect = By.xpath("//select[@id='facility_name']");
-
 	By errorMessage = By.xpath("//div[@id='text_error']");
 	By profileDropdown = By.xpath("//li[contains(@class,'profile-dropdown')]/a[@id='dropdown06']/i");
 	By logOutButton = By.xpath("//div[contains(@class,'dropdown-menu')]/a[text()='Logout']");
@@ -33,8 +34,8 @@ public class NewResearchPage extends PageTools {
 	By tableJobsRadioButton = By.xpath("//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td/input[@name='copy_from_job_id']");
 	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')]");
 	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[1]/a");
-	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[3]/ul/li[2]/a");
-	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[3]/ul/li[3]/a");
+	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
+	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");
 	By surveillanceSetupBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Surveillance Setup')]");
 	By configurationDeleteButton = By.xpath("//button[contains(@class,'delete-job-research')]");
 	By alertYesDeleteButton = By.xpath("(//button[text()='Yes Delete'])[%s]");
@@ -154,6 +155,21 @@ public class NewResearchPage extends PageTools {
 	public boolean isAlertMessageVisible(){
 		SelenideTools.sleep(2);
 		return isElementVisible(alertMessage);
+	}
+
+	public boolean isPopupMessageVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(popUpMessage);
+	}
+
+	public String getPopUpMessage(){
+		waitForElementVisibility(popUpMessage);
+		return getElementText(popUpMessage);
+	}
+
+	public void closePopUpWindow(){
+		waitForElementVisibility(popUpCloseButton);
+		click(popUpCloseButton);
 	}
 
 	public boolean isErrorMessageVisible(){
@@ -276,14 +292,9 @@ public class NewResearchPage extends PageTools {
 
 	public void clickOnTheDeleteButton(String status){
 		for(int i = 0;i < getElements(tableJobs).size();i++){
-			System.out.println(i);
-			System.out.println(getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText());
-			System.out.println(getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText());
-			System.out.println(getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText());
 			if(getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)
 				||getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText().equals(companyName)
 				||getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText().equals(facilityName)){
-				System.out.println("I'm here!");
 				companyName = getElements(tableJobs).get(i).findElement(By.xpath("./td[2]")).getText();
 				facilityName = getElements(tableJobs).get(i).findElement(By.xpath("./td[3]")).getText();
 				getElements(configurationDeleteButton).get(i).click();

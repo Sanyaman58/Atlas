@@ -12,11 +12,11 @@ Feature: C99
     #Then Validate that the "Please fill out the field" message appears
     When Enter password "Test" on login page
     When Click the [Login] button
-    Then Validate that the "Something went worng! Please try again" error message displayed
+    Then Validate that the "Invalid Username or Password . Please try again" error message displayed
     And CLick the [Cancel] button
     When Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
     When Click the [Login] button
     Then Management Dashboard page is opened
-    When Log out from Lighthouse
+    When Log out from Atlas
     Then The [Login] page is opened
