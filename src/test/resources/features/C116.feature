@@ -65,7 +65,7 @@ Feature: C116
       |Prerequisites|
     When Right click on 1 record in the [Requirement Viewer] table
     Then Click on the [View Requirement] button on the [Requirement View] page
-    Then The [Active Requirements] page is opened
+    Then The [View Requirements] page is opened
     When Close the current tab
     When Right click on a record with status "Approval Pending" in the [Requirement Viewer] table
     Then The [Edit Requirement] button is not visible

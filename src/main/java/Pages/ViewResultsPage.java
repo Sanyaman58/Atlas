@@ -17,7 +17,6 @@ import java.util.List;
 public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//h2[text()='Surveillance Results']");
     By table= By.xpath("//table[@id='DataTables_Table_0']/tbody");
-
     By tableJobs = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
     By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th/div/label");
     By actionTableLabel = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th[last()]");
@@ -27,6 +26,7 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr");
     By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr/td");
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
+
 
     List<List<String>> tableRecords;
 
@@ -146,4 +146,6 @@ public class ViewResultsPage extends PageTools {
         waitForElementClickable(closeViewResultsWindowButton);
         click(closeViewResultsWindowButton);
     }
+
+
 }

@@ -19,8 +19,9 @@ public class Pages extends AllureLogger {
     private static RequirementsAdminPage requirementsAdminPage;
     private static QuestionnaireAdminPage questionnaireAdminPage;
     private static EndsUpInStatesAdminPage endsUpInStatesAdminPage;
-
-    private static ActiveRequirementsAdminPage activeRequirementsAdminPage;
+    private static ViewRequirementsAdminPage viewRequirementsAdminPage;
+    private static VersionRequirementsAdminPage versionRequirementsAdminPage;
+    private static EditRequirementAdminPage editRequirementAdminPage;
 
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
@@ -102,11 +103,18 @@ public class Pages extends AllureLogger {
         return questionnaireAdminPage;
     }
 
-    public static ActiveRequirementsAdminPage activeRequirementsAdminPage() {
-        if (activeRequirementsAdminPage == null) {
-            activeRequirementsAdminPage = new ActiveRequirementsAdminPage();
+    public static EditRequirementAdminPage editRequirementAdminPage() {
+        if (editRequirementAdminPage == null) {
+            editRequirementAdminPage = new EditRequirementAdminPage();
         }
-        return activeRequirementsAdminPage;
+        return editRequirementAdminPage;
+    }
+
+    public static ViewRequirementsAdminPage viewRequirementsAdminPage() {
+        if (viewRequirementsAdminPage == null) {
+            viewRequirementsAdminPage = new ViewRequirementsAdminPage();
+        }
+        return viewRequirementsAdminPage;
     }
 
     public static EndsUpInStatesAdminPage endsUpInStatesAdminPage() {
@@ -121,6 +129,13 @@ public class Pages extends AllureLogger {
             atlasDashboardManagementPage = new AtlasDashboardManagementPage();
         }
         return atlasDashboardManagementPage;
+    }
+
+    public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
+        if (versionRequirementsAdminPage == null) {
+            versionRequirementsAdminPage = new VersionRequirementsAdminPage();
+        }
+        return versionRequirementsAdminPage;
     }
 
 }

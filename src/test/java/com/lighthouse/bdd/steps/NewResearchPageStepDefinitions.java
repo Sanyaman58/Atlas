@@ -256,4 +256,9 @@ public class NewResearchPageStepDefinitions {
     public void clickOnTheConfigurationSidebarButtonOnLighthouse() {
         Pages.newResearchPage().clickConfigurationSidebarButton();
     }
+
+    @When("Click on the 'Back' browser button")
+    public void clickOnTheBackBrowserButton() {
+        SelenideTools.getDriver().navigate().back();
+    }
 }

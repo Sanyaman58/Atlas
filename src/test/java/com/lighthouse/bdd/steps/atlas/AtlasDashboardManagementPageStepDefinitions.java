@@ -38,4 +38,16 @@ public class AtlasDashboardManagementPageStepDefinitions {
         SelenideTools.sleep(2);
         Assert.assertTrue(Pages.researchAdminPage().isResearchAdminPageOpened());
     }
+
+    @When("Click on the [Versioned Requirements] sidebar button")
+    public void clickOnTheVersionedRequirementsSidebarButton() {
+        Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
+        Pages.atlasDashboardManagementPage().clickVersionRequirementsSidebarButton();
+        SelenideTools.sleep(10);
+        SelenideTools.switchToLastTab();
+        //SelenideTools.closeCurrentTab();
+        SelenideTools.sleep(2);
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isVersionedRequirementsAdminPageOpened());
+    }
 }
