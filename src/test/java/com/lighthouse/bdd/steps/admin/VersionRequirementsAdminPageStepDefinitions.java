@@ -56,4 +56,79 @@ public class VersionRequirementsAdminPageStepDefinitions {
     public void clickOnTheEditRequirementButtonOfTheSameRecordOnTheVersionedRequirementsPage() {
         Pages.versionRequirementsAdminPage().clickOnEditButtonOfTheEarlyOpenedRequirement();
     }
+
+    @Then("Enter requirement name in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementNameInTheRequirementSearchOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
+
+    @Then("Click on the [Approve Requirement] button of the record by {int} index on the [Versioned Requirements] page")
+    public void clickOnTheApproveRequirementButtonOfTheNewlyCreatedRecordOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().clickOnApproveRequirementButton(index-1);
+    }
+
+    @Then("Click on the [Activate Requirement] button of the record by {int} index on the [Versioned Requirements] page")
+    public void clickOnTheActivateRequirementButtonOfTheRecordByIndexOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().clickOnActivateRequirementButton(index-1);
+    }
+
+    @When("Click on the [Versioned Requirements] sidebar button from admin")
+    public void clickOnTheVersionedRequirementsSidebarButtonFromAdmin() {
+        Pages.versionRequirementsAdminPage().clickOnVersionedRequirementSidebarButton();
+    }
+
+    @Then("Versioned Requirement page is opened")
+    public void versionedRequirementPageIsOpened() {
+        Pages.versionRequirementsAdminPage().isVersionedRequirementsAdminPageOpened();
+    }
+
+    @Then("Enter {string} requirement name in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementNameInTheRequirementSearchOnTheVersionedRequirementsPage(String requirement) {
+        Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(requirement);
+    }
+
+    @Then("No matching records message is displayed on the [Versioned Requirements] page")
+    public void noMatchingRecordsMessageIsDisplayedOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().isNoRecordsFoundMessageDisplayed();
+    }
+
+    @When("Enter {string} requirement JJ-CATEGORY-REQTYPE in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementJJCATEGORYREQTYPEInTheRequirementSearchOnTheVersionedRequirementsPage(String reqtype) {
+        Pages.versionRequirementsAdminPage().enterRequirementJJReqtypeInTheSearchField(reqtype);
+    }
+
+    @When("Enter {string} requirement SKU in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementSKUInTheRequirementSearchOnTheVersionedRequirementsPage(String SKU) {
+        Pages.versionRequirementsAdminPage().enterRequirementSkuInTheSearchField(SKU);
+    }
+
+    @When("Enter {string} requirement version in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementVersionInTheRequirementSearchOnTheVersionedRequirementsPage(String version) {
+        Pages.versionRequirementsAdminPage().enterRequirementVersionInTheSearchField(version);
+    }
+
+    @When("Enter {string} requirement query criteria in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementQueryInTheRequirementSearchOnTheVersionedRequirementsPage(String query) {
+        Pages.versionRequirementsAdminPage().enterRequirementQueryCriteriaInTheSearchField(query);
+    }
+
+    @When("Enter {string} requirement created in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementCreatedInTheRequirementSearchOnTheVersionedRequirementsPage(String created) {
+        Pages.versionRequirementsAdminPage().enterRequirementCreatedInTheSearchField(created);
+    }
+
+    @When("Enter {string} requirement approved in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementApprovedInTheRequirementSearchOnTheVersionedRequirementsPage(String approved) {
+        Pages.versionRequirementsAdminPage().enterRequirementApprovedInTheSearchField(approved);
+    }
+
+    @When("Enter {string} requirement activated in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementActivatedInTheRequirementSearchOnTheVersionedRequirementsPage(String activated) {
+        Pages.versionRequirementsAdminPage().enterRequirementActivatedInTheSearchField(activated);
+    }
+
+    @When("Enter {string} requirement status in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementStatusInTheRequirementSearchOnTheVersionedRequirementsPage(String status) {
+        Pages.versionRequirementsAdminPage().enterRequirementStatusInTheSearchField(status);
+    }
 }

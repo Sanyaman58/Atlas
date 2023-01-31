@@ -66,4 +66,11 @@ public class ViewResultsPageStepDefinitions {
     public void closeResearchResultsWindow() {
         Pages.viewResultsPage().closeViewResultWindow();
     }
+
+    @Then("Verify that early created requirement name is in the list")
+    public void verifyThatEarlyCreatedRequirementNameIsInTheList() {
+        Assert.assertTrue(Pages.viewResultsPage().isRequirementPresentInTheList(Pages.requirementsAdminPage().getState()
+                , Pages.requirementsAdminPage().getApplicationName(),
+                Pages.requirementsAdminPage().getRequirementName()));
+    }
 }

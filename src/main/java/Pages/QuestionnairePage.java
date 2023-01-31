@@ -56,7 +56,7 @@ public class QuestionnairePage extends PageTools {
     }
 
     public void selectQuestion(int index){
-        getElements(answers).get(index+1).click();
+        getElements(answers).get(index-1).click();
     }
 
     public HashMap<String, Boolean> getQuestionsAnswers(){

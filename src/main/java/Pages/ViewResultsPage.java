@@ -125,9 +125,7 @@ public class ViewResultsPage extends PageTools {
             List<String> singleRecord = new ArrayList<>();
             for(int j = 0; j < getElements(By.xpath("//table[@id='DataTables_Table_1']/tbody/tr["+(i+1)+"]/td")).size(); j++){
                 singleRecord.add(getSelenideElement(By.xpath("//table[@id='DataTables_Table_1']/tbody/tr["+(i+1)+"]/td["+(j+1)+"]")).getText());
-                System.out.print(singleRecord.get(j)+" ");
             }
-            System.out.println();
             tableRecords.add(singleRecord);
         }
     }

@@ -261,4 +261,9 @@ public class NewResearchPageStepDefinitions {
     public void clickOnTheBackBrowserButton() {
         SelenideTools.getDriver().navigate().back();
     }
+
+    @When("Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse")
+    public void clickOnTheSurveillanceIntelligenceSidebarCollapseButtonOnLighthouse() {
+        Pages.newResearchPage().clickSurveillanceIntelligenceCollapseButton();
+    }
 }

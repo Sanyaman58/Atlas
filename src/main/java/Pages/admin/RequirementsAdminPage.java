@@ -50,6 +50,7 @@ public class RequirementsAdminPage extends PageTools {
 	By bondFeeInput = By.xpath("//input[@name='Fee_Bond[fee]']");
 	By controlledSubstancesFeeInput = By.xpath("//input[@name='Fee_ControlledSubstance[fee]']");
 	By renewalFeeInput = By.xpath("//input[@name='Fee_Renewal[fee]']");
+	By deleteSelectorButton = By.xpath("//button[@title='Delete Rule']");
 
 
 	By requirementViewersTable = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']");
@@ -73,12 +74,25 @@ public class RequirementsAdminPage extends PageTools {
 	By RES1ResidentState = By.xpath("//li[@id='res-container']/select");
 	By RES1InStateRadioButton = By.xpath("//input[@id='resident-requirement']/following-sibling::label");
 	By RES1OutOfStateRadioButton = By.xpath("//input[@id='non-resident-requirement']/following-sibling::label");
+	By submitForApprovalButton = By.xpath("//button[@id='submit_selected_criteria']");
+	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
+	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
 
 	String requirementName;
 	String applicationName;
 	String state;
 	String RESState;
 	String selectedQuestionText;
+
+	public String getRequirementName() {
+		return requirementName;
+	}
+	public String getApplicationName() {
+		return applicationName;
+	}
+	public String getState(){
+		return state;
+	}
 
 	public boolean isRequirementsAdminPageOpened(){
 		SelenideTools.sleep(2);
@@ -454,7 +468,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void checkQuestion(int index){
 		waitForElementVisibility(questionSelectionCheckboxes);
-		getElements(questionSelectionCheckboxes).get(index+1).click();
+		getElements(questionSelectionCheckboxes).get(index+2).click();
 		selectedQuestionText = getElements(questionSelectionCheckboxes).get(index+1).findElement(By.xpath("./following-sibling::span")).getText();
 		System.out.println(selectedQuestionText);
 	}
@@ -462,5 +476,30 @@ public class RequirementsAdminPage extends PageTools {
 	public void selectQuestionInTheSelectorCriteria(String yesOrNo){
 		waitForElementVisibility(selectorCriteriaSelects);
 		getElements(selectorCriteriaSelects).get(2).selectOption(selectedQuestionText);
+	}
+
+	public void deleteLastQuestion(){
+		waitForElementVisibility(deleteSelectorButton);
+		getElements(deleteSelectorButton).get(getElements(deleteSelectorButton).size()-1).click();
+	}
+
+	public void deleteQuestion(int index){
+		waitForElementVisibility(deleteSelectorButton);
+		getElements(deleteSelectorButton).get(index-1).click();
+	}
+
+	public void clickSubmitForApprovalButton(){
+		waitForElementVisibility(submitForApprovalButton);
+		click(submitForApprovalButton);
+	}
+
+	public void clickApproveButton(){
+		waitForElementVisibility(approveButton);
+		click(approveButton);
+	}
+
+	public void clickYesApproveButton(){
+		waitForElementClickable(yesApproveButton);
+		click(yesApproveButton);
 	}
 }

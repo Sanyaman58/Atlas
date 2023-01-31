@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class VersionRequirementsAdminPage extends PageTools {
+	By versionedRequirementsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'versions')])[1]");
 	By versionRequirementsPageTitle = By.xpath("//h2[contains(text(),'Versioned Requirements')]");
 	By versionRequirementsTable = By.xpath("//table[@id='DataTables_Table_0']/tbody");
 	By versionRequirementsTableLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
@@ -20,6 +21,15 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By numberOfEntriesSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
 	By numberOfEntriesInfo = By.xpath("//div[@id='DataTables_Table_0_info']");
 	By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
+	By requirementJJReqtypeSearchField = By.xpath("//input[@placeholder='Search JJ-CATEGORY-REQTYPE']");
+	By requirementSKUSearchField = By.xpath("//input[@placeholder='Search SKU']");
+	By requirementVersionSearchField = By.xpath("//input[@placeholder='Search Version']");
+	By requirementNameSearchField = By.xpath("//input[@placeholder='Search Name Requirement']");
+	By requirementQueryCriteriaSearchField = By.xpath("//input[@placeholder='Search Query Criteria']");
+	By requirementCreatedSearchField = By.xpath("//input[@placeholder='Search Created']");
+	By requirementApprovedSearchField = By.xpath("//input[@placeholder='Search Approved']");
+	By requirementActivatedSearchField = By.xpath("//input[@placeholder='Search Activated']");
+	By requirementStatusSearchField = By.xpath("//input[@placeholder='Search Status']");
 
 	String requirementSku;
 
@@ -83,7 +93,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	public void clickOnViewRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
-		requirementSku = getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[3]")).getText();
+		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
 		getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[11]/div/a[@title='View Requirement']")).click();
 	}
 
@@ -140,7 +150,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	public void clickOnDeleteRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
-		requirementSku = getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[3]")).getText();
+		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
 		getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[11]/div/button[@title='Delete Latest Requirement']")).click();
 	}
 
@@ -168,8 +178,8 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	public void clickOnApproveRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
-		requirementSku = getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[3]")).getText();
-		getElements(versionRequirementsTableRecords).get(index+1).findElement(By.xpath("./td[11]/div/button[@title='Approve Requirement']")).click();
+		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
+		getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/button[@title='Approve Requirement']")).click();
 	}
 
 	public void clickOnApproveRequirementButton(String status){
@@ -196,8 +206,8 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	public void clickOnActivateRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
-		requirementSku = getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[3]")).getText();
-		getElements(versionRequirementsTableRecords).get(index+1).findElement(By.xpath("./td[11]/div/button[@title='Activate Requirement']")).click();
+		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
+		getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/button[@title='Activate Requirement']")).click();
 	}
 
 	public void clickOnActivateRequirementButton(String status){
@@ -222,6 +232,52 @@ public class VersionRequirementsAdminPage extends PageTools {
 		}
 	}
 
+	public void enterRequirementJJReqtypeInTheSearchField(String requiremenJJReqtype){
+		waitForElementVisibility(requirementJJReqtypeSearchField);
+		type(requiremenJJReqtype, requirementJJReqtypeSearchField);
+	}
 
+	public void enterRequirementSkuInTheSearchField(String requirementSKU){
+		waitForElementVisibility(requirementSKUSearchField);
+		type(requirementSKU, requirementSKUSearchField);
+	}
 
+	public void enterRequirementVersionInTheSearchField(String requirementVersion){
+		waitForElementVisibility(requirementVersionSearchField);
+		type(requirementVersion, requirementVersionSearchField);
+	}
+
+	public void enterRequirementNameInTheSearchField(String requirementName){
+		waitForElementVisibility(requirementNameSearchField);
+		type(requirementName, requirementNameSearchField);
+	}
+
+	public void enterRequirementQueryCriteriaInTheSearchField(String requirementQuery){
+		waitForElementVisibility(requirementQueryCriteriaSearchField);
+		type(requirementQuery, requirementQueryCriteriaSearchField);
+	}
+
+	public void enterRequirementCreatedInTheSearchField(String requirementCreated){
+		waitForElementVisibility(requirementCreatedSearchField);
+		type(requirementCreated, requirementCreatedSearchField);
+	}
+
+	public void enterRequirementApprovedInTheSearchField(String requirementApproved){
+		waitForElementVisibility(requirementApprovedSearchField);
+		type(requirementApproved, requirementApprovedSearchField);
+	}
+
+	public void enterRequirementActivatedInTheSearchField(String requirementActivated){
+		waitForElementVisibility(requirementActivatedSearchField);
+		type(requirementActivated, requirementActivatedSearchField);
+	}
+
+	public void enterRequirementStatusInTheSearchField(String requirementStatus){
+		waitForElementVisibility(requirementStatusSearchField);
+		type(requirementStatus, requirementStatusSearchField);
+	}
+	public void clickOnVersionedRequirementSidebarButton(){
+		waitForElementVisibility(versionedRequirementsSidebarButton);
+		click(versionedRequirementsSidebarButton);
+	}
 }

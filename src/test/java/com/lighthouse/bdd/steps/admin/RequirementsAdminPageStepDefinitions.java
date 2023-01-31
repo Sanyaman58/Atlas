@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps.admin;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -207,11 +208,27 @@ public class RequirementsAdminPageStepDefinitions {
 
     @And("Check {int} question in the [Question Selection] section on the [Requirements View] page")
     public void checkQuestionInTheQuestionSelectionSectionOnTheRequirementsViewPage(int index) {
-
+        Pages.requirementsAdminPage().checkQuestion(index);
     }
 
     @And("Select {string} jurisdiction in the [General Information] section on the [Requirements View] page")
     public void selectStateInTheGeneralInformationSectionOnTheRequirementsViewPage(String state) {
         Pages.requirementsAdminPage().selectJurisdiction(state);
+    }
+
+    @And("Delete last question from the [Selector Criteria]")
+    public void deleteLastQuestionFromTheSelectorCriteria() {
+        Pages.requirementsAdminPage().deleteLastQuestion();
+    }
+
+    @Then("Click on the [Submit for Approval] button on the [Requirements View] page")
+    public void clickOnTheSubmitForApprovalButtonOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().clickSubmitForApprovalButton();
+    }
+
+    @And("Click on the [Yes Approve] button on the [Requirements View] page")
+    public void clickOnTheYesApproveButtonOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().clickYesApproveButton();
+        SelenideTools.sleep(10);
     }
 }
