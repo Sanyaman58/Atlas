@@ -1,7 +1,8 @@
-@C109
+@C109 @Test
 
 Feature: C109
 
+  @TestRail(109)
   Scenario: Verify the partial surveillance functionality
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

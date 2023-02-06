@@ -142,6 +142,15 @@ public class NewResearchPageStepDefinitions {
         SelenideTools.switchToLastTab();
     }
 
+    @When("Click on the [Audit Logs] sidebar button")
+    public void clickOnTheAuditLogsSidebarButton() {
+        Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
+        Pages.atlasDashboardManagementPage().clickAuditLogsSidebarButton();
+        SelenideTools.sleep(10);
+        SelenideTools.switchToLastTab();
+    }
+
     @Then("Enter random company name")
     public void enterRandomCompanyName() {
         Pages.newResearchPage().enterRandomCompanyName();
@@ -266,4 +275,17 @@ public class NewResearchPageStepDefinitions {
     public void clickOnTheSurveillanceIntelligenceSidebarCollapseButtonOnLighthouse() {
         Pages.newResearchPage().clickSurveillanceIntelligenceCollapseButton();
     }
+
+    @And("Delete job from the table if exists")
+    public void deleteJobFromTheTableIfExists() {
+        if(Pages.newResearchPage().getNumberOfJobs()!=0) {
+            Pages.newResearchPage().clickOnTheDeleteButton(0);
+            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+            SelenideTools.sleep(10);
+        }
+    }
+
 }

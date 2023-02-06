@@ -77,6 +77,7 @@ public class RequirementsAdminPage extends PageTools {
 	By submitForApprovalButton = By.xpath("//button[@id='submit_selected_criteria']");
 	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
+	By intelligenceAdminSidebarCollapseButton = By.xpath("//ul[@id='menu']/li[10]");
 
 	String requirementName;
 	String applicationName;
@@ -501,5 +502,10 @@ public class RequirementsAdminPage extends PageTools {
 	public void clickYesApproveButton(){
 		waitForElementClickable(yesApproveButton);
 		click(yesApproveButton);
+	}
+
+	public void clickOnIntelligenceAdminSidebarCollapseButton(){
+		waitForElementVisibility(intelligenceAdminSidebarCollapseButton);
+		click(intelligenceAdminSidebarCollapseButton);
 	}
 }

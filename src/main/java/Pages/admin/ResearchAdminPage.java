@@ -19,7 +19,7 @@ public class ResearchAdminPage extends PageTools {
 	By euiVersionsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'EUI')])[last()]");
 	By questionnaireVersionsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'versions/questionnaire')])[last()]");
 
-
+	By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[10]");
 
 	public void openLighthouse(){
 		SelenideTools.openUrl(Constants.URL);
@@ -84,5 +84,8 @@ public class ResearchAdminPage extends PageTools {
 		click(questionnaireVersionsSidebarButton);
 	}
 
-
+	public void clickSurveillanceIntelligenceCollapseButton(){
+		waitForElementVisibility(surveillanceIntelligenceSidebarButton);
+		click(surveillanceIntelligenceSidebarButton);
+	}
 }

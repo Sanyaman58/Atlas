@@ -231,4 +231,9 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().clickYesApproveButton();
         SelenideTools.sleep(10);
     }
+
+    @When("Click on the [Intelligence Admin] sidebar collapse button on Lighthouse")
+    public void clickOnTheIntelligenceAdminSidebarCollapseButtonOnLighthouse() {
+        Pages.requirementsAdminPage().clickOnIntelligenceAdminSidebarCollapseButton();
+    }
 }

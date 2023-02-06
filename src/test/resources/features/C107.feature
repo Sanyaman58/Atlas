@@ -2,6 +2,7 @@
 
 Feature: C107
 
+#  @TestRail(107)
   Scenario: Verify the surveillance deletion functionality
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

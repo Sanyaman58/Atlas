@@ -204,6 +204,12 @@ public class NewResearchPage extends PageTools {
 		click(alertXButton);
 	}
 
+	public int getNumberOfJobs(){
+		if(isElementVisible(noDataInTable))
+			return 0;
+		else return getElements(tableJobs).size();
+	}
+
 	public boolean isNewlyCreatedJobDisplayed(String status){
 		SelenideTools.sleep(7);
 		if(isElementVisible(noDataInTable))
