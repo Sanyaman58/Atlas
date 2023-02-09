@@ -60,12 +60,12 @@ public class RequirementsAdminPage extends PageTools {
 	By contextMenuViewButton = By.xpath("//div[@id='context-menu']/div[@id='view']/a");
 	By contextMenuEditButton = By.xpath("//div[@id='context-menu']/div[@id='edit']/a");
 	By contextMenuDeleteButton = By.xpath("//div[@id='context-menu']/div[@id='delete']/a");
-	By attachmentsCheckboxes = By.xpath("(//section[@class='requirementInfo-wrapper'])[3]//div[@class='row']/div//input");
-	By prerequisitesCheckboxes = By.xpath("(//section[@class='requirementInfo-wrapper'])[4]//div[@class='row']/div//input");
-	By productLinesCheckboxes = By.xpath("(//section[@class='requirementInfo-wrapper'])[5]//div[@class='row']/div//input");
-	By businessModelCheckboxes = By.xpath("(//section[@class='requirementInfo-wrapper'])[6]//div[@class='row']/div//input");
-	By questionSelectionCheckboxes = By.xpath("(//section[@class='requirementInfo-wrapper'])[7]//div[@class='row']/div//input");
-	By selectorCriteriaSelects = By.xpath("(//section[@class='requirementInfo-wrapper'])[8]//select");
+	By attachmentsCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[4]//div[@class='row']/div//input");
+	By prerequisitesCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[5]//div[@class='row']/div//input");
+	By productLinesCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[6]//div[@class='row']/div//input");
+	By businessModelCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[7]//div[@class='row']/div//input");
+	By questionSelectionCheckboxes = By.xpath("//section[@id='Question_Selection']//div[@class='row']/div//input | //div[@id='Question_Selection']//div[@class='row']/div//input");
+	By selectorCriteriaSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@id,'builder-basic_rule')]//select");
 	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
 	By newRequirementCategorySelect = By.xpath("//select[@id='Requirement_Category']");
 	By newRequirementTypeSelect = By.xpath("//select[@id='Requirement_Type']");
@@ -409,6 +409,16 @@ public class RequirementsAdminPage extends PageTools {
 		return true;
 	}
 
+	public void selectTheLastSelectorCriteria(int index){
+		waitForElementVisibility(selectorCriteriaSelects);
+		System.out.println(getElements(selectorCriteriaSelects).get(index).getText());
+		getElements(selectorCriteriaSelects).get(index).selectOption(selectedQuestionText);
+	}
+
+	public void getRequirementNameFromEditRequirement(){
+		requirementName = getSelenideElement(requirementNameGeneralInformationInput).getText();
+	}
+
 	public boolean isChangeNoteForCustomerWorking(){
 		return isElementClickable(changeNoteForCustomerInput);
 	}
@@ -470,7 +480,7 @@ public class RequirementsAdminPage extends PageTools {
 	public void checkQuestion(int index){
 		waitForElementVisibility(questionSelectionCheckboxes);
 		getElements(questionSelectionCheckboxes).get(index+2).click();
-		selectedQuestionText = getElements(questionSelectionCheckboxes).get(index+1).findElement(By.xpath("./following-sibling::span")).getText();
+		selectedQuestionText = getElements(questionSelectionCheckboxes).get(index+2).findElement(By.xpath("./following-sibling::span")).getText();
 		System.out.println(selectedQuestionText);
 	}
 

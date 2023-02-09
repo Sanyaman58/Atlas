@@ -9,7 +9,7 @@ Feature: C116
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Requirements View] sidebar button
-    Then Click on the [Requirements View] page is opened
+    Then The [Requirements View] page is opened
     And Validate the [Requirements Viewer Filters] elements on the [Requirements View] page
     Then Select the [Production Data] radio button on [Requirement View] page
     Then The [Requirement Viewer] table is displayed

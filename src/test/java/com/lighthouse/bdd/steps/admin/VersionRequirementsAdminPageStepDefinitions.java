@@ -131,4 +131,9 @@ public class VersionRequirementsAdminPageStepDefinitions {
     public void enterRequirementStatusInTheRequirementSearchOnTheVersionedRequirementsPage(String status) {
         Pages.versionRequirementsAdminPage().enterRequirementStatusInTheSearchField(status);
     }
+
+    @When("Click on the [Edit Requirement] button of the {int} record on the [Versioned Requirements] page")
+    public void clickOnTheEditRequirementButtonOfTheRecordOnTheVersionedRequirementsPage(int record) {
+        Pages.versionRequirementsAdminPage().clickOnEditRequirementButton(record);
+    }
 }

@@ -61,8 +61,10 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public void clickOnTheLabel(String label){
 		List<SelenideElement> elements = getElements(versionRequirementsTableLabels);
 		for(SelenideElement element : elements){
-			if(element.getText().equals(label));
-			element.click();
+			if(element.getText().equals(label)) {
+				element.click();
+				break;
+			}
 		}
 	}
 

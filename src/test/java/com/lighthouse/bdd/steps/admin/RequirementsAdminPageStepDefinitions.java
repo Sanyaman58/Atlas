@@ -12,8 +12,8 @@ import java.util.List;
 
 public class RequirementsAdminPageStepDefinitions {
 
-    @Then("Click on the [Requirements View] page is opened")
-    public void clickOnTheRequirementsViewPageIsOpened() {
+    @Then("The [Requirements View] page is opened")
+    public void isRequirementsAdminPageOpened() {
         Pages.requirementsAdminPage().isRequirementsAdminPageOpened();
     }
 
@@ -235,5 +235,15 @@ public class RequirementsAdminPageStepDefinitions {
     @When("Click on the [Intelligence Admin] sidebar collapse button on Lighthouse")
     public void clickOnTheIntelligenceAdminSidebarCollapseButtonOnLighthouse() {
         Pages.requirementsAdminPage().clickOnIntelligenceAdminSidebarCollapseButton();
+    }
+
+    @And("Select the last select option of the {int} select in the [Selector Criteria] section")
+    public void selectTheLastSelectOptionOfTheSelectInTheSelectorCriteriaSection(int index) {
+        Pages.requirementsAdminPage().selectTheLastSelectorCriteria(index);
+    }
+
+    @Then("Get requirement name from the [Edit Requirement] name")
+    public void getRequirementNameFromTheEditRequirementName() {
+        Pages.requirementsAdminPage().getRequirementNameFromEditRequirement();
     }
 }
