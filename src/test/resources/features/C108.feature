@@ -2,6 +2,7 @@
 
 Feature: C108
 
+  @TestRail(108)
   Scenario: Admin Homepage
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

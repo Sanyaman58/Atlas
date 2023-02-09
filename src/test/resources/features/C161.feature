@@ -2,6 +2,7 @@
 
 Feature: C161
 
+  @TestRail(161)
   Scenario: Verify that the system is finding a match for state requirements
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

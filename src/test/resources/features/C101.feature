@@ -2,6 +2,7 @@
 
 Feature: C101
 
+  @TestRail(101)
   Scenario: Verify the "Modify Existing Facility Research from Previous Answers" functionality
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

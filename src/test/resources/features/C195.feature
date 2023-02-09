@@ -2,6 +2,7 @@
 
 Feature: C195
 
+  @TestRail(195)
   Scenario: Verify user is able to add and run requirement
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

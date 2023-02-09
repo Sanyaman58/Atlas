@@ -2,6 +2,7 @@
 
 Feature: C116
 
+  @TestRail(116)
   Scenario: Requirements View
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

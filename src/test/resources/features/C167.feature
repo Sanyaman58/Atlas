@@ -2,6 +2,7 @@
 
 Feature: C167
 
+  @TestRail(167)
   Scenario: Verify the resident state selector functionality
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

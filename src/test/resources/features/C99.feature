@@ -2,6 +2,7 @@
 
 Feature: C99
 
+  @TestRail(99)
   Scenario: Verify the Login page functionality
 
     When Open Atlas

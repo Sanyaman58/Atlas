@@ -2,6 +2,7 @@
 
 Feature: C106
 
+  @TestRail(106)
   Scenario: Verify the navigation between pages
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

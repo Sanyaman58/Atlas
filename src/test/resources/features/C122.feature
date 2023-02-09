@@ -2,6 +2,7 @@
 
 Feature: C122
 
+  @TestRail(122)
   Scenario: Verify that user is able to update the status of existing configuration
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

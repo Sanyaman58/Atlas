@@ -2,6 +2,7 @@
 
 Feature: C100
 
+  @TestRail(100)
   Scenario: Verify the "New Facility" creation functionality
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

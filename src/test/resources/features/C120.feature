@@ -2,6 +2,7 @@
 
 Feature: C120
 
+  @TestRail(120)
   Scenario: Version Requirements
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

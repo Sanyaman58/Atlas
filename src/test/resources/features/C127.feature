@@ -2,6 +2,7 @@
 
 Feature: C127
 
+  @TestRail(127)
   Scenario: Verify that user is able to see "Requirement Name" to the "Activity Log" output.
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

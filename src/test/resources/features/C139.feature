@@ -2,6 +2,7 @@
 
 Feature: C139
 
+  @TestRail(139)
   Scenario: Verify that user is able to see a validation message on entering wrong keywords in the search column.
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

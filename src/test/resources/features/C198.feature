@@ -2,6 +2,7 @@
 
 Feature: C198
 
+  @TestRail(198)
   Scenario: Verify user is able to run the requirement with edited selector criteria
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

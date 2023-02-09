@@ -2,6 +2,7 @@
 
 Feature: C114
 
+  @TestRail(114)
   Scenario: UI/UX Internal User Surveillance Setup
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

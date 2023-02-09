@@ -2,6 +2,7 @@
 
 Feature: C121
 
+  @TestRail(121)
   Scenario: View surveillance results on the [Surveillance Results] page
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
