@@ -136,4 +136,9 @@ public class VersionRequirementsAdminPageStepDefinitions {
     public void clickOnTheEditRequirementButtonOfTheRecordOnTheVersionedRequirementsPage(int record) {
         Pages.versionRequirementsAdminPage().clickOnEditRequirementButton(record);
     }
+
+    @And("Verify that newly created requirement contains {string} selector criteria")
+    public void verifyThatNewlyCreatedRequirementContainsSelectorCriteria(String selectorCriteria) {
+        Pages.versionRequirementsAdminPage().isSelectorCriteriaMatch(selectorCriteria);
+    }
 }

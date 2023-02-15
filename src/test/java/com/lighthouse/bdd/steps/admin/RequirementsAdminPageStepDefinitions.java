@@ -246,4 +246,49 @@ public class RequirementsAdminPageStepDefinitions {
     public void getRequirementNameFromTheEditRequirementName() {
         Pages.requirementsAdminPage().getRequirementNameFromEditRequirement();
     }
+
+
+    @And("Create a complex selector criteria")
+    public void createAComplexSelectorCriteria() {
+        SelenideTools.sleep(1);
+        Pages.requirementsAdminPage().checkQuestion(3);
+        Pages.requirementsAdminPage().checkQuestion(4);
+        Pages.requirementsAdminPage().checkQuestion(5);
+        Pages.requirementsAdminPage().checkQuestion(7);
+        Pages.requirementsAdminPage().checkQuestion(8);
+        Pages.requirementsAdminPage().checkQuestion(9);
+        Pages.requirementsAdminPage().checkQuestion(11);
+        Pages.requirementsAdminPage().checkQuestion(44);
+        Pages.requirementsAdminPage().checkQuestion(45);
+        Pages.requirementsAdminPage().checkQuestion(46);
+        Pages.requirementsAdminPage().selectQuestion(1,1);
+        Pages.requirementsAdminPage().addQuestion(0);
+        Pages.requirementsAdminPage().selectQuestion(2,0);
+        Pages.requirementsAdminPage().selectQuestion(5,0);
+
+
+
+        Pages.requirementsAdminPage().addGroup(0);
+        Pages.requirementsAdminPage().addQuestion(0);
+        Pages.requirementsAdminPage().addQuestion(0);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 3, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 4, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 5, "Yes");
+        Pages.requirementsAdminPage().addQuestion(1);
+        SelenideTools.sleep(1);
+        Pages.requirementsAdminPage().selectQuestion(6,0);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "Yes");
+        Pages.requirementsAdminPage().addGroup(1);
+        Pages.requirementsAdminPage().addQuestion(2);
+        SelenideTools.sleep(1);
+        Pages.requirementsAdminPage().selectQuestion(10,0);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(11, 9, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 11, "No");
+        Pages.newResearchPage().closePopUpWindow();
+    }
+
 }

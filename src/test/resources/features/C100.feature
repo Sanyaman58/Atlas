@@ -21,6 +21,8 @@ Feature: C100
 #    And Enter "Test" facility name
 #    Then The "Same Company Name and Facility name already exist" message is displayed
     Then Select "Pharma Solutions USA" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "Pharma Solutions USA" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button

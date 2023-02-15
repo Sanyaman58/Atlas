@@ -51,6 +51,8 @@ public class RequirementsAdminPage extends PageTools {
 	By controlledSubstancesFeeInput = By.xpath("//input[@name='Fee_ControlledSubstance[fee]']");
 	By renewalFeeInput = By.xpath("//input[@name='Fee_Renewal[fee]']");
 	By deleteSelectorButton = By.xpath("//button[@title='Delete Rule']");
+	By addSelectorButton = By.xpath("//button[@title='Add Rule']");
+	By addGroupButton = By.xpath("//button[@title='Add Group']");
 
 
 	By requirementViewersTable = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']");
@@ -66,6 +68,12 @@ public class RequirementsAdminPage extends PageTools {
 	By businessModelCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[7]//div[@class='row']/div//input");
 	By questionSelectionCheckboxes = By.xpath("//section[@id='Question_Selection']//div[@class='row']/div//input | //div[@id='Question_Selection']//div[@class='row']/div//input");
 	By selectorCriteriaSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@id,'builder-basic_rule')]//select");
+	By selectorCriteriaRuleContainer = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[@class='rule-container']");
+	By selectorCriteriaQuestionsSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@class,'rule-filter-container')]/select");
+	By selectorCriteriaQuestionSelect = By.xpath("(//div[@id='selector_criteria']//div[@id='builder-basic']//div[@class='rule-container'])[%s]//div[contains(@class,'rule-filter-container')]/select");
+	By selectorCriteriaAnswersSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@class,'rule-value-container')]/select");
+	By selectorCriteriaAnswerSelect = By.xpath("(//div[@id='selector_criteria']//div[@id='builder-basic']//div[@class='rule-container'])[%s]//div[contains(@class,'rule-value-container')]/select");
+
 	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
 	By newRequirementCategorySelect = By.xpath("//select[@id='Requirement_Category']");
 	By newRequirementTypeSelect = By.xpath("//select[@id='Requirement_Type']");
@@ -84,6 +92,7 @@ public class RequirementsAdminPage extends PageTools {
 	String state;
 	String RESState;
 	String selectedQuestionText;
+	String selectorCriteria;
 
 	public String getRequirementName() {
 		return requirementName;
@@ -479,14 +488,14 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void checkQuestion(int index){
 		waitForElementVisibility(questionSelectionCheckboxes);
-		getElements(questionSelectionCheckboxes).get(index+2).click();
-		selectedQuestionText = getElements(questionSelectionCheckboxes).get(index+2).findElement(By.xpath("./following-sibling::span")).getText();
+		getElements(questionSelectionCheckboxes).get(index).click();
+		selectedQuestionText = getElements(questionSelectionCheckboxes).get(index).findElement(By.xpath("./following-sibling::span")).getText();
 		System.out.println(selectedQuestionText);
 	}
 
 	public void selectQuestionInTheSelectorCriteria(String yesOrNo){
 		waitForElementVisibility(selectorCriteriaSelects);
-		getElements(selectorCriteriaSelects).get(2).selectOption(selectedQuestionText);
+		getElements(selectorCriteriaSelects).get(2).selectOption(yesOrNo);
 	}
 
 	public void deleteLastQuestion(){
@@ -496,7 +505,17 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void deleteQuestion(int index){
 		waitForElementVisibility(deleteSelectorButton);
-		getElements(deleteSelectorButton).get(index-1).click();
+		getElements(deleteSelectorButton).get(index).click();
+	}
+
+	public void addQuestion(int index){
+		waitForElementVisibility(addSelectorButton);
+		getElements(addSelectorButton).get(index).click();
+	}
+
+	public void addGroup(int index) {
+		waitForElementVisibility(addGroupButton);
+		getElements(addGroupButton).get(index).click();
 	}
 
 	public void clickSubmitForApprovalButton(){
@@ -518,4 +537,24 @@ public class RequirementsAdminPage extends PageTools {
 		waitForElementVisibility(intelligenceAdminSidebarCollapseButton);
 		click(intelligenceAdminSidebarCollapseButton);
 	}
+
+	public void selectQuestionAndAnswer(int index, int selectOptionIndex, String yesOrNo){
+		waitForElementVisibility(selectorCriteriaRuleContainer);
+		getSelenideElement(selectorCriteriaQuestionSelect, index).selectOption(selectOptionIndex);
+		getSelenideElement(selectorCriteriaAnswerSelect, index).selectOption(yesOrNo);
+	}
+
+	public void selectQuestion(int index, int selectOptionIndex){
+		waitForElementVisibility(selectorCriteriaRuleContainer);
+		getSelenideElement(selectorCriteriaQuestionSelect, index).selectOption(selectOptionIndex);
+	}
+
+//	public void getSelectorCriteriaData(){
+//		selectorCriteria = "";
+//		for(int i = 0; i < getElements(selectorCriteriaSelects).size(); i++){
+//
+//		}
+//	}
+
+
 }

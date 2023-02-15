@@ -282,4 +282,14 @@ public class VersionRequirementsAdminPage extends PageTools {
 		waitForElementVisibility(versionedRequirementsSidebarButton);
 		click(versionedRequirementsSidebarButton);
 	}
+
+	public boolean isSelectorCriteriaMatch(String selectorCriteria){
+		SelenideTools.sleep(2);
+		if(isElementVisibleWithNoLog(versionRequirementsTableNoRecords))
+			return false;
+		waitForElementVisibility(versionRequirementsTableRecords);
+		System.out.println(getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText());
+		System.out.println(selectorCriteria);
+		return getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText().equals(selectorCriteria);
+	}
 }
