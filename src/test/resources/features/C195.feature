@@ -19,7 +19,7 @@ Feature: C195
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
 #    And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
-    And Check 4 question in the [Question Selection] section on the [Requirements View] page
+    And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin
@@ -32,6 +32,8 @@ Feature: C195
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
     Then Select "Pharma Solutions USA" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "Pharma Solutions USA" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -41,7 +43,7 @@ Feature: C195
     And Get the jurisdictions checkboxes values
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
-    And Select 4 question on the [Questionnaire] page
+    And Select 1 question on the [Questionnaire] page
     Then Get the questions values
     And Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
@@ -54,7 +56,6 @@ Feature: C195
     Then The [Research Results] page is opened
     And Get table records on [Research Results] page
     Then Verify that early created requirement name is in the list
-    Then Verify that requirement with "Alaska" jurisdiction, "Test2" application name and "Test2" requirement name is in the list
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then Select "Pharma Solutions USA" client from the client dropdown

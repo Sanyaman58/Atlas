@@ -14,7 +14,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("The [Requirements View] page is opened")
     public void isRequirementsAdminPageOpened() {
-        Pages.requirementsAdminPage().isRequirementsAdminPageOpened();
+        Assert.assertTrue(Pages.requirementsAdminPage().isRequirementsAdminPageOpened());
     }
 
     @And("Validate the [Requirements Viewer Filters] elements on the [Requirements View] page")
@@ -27,6 +27,7 @@ public class RequirementsAdminPageStepDefinitions {
         Assert.assertTrue(Pages.requirementsAdminPage().isRequirementNameSelectSelectable());
         Assert.assertTrue(Pages.requirementsAdminPage().isStatusSelectSelectable());
     }
+
     @And("Validate the [General Information] elements on the [Requirements View] page")
     public void validateTheGeneralInformationViewPageElements() {
         Assert.assertTrue(Pages.requirementsAdminPage().isRequirementNameInputWorking());
@@ -184,12 +185,12 @@ public class RequirementsAdminPageStepDefinitions {
 
     @When("Enter random requirement name on the [Requirements View] page")
     public void enterRandomRequirementNameOnTheRequirementsViewPage() {
-        Pages.requirementsAdminPage().enterRequirementName(RandomStringUtils.random(10,true,false));
+        Pages.requirementsAdminPage().enterRequirementName(RandomStringUtils.random(10, true, false));
     }
 
     @And("Enter random application name on the [Requirements View] page")
     public void enterRandomApplicationNameOnTheRequirementsViewPage() {
-        Pages.requirementsAdminPage().enterApplicationName(RandomStringUtils.random(10,true,false));
+        Pages.requirementsAdminPage().enterApplicationName(RandomStringUtils.random(10, true, false));
     }
 
     @And("Select In-State radio button for the state {string} of the RES1 question on the [Requirement View] page")
@@ -261,34 +262,45 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().checkQuestion(44);
         Pages.requirementsAdminPage().checkQuestion(45);
         Pages.requirementsAdminPage().checkQuestion(46);
-        Pages.requirementsAdminPage().selectQuestion(1,1);
+        Pages.requirementsAdminPage().selectQuestion(1, 1);
         Pages.requirementsAdminPage().addQuestion(0);
-        Pages.requirementsAdminPage().selectQuestion(2,0);
-        Pages.requirementsAdminPage().selectQuestion(5,0);
-
-
-
-        Pages.requirementsAdminPage().addGroup(0);
+        Pages.requirementsAdminPage().selectQuestion(2, 0);
+        Pages.requirementsAdminPage().selectQuestion(5, 0);
+        Pages.requirementsAdminPage().selectQuestion(8, 0);
         Pages.requirementsAdminPage().addQuestion(0);
         Pages.requirementsAdminPage().addQuestion(0);
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 2, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 3, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 4, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 5, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "Yes");
         Pages.requirementsAdminPage().addQuestion(1);
-        SelenideTools.sleep(1);
-        Pages.requirementsAdminPage().selectQuestion(6,0);
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "Yes");
-        Pages.requirementsAdminPage().addGroup(1);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 6, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 7, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 8, "Yes");
         Pages.requirementsAdminPage().addQuestion(2);
-        SelenideTools.sleep(1);
-        Pages.requirementsAdminPage().selectQuestion(10,0);
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(11, 9, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 10, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 11, "No");
-        Pages.newResearchPage().closePopUpWindow();
-    }
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 9, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(14, 11, "No");
+//        Pages.requirementsAdminPage().addGroup(0);
+//        Pages.requirementsAdminPage().addQuestion(0);
+//        Pages.requirementsAdminPage().addQuestion(0);
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 2, "Yes");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 3, "No");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 4, "No");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 5, "Yes");
+//        Pages.requirementsAdminPage().addQuestion(1);
+//        SelenideTools.sleep(1);
+//        Pages.requirementsAdminPage().selectQuestion(6, 0);
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "Yes");
+//        Pages.requirementsAdminPage().addGroup(1);
+//        Pages.requirementsAdminPage().addQuestion(2);
+//        SelenideTools.sleep(1);
+//        Pages.requirementsAdminPage().selectQuestion(10, 0);
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(11, 9, "No");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 10, "No");
+//        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 11, "No");
 
+    }
 }

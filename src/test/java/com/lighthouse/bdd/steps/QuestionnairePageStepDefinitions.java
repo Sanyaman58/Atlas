@@ -39,4 +39,13 @@ public class QuestionnairePageStepDefinitions {
         Pages.newResearchPage().goBackInBrowser();
         Assert.assertTrue(Pages.questionnairePage().isQuestionnairePageOpened());
     }
+
+    @And("Select questions to match the complex selector criteria")
+    public void selectQuestionsToMatchTheComplexSelectorCriteria() {
+        Pages.questionnairePage().selectQuestion(1);
+        Pages.questionnairePage().selectQuestion(5);
+        Pages.questionnairePage().selectQuestion(6);
+        Pages.questionnairePage().selectQuestion(8);
+        Pages.questionnairePage().selectQuestion(9);
+    }
 }

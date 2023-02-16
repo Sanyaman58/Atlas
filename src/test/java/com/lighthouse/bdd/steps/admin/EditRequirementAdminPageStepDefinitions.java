@@ -10,7 +10,7 @@ public class EditRequirementAdminPageStepDefinitions {
 
     @Then("The [Edit Requirement] page is opened")
     public void theResearchAdminPageIsOpened() {
-        Pages.editRequirementAdminPage().isEditRequirementAdminPageOpened();
+        Assert.assertTrue(Pages.editRequirementAdminPage().isEditRequirementAdminPageOpened());
     }
 
     @And("Get the data from the [Edit Requirement] page")

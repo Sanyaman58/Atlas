@@ -73,4 +73,54 @@ public class ViewResultsPageStepDefinitions {
                 , Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName()));
     }
+
+    @When("Click on the [Activity Logs] button of the newly created job on the [View Results] page")
+    public void clickOnTheActivityLogsButtonOfTheNewlyCreatedJobOnTheViewResultsPage() {
+        Pages.viewResultsPage().clickOnTheActivityLogsButtonOfTheNewlyCreatedJob();
+    }
+
+    @And("Get requirement name of {int} records on [Research Results] page")
+    public void getRequirementNameOfRecordsOnResearchResultsPage(int index) {
+        Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
+    }
+
+    @Then("Verify that records on the [View Results] page are sorted alphabetically backwards by {string} label")
+    public void verifyThatRecordsOnTheViewResultsPageAreSortedAlphabeticallyBackwardsByLabel(String label) {
+        Assert.assertTrue(Pages.viewResultsPage().verifyThatRecordsSortedDescendingByTheLabel(label));
+    }
+
+    @When("Enter {string} in the search field on the [View Results] page")
+    public void enterInTheSearchFieldOnTheViewResultsPage(String text) {
+        Pages.viewResultsPage().enterTextInTheSearchField(text);
+    }
+
+    @Then("No records are displayed on the [View Results] page")
+    public void noRecordsAreDisplayedOnTheViewResultsPage() {
+        Pages.viewResultsPage().isNoRecordsFoundMessageDisplayed();
+    }
+
+    @Then("Click on the [View] button of the {int} job on the [View Results] page")
+    public void clickOnTheViewButtonOfTheJobOnTheViewResultsPage(int index) {
+        Pages.viewResultsPage().clickOnTheViewButtonOfTheRecord(index);
+    }
+
+    @Then("The following labels are displayed on the [Research Results] page")
+    public void theFollowingLabelsAreDisplayedOnTheResearchResultsPage(List<String> listOfLabels) {
+        Assert.assertTrue(Pages.viewResultsPage().isTableLabelsPresentOnResearchResultsPage(listOfLabels));
+    }
+
+    @When("Get fixed labels coordinates on the [Research Results] page")
+    public void getFixedLabelsCoordinatesOnTheResearchResultsPage() {
+        Pages.viewResultsPage().saveFixedLabelsCoordinates();
+    }
+
+    @And("Scroll to {string} label on the [Research Results] page")
+    public void scrollToLabelOnTheResearchResultsPage(String label) {
+        Pages.viewResultsPage().scrollToLabel(label);
+    }
+
+    @Then("Verify that fixed labels coordinates didn't changed")
+    public void verifyThatFixedLabelsCoordinatesDidnTChanged() {
+        Assert.assertTrue(Pages.viewResultsPage().isFixedLabelsCoordinatesNotChanged());
+    }
 }

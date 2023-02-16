@@ -139,6 +139,6 @@ public class VersionRequirementsAdminPageStepDefinitions {
 
     @And("Verify that newly created requirement contains {string} selector criteria")
     public void verifyThatNewlyCreatedRequirementContainsSelectorCriteria(String selectorCriteria) {
-        Pages.versionRequirementsAdminPage().isSelectorCriteriaMatch(selectorCriteria);
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isSelectorCriteriaMatch(selectorCriteria));
     }
 }

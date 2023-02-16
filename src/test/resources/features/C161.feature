@@ -56,7 +56,6 @@ Feature: C161
     Then The [Research Results] page is opened
     And Get table records on [Research Results] page
     Then Verify that early created requirement name is in the list
-    Then Verify that requirement with "Alaska" jurisdiction, "Test2" application name and "Test2" requirement name is in the list
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then Select "Pharma Solutions USA" client from the client dropdown

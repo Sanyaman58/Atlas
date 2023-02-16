@@ -7,12 +7,11 @@ import com.codeborne.selenide.SelenideElement;
 import com.google.common.collect.Ordering;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Coordinates;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//h2[text()='Surveillance Results']");
@@ -23,13 +22,21 @@ public class ViewResultsPage extends PageTools {
     By showResultsSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
     By researchResults = By.xpath("//div[@id='viewResult']");
     By researchResultsTable = By.xpath("//table[@id='DataTables_Table_1']");
-    By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr");
-    By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_1']/tbody/tr/td");
+    By researchResultsTableLabels = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[1]/th");
+    By researchResultsTableFixedLabels = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[1]/th[contains(@class,'fixed-column')]");
+    By researchResultsTableLabelsSearch = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[2]/th/input");
+
+
+    By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
+    By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr/td");
+    By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
+    By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
 
 
     List<List<String>> tableRecords;
-
+    static String requirementName;
+    static Map<Integer,Integer> fixedLabelCoordinates;
 
     public boolean isViewResultsPageOpened(){
         waitForElementVisibility(viewResultsPageTitle);
@@ -37,7 +44,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isNewlySubmittedJobDisplayed(String status){
-        SelenideTools.sleep(70);
+        SelenideTools.sleep(80);
         System.out.println(Pages.newResearchPage().getCompanyName());
         System.out.println(Pages.newResearchPage().getFacilityName());
         for(int i = 0;i < getElements(tableJobs).size();i++){
@@ -57,6 +64,20 @@ public class ViewResultsPage extends PageTools {
             if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getCompanyName())
                     && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getFacilityName())) {
                 getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[" + (i + 1) + "]")).click();
+                break;
+            }
+        }
+    }
+
+    public void clickOnTheViewButtonOfTheRecord(int index){
+        getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[" + (index + 1) + "]")).click();
+    }
+
+    public void clickOnTheActivityLogsButtonOfTheNewlyCreatedJob(){
+        for(int i = 0; i < getElements(tableJobs).size(); i++){
+            if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getCompanyName())
+                    && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getFacilityName())) {
+                getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/a)[" + (i + 1) + "]")).click();
                 break;
             }
         }
@@ -106,9 +127,22 @@ public class ViewResultsPage extends PageTools {
                     tableRecords.add(getSelenideElement(table).findElement(By.xpath("./tr["+(j+1)+"]/td["+(i+1)+"]")).getText());
             }
         }
-        System.out.println(tableRecords.size());
         List<String> sortedTableRecords = tableRecords;
         Collections.sort(sortedTableRecords);
+        return sortedTableRecords.equals(tableRecords);
+    }
+
+    public boolean verifyThatRecordsSortedDescendingByTheLabel(String label){
+        List<String> tableRecords = new ArrayList<>();
+        List<SelenideElement> elements = getElements(tableLabels);
+        for(int i = elements.size()-1;i >= 0; i--){
+            if(elements.get(i).getText().contains(label)){
+                for(int j = 0; j < getElements(tableJobs).size(); j++)
+                    tableRecords.add(getSelenideElement(table).findElement(By.xpath("./tr["+(j+1)+"]/td["+(i+1)+"]")).getText());
+            }
+        }
+        List<String> sortedTableRecords = tableRecords;
+        Collections.sort(sortedTableRecords, Collections.reverseOrder());
         return sortedTableRecords.equals(tableRecords);
     }
 
@@ -130,6 +164,15 @@ public class ViewResultsPage extends PageTools {
         }
     }
 
+    public String getRequirementNameOfTheTableRecord(){
+        return requirementName;
+    }
+
+    public void saveRequirementNameOfTheTableRecord(int index){
+        waitForElementVisibility(researchResultsTableRecords);
+        requirementName = getElements(researchResultsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
+    }
+
     public boolean isRequirementPresentInTheList(String jurisdiction, String aName, String rName){
         for (List<String> tableRecord : tableRecords) {
             if (tableRecord.contains(jurisdiction)
@@ -145,5 +188,67 @@ public class ViewResultsPage extends PageTools {
         click(closeViewResultsWindowButton);
     }
 
+    public void enterTextInTheSearchField(String text){
+        SelenideTools.sleep(3);
+        waitForElementVisibility(searchField);
+        type(text, searchField);
+    }
 
+    public int getNumberOfResults(){
+        if(isElementVisibleWithNoLog(researchResultsNoRecords))
+            return 0;
+        return getElements(researchResultsTableRecords).size();
+    }
+    public boolean isNoRecordsFoundMessageDisplayed(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsNoRecords);
+    }
+
+    public boolean isTableLabelsPresentOnResearchResultsPage(List<String> labels){
+        List<String> tableLabelsList = new ArrayList<>();
+        List<SelenideElement> elements = getElements(researchResultsTableLabels);
+        for(SelenideElement element : elements){
+            System.out.println(element.getAttribute("innerHTML"));
+            tableLabelsList.add(element.getAttribute("innerHTML"));
+        }
+        return tableLabelsList.equals(labels);
+    }
+
+    public void saveFixedLabelsCoordinates(){
+        fixedLabelCoordinates = new HashMap<>();
+        List<SelenideElement> elements = getElements(researchResultsTableFixedLabels);
+        for(SelenideElement element : elements){
+            fixedLabelCoordinates.put(element.getLocation().getX(),element.getLocation().getY());
+        }
+    }
+
+    public boolean isFixedLabelsCoordinatesNotChanged(){
+        Map<Integer,Integer> currentCoordinates = new HashMap<>();
+        List<SelenideElement> elements = getElements(researchResultsTableFixedLabels);
+        for(SelenideElement element : elements){
+            currentCoordinates.put(element.getLocation().getX(), element.getLocation().getY());
+        }
+        currentCoordinates.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
+        fixedLabelCoordinates.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        });
+        return currentCoordinates.equals(fixedLabelCoordinates);
+    }
+
+    public void scrollToLabel(String label){
+        List<String> tableLabelsList = new ArrayList<>();
+        List<SelenideElement> elements = getElements(researchResultsTableLabels);
+        for(SelenideElement element : elements){
+            if(element.getAttribute("innerHTML").contains(label)){
+                System.out.println(element.getAttribute("innerHTML"));
+                ((JavascriptExecutor) SelenideTools.getDriver()).executeScript("arguments[0].argument[0].scrollIntoView()", element);
+                element.scrollTo();
+                break;
+            }
+        }
+
+        SelenideTools.sleep(5);
+    }
 }

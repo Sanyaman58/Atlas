@@ -1,2 +1,6 @@
 # Project exclude paths
 /target/
+/screenshots/
+/cucumber-reports/
+/allure-report/
+/allure-results/

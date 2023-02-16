@@ -3,12 +3,13 @@ package com.lighthouse.bdd.steps.admin;
 import Pages.Pages;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class ResearchAdminPageStepDefinitions {
 
     @Then("The [Research Admin] page is opened")
     public void theResearchAdminPageIsOpened() {
-        Pages.researchAdminPage().isResearchAdminPageOpened();
+        Assert.assertTrue(Pages.researchAdminPage().isResearchAdminPageOpened());
     }
 
     @When("Click on the [Requirements] button on admin")

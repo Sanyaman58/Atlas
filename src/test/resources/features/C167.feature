@@ -69,4 +69,4 @@ Feature: C167
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     When Click on the [View] button of the newly created job on the [View Results] page
     And Get table records on [Research Results] page
-    Then Verify that requirement with "Alaska" jurisdiction, "Test2" application name and "Test2" requirement name is in the list
+    Then Verify that early created requirement name is in the list

@@ -10,7 +10,7 @@ public class SaveSubmitJobPageStepDefinitions {
 
     @Then("The [SaveSubmit Job] page is opened")
     public void theSaveSubmitJobPageIsOpened() {
-        Pages.saveSubmitJobPage().isSaveSubmitConfigurationPageOpened();
+        Assert.assertTrue(Pages.saveSubmitJobPage().isSaveSubmitConfigurationPageOpened());
     }
 
     @When("Click on the [Change Jurisdictions] button")
