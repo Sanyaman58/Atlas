@@ -30,7 +30,6 @@ Feature: C101
     Then The [Configuration] page is opened
     Then Select "Pharma Solutions USA" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
-    #When Select already created job in the table on the [New Research] page
     When Select already created job in the table on the [New Research] page
     Then Click the [Copy From Research Job] button
     When The [Jurisdiction] page is opened
