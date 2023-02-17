@@ -5,7 +5,6 @@ import org.testng.annotations.DataProvider;
 
 
 @CucumberOptions(
-//        tags="@C100",
         features = "src/test/resources/features",
         plugin = {"html:cucumber-reports/html/report.html",
                 "json:cucumber-html-reports/cucumber.json",
