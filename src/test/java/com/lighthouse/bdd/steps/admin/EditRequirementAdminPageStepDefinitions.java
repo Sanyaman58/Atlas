@@ -15,7 +15,7 @@ public class EditRequirementAdminPageStepDefinitions {
 
     @And("Get the data from the [Edit Requirement] page")
     public void getTheDataFromTheEditRequirementPage() {
-
+        Pages.editRequirementAdminPage().getGeneralInfo();
     }
 
     @And("Compare the data on the [Edit Requirement] with the data from the [View Requirement] page")

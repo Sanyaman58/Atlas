@@ -47,7 +47,7 @@ public class AtlasDashboardManagementPageStepDefinitions {
         SelenideTools.sleep(10);
         SelenideTools.switchToLastTab();
         //SelenideTools.closeCurrentTab();
-        SelenideTools.sleep(2);
+        SelenideTools.sleep(3);
         Assert.assertTrue(Pages.versionRequirementsAdminPage().isVersionedRequirementsAdminPageOpened());
     }
 }

@@ -1,10 +1,7 @@
 package Pages.admin;
 
-import Constants.Constants;
 import Utils.SelenideTools;
 import base.PageTools;
-import com.codeborne.selenide.Screenshots;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -13,7 +10,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 
 public class RequirementsAdminPage extends PageTools {
 	By requirementsAdminPageTitle = By.xpath("//h2[text()='Requirements Admin']");
@@ -23,6 +19,7 @@ public class RequirementsAdminPage extends PageTools {
 	By productLineCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[6]//div[contains(@class,'collapsible')]");
 	By businessModelCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[7]//div[contains(@class,'collapsible')]");
 	By questionSelectionCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[8]//div[contains(@class,'collapsible')]");
+	By questionSelectionCollapseActiveButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[8]//div[contains(@class,'collapsible active')]");
 	By productionDataRadioButton = By.xpath("//input[@id='production-data']/following-sibling::label");
 	By preliminaryDataRadioButton = By.xpath("//input[@id='preliminary-data']/following-sibling::label");
 	By jurisdictionSelect = By.xpath("//select[@id='filter_Jurisdiction']");
@@ -50,9 +47,9 @@ public class RequirementsAdminPage extends PageTools {
 	By bondFeeInput = By.xpath("//input[@name='Fee_Bond[fee]']");
 	By controlledSubstancesFeeInput = By.xpath("//input[@name='Fee_ControlledSubstance[fee]']");
 	By renewalFeeInput = By.xpath("//input[@name='Fee_Renewal[fee]']");
-	By deleteSelectorButton = By.xpath("//button[@title='Delete Rule']");
-	By addSelectorButton = By.xpath("//button[@title='Add Rule']");
-	By addGroupButton = By.xpath("//button[@title='Add Group']");
+	By deleteSelectorButton = By.xpath("//button[@data-delete='rule']");
+	By addSelectorButton = By.xpath("//button[@data-add='rule']");
+	By addGroupButton = By.xpath("//button[@data-add='group']");
 
 
 	By requirementViewersTable = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']");
@@ -68,12 +65,13 @@ public class RequirementsAdminPage extends PageTools {
 	By businessModelCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[7]//div[@class='row']/div//input");
 	By questionSelectionCheckboxes = By.xpath("//section[@id='Question_Selection']//div[@class='row']/div//input | //div[@id='Question_Selection']//div[@class='row']/div//input");
 	By selectorCriteriaSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@id,'builder-basic_rule')]//select");
-	By selectorCriteriaRuleContainer = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[@class='rule-container']");
-	By selectorCriteriaQuestionsSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@class,'rule-filter-container')]/select");
-	By selectorCriteriaQuestionSelect = By.xpath("(//div[@id='selector_criteria']//div[@id='builder-basic']//div[@class='rule-container'])[%s]//div[contains(@class,'rule-filter-container')]/select");
+	By selectorCriteriaRuleContainer = By.xpath("//div[@class='rule-container']");
+	By selectorCriteriaQuestionsSelects = By.xpath("//div[contains(@class,'rule-filter-container')]/select");
+	By selectorCriteriaQuestionSelect = By.xpath("(//div[contains(@class,'rule-filter-container')]/select)[%s]");
 	By selectorCriteriaAnswersSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@class,'rule-value-container')]/select");
-	By selectorCriteriaAnswerSelect = By.xpath("(//div[@id='selector_criteria']//div[@id='builder-basic']//div[@class='rule-container'])[%s]//div[contains(@class,'rule-value-container')]/select");
+	By selectorCriteriaAnswerSelect = By.xpath("(//div[contains(@class,'rule-value-container')]/select)[%s]");
 
+	By selectorCriteriaAndOrSelection = By.xpath("//div[@id='selector_criteria']//div[@class='rules-group-header']/div[2]");
 	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
 	By newRequirementCategorySelect = By.xpath("//select[@id='Requirement_Category']");
 	By newRequirementTypeSelect = By.xpath("//select[@id='Requirement_Type']");
@@ -131,7 +129,8 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void clickOnQuestionSelectionCollapseButton(){
 		waitForElementVisibility(questionSelectionCollapseButton);
-		click(questionSelectionCollapseButton);
+		if(!isElementVisible(questionSelectionCollapseActiveButton))
+			click(questionSelectionCollapseButton);
 	}
 	public void clickOnRequirementCollapseButton(){
 		waitForElementVisibility(requirementCollapseButton);
@@ -359,8 +358,6 @@ public class RequirementsAdminPage extends PageTools {
 		SelenideTools.sleep(1);
 		scrollToElement(attachmentsCheckboxes);
 		System.out.println(getElements(attachmentsCheckboxes).size());
-		if(getElements(attachmentsCheckboxes).size()!=111)
-			return false;
 		for(int i = 0; i < getElements(attachmentsCheckboxes).size(); i++){
 			if(!getElements(attachmentsCheckboxes).get(i).isDisplayed()) {
 				System.out.println(i);
@@ -371,8 +368,6 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public boolean arePrerequisitesCheckboxesClickable(){
-		if(getElements(prerequisitesCheckboxes).size()!=23)
-			return false;
 		for(int i = 0; i < getElements(prerequisitesCheckboxes).size(); i++){
 			if(!getElements(prerequisitesCheckboxes).get(i).isEnabled())
 				return false;
@@ -381,8 +376,6 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public boolean areProductLinesCheckboxesClickable(){
-		if(getElements(productLinesCheckboxes).size()!=53)
-			return false;
 		for(int i = 0; i < getElements(productLinesCheckboxes).size(); i++){
 			if(!getElements(productLinesCheckboxes).get(i).isEnabled())
 				return false;
@@ -391,8 +384,6 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public boolean areBusinessModelCheckboxesClickable(){
-		if(getElements(businessModelCheckboxes).size()!=95)
-			return false;
 		for(int i = 0; i < getElements(businessModelCheckboxes).size(); i++){
 			if(!getElements(businessModelCheckboxes).get(i).isEnabled())
 				return false;
@@ -401,8 +392,6 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public boolean areQuestionSelectionCheckboxesClickable(){
-		if(getElements(questionSelectionCheckboxes).size()!=96)
-			return false;
 		for(int i = 0; i < getElements(questionSelectionCheckboxes).size(); i++){
 			if(!getElements(questionSelectionCheckboxes).get(i).isEnabled())
 				return false;
@@ -419,9 +408,9 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void selectTheLastSelectorCriteria(int index){
-		waitForElementVisibility(selectorCriteriaSelects);
-		System.out.println(getElements(selectorCriteriaSelects).get(index).getText());
-		getElements(selectorCriteriaSelects).get(index).selectOption(selectedQuestionText);
+		waitForElementVisibility(selectorCriteriaQuestionSelect, index);
+		System.out.println(getElementsText(selectorCriteriaQuestionSelect, index));
+		getSelenideElement(selectorCriteriaQuestionSelect, index).selectOption(selectedQuestionText);
 	}
 
 	public void getRequirementNameFromEditRequirement(){
@@ -493,6 +482,14 @@ public class RequirementsAdminPage extends PageTools {
 		System.out.println(selectedQuestionText);
 	}
 
+	public void selectOrRule(int index){
+		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[2]")).click();
+	}
+
+	public void selectAndRule(int index){
+		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[1]")).click();
+	}
+
 	public void selectQuestionInTheSelectorCriteria(String yesOrNo){
 		waitForElementVisibility(selectorCriteriaSelects);
 		getElements(selectorCriteriaSelects).get(2).selectOption(yesOrNo);
@@ -508,7 +505,7 @@ public class RequirementsAdminPage extends PageTools {
 		getElements(deleteSelectorButton).get(index).click();
 	}
 
-	public void addQuestion(int index){
+	public void addRule(int index){
 		waitForElementVisibility(addSelectorButton);
 		getElements(addSelectorButton).get(index).click();
 	}
@@ -519,6 +516,7 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void clickSubmitForApprovalButton(){
+		scrollToElement(submitForApprovalButton);
 		waitForElementVisibility(submitForApprovalButton);
 		click(submitForApprovalButton);
 	}

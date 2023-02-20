@@ -37,6 +37,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Assert.assertTrue(Pages.versionRequirementsAdminPage().verifyThatRecordsSortedByTheLabel(label));
     }
 
+    @Then("Verify that records on the [Versioned Requirements] page are sorted alphabetically backwards by {string} label")
+    public void verifyThatRecordsOnTheVersionedRequirementsPageAreSortedAlphabeticallyBackwardsByLabel(String label) {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().verifyThatRecordsSortedBackwardsByTheLabel(label));
+    }
+
     @When("Enter {string} in the search field on the [Versioned Requirements] page")
     public void enterInTheSearchFieldOnTheVersionedRequirementsPage(String searchLine) {
         Pages.versionRequirementsAdminPage().enterTextInTheSearchField(searchLine);
@@ -140,5 +145,46 @@ public class VersionRequirementsAdminPageStepDefinitions {
     @And("Verify that newly created requirement contains {string} selector criteria")
     public void verifyThatNewlyCreatedRequirementContainsSelectorCriteria(String selectorCriteria) {
         Assert.assertTrue(Pages.versionRequirementsAdminPage().isSelectorCriteriaMatch(selectorCriteria));
+    }
+
+    @When("Click on the [Delete Requirement] button of record with status {string} on the [Versioned Requirements] page")
+    public void clickOnTheDeleteRequirementButtonOfRecordWithStatusOnTheVersionedRequirementsPage(String status) {
+        Pages.versionRequirementsAdminPage().clickOnDeleteRequirementButton(status);
+    }
+
+    @When("Enter SKU of the requirement in the search field on the [Versioned Requirements] page")
+    public void enterSKUOfTheRequirementInTheSearchFieldOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
+    }
+
+    @When("Click on the [Edit Requirement] button of record with status {string} on the [Versioned Requirements] page")
+    public void clickOnTheEditRequirementButtonOfRecordWithStatusOnTheVersionedRequirementsPage(String status) {
+        Pages.versionRequirementsAdminPage().clickOnEditRequirementButton(status);
+    }
+
+    @And("Verify the status and button of the {int} requirement with status [Approved]")
+    public void verifyTheStatusAndButtonOfTheRequirementWithStatusApproved(int index) {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().getRequirementStatus(index-1).equals("Approved"));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementViewButtonClickable(index-1));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementDeleteButtonClickable(index-1));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonClickable(index-1));
+
+    }
+
+    @And("Verify the status and button of the {int} requirement with status [Activated]")
+    public void verifyTheStatusAndButtonOfTheRequirementWithStatusActivated(int index) {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().getRequirementStatus(index-1).equals("Activated"));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementViewButtonClickable(index-1));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementEditButtonClickable(index-1));
+
+    }
+
+    @And("Verify the status and button of the {int} requirement with status [Approval Pending]")
+    public void verifyTheStatusAndButtonOfTheRequirementWithStatusApprovalPending(int index) {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().getRequirementStatus(index-1).equals("Approval Pending"));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementViewButtonClickable(index-1));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementDeleteButtonClickable(index-1));
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementApproveButtonClickable(index-1));
+
     }
 }
