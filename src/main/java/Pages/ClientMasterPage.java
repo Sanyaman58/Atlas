@@ -47,22 +47,13 @@ public class ClientMasterPage extends PageTools {
 		tableLabelsList.add(getSelenideElement(addClientTableLabels).getText());
 		for (int i = 0; i < labels.size(); i++) {
 			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
-
-//			if(tableLabelsList.get(i).isEmpty() == true) {
-//				System.out.println("Blank field name found on UI");
-//			}
-//			else {
 			if ((labels.get(i) == null)) {
 				System.out.println("Value is null");
 			} else if (!labels.get(i).equals(tableLabelsList.get(i))) {
 				System.out.println("Value is not equal");
-//				return false;
 			}
-//				continue;
 		}
 		return true;
-//		}
-		// return tableLabelsList.retainAll(labels);
-//		return false;
+
 	}
 }
