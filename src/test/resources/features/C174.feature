@@ -1,5 +1,4 @@
 @C174
-
 Feature: C174
 
   @TestRail(174)
@@ -14,31 +13,31 @@ Feature: C174
     When Click [Add Client] button
     Then add client popup wondow is opened
     Then verify the following fileds are displayed on the client master page
-    |Client Name *|
-    |Client Code *|
-    |Client Status*|
-    |Accounting Hold *|
-    |Client Category|
-    |Account Manager|
-    |Address-1 |
-    |Address-2 |
-    |City |
-    |State |
-    |Zip|
-    | |
-    |County |
-    |Country|
-    |Phone |
-    |Tollfree|
-    |Fax|
-    |Client Website|
-    |Name |
-    |Email |
-    |Phone |
-    |Cell|
-    |Name |
-    |Email |
-    |Phone |
-    |Cell|
-    |FIEN No.|
-    |Notes|
+      | Client Name *     |
+      | Client Code *     |
+      | Client Status*    |
+      | Accounting Hold * |
+      | Client Category   |
+      | Account Manager   |
+      | Address-1         |
+      | Address-2         |
+      | City              |
+      | State             |
+      | Zip               |
+      |                   |
+      | County            |
+      | Country           |
+      | Phone             |
+      | Tollfree          |
+      | Fax               |
+      | Client Website    |
+      | Name              |
+      | Email             |
+      | Phone             |
+      | Cell              |
+      | Name              |
+      | Email             |
+      | Phone             |
+      | Cell              |
+      | FIEN No.          |
+      | Notes             |
