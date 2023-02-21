@@ -91,13 +91,13 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(addUserPopupWindowTitle);
 		return isElementVisible(addUserPopupWindowTitle);
 	}
-	
+
 	public void clickCategoryDropdown() {
 		waitForElementClickable(categoryDropdown);
 		click(categoryDropdown);
 		SelenideTools.sleep(3);
 	}
-	
+
 	public boolean isCategoryRolesPresentInDropdown(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(categoryDropdownElements);
@@ -119,19 +119,19 @@ public class ClientMasterPage extends PageTools {
 		}
 		return true;
 	}
-	
+
 	public void selectUserCategory(String client) {
 		waitForElementVisibility(categoryDropdown);
 		selectOption(client, categoryDropdown);
 		SelenideTools.sleep(10);
 	}
-	
+
 	public void clickRolesComplianceIntelligenceDropdown() {
 		waitForElementClickable(userRoleComplianceDropdown);
 		click(userRoleComplianceDropdown);
 		SelenideTools.sleep(3);
 	}
-	
+
 	public boolean isuserRoleCompliancePresentInDropdown(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(userRoleComplianceDropdownElements);
@@ -143,7 +143,7 @@ public class ClientMasterPage extends PageTools {
 		System.out.println("Verifying the data tables");
 		System.out.println("-------------------------");
 		tableLabelsList.add(getSelenideElement(userRoleComplianceDropdownElements).getText());
-		
+
 		for (int i = 0; i < labels.size(); i++) {
 			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
 			if ((labels.get(i) == null)) {
@@ -154,12 +154,11 @@ public class ClientMasterPage extends PageTools {
 		}
 		return true;
 	}
-	
+
 	public void nouserRoleCompliancePresentInDropdown() {
 		SelenideElement userRoleCount = getSelenideElement(userRoleComplianceDropdownElements);
 		Assert.assertFalse(userRoleCount.isDisplayed());
-		
-	
+
 	}
 
 }
