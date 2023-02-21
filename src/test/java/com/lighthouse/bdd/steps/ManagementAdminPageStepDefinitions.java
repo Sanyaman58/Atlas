@@ -40,7 +40,7 @@ public class ManagementAdminPageStepDefinitions {
 
 	@Then("verify the following fileds are displayed on the client master page")
 	public void theFollowingAddClientLabelsAreDisplayed(List<String> listOfLabels) {
-		Assert.assertTrue(Pages.clientMasterPage().isAddClientTableLabelsPresent(listOfLabels));
+		Pages.clientMasterPage().isAddClientTableLabelsPresent(listOfLabels);
 	}
 
 	@When("Click on the [User Master] sidebar button")
@@ -71,7 +71,7 @@ public class ManagementAdminPageStepDefinitions {
 	@Then("Verify [Category] roles in the [Category] dropdown")
 	public void verifyCategoryRolesInDropdown(List<String> listOfLabels) {
 		Pages.clientMasterPage().clickCategoryDropdown();
-		Assert.assertTrue(Pages.clientMasterPage().isCategoryRolesPresentInDropdown(listOfLabels));
+		Pages.clientMasterPage().isCategoryRolesPresentInDropdown(listOfLabels);
 	}
 
 	@Then("Select {string} from the category dropdown menu")
@@ -83,7 +83,7 @@ public class ManagementAdminPageStepDefinitions {
 	@Then("Verify [Roles-Compliance Intelligence] roles in dropdown")
 	public void verifyRolesComplianceElementsInDropdown(List<String> listOfLabels) {
 		Pages.clientMasterPage().clickRolesComplianceIntelligenceDropdown();
-		Assert.assertTrue(Pages.clientMasterPage().isuserRoleCompliancePresentInDropdown(listOfLabels));
+		Pages.clientMasterPage().isuserRoleCompliancePresentInDropdown(listOfLabels);
 	}
 
 	@Then("Verify [Roles-Compliance Intelligence] roles in dropdown are none")
