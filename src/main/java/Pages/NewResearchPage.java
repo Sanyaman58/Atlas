@@ -12,8 +12,8 @@ public class NewResearchPage extends PageTools {
 	By surveillanceSetupPageTitle = By.xpath("//h2[text()='Surveillance Configuration']");
 	By companyLabelAsterisk = By.xpath("//div[@class='form-row']/label[contains(text(),'Company')]/span[@class='red']");
 	By facilityLabelAsterisk = By.xpath("//div[@class='form-row']/label[contains(text(),'Facility')]/span[@class='red']");
-	By companyNameInput = By.xpath("//input[@id='company_name']");
-	By facilityInput = By.xpath("//input[@id='facility_name']");
+	By companyNameInput = By.xpath("//select[@id='company_name']");
+	By facilityInput = By.xpath("//select[@id='facility_name']");
 	By helpTip = By.xpath("//span[@class='facility-tip']");
 	By alertMessage = By.xpath("//p[@class='response-msg']");
 	By popUpMessage = By.xpath("//p[@id='alert-msg']");
