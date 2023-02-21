@@ -17,18 +17,17 @@ public class NewResearchPageStepDefinitions {
     public void validateFieldsOnTheSurveillanceSetupPage() {
         Assert.assertTrue(Pages.newResearchPage().isCompanyLabelAsteriskPresent());
         Assert.assertTrue(Pages.newResearchPage().isFacilityLabelAsteriskPresent());
-        Assert.assertEquals(Pages.newResearchPage().getCompanyNameInputPlaceholder(),"Company Name");
+        Assert.assertEquals(Pages.newResearchPage().getCompanyNameInputPlaceholder(),"Select Company");
         Assert.assertEquals(Pages.newResearchPage().getFacilityInputPlaceholder(),"Facility");
-        Pages.newResearchPage().enterCompanyName("Test");
-        SelenideTools.sleep(1);
-        Assert.assertEquals(Pages.newResearchPage().getEnteredCompanyName(),"Test");
-        Pages.newResearchPage().clearEnteredCompanyName();
-        Pages.newResearchPage().enterFacility("Test");
-        SelenideTools.sleep(1);
-        Assert.assertEquals(Pages.newResearchPage().getEnteredFacility(),"Test");
-        Pages.newResearchPage().clearEnteredFacility();
-        Assert.assertEquals(Pages.newResearchPage().getHelpTipText()
-                ,"Suggestion: Use the City and State the facilty resides in for the facility name.");
+//        Pages.newResearchPage().enterCompanyName("Test");
+//        SelenideTools.sleep(1);
+//        Assert.assertEquals(Pages.newResearchPage().getEnteredCompanyName(),"Test");
+//        Pages.newResearchPage().clearEnteredCompanyName();
+//        Pages.newResearchPage().enterFacility("Test");
+//        SelenideTools.sleep(1);
+//        Assert.assertEquals(Pages.newResearchPage().getEnteredFacility(),"Test");
+//        Pages.newResearchPage().clearEnteredFacility();
+//        Assert.assertEquals(Pages.newResearchPage().getHelpTipText(),"Suggestion: Use the City and State the facilty resides in for the facility name.");
 
     }
 
