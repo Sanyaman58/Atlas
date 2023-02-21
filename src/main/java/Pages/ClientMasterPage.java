@@ -34,7 +34,7 @@ public class ClientMasterPage extends PageTools {
 		return isElementVisible(addClientsPopupWindowTitle);
 	}
 
-	public boolean isAddClientTableLabelsPresent(List<String> labels) {
+	public void isAddClientTableLabelsPresent(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(addClientTableLabels);
 		for (SelenideElement element : elements) {
@@ -53,7 +53,6 @@ public class ClientMasterPage extends PageTools {
 				System.out.println("Value is not equal");
 			}
 		}
-		return true;
 
 	}
 }
