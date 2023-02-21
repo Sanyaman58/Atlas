@@ -49,7 +49,7 @@ public class ClientMasterPage extends PageTools {
 		return isElementVisible(addClientsPopupWindowTitle);
 	}
 
-	public boolean isAddClientTableLabelsPresent(List<String> labels) {
+	public void isAddClientTableLabelsPresent(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(addClientTableLabels);
 		for (SelenideElement element : elements) {
@@ -68,7 +68,6 @@ public class ClientMasterPage extends PageTools {
 				System.out.println("Value is not equal");
 			}
 		}
-		return true;
 	}
 
 	public void clickUserMasterSidebarButton() {
@@ -98,7 +97,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(3);
 	}
 
-	public boolean isCategoryRolesPresentInDropdown(List<String> labels) {
+	public void isCategoryRolesPresentInDropdown(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(categoryDropdownElements);
 		for (SelenideElement element : elements) {
@@ -117,7 +116,6 @@ public class ClientMasterPage extends PageTools {
 				System.out.println("Value is not equal");
 			}
 		}
-		return true;
 	}
 
 	public void selectUserCategory(String client) {
@@ -132,7 +130,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(3);
 	}
 
-	public boolean isuserRoleCompliancePresentInDropdown(List<String> labels) {
+	public void isuserRoleCompliancePresentInDropdown(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(userRoleComplianceDropdownElements);
 		for (SelenideElement element : elements) {
@@ -152,7 +150,6 @@ public class ClientMasterPage extends PageTools {
 				System.out.println("Value is not equal");
 			}
 		}
-		return true;
 	}
 
 	public void nouserRoleCompliancePresentInDropdown() {
