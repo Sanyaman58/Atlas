@@ -27,8 +27,8 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTableLabelsSearch = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[2]/th/input");
 
 
-    By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
-    By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr/td");
+    By researchResultsTableRecords = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr");
+    By researchResultsTableRecordsElements = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr/td");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
@@ -170,7 +170,8 @@ public class ViewResultsPage extends PageTools {
 
     public void saveRequirementNameOfTheTableRecord(int index){
         waitForElementVisibility(researchResultsTableRecords);
-        requirementName = getElements(researchResultsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
+        requirementName = getElements(researchResultsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText().trim();
+        System.out.println(requirementName);
     }
 
     public boolean isRequirementPresentInTheList(String jurisdiction, String aName, String rName){

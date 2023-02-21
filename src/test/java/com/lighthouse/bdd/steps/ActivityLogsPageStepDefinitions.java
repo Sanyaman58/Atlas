@@ -39,4 +39,9 @@ public class ActivityLogsPageStepDefinitions {
     public void verifyThatLogContainingRequirementNameSavedOnTheResearchResultsPageInDescriptionTextIsDisplayedOnTheActivityLogsPage() {
         Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(Pages.viewResultsPage().getRequirementNameOfTheTableRecord()));
     }
+
+    @Then("Enter created requirement's name in the activity search on the [Activity Logs] page")
+    public void enterCreatedRequirementSNameInTheActivitySearchOnTheActivityLogsPage() {
+        Pages.activityLogsPage().enterTextInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
 }

@@ -288,4 +288,20 @@ public class NewResearchPageStepDefinitions {
         }
     }
 
+
+    @When("Create a new surveillance with status [Incomplete] for {string} client with {int} company name, {int} facility name and {string} state")
+    public void createANewSurveillanceWithStatusIncompleteForClientWithCompanyNameFacilityNameAndState(String client, int companyNameIndex, int facilityNameIndex, String state) {
+        selectClientFromTheClientDropdown(client);
+        deleteJobFromTheTableIfExists();
+        selectClientFromTheClientDropdown(client);
+        Pages.newResearchPage().selectCompanyName(companyNameIndex);
+        Pages.newResearchPage().selectFacilityName(facilityNameIndex);
+        Pages.newResearchPage().clickSubmitNewJobButton();
+        Pages.jurisdictionPage().selectState(state);
+        Pages.jurisdictionPage().clickSelectAllJurisdictionsButton();
+        Pages.jurisdictionPage().getStateCheckboxesValues();
+        Pages.jurisdictionPage().clickTheNextButton();
+        Pages.newResearchPage().clickOnSurveillanceSetupBreadcrumb();
+        Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
+    }
 }

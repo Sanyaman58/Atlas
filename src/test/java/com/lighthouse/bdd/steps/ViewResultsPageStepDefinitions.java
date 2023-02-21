@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -69,6 +70,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Verify that early created requirement name is in the list")
     public void verifyThatEarlyCreatedRequirementNameIsInTheList() {
+        SelenideTools.sleep(5);
         Assert.assertTrue(Pages.viewResultsPage().isRequirementPresentInTheList(Pages.requirementsAdminPage().getState()
                 , Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName()));

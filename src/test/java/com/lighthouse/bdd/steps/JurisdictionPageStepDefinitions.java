@@ -57,5 +57,6 @@ public class JurisdictionPageStepDefinitions {
         Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
         Pages.newResearchPage().goBackInBrowser();
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
+        Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
     }
 }

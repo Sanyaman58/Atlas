@@ -345,6 +345,8 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public boolean verifyThatTheJobIsDeleted(){
+		if(isElementVisible(noDataInTable))
+			return true;
 		for (SelenideElement element: getElements(tableJobs)) {
 			if(element.findElement(By.xpath("./td[2]")).getText().equals(companyName))
 				if(element.findElement(By.xpath("./td[3]")).getText().equals(facilityName))
