@@ -41,9 +41,11 @@ public class NewResearchPage extends PageTools {
 	By configurationDeleteButton = By.xpath("//button[contains(@class,'delete-job-research')]");
 	By alertYesDeleteButton = By.xpath("(//button[text()='Yes Delete'])[%s]");
 	By createdLabelSort = By.xpath("//table//tr/th[text()='Created']");
+	By clientMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[1]");
 	String companyName;
 	String facilityName;
 	static int yesButtonCounter = 0;
+	
 	public void goBackInBrowser(){
 		Selenide.back();
 	}
@@ -280,7 +282,12 @@ public class NewResearchPage extends PageTools {
 		waitForElementVisibility(configurationSidebarButton);
 		click(configurationSidebarButton);
 	}
-
+	
+	public void clickClientMasterSidebarButton(){
+		waitForElementVisibility(clientMasterSidebarButton);
+		click(clientMasterSidebarButton);
+	}
+	
 	public void clickResultsSidebarButton(){
 		waitForElementVisibility(resultsSidebarButton);
 		click(resultsSidebarButton);

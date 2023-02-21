@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class NewResearchPageStepDefinitions {
+	
     @Then("The [Configuration] page is opened")
     public void theSurveillanceSetupPageIsOpened() {
         Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
@@ -128,6 +129,15 @@ public class NewResearchPageStepDefinitions {
         Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
         SelenideTools.sleep(2);
         Pages.newResearchPage().clickConfigurationSidebarButton();
+        SelenideTools.sleep(10);
+        SelenideTools.switchToLastTab();
+    }
+    
+    @When("Click on the [Client Master] sidebar button")
+    public void clickOnTheClientMasterSidebarButton() {
+        Pages.atlasDashboardManagementPage().clickManagementAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
+        Pages.newResearchPage().clickClientMasterSidebarButton();
         SelenideTools.sleep(10);
         SelenideTools.switchToLastTab();
     }

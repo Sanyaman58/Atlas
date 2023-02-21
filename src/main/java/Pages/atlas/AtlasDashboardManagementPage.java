@@ -21,6 +21,7 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By euiVersionsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[7]/a");
 	By questionnaireVersionsButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[8]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[9]/a");
+	By managementAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li[9]");
 
 
 
@@ -45,6 +46,12 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickSurveillanceIntelligenceSidebarCollapseButton() {
 		waitForElementVisibility(surveillanceIntelligenceSidebarCollapse);
 		click(surveillanceIntelligenceSidebarCollapse);
+	}
+	
+	//s
+	public void clickManagementAdminSidebarCollapseButton() {
+		waitForElementVisibility(managementAdminSidebarCollapse);
+		click(managementAdminSidebarCollapse);
 	}
 
 	public void clickConfigurationSidebarButton() {
