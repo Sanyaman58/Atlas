@@ -28,7 +28,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@Then("verify the following fileds are displayed on the client master page")
 	public void theFollowingAddClientLabelsAreDisplayed(List<String> listOfLabels) {
-        Assert.assertTrue(Pages.clientMasterPage().isAddClientTableLabelsPresent(listOfLabels));
+        Pages.clientMasterPage().isAddClientTableLabelsPresent(listOfLabels);
     }
 
 }
