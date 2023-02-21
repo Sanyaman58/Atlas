@@ -51,41 +51,41 @@ public class ManagementAdminPageStepDefinitions {
 		SelenideTools.sleep(10);
 		SelenideTools.switchToLastTab();
 	}
-	
+
 	@Then("The [User Master] page is opened")
 	public void userMasterPageIsOpened() {
 		Assert.assertTrue(Pages.clientMasterPage().isClientMasterPageOpened());
 	}
-	
+
 	@Then("Click [Add User] button")
 	public void clickAddUserButton() {
 		Pages.clientMasterPage().clickAddUserButton();
 	}
-	
+
 	@Then("Add User popup window opened")
 	public void addUserPopupWindowIsOpened() {
 		Selenide.sleep(5);
 		Assert.assertTrue(Pages.clientMasterPage().isAddUserPopupWindowOpened());
 	}
-	
+
 	@Then("Verify [Category] roles in the [Category] dropdown")
 	public void verifyCategoryRolesInDropdown(List<String> listOfLabels) {
 		Pages.clientMasterPage().clickCategoryDropdown();
 		Assert.assertTrue(Pages.clientMasterPage().isCategoryRolesPresentInDropdown(listOfLabels));
 	}
-	
+
 	@Then("Select {string} from the category dropdown menu")
 	public void selectCategoryFromDropdown(String category) {
 		Pages.clientMasterPage().selectUserCategory(category);
 		SelenideTools.sleep(4);
 	}
-	
+
 	@Then("Verify [Roles-Compliance Intelligence] roles in dropdown")
 	public void verifyRolesComplianceElementsInDropdown(List<String> listOfLabels) {
 		Pages.clientMasterPage().clickRolesComplianceIntelligenceDropdown();
 		Assert.assertTrue(Pages.clientMasterPage().isuserRoleCompliancePresentInDropdown(listOfLabels));
 	}
-	
+
 	@Then("Verify [Roles-Compliance Intelligence] roles in dropdown are none")
 	public void verifyNoRolesComplianceElementsInDropdown() {
 		Pages.clientMasterPage().clickRolesComplianceIntelligenceDropdown();
