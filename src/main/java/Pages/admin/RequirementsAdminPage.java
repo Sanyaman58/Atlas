@@ -63,8 +63,11 @@ public class RequirementsAdminPage extends PageTools {
 	By prerequisitesCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[5]//div[@class='row']/div//input");
 	By productLinesCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[6]//div[@class='row']/div//input");
 	By businessModelCheckboxes = By.xpath("(//form[@id='versionned_requirement_form']//section)[7]//div[@class='row']/div//input");
+	By questionSelectionRES1 = By.xpath("//input[@id='RES1']");
+	By questionSelectionsResidentStateSelect = By.xpath("//li[@id='res-container']");
+	By questionSelectionsResidentType = By.xpath("//input[@name='resident_type']/following-sibling::label");
 	By questionSelectionCheckboxes = By.xpath("//section[@id='Question_Selection']//div[@class='row']/div//input | //div[@id='Question_Selection']//div[@class='row']/div//input");
-	By selectorCriteriaSelects = By.xpath("//div[@id='selector_criteria']//div[@id='builder-basic']//div[contains(@id,'builder-basic_rule')]//select");
+	By selectorCriteriaSelects = By.xpath("//div[@id='selector_criteria_group_0']//select");
 	By selectorCriteriaRuleContainer = By.xpath("//div[@class='rule-container']");
 	By selectorCriteriaQuestionsSelects = By.xpath("//div[contains(@class,'rule-filter-container')]/select");
 	By selectorCriteriaQuestionSelect = By.xpath("(//div[contains(@class,'rule-filter-container')]/select)[%s]");
@@ -163,6 +166,11 @@ public class RequirementsAdminPage extends PageTools {
 		return isElementClickable(jurisdictionSelect);
 	}
 
+	public void selectRequirementFilterJurisdiction(String jurisdiction){
+		waitForElementVisibility(jurisdictionSelect);
+		selectOption(jurisdiction, jurisdictionSelect);
+	}
+
 	public boolean isRequirementCategorySelectSelectable(){
 		waitForElementVisibility(requirementCategorySelect);
 		selectOption(0, requirementCategorySelect);
@@ -185,6 +193,12 @@ public class RequirementsAdminPage extends PageTools {
 		waitForElementVisibility(statusSelect);
 		selectOption(0, statusSelect);
 		return isElementClickable(statusSelect);
+	}
+
+	public void selectRequirementsViewerFiltersStatus(String status){
+		waitForElementVisibility(statusSelect);
+		selectOption(status, statusSelect);
+		SelenideTools.sleep(8);
 	}
 
 	public boolean isRequirementNameInputWorking(){
@@ -334,6 +348,17 @@ public class RequirementsAdminPage extends PageTools {
 		SelenideTools.sleep(1);
 		Assert.assertTrue(isElementVisible(contextMenu));
 	}
+
+	public void getTableRecordDataWithStatus(String status){
+		for (SelenideElement element : getElements(requirementViewersTableRecords)){
+			if(element.findElement(By.xpath("./td[4]")).getText().equals(status)){
+				state = element.findElement(By.xpath("./td[1]")).getText();
+				requirementName = element.findElement(By.xpath("./td[2]")).getText();
+				applicationName = element.findElement(By.xpath("./td[3]")).getText();
+				break;
+			}
+		}
+	}
 	public void clickOnViewButtonOfTheContextMenu(){
 		waitForElementVisibility(contextMenu);
 		getSelenideElement(contextMenuViewButton).click();
@@ -351,7 +376,14 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void clickOnDeleteButtonOfTheContextMenu(){
 		waitForElementVisibility(contextMenu);
-		getSelenideElement(contextMenuDeleteButton).click();
+		//getSelenideElement(contextMenuDeleteButton).click();
+		waitForElementVisibility(contextMenuDeleteButton);
+		click(contextMenuDeleteButton);
+	}
+
+	public boolean isDeleteButtonFromContextMenuVisible(){
+		SelenideTools.sleep(1);
+		return isElementVisible(contextMenuDeleteButton);
 	}
 
 	public boolean areAttachmentsCheckboxesClickable(){
@@ -547,12 +579,33 @@ public class RequirementsAdminPage extends PageTools {
 		getSelenideElement(selectorCriteriaQuestionSelect, index).selectOption(selectOptionIndex);
 	}
 
-//	public void getSelectorCriteriaData(){
-//		selectorCriteria = "";
-//		for(int i = 0; i < getElements(selectorCriteriaSelects).size(); i++){
-//
-//		}
-//	}
+	public boolean isRES1Checked(){
+		waitForElementVisibility(questionSelectionRES1);
+		return getSelenideElement(questionSelectionRES1).isSelected();
+	}
 
+	public void checkRES1Checkbox(){
+		waitForElementVisibility(questionSelectionRES1);
+		click(questionSelectionRES1);
+	}
 
+	public boolean isRES1StateSelectVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(questionSelectionsResidentStateSelect);
+	}
+
+	public boolean areRES1ResidentTypeRadioButtonsVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(questionSelectionsResidentType);
+	}
+
+	public boolean isRecordDisplayed(String state, String requirementName, String applicationName){
+		for (SelenideElement element : getElements(requirementViewersTableRecords)){
+			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
+			&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
+			&& element.findElement(By.xpath("./td[3]")).getText().equals(applicationName))
+				return true;
+			}
+		return false;
+	}
 }

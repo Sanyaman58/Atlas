@@ -48,12 +48,19 @@ public class NewResearchPageStepDefinitions {
         Pages.newResearchPage().enterFacility(facilityName);
     }
 
+//    @And("Window with {string} message is displayed")
+//    public void windowWithMessageIsDisplayed(String message) {
+//        SelenideTools.sleep(2);
+//        Assert.assertTrue(Pages.newResearchPage().isAlertMessageVisible());
+//        Assert.assertEquals(Pages.newResearchPage().getAlertMessage(),message);
+//        SelenideTools.refresh();
+//    }
+
     @And("Window with {string} message is displayed")
     public void windowWithMessageIsDisplayed(String message) {
         SelenideTools.sleep(2);
         Assert.assertTrue(Pages.newResearchPage().isAlertMessageVisible());
         Assert.assertEquals(Pages.newResearchPage().getAlertMessage(),message);
-        SelenideTools.refresh();
     }
 
     @And("The {string} message is displayed")
@@ -185,6 +192,7 @@ public class NewResearchPageStepDefinitions {
     @And("Click on Yes Delete button on the alert window")
     public void clickOnYesDeleteButtonOnTheAlertWindow() {
         Pages.newResearchPage().clickYesDeleteButton();
+        SelenideTools.sleep(10);
     }
 
     @And("Verify that the configuration is deleted on the [Configuration] page")

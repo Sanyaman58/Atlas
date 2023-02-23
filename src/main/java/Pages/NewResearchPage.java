@@ -15,7 +15,7 @@ public class NewResearchPage extends PageTools {
 	By companyNameInput = By.xpath("//input[@id='company_name']");
 	By facilityInput = By.xpath("//input[@id='facility_name']");
 	By helpTip = By.xpath("//span[@class='facility-tip']");
-	By alertMessage = By.xpath("//p[@class='response-msg']");
+	By alertMessage = By.xpath("//p[@class='response-msg'] | //p[@id='reponse-msg']");
 	By popUpMessage = By.xpath("//p[@id='alert-msg']");
 	By popUpCloseButton = By.xpath("//div[@id='alert-modal']//button[@class='close']");
 	By anotherAlertMessage = By.xpath("//p[@id='alert-btw-msg']");

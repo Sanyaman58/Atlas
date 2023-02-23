@@ -86,6 +86,12 @@ public class ViewResultsPageStepDefinitions {
         Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
     }
 
+    @And("Get requirement data of {int} records on [Research Results] page")
+    public void getRequirementDataOfRecordsOnResearchResultsPage(int index) {
+        Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
+        Pages.viewResultsPage().saveCompanyNameOfTheTableRecord(index-1);
+    }
+
     @Then("Verify that records on the [View Results] page are sorted alphabetically backwards by {string} label")
     public void verifyThatRecordsOnTheViewResultsPageAreSortedAlphabeticallyBackwardsByLabel(String label) {
         Assert.assertTrue(Pages.viewResultsPage().verifyThatRecordsSortedDescendingByTheLabel(label));
@@ -122,7 +128,32 @@ public class ViewResultsPageStepDefinitions {
     }
 
     @Then("Verify that fixed labels coordinates didn't changed")
-    public void verifyThatFixedLabelsCoordinatesDidnTChanged() {
+    public void verifyThatFixedLabelsCoordinatesDidntChanged() {
         Assert.assertTrue(Pages.viewResultsPage().isFixedLabelsCoordinatesNotChanged());
+    }
+
+    @Then("Click on the [Delete] button of the {int} job on the [View Results] page")
+    public void clickOnTheDeleteButtonOfTheJobOnTheViewResultsPage(int index) {
+        Pages.viewResultsPage().clickOnTheDeleteButtonOfTheRecord(index);
+    }
+
+    @Then("Verify that deleted result is not displayed in the [View Results] table")
+    public void verifyThatDeletedResultIsNotDisplayedInTheViewResultsTable() {
+        Assert.assertFalse(Pages.viewResultsPage().isResultPresentInTheList(Pages.viewResultsPage().getCompanyNameOfTheTableRecord(), Pages.viewResultsPage().getFacilityNameOfTheTableRecord()));
+    }
+
+    @And("Get the number of records of the result on [Research Results] page")
+    public void getTheNumberOfRecordsOfTheResultOnResearchResultsPage() {
+        Pages.viewResultsPage().getResearchResultsRecordsCount();
+    }
+
+    @When("Click on the [Activity Logs] button of the {int} job on the [View Results] page")
+    public void clickOnTheActivityLogsButtonOfTheJobOnTheViewResultsPage(int index) {
+        Pages.viewResultsPage().clickOnTheActivityLogsButtonOfTheRecord(index);
+    }
+
+    @And("Verify that the number of activity logs and the number of the records on the [Research Results] page is the same")
+    public void verifyThatTheNumberOfActivityLogsAndTheNumberOfTheRecordsOnTheResearchResultsPageIsTheSame() {
+        Assert.assertEquals(Pages.viewResultsPage().getRequirementsCount(), Pages.activityLogsPage().getActivityLogsRecordsCount());
     }
 }
