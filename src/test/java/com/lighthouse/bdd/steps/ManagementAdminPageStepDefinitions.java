@@ -30,5 +30,23 @@ public class ManagementAdminPageStepDefinitions {
 	public void theFollowingAddClientLabelsAreDisplayed(List<String> listOfLabels) {
         Pages.clientMasterPage().isAddClientTableLabelsPresent(listOfLabels);
     }
+	
+	@And("Verify the [Surveillance Setup] section")
+	public void verifySurveillanceSetupSection() {
+		Pages.clientMasterPage().clientLabel();
+		Pages.clientMasterPage().companyLabel();
+		Pages.clientMasterPage().facilityLabel();
+		Pages.clientMasterPage().helpToolTip();
+	}
+	
+	@Then("Validate the [Modify Existing Surveillance Configuration] table elements")
+	public void verifyModifyExistingSurveillanceTableData(List<String> listOfLabels) {
+		Pages.clientMasterPage().surveillancePageTableHeaders(listOfLabels);
+    }
+	
+	@Then("Verify radio button is enabled")
+	public void verifyRadioButton() {
+		Pages.clientMasterPage().radioButtonEnabled();
+    }
 
 }
