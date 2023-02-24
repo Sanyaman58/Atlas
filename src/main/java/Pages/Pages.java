@@ -12,6 +12,7 @@ public class Pages extends AllureLogger {
     private static QuestionnairePage questionnairePage;
     private static SaveSubmitJobPage saveSubmitJobPage;
     private static ViewResultsPage viewResultsPage;
+    private static ResearchNotificationPage researchNotificationPage;
 
     //                              Admin                                   //
     private static LoginAdminPage loginAdminPage;
@@ -54,6 +55,13 @@ public class Pages extends AllureLogger {
             jurisdictionPage = new JurisdictionPage();
         }
         return jurisdictionPage;
+    }
+
+    public static ResearchNotificationPage researchNotificationPage() {
+        if (researchNotificationPage == null) {
+            researchNotificationPage = new ResearchNotificationPage();
+        }
+        return researchNotificationPage;
     }
 
     public static QuestionnairePage questionnairePage() {

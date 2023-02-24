@@ -62,4 +62,5 @@ public class ResearchAdminPageStepDefinitions {
     public void theVersionedEUIPageIsOpened() {
         Pages.researchAdminPage().isVersionedEUIPageOpened();
     }
+
 }

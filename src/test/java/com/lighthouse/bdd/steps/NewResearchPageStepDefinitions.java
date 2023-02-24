@@ -140,6 +140,8 @@ public class NewResearchPageStepDefinitions {
         SelenideTools.switchToLastTab();
     }
 
+
+
     @When("Click on the [Requirements View] sidebar button")
     public void clickOnTheCRequirementsViewSidebarButton() {
         Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
@@ -311,5 +313,10 @@ public class NewResearchPageStepDefinitions {
         Pages.jurisdictionPage().clickTheNextButton();
         Pages.newResearchPage().clickOnSurveillanceSetupBreadcrumb();
         Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
+    }
+
+    @And("No records are displayed on the [Research Notification] page")
+    public void noRecordsAreDisplayedOnTheResearchNotificationPage() {
+        Assert.assertTrue(Pages.researchNotificationPage().isNoRecordsFoundMessageDisplayed());
     }
 }

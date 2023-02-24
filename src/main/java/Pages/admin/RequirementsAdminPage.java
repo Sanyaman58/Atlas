@@ -84,6 +84,8 @@ public class RequirementsAdminPage extends PageTools {
 	By RES1InStateRadioButton = By.xpath("//input[@id='resident-requirement']/following-sibling::label");
 	By RES1OutOfStateRadioButton = By.xpath("//input[@id='non-resident-requirement']/following-sibling::label");
 	By submitForApprovalButton = By.xpath("//button[@id='submit_selected_criteria']");
+	By saveButton = By.xpath("//button[@id='save_selected_criteria']");
+
 	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
 	By intelligenceAdminSidebarCollapseButton = By.xpath("//ul[@id='menu']/li[10]");
@@ -551,6 +553,12 @@ public class RequirementsAdminPage extends PageTools {
 		scrollToElement(submitForApprovalButton);
 		waitForElementVisibility(submitForApprovalButton);
 		click(submitForApprovalButton);
+	}
+
+	public void clickSaveButton(){
+		scrollToElement(saveButton);
+		waitForElementVisibility(saveButton);
+		click(saveButton);
 	}
 
 	public void clickApproveButton(){

@@ -64,7 +64,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("The following labels are displayed in the [Requirements Viewer] table")
     public void theFollowingLabelsAreDisplayed(List<String> listOfLabels) {
-        Assert.assertTrue(Pages.requirementsAdminPage().isTableLabelsPresent(listOfLabels));
+        Assert.assertTrue(Pages.researchNotificationPage().isTableLabelsPresent(listOfLabels));
     }
 
     @Then("The [Requirement Viewer] table is displayed")
@@ -245,6 +245,12 @@ public class RequirementsAdminPageStepDefinitions {
     @Then("Click on the [Submit for Approval] button on the [Requirements View] page")
     public void clickOnTheSubmitForApprovalButtonOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().clickSubmitForApprovalButton();
+        SelenideTools.sleep(8);
+    }
+
+    @Then("Click on the [Save] button on the [Requirements View] page")
+    public void clickOnTheSaveButtonOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().clickSaveButton();
         SelenideTools.sleep(8);
     }
 

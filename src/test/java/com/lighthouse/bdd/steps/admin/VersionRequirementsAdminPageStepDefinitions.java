@@ -67,6 +67,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
     }
 
+    @Then("Enter requirement name from the [Research Notifications] page in the requirement search on the [Versioned Requirements] page")
+    public void enterRequirementNameFromResearchNotificationsInTheRequirementSearchOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.researchNotificationPage().getRequirementName());
+    }
+
     @Then("Click on the [Approve Requirement] button of the record by {int} index on the [Versioned Requirements] page")
     public void clickOnTheApproveRequirementButtonOfTheNewlyCreatedRecordOnTheVersionedRequirementsPage(int index) {
         Pages.versionRequirementsAdminPage().clickOnApproveRequirementButton(index-1);
@@ -186,5 +191,10 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementDeleteButtonClickable(index-1));
         Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementApproveButtonClickable(index-1));
 
+    }
+
+    @When("Enter {string} note in the Change Note For Customer section on the [Versioned Requirements] page")
+    public void enterNoteInTheChangeNoteForCustomerSectionOnTheVersionedRequirementsPage(String text) {
+        Pages.versionRequirementsAdminPage().enterChangeNoteForCustomer(text);
     }
 }

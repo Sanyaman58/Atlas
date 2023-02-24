@@ -30,8 +30,13 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By requirementApprovedSearchField = By.xpath("//input[@placeholder='Search Approved']");
 	By requirementActivatedSearchField = By.xpath("//input[@placeholder='Search Activated']");
 	By requirementStatusSearchField = By.xpath("//input[@placeholder='Search Status']");
+	By changeNoteForCustomerInput = By.xpath("//textarea[name()='Change_Note_for_Customer']");
 
 	String requirementSku;
+	String changeNoteText;
+	public String getChangeNoteText(){
+		return changeNoteText;
+	}
 
 	public String getRequirementSku(){
 		return requirementSku;
@@ -332,5 +337,11 @@ public class VersionRequirementsAdminPage extends PageTools {
 		System.out.println(getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText());
 		System.out.println(selectorCriteria);
 		return getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText().equals(selectorCriteria);
+	}
+
+	public void enterChangeNoteForCustomer(String text){
+		waitForElementVisibility(changeNoteForCustomerInput);
+		type(text, changeNoteForCustomerInput);
+		changeNoteText = text;
 	}
 }
