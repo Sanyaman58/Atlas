@@ -1,9 +1,9 @@
-@C139
+@C132
 
-Feature: C139
+Feature: C132
 
-  @TestRail(139)
-  Scenario: Verify that user is able to see a validation message on entering wrong keywords in the search column.
+  @TestRail(132)
+  Scenario: Verify the Research Notification Changes Functionality
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
