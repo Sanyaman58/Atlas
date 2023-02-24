@@ -28,11 +28,21 @@ public class ClientMasterPage extends PageTools {
 	By helpToolTipLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[3]/label/span[2]");
 	By surveillancePageHeaders = By.xpath("//div[@class='dataTables_scrollHeadInner']//table//th");
 	By configurationRadioButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[1]/input");
-
+	By configurationDeleteButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button");
+	By deletePopupBodyText = By.xpath("//*[@id=\"confirmation-modal\"]/div/div/div[2]/p");
+	By deletePoupCloseButton = By.xpath("//*[@id=\"confirmation-modal\"]/div/div/div[1]/button");
+	By surveillanceSetupNextButton = By.xpath("//*[@id=\"submit-new\"]");
+	By nextButtonPopupBody = By.xpath("//*[@id=\"alert-msg\"]");
+	By nextButtonPopupCrossIcon = By.xpath("//*[@id=\"alert-modal\"]/div/div/div[1]/button");
+	By existingJobNextButton = By.xpath("//*[@id=\"copyfrom_research_job\"]");
+	
+ 
 	String clientLabelText = "Client";
 	String companyLabelText = "Company *";
 	String facilityLabelText = "Facility * Help Tip";
 	String helpToolTipLabelText = "Help Tip";
+	String deletePopupText = "The selected research will be deleted and cannot be undone. Are you sure want to delete?";
+	String nextButtonPopupBodyText = "Please enter all required fields";
 
 	public boolean isClientMasterPageOpened() {
 		waitForElementVisibility(clientMasterPageTitle);
@@ -128,4 +138,46 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Radio button is enabled");
 		}
 	}
+	
+	public void deleteButtonClickable() {
+		SelenideElement configurationDeleteButtonElement = getSelenideElement(configurationDeleteButton);
+		if (configurationDeleteButtonElement.isEnabled())
+		{
+			System.out.println("Delete button is enabled");
+		} else {
+			System.out.println("Delete button is enabled");
+		}
+		configurationDeleteButtonElement.click();
+		Selenide.sleep(30);
+		click(deletePoupCloseButton);
+	}
+	
+	public void clickNextButton() {
+		waitForElementClickable(surveillanceSetupNextButton);
+		click(surveillanceSetupNextButton);
+		SelenideTools.sleep(1);
+	}
+	
+	public void nextButtonValidationPopup() {
+		SelenideElement nextButtonPopupText = getSelenideElement(nextButtonPopupBody);
+		assertEquals(nextButtonPopupText.getText(), nextButtonPopupBodyText);
+		click(nextButtonPopupCrossIcon);
+	}
+	
+	public void selectJobOnSurveillancePage() {
+		WebDriverRunner.getWebDriver().navigate().back();
+	}
+	
+	public void reloadBrowser() {
+		WebDriverRunner.getWebDriver().navigate().refresh();
+	}
+	
+	public void existingJobRadioButton() {
+		click(configurationRadioButton);
+		SelenideTools.sleep(8);
+		click(existingJobNextButton);
+	}
+
+
+	
 }
