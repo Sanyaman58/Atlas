@@ -9,6 +9,8 @@ import java.util.List;
 
 import org.junit.Assert;
 
+import com.codeborne.selenide.Selenide;
+
 public class ManagementAdminPageStepDefinitions {
 
 	@Then("The [Client Master] page is opened")
@@ -47,6 +49,37 @@ public class ManagementAdminPageStepDefinitions {
 	@Then("Verify radio button is enabled")
 	public void verifyRadioButton() {
 		Pages.clientMasterPage().radioButtonEnabled();
+    }
+	
+	@Then("Verify [Delete] button is clickable")
+	public void verifyDeleteButton() {
+		Pages.clientMasterPage().deleteButtonClickable();
+    }
+	
+	@Then("Click surveillance setup [Next] button")
+	public void clickSurveillanceSetupNextButton() {
+		SelenideTools.sleep(20);
+		Pages.clientMasterPage().clickNextButton();
+    }
+	
+	@Then("Verify the Validation popup")
+	public void verifyNextButtonPopup() {
+		Pages.clientMasterPage().nextButtonValidationPopup();
+    }
+	
+	@Then("Navigate back to surveillance page")
+	public void selectJob() {
+		Pages.clientMasterPage().selectJobOnSurveillancePage();
+    }
+	
+	@Then("Reload the browser")
+	public void browserReload() {
+		Pages.clientMasterPage().reloadBrowser();
+    }
+	
+	@Then("Select radio button of existing job and click Next")
+	public void selectRadioButton() {
+		Pages.clientMasterPage().existingJobRadioButton();
     }
 
 }
