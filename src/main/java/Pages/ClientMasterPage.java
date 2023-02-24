@@ -43,6 +43,8 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionPageClearAllButton = By.xpath("//*[@id=\"jurisdictions_unselect_all\"]");
 	By jurisdictionPageNextButton = By.xpath("//*[@id=\"save_juricdis\"]");
 	By jurisdictionPageCheckboxes = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[2]//input");
+	By childQuestionRadioButton = By.xpath("//*[@id=\"POS1.1_Y\"]");
+	By questionnaireClearAllButton = By.xpath("//*[@id=\"clear_all_questionnaire\"]");
 
 	String clientLabelText = "Client";
 	String companyLabelText = "Company *";
@@ -218,6 +220,16 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
-	
+
+	public void clickChildQuestion() {
+		SelenideTools.sleep(2);
+		click(questionnaireClearAllButton);
+		SelenideTools.sleep(5);
+		SelenideElement childQuestionRadioButtonElement = getSelenideElement(childQuestionRadioButton);
+		if (childQuestionRadioButtonElement.isEnabled()) {
+			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
+		}
+
+	}
 
 }
