@@ -46,6 +46,12 @@ public class ClientMasterPage extends PageTools {
 	By childQuestionRadioButton = By.xpath("//*[@id=\"POS1.1_Y\"]");
 	By questionnaireClearAllButton = By.xpath("//*[@id=\"clear_all_questionnaire\"]");
 
+	By saveSubmitPageCompanyName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div/label");
+	By saveSubmitPageLabelName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[2]/div/label");
+	By saveSubmitPageResidentState = By.xpath("//*[@id=\"mange-job-research\"]/div/div[3]/div/label");
+	By saveSubmitPageCheckbox = By.xpath("//input[@name='juricdictions[]']");
+	By saveSubmitPageChangeButton = By.xpath("//a[@class='btn common-btn']");
+
 	String clientLabelText = "Client";
 	String companyLabelText = "Company *";
 	String facilityLabelText = "Facility * Help Tip";
@@ -54,6 +60,9 @@ public class ClientMasterPage extends PageTools {
 	String nextButtonPopupBodyText = "Please enter all required fields";
 	String selectResidentStateLabelText = "Please select the resident state for your facility: *";
 	String selectJurisdictionLabelText = "Please select all jurisdictions you would like to include in this facility configuration:";
+	String saveSubmitPageCompanyNameText = "Company Name :";
+	String saveSubmitPageFacilityNameText = "Facility Name :";
+	String saveSubmitPageResidentStateText = "Resident State :";
 
 	HashMap<String, Boolean> jurisdictionPageCheckboxesInput = new HashMap<>();
 
@@ -230,6 +239,27 @@ public class ClientMasterPage extends PageTools {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
 
+	}
+
+	public void saveSubmitPageLabels() {
+		SelenideElement saveSubmitPageCompanyNameElement = getSelenideElement(saveSubmitPageCompanyName);
+		assertEquals(saveSubmitPageCompanyNameElement.getText(), saveSubmitPageCompanyNameText);
+
+		SelenideElement saveSubmitPageFacilityNameElement = getSelenideElement(saveSubmitPageLabelName);
+		assertEquals(saveSubmitPageFacilityNameElement.getText(), saveSubmitPageFacilityNameText);
+
+		SelenideElement saveSubmitPageResidentStateElement = getSelenideElement(saveSubmitPageResidentState);
+		assertEquals(saveSubmitPageResidentStateElement.getText(), saveSubmitPageResidentStateText);
+
+		List<SelenideElement> saveSubmitPageCheckboxElement = getElements(saveSubmitPageCheckbox);
+		for (SelenideElement element : saveSubmitPageCheckboxElement) {
+			element.isDisplayed();
+		}
+
+		List<SelenideElement> saveSubmitPageChangeButtonElement = getElements(saveSubmitPageChangeButton);
+		for (SelenideElement element1 : saveSubmitPageChangeButtonElement) {
+			element1.isDisplayed();
+		}
 	}
 
 }
