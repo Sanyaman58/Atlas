@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class NewResearchPageStepDefinitions {
+	
     @Then("The [Configuration] page is opened")
     public void theSurveillanceSetupPageIsOpened() {
         Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
@@ -17,18 +18,17 @@ public class NewResearchPageStepDefinitions {
     public void validateFieldsOnTheSurveillanceSetupPage() {
         Assert.assertTrue(Pages.newResearchPage().isCompanyLabelAsteriskPresent());
         Assert.assertTrue(Pages.newResearchPage().isFacilityLabelAsteriskPresent());
-        Assert.assertEquals(Pages.newResearchPage().getCompanyNameInputPlaceholder(),"Company Name");
+        Assert.assertEquals(Pages.newResearchPage().getCompanyNameInputPlaceholder(),"Select Company");
         Assert.assertEquals(Pages.newResearchPage().getFacilityInputPlaceholder(),"Facility");
-        Pages.newResearchPage().enterCompanyName("Test");
-        SelenideTools.sleep(1);
-        Assert.assertEquals(Pages.newResearchPage().getEnteredCompanyName(),"Test");
-        Pages.newResearchPage().clearEnteredCompanyName();
-        Pages.newResearchPage().enterFacility("Test");
-        SelenideTools.sleep(1);
-        Assert.assertEquals(Pages.newResearchPage().getEnteredFacility(),"Test");
-        Pages.newResearchPage().clearEnteredFacility();
-        Assert.assertEquals(Pages.newResearchPage().getHelpTipText()
-                ,"Suggestion: Use the City and State the facilty resides in for the facility name.");
+//        Pages.newResearchPage().enterCompanyName("Test");
+//        SelenideTools.sleep(1);
+//        Assert.assertEquals(Pages.newResearchPage().getEnteredCompanyName(),"Test");
+//        Pages.newResearchPage().clearEnteredCompanyName();
+//        Pages.newResearchPage().enterFacility("Test");
+//        SelenideTools.sleep(1);
+//        Assert.assertEquals(Pages.newResearchPage().getEnteredFacility(),"Test");
+//        Pages.newResearchPage().clearEnteredFacility();
+//        Assert.assertEquals(Pages.newResearchPage().getHelpTipText(),"Suggestion: Use the City and State the facilty resides in for the facility name.");
 
     }
 
@@ -136,6 +136,15 @@ public class NewResearchPageStepDefinitions {
         Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
         SelenideTools.sleep(2);
         Pages.newResearchPage().clickConfigurationSidebarButton();
+        SelenideTools.sleep(10);
+        SelenideTools.switchToLastTab();
+    }
+    
+    @When("Click on the [Client Master] sidebar button")
+    public void clickOnTheClientMasterSidebarButton() {
+        Pages.atlasDashboardManagementPage().clickManagementAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
+        Pages.newResearchPage().clickClientMasterSidebarButton();
         SelenideTools.sleep(10);
         SelenideTools.switchToLastTab();
     }

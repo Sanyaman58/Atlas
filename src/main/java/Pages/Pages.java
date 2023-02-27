@@ -25,6 +25,7 @@ public class Pages extends AllureLogger {
     private static EditRequirementAdminPage editRequirementAdminPage;
     private static AuditLogsAdminPage auditLogsAdminPage;
     private static ActivityLogsPage activityLogsPage;
+    private static ClientMasterPage clientMasterPage;
 
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
@@ -48,6 +49,15 @@ public class Pages extends AllureLogger {
             newResearchPage = new NewResearchPage();
         }
         return newResearchPage;
+    }
+    
+    
+   //s
+    public static ClientMasterPage clientMasterPage() {
+        if (clientMasterPage == null) {
+        	clientMasterPage = new ClientMasterPage();
+        }
+        return clientMasterPage;
     }
 
     public static JurisdictionPage jurisdictionPage() {
