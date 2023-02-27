@@ -87,7 +87,7 @@ public class NewResearchPageStepDefinitions {
     @When("Select already created job by index {int} in the table on the [New Research] page")
     public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
         SelenideTools.sleep(5);
-        Pages.newResearchPage().selectTheJobFromTheTable(index);
+        Pages.newResearchPage().selectTheJobFromTheTable(index-1);
     }
 
     @Then("Click the [Copy From Research Job] button")

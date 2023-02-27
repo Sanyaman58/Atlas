@@ -245,9 +245,9 @@ public class NewResearchPage extends PageTools {
 
 	public void selectTheJobFromTheTable(int index){
 		System.out.println(getElements(tableJobsRadioButton).size());
-		getElements(tableJobsRadioButton).get(index-1).click();
-		companyName = getElements(tableJobs).get(index-1).findElement(By.xpath("./td[2]")).getText();
-		facilityName = getElements(tableJobs).get(index-1).findElement(By.xpath("./td[3]")).getText();
+		getElements(tableJobsRadioButton).get(index).click();
+		companyName = getElements(tableJobs).get(index).findElement(By.xpath("./td[2]")).getText();
+		facilityName = getElements(tableJobs).get(index).findElement(By.xpath("./td[3]")).getText();
 	}
 
 	public void selectTheJobFromTheTable(){

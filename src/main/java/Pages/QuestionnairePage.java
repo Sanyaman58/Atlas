@@ -16,6 +16,7 @@ public class QuestionnairePage extends PageTools {
     By answers = By.xpath("//div[@id='questionnaire-container']//li/label/following-sibling::span/input[1]");
     By nextButton = By.xpath("//button[@id='save_questionnaires']");
     By questionnaireBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Questionnaire')]");
+    By clearAllButton = By.xpath("//button[@id='clear_all_questionnaire']");
 
 
     HashMap<String,Boolean> questionsAnswers = new HashMap<>();
@@ -73,5 +74,9 @@ public class QuestionnairePage extends PageTools {
         click(questionnaireBreadcrumb);
     }
 
+    public void clickClearAllButton(){
+        waitForElementVisibility(clearAllButton);
+        click(clearAllButton);
+    }
 
 }

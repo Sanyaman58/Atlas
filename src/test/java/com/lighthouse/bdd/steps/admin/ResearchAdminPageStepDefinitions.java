@@ -53,10 +53,10 @@ public class ResearchAdminPageStepDefinitions {
         Pages.researchAdminPage().clickTheQuestionnaireVersionsSidebarButton();
     }
 
-    @Then("The [Research Notification] page is opened")
-    public void theResearchNotificationPageIsOpened() {
-        Pages.researchAdminPage().isResearchNotificationPageOpened();
-    }
+//    @Then("The [Research Notification] page is opened")
+//    public void theResearchNotificationPageIsOpened() {
+//        Pages.researchAdminPage().isResearchNotificationPageOpened();
+//    }
 
     @Then("The [Versioned EUI] page is opened")
     public void theVersionedEUIPageIsOpened() {

@@ -3,6 +3,7 @@ package com.lighthouse.bdd.steps;
 import Pages.Pages;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class QuestionnairePageStepDefinitions {
@@ -47,5 +48,16 @@ public class QuestionnairePageStepDefinitions {
         Pages.questionnairePage().selectQuestion(6);
         Pages.questionnairePage().selectQuestion(8);
         Pages.questionnairePage().selectQuestion(9);
+    }
+
+    @When("Click on the [Clear All] button on the [Questionnaire] page")
+    public void clickOnTheClearAllButtonOnTheQuestionnairePage() {
+        Pages.questionnairePage().clickClearAllButton();
+    }
+
+    @Then("Verify that all questions answers are {string} on the [Questionnaire] page")
+    public void verifyThatAllQuestionsAnswersAreNoOnTheQuestionnairePage() {
+        Pages.questionnairePage().getQuestionsAnswers();
+        Assert.assertFalse(Pages.questionnairePage().getQuestionsAnswers().containsValue(false));
     }
 }

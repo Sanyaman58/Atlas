@@ -1,7 +1,6 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
-import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +11,7 @@ import java.util.List;
 public class ResearchNotificationPageStepDefinitions {
 
     @Then("The [Research Notification] page is opened")
-    public void theQuestionnairePageIsOpened() {
+    public void theResearchNotificationPageIsOpened() {
         Assert.assertTrue(Pages.researchNotificationPage().isResearchNotificationPageVisible());
     }
 
