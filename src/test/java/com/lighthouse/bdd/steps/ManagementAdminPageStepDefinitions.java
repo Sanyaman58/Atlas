@@ -101,5 +101,10 @@ public class ManagementAdminPageStepDefinitions {
     public void verifyChildQuestionUnclickable() {
         Pages.clientMasterPage().clickChildQuestion();
     }
+	
+	@And("Validate the lables on the [SaveSubmit Job] page")
+    public void verifySaveSubmitPageLabels() {
+        Pages.clientMasterPage().saveSubmitPageLabels();
+    }
 
 }
