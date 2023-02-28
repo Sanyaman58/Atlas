@@ -58,7 +58,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@And("Select {int} value from [Requirement Type] dropdown")
     public void selectValueFronRequirementType(int index) {
-        Pages.clientMasterPage().selectFromRequirementCategoryDropdown(index);
+        Pages.clientMasterPage().selectFromRequirementCategoryType(index);
     }
 	
 	@And("Click on [Create New] button")
@@ -70,6 +70,19 @@ public class ManagementAdminPageStepDefinitions {
     public void verifyAllJurisdictionOnGeneralInfoPage() {
         Pages.clientMasterPage().jurisdictionsInGeneralInfoPage();
     }
+	
+	@Then("Reload the browser")
+	public void browserReload() {
+		Pages.clientMasterPage().reloadBrowser();
+    }
+	
+	
+	@Then("Verify the Jurisdiction checkbox values and count")
+	public void jurisdictionCheckboxVlaueAndCount() {
+		Pages.clientMasterPage().getStateCheckboxesValuesAndCount();
+    }
+	
+	
 	
 
 }
