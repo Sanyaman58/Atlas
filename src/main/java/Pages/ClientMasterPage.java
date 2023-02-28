@@ -7,8 +7,10 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -32,8 +34,11 @@ public class ClientMasterPage extends PageTools {
 	By requirementTypeDropdown = By.xpath("//*[@id=\"Requirement_Type\"]");
 	By requirementCreateNewButton = By.xpath("//*[@id=\"start_new\"]");
 	By genralInfoPageJurisdictionDropdown = By.xpath("//*[@id=\"Jurisdiction\"]");
+	By stateCheckboxes = By.xpath("//form[@id='mange-job-research']//div[@class='row']//div[@class='list-checkbox']");
 
 	
+	HashMap<String,Boolean> statesCheckboxes = new HashMap<>();
+	HashMap<String,Boolean> statesCheckboxesToCompare = new HashMap<>();
 	String categoryName;
 	String requirementTypeName;
 	
@@ -158,6 +163,30 @@ public class ClientMasterPage extends PageTools {
 		else {
 			System.out.println("Count mismatch");
 		}
+	}
+	
+	public void reloadBrowser() {
+		WebDriverRunner.getWebDriver().navigate().refresh();
+		SelenideTools.sleep(6);	}
+	
+	public void getStateCheckboxesValuesAndCount(){
+		for(SelenideElement element : getElements(stateCheckboxes)){
+			statesCheckboxes.put(element.findElement(By.xpath("./label")).getText()
+					,element.findElement(By.xpath("./input")).isSelected());
+		}
+		
+		
+		SelenideElement jurisdictionStatesElement = getSelenideElement(stateCheckboxes).shouldBe(Condition.visible);
+		int stateCheckboxesElementCount = jurisdictionStatesElement.findAll("div").size();
+		if (stateCheckboxesElementCount == 52) {
+//			List<String> options = stateCheckboxes.findAll("options").texts();
+			System.out.println("Total count of elements present in jurisdiction dropdown = "+stateCheckboxesElementCount);
+		}
+		else {
+			System.out.println("Count mismatch");
+		}
+		
+
 	}
 
 }
