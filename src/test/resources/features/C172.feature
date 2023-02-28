@@ -4,62 +4,35 @@ Feature: C172
   @TestRail(172)
   Scenario: Verify that EUI version is not affecting the jurisdictions displaying
     When Open Atlas
-    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
-    And Enter password "Testing2022!!" on login page
-    And Click the [Login] button
+    Then Enter login "sachin.arora@pharma.solutions" on login page
+    And Enter password "$hin@1122!!" on login page
+    When Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Research] sidebar button
     Then The [Research Admin] page is opened
-    When Click on the [Ends Up In State] button on admin
-    Then The [Ends Up In States Admin] page is opened
-    When Uncheck 1 checkbox on the [Ends Up In States Admin] page
-    Then Click on the [Save] button on the [Ends Up In States Admin] page
-#    And Verify that 1 checkbox is red crossed on the [Ends Up In States Admin] page
+    And Click on the [Ends Up In State] button on admin
+    And The [Ends Up In States Admin] page is opened
+    When Check or uncheck the jurisdiction checkbox on [End Up in States]
+    Then Click on EUI save button
     When Click on the [EUI Versions] sidebar button on admin
     Then The [Versioned EUI] page is opened
-    Then Click on the "Version" label on the [Versioned EUI] page
-    Then Click on the "Version" label on the [Versioned EUI] page
-    And Approve the 1 EUI on the [Versioned EUI] page
-    And Click on the [Yes Approve] button on the [Versioned EUI] page
-    Then Click on the "Version" label on the [Versioned EUI] page
-    Then Click on the "Version" label on the [Versioned EUI] page
-    And Activate the 1 EUI on the [Versioned EUI] page
-    And Click on the [Yes Approve] button on the [Versioned EUI] page
-
+    And Approve and Activate the newly created EUI version
     When Click on the [Requirements View] sidebar button on admin
-    Then The [Requirements View] page is opened
-    And Verify that all 52 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page
-    When Select "State Licensing" Requirement Category in the [Add New Requirement] section
-    And Select "Initial" Requirement Type in the [Add New Requirement] section
-    And Click the [Create New] button in the [Add New Requirement] section
-    Then Verify that all 52 states are selectable in the General Information Jurisdiction select on the [Requirements View] page
-
-    When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
-    When Click on the [Configuration] sidebar button on Lighthouse
+    And Verify all the Jurisdictions are displayed in [Jurisidction] dropdown
+    And Select 1 value from [Requirement Category] dropdown
+    And Select 1 value from [Requirement Type] dropdown
+    And Click on [Create New] button
+    And Click on [General information] Jurisdiction dropdown and verify the count
+    When Open Atlas
+    Then Management Dashboard page is opened
+    When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
-    And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
-    Then Select 1 company name
-    Then Select 1 facility name
+    And Reload the browser
+    And Select "Pharma Solutions USA" client from the client dropdown
+    And Reload the browser
+    And Select "Pharma Solutions USA" client from the client dropdown
+    And Select 5 company name
+    And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
-    Then Verify that all 52 states are visible and enabled
-
-    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
-    When Click on the [Research] sidebar button on admin
-    Then The [Research Admin] page is opened
-    When Click on the [Ends Up In State] button on admin
-    Then The [Ends Up In States Admin] page is opened
-    When Check 1 checkbox on the [Ends Up In States Admin] page
-    Then Click on the [Save] button on the [Ends Up In States Admin] page
-    When Click on the [EUI Versions] sidebar button on admin
-    Then The [Versioned EUI] page is opened
-    Then Click on the "Version" label on the [Versioned EUI] page
-    Then Click on the "Version" label on the [Versioned EUI] page
-    And Approve the 1 EUI on the [Versioned EUI] page
-    And Click on the [Yes Approve] button on the [Versioned EUI] page
-    Then Click on the "Version" label on the [Versioned EUI] page
-    Then Click on the "Version" label on the [Versioned EUI] page
-    And Activate the 1 EUI on the [Versioned EUI] page
-    And Click on the [Yes Approve] button on the [Versioned EUI] page
+    And Verify the Jurisdiction checkbox values and count
