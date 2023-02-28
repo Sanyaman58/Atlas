@@ -50,4 +50,12 @@ public class AtlasDashboardManagementPageStepDefinitions {
         SelenideTools.sleep(3);
         Assert.assertTrue(Pages.versionRequirementsAdminPage().isVersionedRequirementsAdminPageOpened());
     }
+
+    @When("Click on the [Requirements] button on Atlas")
+    public void clickOnTheRequirementsButtonOnAtlas() {
+        Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
+        SelenideTools.sleep(2);
+        Pages.atlasDashboardManagementPage().clickRequirementsSidebarButton();
+        SelenideTools.sleep(3);
+    }
 }
