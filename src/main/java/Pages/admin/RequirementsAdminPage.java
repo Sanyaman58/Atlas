@@ -193,6 +193,11 @@ public class RequirementsAdminPage extends PageTools {
 		return isElementClickable(requirementNameSelect);
 	}
 
+	public void selectRequirementName(String text){
+		waitForElementVisibility(requirementNameSelect);
+		selectOption(text, requirementNameSelect);
+	}
+
 	public boolean isStatusSelectSelectable(){
 		waitForElementVisibility(statusSelect);
 		selectOption(0, statusSelect);
@@ -627,6 +632,24 @@ public class RequirementsAdminPage extends PageTools {
 	public boolean areAllStatesSelectableInTheGeneralInformationJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionGeneralInformationSelect);
 		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==53;
+	}
+
+	public boolean isTableRecordWithRequirementNameDisplayed(String requirementName){
+		waitForElementVisibility(requirementViewersTableRecords);
+		for(int i = 0; i < getElements(requirementViewersTableRecords).size();i++){
+			if(!getElements(requirementViewersTableRecords).get(i).findElement(By.xpath("./td[3]")).getText().equals(requirementName))
+				return false;
+		}
+		return true;
+	}
+
+	public boolean isTableRecordWithJurisdictionDisplayed(String jurisdiction){
+		waitForElementVisibility(requirementViewersTableRecords);
+		for(int i = 0; i < getElements(requirementViewersTableRecords).size();i++){
+			if(!getElements(requirementViewersTableRecords).get(i).findElement(By.xpath("./td[1]")).getText().equals(jurisdiction))
+				return false;
+		}
+		return true;
 	}
 
 }

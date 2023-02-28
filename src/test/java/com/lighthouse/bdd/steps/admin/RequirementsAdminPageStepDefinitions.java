@@ -355,6 +355,12 @@ public class RequirementsAdminPageStepDefinitions {
         SelenideTools.sleep(4);
     }
 
+    @When("Select {string} jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page")
+    public void selectJurisdictionInTheRequirementViewerFiltersSectionOnTheRequirementsAdminPage(String jurisdiction) {
+        Pages.requirementsAdminPage().selectRequirementFilterJurisdiction(jurisdiction);
+        SelenideTools.sleep(4);
+    }
+
     @And("Verify that deleted requirement is not displayed in the [Requirement Viewer] table")
     public void verifyThatDeletedRequirementIsNotDisplayedInTheRequirementViewerTable() {
         Assert.assertFalse(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
@@ -380,5 +386,21 @@ public class RequirementsAdminPageStepDefinitions {
     public void verifyThatAllStatesAreSelectableInTheGeneralInformationJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheGeneralInformationJurisdictionSelect());
 
+    }
+
+    @And("Select {string} requirement name in the Requirements Viewer Filters on the [Requirement View] page")
+    public void selectRequirementNameInTheRequirementsViewerFiltersOnTheRequirementViewPage(String text) {
+        Pages.requirementsAdminPage().selectRequirementName(text);
+        SelenideTools.sleep(6);
+    }
+
+    @Then("The records with {string} requirement name is displayed in the table on the [Requirement View] page")
+    public void theRecordWithRequirementNameIsDisplayedInTheTableOnTheRequirementViewPage(String requirementName) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isTableRecordWithRequirementNameDisplayed(requirementName));
+    }
+
+    @Then("The records with {string} jurisdiction is displayed in the table on the [Requirement View] page")
+    public void theRecordsWithJurisdictionIsDisplayedInTheTableOnTheRequirementViewPage(String jurisdiction) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isTableRecordWithJurisdictionDisplayed(jurisdiction));
     }
 }
