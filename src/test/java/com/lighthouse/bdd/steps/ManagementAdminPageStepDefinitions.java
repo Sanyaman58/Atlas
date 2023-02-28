@@ -93,15 +93,27 @@ public class ManagementAdminPageStepDefinitions {
 		SelenideTools.sleep(10);
 		SelenideTools.switchToLastTab();
 	}
-	
+
 	@And("Click on [Activity Logs] option of the line item")
 	public void clickActivityLogsOption() {
 		Pages.clientMasterPage().clickActivityLogOfLineItem();
 	}
-	
+
 	@And("Verify [Activity Logs] screen and default filter is set to [All]")
 	public void verifyActivityLogScreenAndFilter() {
 		Pages.clientMasterPage().verifyActivityLogScreen();
+	}
+
+	@And("Select {string} client from [Client dropdown] and verify next button is enabled")
+	public void selectClientAndVerifyNextButton(String client) {
+		Pages.newResearchPage().selectClient(client);
+		SelenideTools.sleep(4);
+		Pages.clientMasterPage().verifyNextButtonEnabled();
+	}
+	
+	@And("Verify no [EUI] states are visible")
+	public void verifyEuiStatesNotVisible() {
+		Pages.clientMasterPage().euiStatesNotVisible();
 	}
 
 }
