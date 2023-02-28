@@ -23,3 +23,17 @@ Feature: C172
     And Select 1 value from [Requirement Type] dropdown
     And Click on [Create New] button
     And Click on [General information] Jurisdiction dropdown and verify the count
+    When Open Atlas
+    Then Management Dashboard page is opened
+    When Click on the [Configuration] sidebar button
+    Then The [Configuration] page is opened
+    And Reload the browser
+    And Select "Pharma Solutions USA" client from the client dropdown
+    And Reload the browser
+    And Select "Pharma Solutions USA" client from the client dropdown
+    And Select 5 company name
+    And Select 1 facility name
+    When Click [Submit new job] button
+    Then The [Jurisdiction] page is opened
+    And Verify the Jurisdiction checkbox values and count
+    
