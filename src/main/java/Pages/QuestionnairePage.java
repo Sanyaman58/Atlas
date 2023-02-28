@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.SelenideTools;
 import base.PageTools;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -75,7 +76,9 @@ public class QuestionnairePage extends PageTools {
     }
 
     public void clickClearAllButton(){
-        waitForElementVisibility(clearAllButton);
+        waitForElementClickable(clearAllButton);
+        click(clearAllButton);
+        SelenideTools.sleep(2);
         click(clearAllButton);
     }
 

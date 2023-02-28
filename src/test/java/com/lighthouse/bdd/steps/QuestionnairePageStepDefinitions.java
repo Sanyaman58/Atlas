@@ -55,7 +55,7 @@ public class QuestionnairePageStepDefinitions {
         Pages.questionnairePage().clickClearAllButton();
     }
 
-    @Then("Verify that all questions answers are {string} on the [Questionnaire] page")
+    @Then("Verify that all questions answers are 'No' on the [Questionnaire] page")
     public void verifyThatAllQuestionsAnswersAreNoOnTheQuestionnairePage() {
         Pages.questionnairePage().getQuestionsAnswers();
         Assert.assertFalse(Pages.questionnairePage().getQuestionsAnswers().containsValue(false));

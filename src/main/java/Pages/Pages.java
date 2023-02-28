@@ -26,6 +26,7 @@ public class Pages extends AllureLogger {
     private static AuditLogsAdminPage auditLogsAdminPage;
     private static ActivityLogsPage activityLogsPage;
     private static ClientMasterPage clientMasterPage;
+    private static EUIVersionAdminPage euiVersionAdminPage;
 
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
@@ -170,6 +171,13 @@ public class Pages extends AllureLogger {
             versionRequirementsAdminPage = new VersionRequirementsAdminPage();
         }
         return versionRequirementsAdminPage;
+    }
+
+    public static EUIVersionAdminPage euiVersionAdminPage() {
+        if (euiVersionAdminPage == null) {
+            euiVersionAdminPage = new EUIVersionAdminPage();
+        }
+        return euiVersionAdminPage;
     }
 
 }

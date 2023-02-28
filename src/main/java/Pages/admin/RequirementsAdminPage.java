@@ -6,6 +6,8 @@ import com.codeborne.selenide.SelenideElement;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 import static com.codeborne.selenide.Selenide.*;
 
 import java.util.ArrayList;
@@ -616,4 +618,15 @@ public class RequirementsAdminPage extends PageTools {
 			}
 		return false;
 	}
+
+	public boolean areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect(){
+		waitForElementVisibility(jurisdictionSelect);
+		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==53;
+	}
+
+	public boolean areAllStatesSelectableInTheGeneralInformationJurisdictionSelect(){
+		waitForElementVisibility(jurisdictionGeneralInformationSelect);
+		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==53;
+	}
+
 }

@@ -59,4 +59,9 @@ public class JurisdictionPageStepDefinitions {
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
     }
+
+    @Then("Verify that all 52 states are visible and enabled")
+    public void verifyThatAllStatesAreVisibleAndEnabled() {
+        Pages.jurisdictionPage().areAllStatesCheckboxesVisibleAndClickable();
+    }
 }

@@ -58,9 +58,6 @@ public class ResearchAdminPageStepDefinitions {
 //        Pages.researchAdminPage().isResearchNotificationPageOpened();
 //    }
 
-    @Then("The [Versioned EUI] page is opened")
-    public void theVersionedEUIPageIsOpened() {
-        Pages.researchAdminPage().isVersionedEUIPageOpened();
-    }
+
 
 }

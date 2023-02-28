@@ -370,4 +370,15 @@ public class RequirementsAdminPageStepDefinitions {
     public void selectStatusInTheRequirementViewerFiltersSectionOnTheRequirementsAdminPage(String status) {
         Pages.requirementsAdminPage().selectRequirementsViewerFiltersStatus(status);
     }
+
+    @And("Verify that all 52 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
+    public void verifyThatAllStatesAreSelectableInTheRequirementsViewerFiltersJurisdictionSelectOnTheRequirementsViewPage() {
+        Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect());
+    }
+
+    @Then("Verify that all 52 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
+    public void verifyThatAllStatesAreSelectableInTheGeneralInformationJurisdictionSelectOnTheRequirementsViewPage() {
+        Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheGeneralInformationJurisdictionSelect());
+
+    }
 }
