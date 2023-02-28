@@ -41,9 +41,10 @@ public class ClientMasterPage extends PageTools {
 	By activityLogOption = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/a");
 	By activityLogTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By activityLogFilter = By.xpath("//*[@id=\"DataTables_Table_0_length\"]/label/select");
-	
-	
-	
+
+	By setupPageNextButton = By.xpath("//*[@id=\"submit-new\"]");
+	By existingConfiguration = By.xpath("//*[@id=\"DataTables_Table_0\"]//tbody//tr");
+	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -178,7 +179,7 @@ public class ClientMasterPage extends PageTools {
 
 	public void reloadBrowser() {
 		WebDriverRunner.getWebDriver().navigate().refresh();
-		SelenideTools.sleep(6);
+		SelenideTools.sleep(8);
 	}
 
 	public void getStateCheckboxesValuesAndCount() {
@@ -203,13 +204,13 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(configurationDropdownButton);
 		waitForElementVisibility(resultsDropdownButton);
 	}
-	
+
 	public void clickResulsDropdownButton() {
 		waitForElementVisibility(resultsDropdownButton);
 		click(resultsDropdownButton);
 		SelenideTools.sleep(1);
 	}
-	
+
 	public void clickActivityLogOfLineItem() {
 		waitForElementVisibility(activityLogOption);
 		click(activityLogOption);
@@ -218,17 +219,32 @@ public class ClientMasterPage extends PageTools {
 	public void verifyActivityLogScreen() {
 		waitForElementVisibility(activityLogTitle);
 		waitForElementVisibility(activityLogFilter);
-		
+
 		SelenideElement activityLogFilterElement = getSelenideElement(activityLogFilter).shouldBe(Condition.visible);
 		activityLogFilterElement.getText();
-		if(activityLogFilterElement.getText() == "All") {
+		if (activityLogFilterElement.getText() == "All") {
 			System.out.println("Filter is already set to 'All'");
-		}
-		else {
+		} else {
 			System.out.println("Filter is not set to 'All'");
 		}
-		
 	}
 
+	public void verifyNextButtonEnabled() {
+		SelenideTools.sleep(6);
+		SelenideElement setupPageNextButtonElement = getSelenideElement(setupPageNextButton)
+				.shouldBe(Condition.visible);
+		if (setupPageNextButtonElement.isEnabled()) {
+			System.out.println("Next button is enabled");
+		} else {
+			System.out.println("Next button is disabled");
+		}
+	}
 	
+	public void euiStatesNotVisible() {
+		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
+		System.out.println("Element displayed = "+ endUpInStatesTitleElement);
+	}
+	
+	
+
 }
