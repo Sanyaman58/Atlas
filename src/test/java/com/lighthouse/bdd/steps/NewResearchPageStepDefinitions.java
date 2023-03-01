@@ -8,18 +8,18 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class NewResearchPageStepDefinitions {
-	
-    @Then("The [Configuration] page is opened")
-    public void theSurveillanceSetupPageIsOpened() {
-        Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
-    }
 
-    @When("Validate fields on the [Surveillance Setup] page")
-    public void validateFieldsOnTheSurveillanceSetupPage() {
-        Assert.assertTrue(Pages.newResearchPage().isCompanyLabelAsteriskPresent());
-        Assert.assertTrue(Pages.newResearchPage().isFacilityLabelAsteriskPresent());
-        Assert.assertEquals(Pages.newResearchPage().getCompanyNameInputPlaceholder(),"Select Company");
-        Assert.assertEquals(Pages.newResearchPage().getFacilityInputPlaceholder(),"Facility");
+	@Then("The [Configuration] page is opened")
+	public void theSurveillanceSetupPageIsOpened() {
+		Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
+	}
+
+	@When("Validate fields on the [Surveillance Setup] page")
+	public void validateFieldsOnTheSurveillanceSetupPage() {
+		Assert.assertTrue(Pages.newResearchPage().isCompanyLabelAsteriskPresent());
+		Assert.assertTrue(Pages.newResearchPage().isFacilityLabelAsteriskPresent());
+		Assert.assertEquals(Pages.newResearchPage().getCompanyNameInputPlaceholder(), "Select Company");
+		Assert.assertEquals(Pages.newResearchPage().getFacilityInputPlaceholder(), "Facility");
 //        Pages.newResearchPage().enterCompanyName("Test");
 //        SelenideTools.sleep(1);
 //        Assert.assertEquals(Pages.newResearchPage().getEnteredCompanyName(),"Test");
@@ -30,23 +30,23 @@ public class NewResearchPageStepDefinitions {
 //        Pages.newResearchPage().clearEnteredFacility();
 //        Assert.assertEquals(Pages.newResearchPage().getHelpTipText(),"Suggestion: Use the City and State the facilty resides in for the facility name.");
 
-    }
+	}
 
-    @Then("Click [Submit new job] button")
-    public void iClickSubmitNewJobButtonWithoutEnteringCompanyAndFacilityNames() {
-        Pages.newResearchPage().clickSubmitNewJobButton();
+	@Then("Click [Submit new job] button")
+	public void iClickSubmitNewJobButtonWithoutEnteringCompanyAndFacilityNames() {
+		Pages.newResearchPage().clickSubmitNewJobButton();
 
-    }
+	}
 
-    @Then("Enter {string} company name")
-    public void enterCompanyName(String companyName) {
-        Pages.newResearchPage().enterCompanyName(companyName);
-    }
+	@Then("Enter {string} company name")
+	public void enterCompanyName(String companyName) {
+		Pages.newResearchPage().enterCompanyName(companyName);
+	}
 
-    @And("Enter {string} facility name")
-    public void enterFacilityName(String facilityName) {
-        Pages.newResearchPage().enterFacility(facilityName);
-    }
+	@And("Enter {string} facility name")
+	public void enterFacilityName(String facilityName) {
+		Pages.newResearchPage().enterFacility(facilityName);
+	}
 
 //    @And("Window with {string} message is displayed")
 //    public void windowWithMessageIsDisplayed(String message) {
@@ -63,249 +63,243 @@ public class NewResearchPageStepDefinitions {
         Assert.assertEquals(Pages.newResearchPage().getAlertMessage(),message);
     }
 
-    @And("The {string} message is displayed")
-    public void theMessageIsDisplayed(String message) {
-        SelenideTools.sleep(2);
-        Assert.assertTrue(Pages.newResearchPage().isErrorMessageVisible());
-        Assert.assertEquals(Pages.newResearchPage().getErrorMessage(),message);
-        Pages.newResearchPage().clickAlertOkButton();
-    }
+	@And("The {string} message is displayed")
+	public void theMessageIsDisplayed(String message) {
+		SelenideTools.sleep(2);
+		Assert.assertTrue(Pages.newResearchPage().isErrorMessageVisible());
+		Assert.assertEquals(Pages.newResearchPage().getErrorMessage(), message);
+		Pages.newResearchPage().clickAlertOkButton();
+	}
 
-    @Then("Log out from Lighthouse")
-    public void logOutFromLighthouse() {
-        Pages.newResearchPage().logOut();
-    }
+	@Then("Log out from Lighthouse")
+	public void logOutFromLighthouse() {
+		Pages.newResearchPage().logOut();
+	}
 
+	@And("Newly created job with status {string} is displayed in the table on the [New Research] page")
+	public void newlyCreatedJobWithStatusIsDisplayedInTheTableOnTheNewResearchPage(String status) {
+		Pages.newResearchPage().sortByCreatedLabel();
+		SelenideTools.sleep(2);
+		Assert.assertTrue(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
+	}
 
-    @And("Newly created job with status {string} is displayed in the table on the [New Research] page")
-    public void newlyCreatedJobWithStatusIsDisplayedInTheTableOnTheNewResearchPage(String status) {
-        Pages.newResearchPage().sortByCreatedLabel();
-        SelenideTools.sleep(2);
-        Assert.assertTrue(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
-    }
+	// @When("Select already created job by index {int} in the table on the [New Research] page")
+	// public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
+	// 	SelenideTools.sleep(5);
+	// 	Pages.newResearchPage().selectTheJobFromTheTable(index);
+	// }
 
+	@Then("Click the [Copy From Research Job] button")
+	public void clickTheCopyFromResearchJobButton() {
+		Pages.newResearchPage().clickCopyFromResearchButton();
+	}
     @When("Select already created job by index {int} in the table on the [New Research] page")
     public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
         SelenideTools.sleep(5);
         Pages.newResearchPage().selectTheJobFromTheTable(index-1);
     }
 
-    @Then("Click the [Copy From Research Job] button")
-    public void clickTheCopyFromResearchJobButton() {
-        Pages.newResearchPage().clickCopyFromResearchButton();
-    }
+	@When("Select already created job in the table on the [New Research] page")
+	public void selectAlreadyCreatedJobWithCompanyAndFacilityNameInTheTableOnTheNewResearchPage() {
+		Pages.newResearchPage().selectNewlyCreatedJob();
+	}
 
-    @When("Select already created job in the table on the [New Research] page")
-    public void selectAlreadyCreatedJobWithCompanyAndFacilityNameInTheTableOnTheNewResearchPage() {
-        Pages.newResearchPage().selectNewlyCreatedJob();
-    }
+	@When("Select {string} client from the client dropdown")
+	public void selectClientFromTheClientDropdown(String client) {
+		Pages.newResearchPage().selectClient(client);
+		SelenideTools.sleep(4);
+	}
 
-    @When("Select {string} client from the client dropdown")
-    public void selectClientFromTheClientDropdown(String client) {
-        Pages.newResearchPage().selectClient(client);
-        SelenideTools.sleep(4);
-    }
+	@When("The client dropdown is visible and clickable")
+	public void theClientDropdownIsVisibleAndClickable() {
+		Assert.assertTrue(Pages.newResearchPage().isSelectClientVisibleAndClickable());
+	}
 
-    @When("The client dropdown is visible and clickable")
-    public void theClientDropdownIsVisibleAndClickable() {
-        Assert.assertTrue(Pages.newResearchPage().isSelectClientVisibleAndClickable());
-    }
+	@When("Create a new surveillance")
+	public void createANewSurveillance() {
 
-    @When("Create a new surveillance")
-    public void createANewSurveillance() {
+	}
 
-    }
+	@Then("Newly created job with status {string} is not displayed in the table on the [New Research] page")
+	public void newlyCreatedJobIsNotDisplayedInTheTableOnTheNewResearchPage(String status) {
+		Assert.assertFalse(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
+	}
 
-    @Then("Newly created job with status {string} is not displayed in the table on the [New Research] page")
-    public void newlyCreatedJobIsNotDisplayedInTheTableOnTheNewResearchPage(String status) {
-        Assert.assertFalse(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
-    }
+	@When("The client dropdown is not visible and clickable")
+	public void theClientDropdownIsNotVisibleAndClickable() {
+		Assert.assertFalse(Pages.newResearchPage().isSelectClientVisibleAndClickable());
+	}
 
-    @When("The client dropdown is not visible and clickable")
-    public void theClientDropdownIsNotVisibleAndClickable() {
-        Assert.assertFalse(Pages.newResearchPage().isSelectClientVisibleAndClickable());
-    }
+	@When("Click on the [Results] sidebar button")
+	public void clickOnTheResultsSidebarButton() {
+		Pages.newResearchPage().clickResultsSidebarButton();
+	}
 
-    @When("Click on the [Results] sidebar button")
-    public void clickOnTheResultsSidebarButton() {
-        Pages.newResearchPage().clickResultsSidebarButton();
-    }
+	@When("Click on the [Configuration] sidebar button")
+	public void clickOnTheConfigurationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.newResearchPage().clickConfigurationSidebarButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
 
-    @When("Click on the [Configuration] sidebar button")
-    public void clickOnTheConfigurationSidebarButton() {
-        Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
-        SelenideTools.sleep(2);
-        Pages.newResearchPage().clickConfigurationSidebarButton();
-        SelenideTools.sleep(10);
-        SelenideTools.switchToLastTab();
-    }
-    
-    @When("Click on the [Client Master] sidebar button")
-    public void clickOnTheClientMasterSidebarButton() {
-        Pages.atlasDashboardManagementPage().clickManagementAdminSidebarCollapseButton();
-        SelenideTools.sleep(2);
-        Pages.newResearchPage().clickClientMasterSidebarButton();
-        SelenideTools.sleep(10);
-        SelenideTools.switchToLastTab();
-    }
+	@When("Click on the [Requirements View] sidebar button")
+	public void clickOnTheCRequirementsViewSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.atlasDashboardManagementPage().clickRequirementsViewSidebarButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
 
+	@When("Click on the [Audit Logs] sidebar button")
+	public void clickOnTheAuditLogsSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.atlasDashboardManagementPage().clickAuditLogsSidebarButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
 
+	@Then("Enter random company name")
+	public void enterRandomCompanyName() {
+		Pages.newResearchPage().enterRandomCompanyName();
+	}
 
-    @When("Click on the [Requirements View] sidebar button")
-    public void clickOnTheCRequirementsViewSidebarButton() {
-        Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
-        SelenideTools.sleep(2);
-        Pages.atlasDashboardManagementPage().clickRequirementsViewSidebarButton();
-        SelenideTools.sleep(10);
-        SelenideTools.switchToLastTab();
-    }
+	@Then("Select {int} company name")
+	public void enterRandomCompanyName(int index) {
+		Pages.newResearchPage().selectCompanyName(index);
+	}
 
-    @When("Click on the [Audit Logs] sidebar button")
-    public void clickOnTheAuditLogsSidebarButton() {
-        Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
-        SelenideTools.sleep(2);
-        Pages.atlasDashboardManagementPage().clickAuditLogsSidebarButton();
-        SelenideTools.sleep(10);
-        SelenideTools.switchToLastTab();
-    }
+	@And("Enter random facility name")
+	public void enterRandomFacilityName() {
+		Pages.newResearchPage().enterRandomFacilityName();
+	}
 
-    @Then("Enter random company name")
-    public void enterRandomCompanyName() {
-        Pages.newResearchPage().enterRandomCompanyName();
-    }
+	@When("Click on the delete button of {int} displayed configuration on the [Configuration] page")
+	public void clickOnTheDeleteButtonOfAnyDisplayedConfigurationOnTheConfigurationPage(int number) {
+		Pages.newResearchPage().clickOnTheDeleteButton(number);
+	}
 
-    @Then("Select {int} company name")
-    public void enterRandomCompanyName(int index) {
-        Pages.newResearchPage().selectCompanyName(index);
-    }
+	@When("Click on the delete button of any displayed configuration with status {string} on the [Configuration] page")
+	public void clickOnTheDeleteButtonOfAnyDisplayedConfigurationOnTheConfigurationPage(String status) {
+		Pages.newResearchPage().clickOnTheDeleteButtonWithStatus(status);
+	}
 
-    @And("Enter random facility name")
-    public void enterRandomFacilityName() {
-        Pages.newResearchPage().enterRandomFacilityName();
-    }
+	@Then("Verify that alert message with {string} message is displayed")
+	public void verifyThatAlertMessageWithMessageIsDisplayed(String message) {
+		SelenideTools.sleep(1);
+		Assert.assertEquals(message, Pages.newResearchPage().getAlertMessage());
+	}
 
-    @When("Click on the delete button of {int} displayed configuration on the [Configuration] page")
-    public void clickOnTheDeleteButtonOfAnyDisplayedConfigurationOnTheConfigurationPage(int number) {
-        Pages.newResearchPage().clickOnTheDeleteButton(number);
-    }
+	@And("Click on Yes Delete button on the alert window")
+	public void clickOnYesDeleteButtonOnTheAlertWindow() {
+		Pages.newResearchPage().clickYesDeleteButton();
+		SelenideTools.sleep(10);
+	}
 
-    @When("Click on the delete button of any displayed configuration with status {string} on the [Configuration] page")
-    public void clickOnTheDeleteButtonOfAnyDisplayedConfigurationOnTheConfigurationPage(String status) {
-        Pages.newResearchPage().clickOnTheDeleteButtonWithStatus(status);
-    }
+	@And("Verify that the configuration is deleted on the [Configuration] page")
+	public void verifyThatTheConfigurationIsDeletedOnTheConfigurationPage() {
+		SelenideTools.sleep(10);
+		Assert.assertTrue(Pages.newResearchPage().verifyThatTheJobIsDeleted());
+	}
 
-    @Then("Verify that alert message with {string} message is displayed")
-    public void verifyThatAlertMessageWithMessageIsDisplayed(String message) {
-        SelenideTools.sleep(1);
-        Assert.assertEquals(message, Pages.newResearchPage().getAlertMessage());
-    }
+	@When("Select newly created job on the [New Research] page")
+	public void selectNewlyCreatedJobOnTheNewResearchPage() {
+		Pages.newResearchPage().selectNewlyCreatedJob();
+		Pages.newResearchPage().clickCopyFromResearchButton();
+	}
 
-    @And("Click on Yes Delete button on the alert window")
-    public void clickOnYesDeleteButtonOnTheAlertWindow() {
-        Pages.newResearchPage().clickYesDeleteButton();
-        SelenideTools.sleep(10);
-    }
+	@And("Click on the [Surveillance Setup] breadcrumb")
+	public void clickOnTheSurveillanceSetupBreadcrumb() {
+		Pages.newResearchPage().clickOnSurveillanceSetupBreadcrumb();
+	}
 
-    @And("Verify that the configuration is deleted on the [Configuration] page")
-    public void verifyThatTheConfigurationIsDeletedOnTheConfigurationPage() {
-        SelenideTools.sleep(10);
-        Assert.assertTrue(Pages.newResearchPage().verifyThatTheJobIsDeleted());
-    }
+	@And("Click on Yes Delete button on the alert window if visible")
+	public void clickOnYesDeleteButtonOnTheAlertWindowIfVisible() {
+		Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+	}
 
-    @When("Select newly created job on the [New Research] page")
-    public void selectNewlyCreatedJobOnTheNewResearchPage() {
-        Pages.newResearchPage().selectNewlyCreatedJob();
-        Pages.newResearchPage().clickCopyFromResearchButton();
-    }
+	@Then("Verify that alert message about submitted job deletion is displayed")
+	public void verifyThatAlertMessageAboutSubmittedJobDeletionIsDisplayed() {
+		Assert.assertTrue(Pages.newResearchPage().getAlertSubmittedJobMessage()
+				.contains("Note that all versions of the Results for"));
+	}
 
-    @And("Click on the [Surveillance Setup] breadcrumb")
-    public void clickOnTheSurveillanceSetupBreadcrumb() {
-        Pages.newResearchPage().clickOnSurveillanceSetupBreadcrumb();
-    }
+	@And("Click on Yes Delete button on the alert window for the second time")
+	public void clickOnYesDeleteButtonOnTheAlertWindowForTheSecondTime() {
+		Pages.newResearchPage().clickYesDeleteButtonForTheSecondTime();
+	}
 
-    @And("Click on Yes Delete button on the alert window if visible")
-    public void clickOnYesDeleteButtonOnTheAlertWindowIfVisible() {
-        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-    }
+	@And("Click on Yes Delete button on the alert window for the third time")
+	public void clickOnYesDeleteButtonOnTheAlertWindowForTheThirdTime() {
+		Pages.newResearchPage().clickYesDeleteButtonForTheThirdTime();
+	}
 
-    @Then("Verify that alert message about submitted job deletion is displayed")
-    public void verifyThatAlertMessageAboutSubmittedJobDeletionIsDisplayed() {
-        Assert.assertTrue(Pages.newResearchPage().getAlertSubmittedJobMessage().contains("Note that all versions of the Results for"));
-    }
+	@Then("Verify that second alert message with {string} message is displayed")
+	public void verifyThatSecondAlertMessageWithMessageIsDisplayed(String message) {
+		Assert.assertEquals(Pages.newResearchPage().getSecondAlertMessage(), message);
+	}
 
-    @And("Click on Yes Delete button on the alert window for the second time")
-    public void clickOnYesDeleteButtonOnTheAlertWindowForTheSecondTime() {
-        Pages.newResearchPage().clickYesDeleteButtonForTheSecondTime();
-    }
+	@Then("Select {int} facility name")
+	public void selectFacilityName(int index) {
+		Pages.newResearchPage().selectFacilityName(index);
+	}
 
-    @And("Click on Yes Delete button on the alert window for the third time")
-    public void clickOnYesDeleteButtonOnTheAlertWindowForTheThirdTime() {
-        Pages.newResearchPage().clickYesDeleteButtonForTheThirdTime();
-    }
+	@And("Get table records on [Research Results] page")
+	public void getTableRecordsOnResearchResultsPage() {
+		Pages.viewResultsPage().getResearchResultsTableData();
+	}
 
-    @Then("Verify that second alert message with {string} message is displayed")
-    public void verifyThatSecondAlertMessageWithMessageIsDisplayed(String message) {
-        Assert.assertEquals(Pages.newResearchPage().getSecondAlertMessage(),message);
-    }
+	@Then("Delete newly created configuration with status {string}")
+	public void deleteNewlyCreatedConfiguration(String status) {
+		Pages.newResearchPage().clickOnTheDeleteButton(status);
+		Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+		Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+		Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+		Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+		SelenideTools.sleep(10);
+	}
 
-    @Then("Select {int} facility name")
-    public void selectFacilityName(int index) {
-        Pages.newResearchPage().selectFacilityName(index);
-    }
+	@And("Pop up window with {string} message is displayed")
+	public void popUpWindowWithMessageIsDisplayed(String message) {
+		Assert.assertTrue(Pages.newResearchPage().isPopupMessageVisible());
+		Assert.assertEquals(Pages.newResearchPage().getPopUpMessage(), message);
+	}
 
-    @And("Get table records on [Research Results] page")
-    public void getTableRecordsOnResearchResultsPage() {
-        Pages.viewResultsPage().getResearchResultsTableData();
-    }
+	@And("Close pop up window")
+	public void closePopUpWindow() {
+		Pages.newResearchPage().closePopUpWindow();
+		SelenideTools.refresh();
+	}
 
-    @Then("Delete newly created configuration with status {string}")
-    public void deleteNewlyCreatedConfiguration(String status) {
-        Pages.newResearchPage().clickOnTheDeleteButton(status);
-        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-        Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-        SelenideTools.sleep(10);
-    }
+	@Then("Click on the [Configuration] sidebar button on Lighthouse")
+	public void clickOnTheConfigurationSidebarButtonOnLighthouse() {
+		Pages.newResearchPage().clickConfigurationSidebarButton();
+	}
 
-    @And("Pop up window with {string} message is displayed")
-    public void popUpWindowWithMessageIsDisplayed(String message) {
-        Assert.assertTrue(Pages.newResearchPage().isPopupMessageVisible());
-        Assert.assertEquals(Pages.newResearchPage().getPopUpMessage(),message);
-    }
+	@When("Click on the 'Back' browser button")
+	public void clickOnTheBackBrowserButton() {
+		SelenideTools.getDriver().navigate().back();
+	}
 
-    @And("Close pop up window")
-    public void closePopUpWindow() {
-        Pages.newResearchPage().closePopUpWindow();
-        SelenideTools.refresh();
-    }
+	@When("Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse")
+	public void clickOnTheSurveillanceIntelligenceSidebarCollapseButtonOnLighthouse() {
+		Pages.newResearchPage().clickSurveillanceIntelligenceCollapseButton();
+	}
 
-    @Then("Click on the [Configuration] sidebar button on Lighthouse")
-    public void clickOnTheConfigurationSidebarButtonOnLighthouse() {
-        Pages.newResearchPage().clickConfigurationSidebarButton();
-    }
-
-    @When("Click on the 'Back' browser button")
-    public void clickOnTheBackBrowserButton() {
-        SelenideTools.getDriver().navigate().back();
-    }
-
-    @When("Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse")
-    public void clickOnTheSurveillanceIntelligenceSidebarCollapseButtonOnLighthouse() {
-        Pages.newResearchPage().clickSurveillanceIntelligenceCollapseButton();
-    }
-
-    @And("Delete job from the table if exists")
-    public void deleteJobFromTheTableIfExists() {
-        if(Pages.newResearchPage().getNumberOfJobs()!=0) {
-            Pages.newResearchPage().clickOnTheDeleteButton(0);
-            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-            Pages.newResearchPage().clickYesDeleteButtonIfVisible();
-            SelenideTools.sleep(10);
-        }
-    }
+	@And("Delete job from the table if exists")
+	public void deleteJobFromTheTableIfExists() {
+		if (Pages.newResearchPage().getNumberOfJobs() != 0) {
+			Pages.newResearchPage().clickOnTheDeleteButton(0);
+			Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+			Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+			Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+			Pages.newResearchPage().clickYesDeleteButtonIfVisible();
+			SelenideTools.sleep(10);
+		}
+	}
 
 
     @When("Create a new surveillance with status [Incomplete] for {string} client with {int} company name, {int} facility name and {string} state")
