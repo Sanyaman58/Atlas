@@ -115,5 +115,11 @@ public class ManagementAdminPageStepDefinitions {
 	public void verifyEuiStatesNotVisible() {
 		Pages.clientMasterPage().euiStatesNotVisible();
 	}
+	
+	@And("Verify the [Progress Bar] against the newly created job on the screen")
+	public void verifyProgressBar() {
+		Pages.clientMasterPage().progressBarOfNewJob();
+		SelenideTools.sleep(70);
+	}
 
 }
