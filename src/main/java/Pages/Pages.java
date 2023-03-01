@@ -62,14 +62,12 @@ public class Pages extends AllureLogger {
 		return clientMasterPage;
 	}
 
-<<<<<<< HEAD
 	public static JurisdictionPage jurisdictionPage() {
 		if (jurisdictionPage == null) {
 			jurisdictionPage = new JurisdictionPage();
 		}
 		return jurisdictionPage;
 	}
-=======
     public static ResearchNotificationPage researchNotificationPage() {
         if (researchNotificationPage == null) {
             researchNotificationPage = new ResearchNotificationPage();
@@ -83,14 +81,13 @@ public class Pages extends AllureLogger {
         }
         return questionnairePage;
     }
->>>>>>> 8f80843aea2ea688a8ad86ac1b6e8eec0cb4f2a4
 
-	public static QuestionnairePage questionnairePage() {
-		if (questionnairePage == null) {
-			questionnairePage = new QuestionnairePage();
-		}
-		return questionnairePage;
-	}
+	// public static QuestionnairePage questionnairePage() {
+	// 	if (questionnairePage == null) {
+	// 		questionnairePage = new QuestionnairePage();
+	// 	}
+	// 	return questionnairePage;
+	// }
 
 	public static SaveSubmitJobPage saveSubmitJobPage() {
 		if (saveSubmitJobPage == null) {
@@ -169,7 +166,6 @@ public class Pages extends AllureLogger {
 		return auditLogsAdminPage;
 	}
 
-<<<<<<< HEAD
 	public static AtlasDashboardManagementPage atlasDashboardManagementPage() {
 		if (atlasDashboardManagementPage == null) {
 			atlasDashboardManagementPage = new AtlasDashboardManagementPage();
@@ -183,7 +179,6 @@ public class Pages extends AllureLogger {
 		}
 		return versionRequirementsAdminPage;
 	}
-=======
     public static RequirementsPage requirementsPage() {
         if (requirementsPage == null) {
             requirementsPage = new RequirementsPage();
@@ -191,13 +186,12 @@ public class Pages extends AllureLogger {
         return requirementsPage;
     }
 
-    public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
-        if (versionRequirementsAdminPage == null) {
-            versionRequirementsAdminPage = new VersionRequirementsAdminPage();
-        }
-        return versionRequirementsAdminPage;
-    }
->>>>>>> 8f80843aea2ea688a8ad86ac1b6e8eec0cb4f2a4
+    // public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
+    //     if (versionRequirementsAdminPage == null) {
+    //         versionRequirementsAdminPage = new VersionRequirementsAdminPage();
+    //     }
+    //     return versionRequirementsAdminPage;
+    // }
 
     public static EUIVersionAdminPage euiVersionAdminPage() {
         if (euiVersionAdminPage == null) {

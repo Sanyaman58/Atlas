@@ -364,19 +364,12 @@ public class NewResearchPage extends PageTools {
 		doubleClick(alertYesDeleteButton, 3);
 	}
 
-<<<<<<< HEAD
-	public boolean verifyThatTheJobIsDeleted() {
-		for (SelenideElement element : getElements(tableJobs)) {
-			if (element.findElement(By.xpath("./td[2]")).getText().equals(companyName))
-				if (element.findElement(By.xpath("./td[3]")).getText().equals(facilityName))
-=======
 	public boolean verifyThatTheJobIsDeleted(){
 		if(isElementVisible(noDataInTable))
 			return true;
 		for (SelenideElement element: getElements(tableJobs)) {
 			if(element.findElement(By.xpath("./td[2]")).getText().equals(companyName))
 				if(element.findElement(By.xpath("./td[3]")).getText().equals(facilityName))
->>>>>>> 8f80843aea2ea688a8ad86ac1b6e8eec0cb4f2a4
 					return false;
 		}
 		return true;
