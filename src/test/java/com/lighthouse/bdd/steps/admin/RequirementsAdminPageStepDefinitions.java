@@ -403,4 +403,9 @@ public class RequirementsAdminPageStepDefinitions {
     public void theRecordsWithJurisdictionIsDisplayedInTheTableOnTheRequirementViewPage(String jurisdiction) {
         Assert.assertTrue(Pages.requirementsAdminPage().isTableRecordWithJurisdictionDisplayed(jurisdiction));
     }
+
+    @When("Save old requirement name on the [Requirements View] page")
+    public void saveOldRequirementNameOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().saveOldRequirementsName();
+    }
 }

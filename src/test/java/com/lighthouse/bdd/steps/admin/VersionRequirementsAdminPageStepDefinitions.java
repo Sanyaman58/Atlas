@@ -67,6 +67,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
     }
 
+    @Then("Enter requirement name in the search field on the [Versioned Requirements] page")
+    public void enterRequirementNameInTheSearchFieldOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterTextInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
+
     @Then("Enter requirement name from the [Research Notifications] page in the requirement search on the [Versioned Requirements] page")
     public void enterRequirementNameFromResearchNotificationsInTheRequirementSearchOnTheRequirementsViewPage() {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.researchNotificationPage().getRequirementName());
@@ -75,6 +80,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
     @Then("Click on the [Approve Requirement] button of the record by {int} index on the [Versioned Requirements] page")
     public void clickOnTheApproveRequirementButtonOfTheNewlyCreatedRecordOnTheVersionedRequirementsPage(int index) {
         Pages.versionRequirementsAdminPage().clickOnApproveRequirementButton(index-1);
+    }
+
+    @Then("Click on the [Delete Requirement] button of the record by {int} index on the [Versioned Requirements] page")
+    public void clickOnTheDeleteRequirementButtonOfTheNewlyCreatedRecordOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().clickOnDeleteRequirementButton(index-1);
     }
 
     @Then("Click on the [Activate Requirement] button of the record by {int} index on the [Versioned Requirements] page")
@@ -196,5 +206,30 @@ public class VersionRequirementsAdminPageStepDefinitions {
     @When("Enter {string} note in the Change Note For Customer section on the [Versioned Requirements] page")
     public void enterNoteInTheChangeNoteForCustomerSectionOnTheVersionedRequirementsPage(String text) {
         Pages.versionRequirementsAdminPage().enterChangeNoteForCustomer(text);
+    }
+
+    @When("Get text from the search field on the [Versioned Requirements] page")
+    public void getTextFromTheSearchFieldOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().saveTextFromSearchField();
+    }
+
+    @Then("Verify that text in the search field is the same on the [Versioned Requirements] page")
+    public void verifyThatTextInTheSearchFieldIsTheSameOnTheVersionedRequirementsPage() {
+        Assert.assertEquals(Pages.versionRequirementsAdminPage().getTextFromSearchField(),(Pages.versionRequirementsAdminPage().getSearchFieldText()));
+    }
+
+    @And("Verify that record with the new requirement name is displayed on the [Versioned Requirements] page")
+    public void verifyThatRecordWithTheNewRequirementNameIsDisplayedOnTheVersionedRequirementsPage() {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRecordWithRequirementNameDisplayed(Pages.requirementsAdminPage().getRequirementName()));
+    }
+
+    @And("Verify that record with the old requirement name is not displayed on the [Versioned Requirements] page")
+    public void verifyThatRecordWithTheOldRequirementNameIsNotDisplayedOnTheVersionedRequirementsPage() {
+        Assert.assertFalse(Pages.versionRequirementsAdminPage().isRecordWithRequirementNameDisplayed(Pages.requirementsAdminPage().getOldRequirementName()));
+    }
+
+    @Then("Enter old requirement name in the requirement search on the [Versioned Requirements] page")
+    public void enterOldRequirementNameInTheRequirementSearchOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getOldRequirementName());
     }
 }
