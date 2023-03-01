@@ -8,6 +8,11 @@ import org.openqa.selenium.By;
 
 public class AtlasDashboardManagementPage extends PageTools {
 	By dashboardGrid = By.xpath("//a[text()[contains(.,'Dashboard')]] | //a[@href='https://stagingatlas.pharma.solutions/Dashboard'] | //img[@src='https://stagingatlas.pharma.solutions/theme/build/images/Group 907_p.svg']");
+	By requirementsManagementCollapse = By.xpath("//ul[@id='menu']/li[4]");
+	By requirementsSidebarButton = By.xpath("//ul[@id='menu']/li[4]/ul/li/a");
+	By activitiesSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[2]");
+	By tasksSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[3]");
+
 	By surveillanceIntelligenceSidebarCollapse = By.xpath("//ul[@id='menu']/li[5]");
 	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li/a");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
@@ -41,6 +46,25 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public boolean isDashboardPageOpened(){
 		SelenideTools.sleep(2);
 		return isElementVisible(dashboardGrid);
+	}
+	public void clickRequirementsManagementSidebarCollapseButton() {
+		waitForElementVisibility(requirementsManagementCollapse);
+		click(requirementsManagementCollapse);
+	}
+
+	public void clickRequirementsSidebarButton() {
+		waitForElementVisibility(requirementsSidebarButton);
+		click(requirementsSidebarButton);
+	}
+
+	public void clickActivitiesSidebarButton() {
+		waitForElementVisibility(activitiesSidebarButton);
+		click(activitiesSidebarButton);
+	}
+
+	public void clickTasksSidebarButton() {
+		waitForElementVisibility(tasksSidebarButton);
+		click(tasksSidebarButton);
 	}
 
 	public void clickSurveillanceIntelligenceSidebarCollapseButton() {

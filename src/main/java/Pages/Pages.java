@@ -2,32 +2,36 @@ package Pages;
 
 import Pages.admin.*;
 import Pages.atlas.AtlasDashboardManagementPage;
+import Pages.atlas.RequirementsPage;
 import Utils.AllureLogger;
 
 public class Pages extends AllureLogger {
-	private static EmailVerificationPage emailVerificationPage;
-	private static LoginPage loginPage;
-	private static NewResearchPage newResearchPage;
-	private static JurisdictionPage jurisdictionPage;
-	private static QuestionnairePage questionnairePage;
-	private static SaveSubmitJobPage saveSubmitJobPage;
-	private static ViewResultsPage viewResultsPage;
+    private static EmailVerificationPage emailVerificationPage;
+    private static LoginPage loginPage;
+    private static NewResearchPage newResearchPage;
+    private static JurisdictionPage jurisdictionPage;
+    private static QuestionnairePage questionnairePage;
+    private static SaveSubmitJobPage saveSubmitJobPage;
+    private static ViewResultsPage viewResultsPage;
+    private static ResearchNotificationPage researchNotificationPage;
 
-	// Admin //
-	private static LoginAdminPage loginAdminPage;
-	private static ResearchAdminPage researchAdminPage;
-	private static RequirementsAdminPage requirementsAdminPage;
-	private static QuestionnaireAdminPage questionnaireAdminPage;
-	private static EndsUpInStatesAdminPage endsUpInStatesAdminPage;
-	private static ViewRequirementsAdminPage viewRequirementsAdminPage;
-	private static VersionRequirementsAdminPage versionRequirementsAdminPage;
-	private static EditRequirementAdminPage editRequirementAdminPage;
-	private static AuditLogsAdminPage auditLogsAdminPage;
-	private static ActivityLogsPage activityLogsPage;
-	private static ClientMasterPage clientMasterPage;
+    //                              Admin                                   //
+    private static LoginAdminPage loginAdminPage;
+    private static ResearchAdminPage researchAdminPage;
+    private static RequirementsAdminPage requirementsAdminPage;
+    private static QuestionnaireAdminPage questionnaireAdminPage;
+    private static EndsUpInStatesAdminPage endsUpInStatesAdminPage;
+    private static ViewRequirementsAdminPage viewRequirementsAdminPage;
+    private static VersionRequirementsAdminPage versionRequirementsAdminPage;
+    private static EditRequirementAdminPage editRequirementAdminPage;
+    private static AuditLogsAdminPage auditLogsAdminPage;
+    private static ActivityLogsPage activityLogsPage;
+    private static ClientMasterPage clientMasterPage;
+    private static EUIVersionAdminPage euiVersionAdminPage;
 
-	// Atlas //
-	private static AtlasDashboardManagementPage atlasDashboardManagementPage;
+    //                              Atlas                                  //
+    private static AtlasDashboardManagementPage atlasDashboardManagementPage;
+    private static RequirementsPage requirementsPage;
 
 	public static LoginPage loginPage() {
 		if (loginPage == null) {
@@ -58,12 +62,28 @@ public class Pages extends AllureLogger {
 		return clientMasterPage;
 	}
 
+<<<<<<< HEAD
 	public static JurisdictionPage jurisdictionPage() {
 		if (jurisdictionPage == null) {
 			jurisdictionPage = new JurisdictionPage();
 		}
 		return jurisdictionPage;
 	}
+=======
+    public static ResearchNotificationPage researchNotificationPage() {
+        if (researchNotificationPage == null) {
+            researchNotificationPage = new ResearchNotificationPage();
+        }
+        return researchNotificationPage;
+    }
+
+    public static QuestionnairePage questionnairePage() {
+        if (questionnairePage == null) {
+            questionnairePage = new QuestionnairePage();
+        }
+        return questionnairePage;
+    }
+>>>>>>> 8f80843aea2ea688a8ad86ac1b6e8eec0cb4f2a4
 
 	public static QuestionnairePage questionnairePage() {
 		if (questionnairePage == null) {
@@ -149,6 +169,7 @@ public class Pages extends AllureLogger {
 		return auditLogsAdminPage;
 	}
 
+<<<<<<< HEAD
 	public static AtlasDashboardManagementPage atlasDashboardManagementPage() {
 		if (atlasDashboardManagementPage == null) {
 			atlasDashboardManagementPage = new AtlasDashboardManagementPage();
@@ -162,5 +183,27 @@ public class Pages extends AllureLogger {
 		}
 		return versionRequirementsAdminPage;
 	}
+=======
+    public static RequirementsPage requirementsPage() {
+        if (requirementsPage == null) {
+            requirementsPage = new RequirementsPage();
+        }
+        return requirementsPage;
+    }
+
+    public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
+        if (versionRequirementsAdminPage == null) {
+            versionRequirementsAdminPage = new VersionRequirementsAdminPage();
+        }
+        return versionRequirementsAdminPage;
+    }
+>>>>>>> 8f80843aea2ea688a8ad86ac1b6e8eec0cb4f2a4
+
+    public static EUIVersionAdminPage euiVersionAdminPage() {
+        if (euiVersionAdminPage == null) {
+            euiVersionAdminPage = new EUIVersionAdminPage();
+        }
+        return euiVersionAdminPage;
+    }
 
 }
