@@ -45,6 +45,9 @@ public class ClientMasterPage extends PageTools {
 	By setupPageNextButton = By.xpath("//*[@id=\"submit-new\"]");
 	By existingConfiguration = By.xpath("//*[@id=\"DataTables_Table_0\"]//tbody//tr");
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By jobProgressBar = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]/div/div");
+	By jobPendingStatusText = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]");
+	
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -243,6 +246,20 @@ public class ClientMasterPage extends PageTools {
 	public void euiStatesNotVisible() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = "+ endUpInStatesTitleElement);
+	}
+	
+	public void progressBarOfNewJob() {
+		SelenideElement progressBarElement = getSelenideElement(jobProgressBar).shouldBe(Condition.visible);
+		progressBarElement.isDisplayed();
+		
+		SelenideElement progressBarTextElement = getSelenideElement(jobPendingStatusText).shouldBe(Condition.visible);
+		System.out.println("Progress bar text = "+ progressBarTextElement.getText());
+		if(progressBarTextElement.getText().contains("Result Pending")) {
+			System.out.println("Progress bar contains text as = "+ progressBarTextElement.getText());
+		}
+		else {
+			System.out.println("Text mismatch");
+		}
 	}
 	
 	
