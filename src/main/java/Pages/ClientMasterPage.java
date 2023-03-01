@@ -152,10 +152,9 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 
-	public void nouserRoleCompliancePresentInDropdown() {
+	public boolean nouserRoleCompliancePresentInDropdown() {
 		SelenideElement userRoleCount = getSelenideElement(userRoleComplianceDropdownElements);
-		Assert.assertFalse(userRoleCount.isDisplayed());
-
+		return isElementVisible(userRoleComplianceDropdownElements);
 	}
 
 }
