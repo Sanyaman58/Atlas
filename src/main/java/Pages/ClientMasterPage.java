@@ -55,12 +55,23 @@ public class ClientMasterPage extends PageTools {
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By jobProgressBar = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]/div/div");
 	By jobPendingStatusText = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]");
+
+	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
+	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[9]/a");
+	By permissionsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By deleteFacilityCheckbox = By.xpath("//input[@name=\"permissions[1][delete_facility]\"]");
+	By updatePermissionButton = By.xpath("//*[text()=\"Update Permission\"]");
+	By profileDropdownButton = By.xpath("//*[@id=\"dropdown06\"]");
+	By logoutOption = By.xpath("/html/body/header/nav/div[2]/ul/li[1]/div/a[2]");
+
+	By deleteActionButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button");
+	By deletePopupExitButton = By.xpath("//*[@id=\"confirmation-modal\"]/div/div/div[3]/button[1]");
+
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
 	String categoryName;
 	String requirementTypeName;
 	String All;
-
 
 	public void clickClientMasterSidebarButton() {
 		waitForElementVisibility(clientMasterSidebarButton);
@@ -341,26 +352,101 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Next button is disabled");
 		}
 	}
-	
+
 	public void euiStatesNotVisible() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
-		System.out.println("Element displayed = "+ endUpInStatesTitleElement);
+		System.out.println("Element displayed = " + endUpInStatesTitleElement);
 	}
-	
+
 	public void progressBarOfNewJob() {
 		SelenideElement progressBarElement = getSelenideElement(jobProgressBar).shouldBe(Condition.visible);
 		progressBarElement.isDisplayed();
-		
+
 		SelenideElement progressBarTextElement = getSelenideElement(jobPendingStatusText).shouldBe(Condition.visible);
-		System.out.println("Progress bar text = "+ progressBarTextElement.getText());
-		if(progressBarTextElement.getText().contains("Result Pending")) {
-			System.out.println("Progress bar contains text as = "+ progressBarTextElement.getText());
-		}
-		else {
+		System.out.println("Progress bar text = " + progressBarTextElement.getText());
+		if (progressBarTextElement.getText().contains("Result Pending")) {
+			System.out.println("Progress bar contains text as = " + progressBarTextElement.getText());
+		} else {
 			System.out.println("Text mismatch");
 		}
 	}
-	
-	
+
+	public void clickIntelligenceAdminDropdownButton() {
+		waitForElementVisibility(intelligenceAdminDropdownButton);
+		click(intelligenceAdminDropdownButton);
+		SelenideTools.sleep(1);
+	}
+
+	public void clickPermissionsSidebarButton() {
+		waitForElementVisibility(permissionsSidebarButton);
+		click(permissionsSidebarButton);
+		SelenideTools.sleep(1);
+	}
+
+	public boolean isPermissionsPageOpened() {
+		waitForElementVisibility(permissionsPageTitle);
+		return isElementVisible(permissionsPageTitle);
+	}
+
+	public void disableDeleteFacilityCheckbox() {
+		waitForElementVisibility(deleteFacilityCheckbox);
+		SelenideElement deleteFacilityCheckboxElement = getSelenideElement(deleteFacilityCheckbox);
+		if (deleteFacilityCheckboxElement.isSelected()) {
+			deleteFacilityCheckboxElement.click();
+		} else {
+			System.out.println("Checkbox is already disabled");
+		}
+	}
+
+	public void clickUpdatePermission() {
+		waitForElementVisibility(updatePermissionButton);
+		click(updatePermissionButton);
+		SelenideTools.sleep(1);
+	}
+
+	public void userLogout() {
+		waitForElementVisibility(profileDropdownButton);
+		click(profileDropdownButton);
+		SelenideTools.sleep(3);
+		waitForElementVisibility(logoutOption);
+		click(logoutOption);
+		SelenideTools.sleep(10);
+	}
+
+	public void deleteActionButton() {
+		waitForElementVisibility(deleteActionButton);
+		SelenideElement deleteActionButtonElelment = getSelenideElement(deleteActionButton);
+		String classAttribute = deleteActionButtonElelment.getAttribute("class");
+		if (classAttribute.contains("disabled")) {
+			System.out.println("Delete button is disabled");
+		} else {
+			System.out.println("Delete button is enabled");
+		}
+	}
+
+	public void enableDeleteFacilityCheckbox() {
+		waitForElementVisibility(deleteFacilityCheckbox);
+		SelenideElement deleteFacilityCheckboxElement = getSelenideElement(deleteFacilityCheckbox);
+		if (deleteFacilityCheckboxElement.isSelected()) {
+			System.out.println("Checkbox is already enabled");
+		} else {
+			deleteFacilityCheckboxElement.click();
+		}
+	}
+
+	public void deleteActionButtonEnabledAndClick() {
+		waitForElementVisibility(deleteActionButton);
+		SelenideElement deleteActionButtonElelment = getSelenideElement(deleteActionButton);
+		String classAttribute = deleteActionButtonElelment.getAttribute("class");
+		if (classAttribute.contains("disabled")) {
+			System.out.println("Delete button is disabled");
+		} else {
+			System.out.println("Delete button is enabled");
+		}
+		deleteActionButtonElelment.click();
+		SelenideTools.sleep(1);
+		waitForElementVisibility(deletePopupExitButton);
+		click(deletePopupExitButton);
+	}
 
 }
