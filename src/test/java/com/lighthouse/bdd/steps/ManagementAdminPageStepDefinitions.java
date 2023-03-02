@@ -49,7 +49,7 @@ public class ManagementAdminPageStepDefinitions {
 		SelenideTools.sleep(2);
 		Pages.clientMasterPage().clickUserMasterSidebarButton();
 	}
-	
+
 	@And("Check or uncheck the jurisdiction checkbox on [End Up in States]")
 	public void checkOrUncheckJurisdictionCheckbox() {
 		Pages.clientMasterPage().chekcUncheckEuiCheckbox();
@@ -151,7 +151,7 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().clickRolesComplianceIntelligenceDropdown();
 		Pages.clientMasterPage().nouserRoleCompliancePresentInDropdown();
 	}
-	
+
 	@And("Click on [Activity Logs] option of the line item")
 	public void clickActivityLogsOption() {
 		Pages.clientMasterPage().clickActivityLogOfLineItem();
@@ -168,16 +168,59 @@ public class ManagementAdminPageStepDefinitions {
 		SelenideTools.sleep(4);
 		Pages.clientMasterPage().verifyNextButtonEnabled();
 	}
-	
+
 	@And("Verify no [EUI] states are visible")
 	public void verifyEuiStatesNotVisible() {
 		Pages.clientMasterPage().euiStatesNotVisible();
 	}
-	
+
 	@And("Verify the [Progress Bar] against the newly created job on the screen")
 	public void verifyProgressBar() {
 		Pages.clientMasterPage().progressBarOfNewJob();
 		SelenideTools.sleep(70);
+	}
+
+	@When("Click the [Permissions] button on the left sidebar")
+	public void clickPermissionsButton() {
+		Pages.clientMasterPage().clickIntelligenceAdminDropdownButton();
+		Pages.clientMasterPage().clickPermissionsSidebarButton();
+		SelenideTools.switchToLastTab();
+	}
+
+	@Then("Verify [Permissions] page is opened")
+	public void verifyPermissionsPageOpened() {
+		Assert.assertTrue(Pages.clientMasterPage().isPermissionsPageOpened());
+	}
+
+	@And("Disable the [Delete Facility] checkbox for [System Admin]")
+	public void disableDeleteFacilityCheckboxOfSystemAdmin() {
+		Pages.clientMasterPage().disableDeleteFacilityCheckbox();
+	}
+
+	@And("Click on [Update Permission] button")
+	public void clickUpdatePermissionsButton() {
+		Pages.clientMasterPage().clickUpdatePermission();
+		SelenideTools.sleep(5);
+	}
+
+	@And("Logout from the application")
+	public void logout() {
+		Pages.clientMasterPage().userLogout();
+	}
+
+	@And("Verify that the [Delete] action button is diabled")
+	public void verifyDeleteActionButton() {
+		Pages.clientMasterPage().deleteActionButton();
+	}
+
+	@And("Enable the [Delete Facility] checkbox for [System Admin]")
+	public void enableDeleteFacilityCheckboxOfSystemAdmin() {
+		Pages.clientMasterPage().enableDeleteFacilityCheckbox();
+	}
+
+	@And("Verify Delete button is enabled and click on it")
+	public void verifyDeleteActionButtonEnabledAndClick() {
+		Pages.clientMasterPage().deleteActionButtonEnabledAndClick();
 	}
 
 }
