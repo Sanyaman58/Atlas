@@ -34,6 +34,10 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	String requirementSku;
 	String changeNoteText;
+	String searchFieldText;
+	public String getSearchFieldText(){
+		return searchFieldText;
+	}
 	public String getChangeNoteText(){
 		return changeNoteText;
 	}
@@ -176,7 +180,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public void clickOnDeleteRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
 		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
-		getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[11]/div/button[@title='Delete Latest Requirement']")).click();
+		getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/button[@title='Delete Latest Requirement']")).click();
 	}
 
 	public void clickOnDeleteRequirementButton(String status){
@@ -300,6 +304,18 @@ public class VersionRequirementsAdminPage extends PageTools {
 		type(requirementName, requirementNameSearchField);
 	}
 
+	public void saveTextFromSearchField(){
+		waitForElementVisibility(requirementNameSearchField);
+		System.out.println("Value - "+getSelenideElement(requirementStatusSearchField).getValue());
+		System.out.println("Text - "+getSelenideElement(requirementStatusSearchField).getText());
+		searchFieldText = getSelenideElement(requirementStatusSearchField).getValue();
+	}
+
+	public String getTextFromSearchField(){
+		waitForElementVisibility(requirementNameSearchField);
+		return getSelenideElement(requirementNameSearchField).getValue();
+	}
+
 	public void enterRequirementQueryCriteriaInTheSearchField(String requirementQuery){
 		waitForElementVisibility(requirementQueryCriteriaSearchField);
 		type(requirementQuery, requirementQueryCriteriaSearchField);
@@ -343,5 +359,18 @@ public class VersionRequirementsAdminPage extends PageTools {
 		waitForElementVisibility(changeNoteForCustomerInput);
 		type(text, changeNoteForCustomerInput);
 		changeNoteText = text;
+	}
+
+	public boolean isRecordWithRequirementNameDisplayed(String requirementName){
+		waitForElementVisibility(versionRequirementsTableRecords);
+		if(isNoRecordsFoundMessageDisplayed())
+			return false;
+		for(int i = 0;i < getElements(versionRequirementsTableRecords).size();i++){
+			String requirementNameOfCurrentRecord = getElements(versionRequirementsTableRecords).get(i).findElement(By.xpath("./td[5]")).getText();
+			if(requirementNameOfCurrentRecord.equals(requirementName)){
+				return true;
+			}
+		}
+		return false;
 	}
 }

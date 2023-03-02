@@ -87,12 +87,14 @@ public class RequirementsAdminPage extends PageTools {
 	By RES1OutOfStateRadioButton = By.xpath("//input[@id='non-resident-requirement']/following-sibling::label");
 	By submitForApprovalButton = By.xpath("//button[@id='submit_selected_criteria']");
 	By saveButton = By.xpath("//button[@id='save_selected_criteria']");
+	By noRecords = By.xpath("//td[@class='dataTables_empty']");
 
 	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
 	By intelligenceAdminSidebarCollapseButton = By.xpath("//ul[@id='menu']/li[10]");
 
 	String requirementName;
+	String oldRequirementName;
 	String applicationName;
 	String state;
 	String RESState;
@@ -478,7 +480,9 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void enterRequirementName(String name){
+		SelenideTools.sleep(5);
 		waitForElementVisibility(requirementNameGeneralInformationInput);
+		getSelenideElement(requirementNameGeneralInformationInput).clear();
 		type(name, requirementNameGeneralInformationInput);
 		requirementName = name;
 	}
@@ -645,11 +649,24 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean isTableRecordWithJurisdictionDisplayed(String jurisdiction){
 		waitForElementVisibility(requirementViewersTableRecords);
+		if(isElementVisible(noRecords))
+			return false;
 		for(int i = 0; i < getElements(requirementViewersTableRecords).size();i++){
 			if(!getElements(requirementViewersTableRecords).get(i).findElement(By.xpath("./td[1]")).getText().equals(jurisdiction))
 				return false;
 		}
 		return true;
+	}
+
+	public void saveOldRequirementsName(){
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementNameGeneralInformationInput);
+		oldRequirementName = getSelenideElement(requirementNameGeneralInformationInput).getValue();
+		System.out.println(getSelenideElement(requirementNameGeneralInformationInput).getValue());
+	}
+
+	public String getOldRequirementName(){
+		return oldRequirementName;
 	}
 
 }
