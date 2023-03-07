@@ -60,4 +60,29 @@ public class QuestionnairePageStepDefinitions {
         Pages.questionnairePage().getQuestionsAnswers();
         Assert.assertFalse(Pages.questionnairePage().getQuestionsAnswers().containsValue(false));
     }
+
+    @And("The tooltip near the {int} question is visible on the [Questionnaire] page")
+    public void theTooltipNearTheQuestionIsVisibleOnTheQuestionnairePage(int index) {
+        Assert.assertTrue(Pages.questionnairePage().isTooltipVisible(index));
+    }
+
+    @When("Hover over tooltip near the {int} question on the [Questionnaire] page")
+    public void hoverOverTooltipNearTheQuestionOnTheQuestionnairePage(int index) {
+        Pages.questionnairePage().hoverOverTooltip(index);
+    }
+
+    @Then("The tooltip window is displayed")
+    public void theTooltipWindowIsDisplayed() {
+        Assert.assertTrue(Pages.questionnairePage().isTooltipWindowDisplayed());
+    }
+
+    @And("The tooltip window's comment is {string} on the [Questionnaire] page")
+    public void theTooltipWindowSCommentIsOnTheQuestionnairePage(String comment) {
+        Assert.assertEquals(Pages.questionnairePage().getTooltipWindowComment(), comment);
+    }
+
+    @And("The tooltip window's URL is {string} on the [Questionnaire] page")
+    public void theTooltipWindowSURLIsOnTheQuestionnairePage(String url) {
+        Assert.assertEquals(Pages.questionnairePage().getTooltipWindowURL(), url);
+    }
 }

@@ -14,10 +14,13 @@ public class QuestionnairePage extends PageTools {
     By physicalPossessionSection = By.xpath("//div[@id='questionnaire-container']/div/h4[text()='Physical Possession']");
     By productSection = By.xpath("//div[@id='questionnaire-container']/div/h4[text()='Product']");
     By questions = By.xpath("//div[@id='questionnaire-container']//li/label");
+    By questionTooltip = By.xpath("(//div[@id='questionnaire-container']//li/label)[%s]/following-sibling::span[contains(@id,'comment-info-popover')]/i");
     By answers = By.xpath("//div[@id='questionnaire-container']//li/label/following-sibling::span/input[1]");
     By nextButton = By.xpath("//button[@id='save_questionnaires']");
     By questionnaireBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Questionnaire')]");
     By clearAllButton = By.xpath("//button[@id='clear_all_questionnaire']");
+    By tooltipWindowComment = By.xpath("//div[@class='popover-body']/span[@class='comment-content-data']");
+    By tooltipWindowURL = By.xpath("//div[@class='popover-body']/a[@class='comment-link-data']");
 
 
     HashMap<String,Boolean> questionsAnswers = new HashMap<>();
@@ -82,4 +85,27 @@ public class QuestionnairePage extends PageTools {
         click(clearAllButton);
     }
 
+    public boolean isTooltipVisible(int index){
+        return isElementVisible(questionTooltip, index);
+    }
+
+    public void hoverOverTooltip(int index){
+        waitForElementVisibility(questionTooltip, index);
+        getSelenideElement(questionTooltip, index).hover();
+    }
+
+    public boolean isTooltipWindowDisplayed(){
+        return isElementVisible(tooltipWindowComment);
+    }
+
+    public String getTooltipWindowComment(){
+        waitForElementVisibility(tooltipWindowComment);
+        return getSelenideElement(tooltipWindowComment).getText();
+    }
+
+    public String getTooltipWindowURL(){
+        waitForElementVisibility(tooltipWindowURL);
+        System.out.println(getSelenideElement(tooltipWindowURL).getText());
+        return getSelenideElement(tooltipWindowURL).getAttribute("href");
+    }
 }
