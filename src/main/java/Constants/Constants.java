@@ -16,13 +16,14 @@ public class Constants {
 	public static String outlookUsername = "nikita.danilevskiy@pharma.solutions";
 	public static String outlookPassword = "Shlyapa2";
 
+
 	public static int PROJECT_ID = 3;
 	public static int SUITE_ID = 3;
 	public static String TEST_RAIL_USER = "nikita.danilevskiy@pharma.solutions";
 	public static String TEST_RAIL_PASSWORD = "Testing2022!!";
 	public static String TEST_RAIL_URL = "https://pharmasolutions.testrail.com";
 
-	public final static String DOMAIN_NAME = "QA";
+	public final static String DOMAIN_NAME ="QA";
 	public final static String SUITE_NAME = System.getProperty("suiteXmlFile", "All Tests");
 	public static long TEST_RAIL_RUN_ID = Integer.parseInt(System.getProperty("testRunId", "0"));
 	public final static String TEST_RAIL_RUN_NAME = System.getProperty("testRunName");
@@ -35,9 +36,8 @@ public class Constants {
 
 		CURRENT_TIME = dtf.format(now);
 	}
-	public final static boolean SEND_RESULT_TO_TESTRAIL = Boolean
-			.parseBoolean(System.getProperty("sendResultToRestRail", "false"));
-	public final static boolean SEND_RESULT_TO_TESTRAIL_CUCUMBER = Boolean
-			.parseBoolean(System.getProperty("sendResultToRestRail", "false"));
+	public final static boolean SEND_RESULT_TO_TESTRAIL = Boolean.parseBoolean(System.getProperty("sendResultToRestRail", "false"));
+	public final static boolean SEND_RESULT_TO_TESTRAIL_CUCUMBER = Boolean.parseBoolean(System.getProperty("sendResultToRestRail", "false"));
+
 
 }
