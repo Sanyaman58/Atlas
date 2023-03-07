@@ -92,4 +92,53 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().nouserRoleCompliancePresentInDropdown();
 	}
 
+	@And("Verify the [Surveillance Setup] section")
+	public void verifySurveillanceSetupSection() {
+		Pages.clientMasterPage().clientLabel();
+		Pages.clientMasterPage().companyLabel();
+		Pages.clientMasterPage().facilityLabel();
+		Pages.clientMasterPage().helpToolTip();
+	}
+
+	@And("Validate the [Modify Existing Surveillance Configuration] table elements")
+	public void verifyModifyExistingSurveillanceTableData(List<String> listOfLabels) {
+		Pages.clientMasterPage().surveillancePageTableHeaders(listOfLabels);
+	}
+
+	@And("Verify radio button is enabled")
+	public void verifyRadioButton() {
+		Pages.clientMasterPage().radioButtonEnabled();
+	}
+
+	@And("Verify [Delete] button is clickable")
+	public void verifyDeleteButton() {
+		Pages.clientMasterPage().deleteButtonClickable();
+	}
+
+	@Then("Click surveillance setup [Next] button")
+	public void clickSurveillanceSetupNextButton() {
+		SelenideTools.sleep(10);
+		Pages.clientMasterPage().clickNextButton();
+	}
+
+	@And("Verify the Validation popup")
+	public void verifyNextButtonPopup() {
+		Pages.clientMasterPage().nextButtonValidationPopup();
+	}
+
+	@And("Reload the browser")
+	public void browserReload() {
+		Pages.clientMasterPage().reloadBrowser();
+	}
+
+	@And("Navigate back to surveillance page")
+	public void selectJob() {
+		Pages.clientMasterPage().selectJobOnSurveillancePage();
+	}
+
+	@And("Select radio button of existing job and click Next")
+	public void selectRadioButton() {
+		Pages.clientMasterPage().existingJobRadioButton();
+	}
+
 }
