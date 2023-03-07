@@ -115,11 +115,6 @@ public class NewResearchPageStepDefinitions {
 		Assert.assertTrue(Pages.newResearchPage().isSelectClientVisibleAndClickable());
 	}
 
-	@When("Create a new surveillance")
-	public void createANewSurveillance() {
-
-	}
-
 	@Then("Newly created job with status {string} is not displayed in the table on the [New Research] page")
 	public void newlyCreatedJobIsNotDisplayedInTheTableOnTheNewResearchPage(String status) {
 		Assert.assertFalse(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
@@ -130,16 +125,25 @@ public class NewResearchPageStepDefinitions {
 		Assert.assertFalse(Pages.newResearchPage().isSelectClientVisibleAndClickable());
 	}
 
-	@When("Click on the [Results] sidebar button")
-	public void clickOnTheResultsSidebarButton() {
-		Pages.newResearchPage().clickResultsSidebarButton();
-	}
+//	@When("Click on the [Results] sidebar button")
+//	public void clickOnTheResultsSidebarButton() {
+//		Pages.newResearchPage().clickResultsSidebarButton();
+//	}
 
 	@When("Click on the [Configuration] sidebar button")
 	public void clickOnTheConfigurationSidebarButton() {
 		Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
 		SelenideTools.sleep(2);
 		Pages.newResearchPage().clickConfigurationSidebarButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
+
+	@When("Click on the [Results] sidebar button")
+	public void clickOnTheResultSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.atlasDashboardManagementPage().clickResultsSidebarButton();
 		SelenideTools.sleep(10);
 		SelenideTools.switchToLastTab();
 	}

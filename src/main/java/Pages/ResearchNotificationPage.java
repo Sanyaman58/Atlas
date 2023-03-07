@@ -54,8 +54,10 @@ public class ResearchNotificationPage extends PageTools {
     public void clickOnTheLabel(String label){
         List<SelenideElement> elements = getElements(researchNotificationTableLabels);
         for(SelenideElement element : elements){
-            if(element.getText()==label);
+            if(element.getText()==label){
             element.click();
+            break;
+            }
         }
     }
 

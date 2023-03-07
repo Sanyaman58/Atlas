@@ -20,11 +20,9 @@ public class EUIVersionAdminPage extends PageTools {
 
 	public void clickOnTheTableLabel(String label){
 		List<SelenideElement> elements = getElements(euiVersionAdminTableLabels);
-		System.out.println(label);
 		for(SelenideElement element : elements){
 			if(element.getText().equals(label)){
 				element.click();
-				System.out.println(element.getText());
 				break;
 			}
 
