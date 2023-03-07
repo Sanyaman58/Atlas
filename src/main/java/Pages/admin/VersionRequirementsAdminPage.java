@@ -57,6 +57,8 @@ public class VersionRequirementsAdminPage extends PageTools {
 	}
 
 	public int getNumberOfRecords(){
+		if(isElementVisible(versionRequirementsTableNoRecords))
+			return 0;
 		waitForElementPresent(versionRequirementsTableRecords);
 		return getElements(versionRequirementsTableRecords).size();
 	}

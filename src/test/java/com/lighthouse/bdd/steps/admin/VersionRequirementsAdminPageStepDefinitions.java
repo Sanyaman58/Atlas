@@ -22,6 +22,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Assert.assertEquals(entries, Pages.versionRequirementsAdminPage().getNumberOfRecords());
     }
 
+    @And("The entries are displayed on the [Versioned Requirements] page")
+    public void entriesAreDisplayedOnTheVersionedRequirementsPage() {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().getNumberOfRecords()>0);
+    }
+
     @Then("The following labels are displayed in the [Versioned Requirements] table")
     public void theFollowingLabelsAreDisplayedInTheVersionedRequirementsTable(List<String> listOfLabels) {
         Assert.assertTrue(Pages.versionRequirementsAdminPage().isTableLabelsPresent(listOfLabels));
