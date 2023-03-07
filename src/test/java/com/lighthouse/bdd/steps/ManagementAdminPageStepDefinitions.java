@@ -223,4 +223,74 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().deleteActionButtonEnabledAndClick();
 	}
 
+	@And("Verify the names of the questions on questionnaire page")
+	public void verifyNamesOnQuestion() {
+		Pages.clientMasterPage().verifyQuestionName();
+	}
+
+	@And("Select any category and click on [Add new category] button")
+	public void clickAddCategory() {
+		Pages.clientMasterPage().addCategoryButton();
+	}
+
+	@And("Click on [Save] category button with empty category name field and verify the validation")
+	public void clickSaveButtonWithoutEnteringName() {
+		Pages.clientMasterPage().clickSaveWithEmptyCategory();
+	}
+
+	@And("Add a new category and verify new category is added")
+	public void addCategoryAndVerify() {
+		Pages.clientMasterPage().addNewCategory();
+	}
+
+	@And("Select any category header and click on [Reorder category] button")
+	public void clickReorderCategory() {
+		Pages.clientMasterPage().reorderCategoryButton();
+	}
+	
+	@And("Reorder the category headers")
+	public void reorderTheCategory() {
+		Pages.clientMasterPage().reorderCategoryHeaders();
+	}
+	
+	@And("Right click on question and click on [Add New Question] buttton")
+	public void clickAddNewQuestion() {
+		Pages.clientMasterPage().addNewQuestion();
+	}
+	
+	@And("Click on [Plus] icon besides the question")
+	public void clickPlusIconBesidesQuestion() {
+		Pages.clientMasterPage().clickQuestionsPlusIcon();
+	}
+	
+	@And("Enter the name of question and Click [Add] button")
+	public void enterQuestionNameAndAdd() {
+		Pages.clientMasterPage().enterQuestionClickAdd();
+	}
+	
+	@And("Right click on displayed question and select [Edit Question] option")
+	public void editQuestion() {
+		Pages.clientMasterPage().clickAndEditQuestion();
+	}
+	
+	@And("Edit the particular question and verify the edit fields")
+	public void editQuestionsAndVerifyFields() {
+		Pages.clientMasterPage().editTheQuestionAndVerifyEditFields();
+	}
+	
+	@And("Right click on question and verify the activate and deactivate functionality")
+	public void verifyActivateAndDeactivateButton() {
+		Pages.clientMasterPage().activateDeactivateButtonFunctionality();
+	}
+	
+	@And("Click on the [Questionnaire Versions] sidebar button")
+	public void clickQuestionnaireVersionsButton() {
+		Pages.clientMasterPage().selectQuestionnarieVersions();
+	}
+	
+	@And("Activate the newly created questionnaire")
+	public void activateQuestionnaire() {
+		Pages.clientMasterPage().activateNewlyCreatedQuestionnaire();
+	}
+
 }
