@@ -326,4 +326,9 @@ public class NewResearchPageStepDefinitions {
     public void noRecordsAreDisplayedOnTheResearchNotificationPage() {
         Assert.assertTrue(Pages.researchNotificationPage().isNoRecordsFoundMessageDisplayed());
     }
+
+	@Then("{int} record is displayed in the table on the [Configuration] page")
+	public void recordIsDisplayedInTheTableOnTheConfigurationPage(int numberOfRecords) {
+		Assert.assertTrue(Pages.newResearchPage().getNumberOfJobs()==numberOfRecords);
+	}
 }
