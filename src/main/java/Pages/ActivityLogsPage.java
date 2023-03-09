@@ -2,11 +2,8 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
-import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ActivityLogsPage extends PageTools {
@@ -20,6 +17,7 @@ public class ActivityLogsPage extends PageTools {
 
 
     List<List<String>> tableRecords;
+    static int activityLogsCount;
 
     public boolean isActivityLogsPageOpened(){
         waitForElementVisibility(activityLogsPageTitle);
@@ -42,6 +40,14 @@ public class ActivityLogsPage extends PageTools {
         if(isElementVisibleWithNoLog(tableLogsNoRecords))
             return 0;
         return getElements(tableLogs).size();
+    }
+
+    public void saveActivityLogsRecordsCount(){
+        activityLogsCount = getElements(tableLogs).size();
+    }
+
+    public int getActivityLogsRecordsCount(){
+        return activityLogsCount;
     }
 
 }

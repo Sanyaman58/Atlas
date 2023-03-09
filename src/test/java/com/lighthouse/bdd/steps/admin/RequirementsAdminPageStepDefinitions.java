@@ -64,7 +64,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("The following labels are displayed in the [Requirements Viewer] table")
     public void theFollowingLabelsAreDisplayed(List<String> listOfLabels) {
-        Assert.assertTrue(Pages.requirementsAdminPage().isTableLabelsPresent(listOfLabels));
+        Assert.assertTrue(Pages.researchNotificationPage().isTableLabelsPresent(listOfLabels));
     }
 
     @Then("The [Requirement Viewer] table is displayed")
@@ -90,6 +90,7 @@ public class RequirementsAdminPageStepDefinitions {
     @When("Right click on a record with status {string} in the [Requirement Viewer] table")
     public void rightClickOnARecordWithStatusInTheRequirementViewerTable(String status) {
         Pages.requirementsAdminPage().rightClickOnTableRecordWithStatus(status);
+        Pages.requirementsAdminPage().getTableRecordDataWithStatus(status);
     }
 
     @Then("The [Edit Requirement] button is not visible")
@@ -97,9 +98,19 @@ public class RequirementsAdminPageStepDefinitions {
         Assert.assertFalse(Pages.requirementsAdminPage().isEditButtonFromContextMenuVisible());
     }
 
+    @Then("The [Delete Requirement] button is not visible")
+    public void theDeleteRequirementButtonIsNotVisible() {
+        Assert.assertFalse(Pages.requirementsAdminPage().isDeleteButtonFromContextMenuVisible());
+    }
+
     @Then("Click on the [Edit Requirement] button on the [Requirement View] page")
     public void clickOnTheEditRequirementButtonOnTheRequirementViewPage() {
         Pages.requirementsAdminPage().clickOnEditButtonOfTheContextMenu();
+    }
+
+    @Then("Click on the [Delete Requirement] button on the [Requirement View] page")
+    public void clickOnTheDeleteRequirementButtonOnTheRequirementViewPage() {
+        Pages.requirementsAdminPage().clickOnDeleteButtonOfTheContextMenu();
     }
 
     @When("Click on the [Attachments] collapse on the [Requirements View] page")
@@ -163,7 +174,7 @@ public class RequirementsAdminPageStepDefinitions {
         Assert.assertTrue(Pages.requirementsAdminPage().areSelectorCriteriaSelectsClickable());
     }
 
-    @And("Validate the Change Note for Customer] input on the [Requirements View] page")
+    @And("Validate the [Change Note for Customer] input on the [Requirements View] page")
     public void validateTheChangeNoteForCustomerInputOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().isChangeNoteForCustomerWorking());
     }
@@ -187,10 +198,19 @@ public class RequirementsAdminPageStepDefinitions {
     public void enterRandomRequirementNameOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().enterRequirementName(RandomStringUtils.random(10, true, false));
     }
+    @When("Enter {string} requirement name on the [Requirements View] page")
+    public void enterRequirementNameOnTheRequirementsViewPage(String name) {
+        Pages.requirementsAdminPage().enterRequirementName(name);
+    }
 
     @And("Enter random application name on the [Requirements View] page")
     public void enterRandomApplicationNameOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().enterApplicationName(RandomStringUtils.random(10, true, false));
+    }
+
+    @And("Enter {string} application name on the [Requirements View] page")
+    public void enterApplicationNameOnTheRequirementsViewPage(String name) {
+        Pages.requirementsAdminPage().enterApplicationName(name);
     }
 
     @And("Select In-State radio button for the state {string} of the RES1 question on the [Requirement View] page")
@@ -225,6 +245,13 @@ public class RequirementsAdminPageStepDefinitions {
     @Then("Click on the [Submit for Approval] button on the [Requirements View] page")
     public void clickOnTheSubmitForApprovalButtonOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().clickSubmitForApprovalButton();
+        SelenideTools.sleep(8);
+    }
+
+    @Then("Click on the [Save] button on the [Requirements View] page")
+    public void clickOnTheSaveButtonOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().clickSaveButton();
+        SelenideTools.sleep(8);
     }
 
     @And("Click on the [Yes Approve] button on the [Requirements View] page")
@@ -262,45 +289,123 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().checkQuestion(44);
         Pages.requirementsAdminPage().checkQuestion(45);
         Pages.requirementsAdminPage().checkQuestion(46);
-        Pages.requirementsAdminPage().selectQuestion(1, 1);
-        Pages.requirementsAdminPage().addQuestion(0);
-        Pages.requirementsAdminPage().selectQuestion(2, 0);
-        Pages.requirementsAdminPage().selectQuestion(5, 0);
-        Pages.requirementsAdminPage().selectQuestion(8, 0);
-        Pages.requirementsAdminPage().addQuestion(0);
-        Pages.requirementsAdminPage().addQuestion(0);
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "Yes");
-        Pages.requirementsAdminPage().addQuestion(1);
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 6, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 7, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 8, "Yes");
-        Pages.requirementsAdminPage().addQuestion(2);
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 9, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 10, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(14, 11, "No");
-//        Pages.requirementsAdminPage().addGroup(0);
-//        Pages.requirementsAdminPage().addQuestion(0);
-//        Pages.requirementsAdminPage().addQuestion(0);
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 2, "Yes");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 3, "No");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 4, "No");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 5, "Yes");
-//        Pages.requirementsAdminPage().addQuestion(1);
-//        SelenideTools.sleep(1);
-//        Pages.requirementsAdminPage().selectQuestion(6, 0);
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "Yes");
-//        Pages.requirementsAdminPage().addGroup(1);
-//        Pages.requirementsAdminPage().addQuestion(2);
-//        SelenideTools.sleep(1);
-//        Pages.requirementsAdminPage().selectQuestion(10, 0);
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(11, 9, "No");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 10, "No");
-//        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 11, "No");
 
+        Pages.requirementsAdminPage().deleteQuestion(0);
+        Pages.requirementsAdminPage().deleteQuestion(0);
+
+        Pages.requirementsAdminPage().addGroup(0);
+        Pages.requirementsAdminPage().addGroup(0);
+        Pages.requirementsAdminPage().addGroup(0);
+        Pages.requirementsAdminPage().selectOrRule(0);
+        Pages.requirementsAdminPage().selectAndRule(1);
+        Pages.requirementsAdminPage().selectAndRule(2);
+        Pages.requirementsAdminPage().selectAndRule(3);
+
+        Pages.requirementsAdminPage().addRule(1);
+        Pages.requirementsAdminPage().addRule(1);
+        Pages.requirementsAdminPage().addRule(1);
+
+        Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
+
+        Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(1, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "Yes");
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 9, "No");
+    }
+
+    @When("Check the [RES1: Apply Resident State Selector Criteria] checkbox")
+    public void checkTheRESApplyResidentStateSelectorCriteriaCheckbox() {
+        if(!Pages.requirementsAdminPage().isRES1Checked())
+            Pages.requirementsAdminPage().checkRES1Checkbox();
+    }
+
+    @Then("The resident state select and resident type radio buttons are displayed")
+    public void theResidentStateSelectAndResidentTypeRadioButtonsAreDisplayed() {
+        Assert.assertTrue(Pages.requirementsAdminPage().isRES1StateSelectVisible());
+        Assert.assertTrue(Pages.requirementsAdminPage().areRES1ResidentTypeRadioButtonsVisible());
+    }
+
+    @When("Uncheck the [RES1: Apply Resident State Selector Criteria] checkbox")
+    public void uncheckTheRESApplyResidentStateSelectorCriteriaCheckbox() {
+        if(Pages.requirementsAdminPage().isRES1Checked())
+            Pages.requirementsAdminPage().checkRES1Checkbox();
+    }
+
+    @Then("The resident state select and resident type radio buttons are not displayed")
+    public void theResidentStateSelectAndResidentTypeRadioButtonsAreNotDisplayed() {
+        Assert.assertFalse(Pages.requirementsAdminPage().isRES1StateSelectVisible());
+        Assert.assertFalse(Pages.requirementsAdminPage().areRES1ResidentTypeRadioButtonsVisible());
+    }
+
+    @When("Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page")
+    public void selectSavedRequirementSJurisdictionInTheRequirementViewerFiltersSectionOnTheRequirementsAdminPage() {
+        Pages.requirementsAdminPage().selectRequirementFilterJurisdiction(Pages.requirementsAdminPage().getState());
+        SelenideTools.sleep(4);
+    }
+
+    @When("Select {string} jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page")
+    public void selectJurisdictionInTheRequirementViewerFiltersSectionOnTheRequirementsAdminPage(String jurisdiction) {
+        Pages.requirementsAdminPage().selectRequirementFilterJurisdiction(jurisdiction);
+        SelenideTools.sleep(4);
+    }
+
+    @And("Verify that deleted requirement is not displayed in the [Requirement Viewer] table")
+    public void verifyThatDeletedRequirementIsNotDisplayedInTheRequirementViewerTable() {
+        Assert.assertFalse(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
+    }
+
+    @And("Verify that newly created requirement is displayed in the [Requirement Viewer] table")
+    public void verifyThatNewlyCreatedRequirementIsDisplayedInTheRequirementViewerTable() {
+        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
+
+    }
+
+    @When("Select {string} status in the [Requirement Viewer Filters] section on the [Requirements Admin] page")
+    public void selectStatusInTheRequirementViewerFiltersSectionOnTheRequirementsAdminPage(String status) {
+        Pages.requirementsAdminPage().selectRequirementsViewerFiltersStatus(status);
+    }
+
+    @And("Verify that all 52 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
+    public void verifyThatAllStatesAreSelectableInTheRequirementsViewerFiltersJurisdictionSelectOnTheRequirementsViewPage() {
+        Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect());
+    }
+
+    @Then("Verify that all 52 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
+    public void verifyThatAllStatesAreSelectableInTheGeneralInformationJurisdictionSelectOnTheRequirementsViewPage() {
+        Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheGeneralInformationJurisdictionSelect());
+
+    }
+
+    @And("Select {string} requirement name in the Requirements Viewer Filters on the [Requirement View] page")
+    public void selectRequirementNameInTheRequirementsViewerFiltersOnTheRequirementViewPage(String text) {
+        Pages.requirementsAdminPage().selectRequirementName(text);
+        SelenideTools.sleep(6);
+    }
+
+    @Then("The records with {string} requirement name is displayed in the table on the [Requirement View] page")
+    public void theRecordWithRequirementNameIsDisplayedInTheTableOnTheRequirementViewPage(String requirementName) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isTableRecordWithRequirementNameDisplayed(requirementName));
+    }
+
+    @Then("The records with {string} jurisdiction is displayed in the table on the [Requirement View] page")
+    public void theRecordsWithJurisdictionIsDisplayedInTheTableOnTheRequirementViewPage(String jurisdiction) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isTableRecordWithJurisdictionDisplayed(jurisdiction));
+    }
+
+    @When("Save old requirement name on the [Requirements View] page")
+    public void saveOldRequirementNameOnTheRequirementsViewPage() {
+        Pages.requirementsAdminPage().saveOldRequirementsName();
     }
 }

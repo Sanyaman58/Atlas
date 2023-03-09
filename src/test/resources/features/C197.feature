@@ -13,10 +13,11 @@ Feature: C197
     Then Versioned Requirement page is opened
     When Click on the "Created" label on the [Versioned Requirements] page
     And Click on the "Created" label on the [Versioned Requirements] page
+    And Enter "Nikita" requirement created in the requirement search on the [Versioned Requirements] page
     When Click on the [Edit Requirement] button of the 1 record on the [Versioned Requirements] page
     Then Get requirement name from the [Edit Requirement] name
+    And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Check 4 question in the [Question Selection] section on the [Requirements View] page
-    And Check 5 question in the [Question Selection] section on the [Requirements View] page
     And Select the last select option of the 1 select in the [Selector Criteria] section
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin

@@ -44,13 +44,23 @@ public class JurisdictionPage extends PageTools {
 
 	public void getStateCheckboxesValues(){
 		for(SelenideElement element : getElements(stateCheckboxes)){
-			statesCheckboxes.put(element.findElement(By.xpath("./label")).getText()
-					,element.findElement(By.xpath("./input")).isSelected());
+			statesCheckboxes.put(element.findElement(By.xpath(".//label")).getText()
+					,element.findElement(By.xpath(".//input")).isSelected());
 		}
 //		logInfo("Dupa" + statesCheckboxes.size());
 //		statesCheckboxes.forEach((key, value) -> logInfo(key + " " + value));
 //
 //		SelenideTools.sleep(10);
+	}
+
+	public boolean areAllStatesCheckboxesVisibleAndClickable(){
+		if(getElements(stateCheckboxes).size()!=52)
+			return false;
+		for(SelenideElement element : getElements(stateCheckboxes)){
+			if(!element.findElement(By.xpath(".//input")).isEnabled())
+				return false;
+		}
+		return true;
 	}
 
 	public void clickRequirementsChecksIncludeYesRadio(){
@@ -72,8 +82,8 @@ public class JurisdictionPage extends PageTools {
 
 	public boolean validateThatPreviouslySelectedJurisdictionsAreSave(){
 		for(SelenideElement element : getElements(stateCheckboxes)){
-			statesCheckboxesToCompare.put(element.findElement(By.xpath("./label")).getText()
-					,element.findElement(By.xpath("./input")).isSelected());
+			statesCheckboxesToCompare.put(element.findElement(By.xpath(".//label")).getText()
+					,element.findElement(By.xpath(".//input")).isSelected());
 		}
 		return statesCheckboxes.equals(statesCheckboxesToCompare);
 	}

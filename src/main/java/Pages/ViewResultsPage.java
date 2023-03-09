@@ -2,14 +2,9 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.google.common.collect.Ordering;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Coordinates;
 
 import java.util.*;
 
@@ -25,17 +20,31 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTableLabels = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[1]/th");
     By researchResultsTableFixedLabels = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[1]/th[contains(@class,'fixed-column')]");
     By researchResultsTableLabelsSearch = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[2]/th/input");
+    By researchResultsViewResultButton = By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[%s]");
+    By researchResultsDeleteResultButton = By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[2])[%s]");
+    By researchResultsActivityLogsButton = By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[3])[%s]");
 
 
-    By researchResultsTableRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
-    By researchResultsTableRecordsElements = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr/td");
+    By surveillanceResultsTableRecords = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_0']//tbody/tr");
+    By surveillanceResultsTableRecordsElements = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_0']//tbody/tr/td");
+
+    By researchResultsTableRecords = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr");
+    By researchResultsTableRecordsElements = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr/td");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
 
 
     List<List<String>> tableRecords;
-    static String requirementName;
+    static String facilityName;
+    static String companyName;
+    static int requirementsCount;
+    static int activityLogsCount;
+
+    public int getRequirementsCount(){
+        return requirementsCount;
+    }
+
     static Map<Integer,Integer> fixedLabelCoordinates;
 
     public boolean isViewResultsPageOpened(){
@@ -70,7 +79,16 @@ public class ViewResultsPage extends PageTools {
     }
 
     public void clickOnTheViewButtonOfTheRecord(int index){
-        getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[" + (index + 1) + "]")).click();
+//        getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[" + (index) + "]")).click();
+        getSelenideElement(researchResultsViewResultButton, index).click();
+    }
+
+    public void clickOnTheDeleteButtonOfTheRecord(int index){
+        getSelenideElement(researchResultsDeleteResultButton, index).click();
+    }
+
+    public void clickOnTheActivityLogsButtonOfTheRecord(int index){
+        getSelenideElement(researchResultsActivityLogsButton, index).click();
     }
 
     public void clickOnTheActivityLogsButtonOfTheNewlyCreatedJob(){
@@ -113,8 +131,10 @@ public class ViewResultsPage extends PageTools {
     public void clickOnTheLabel(String label){
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
-            if(element.getText()==label);
+            if(element.getText()==label) {
                 element.click();
+                break;
+            }
         }
     }
 
@@ -164,13 +184,29 @@ public class ViewResultsPage extends PageTools {
         }
     }
 
-    public String getRequirementNameOfTheTableRecord(){
-        return requirementName;
+    public void getResearchResultsRecordsCount(){
+        requirementsCount = getElements(researchResultsTableRecords).size();
+    }
+
+
+
+    public String getFacilityNameOfTheTableRecord(){
+        return facilityName;
+    }
+    public String getCompanyNameOfTheTableRecord(){
+        return companyName;
     }
 
     public void saveRequirementNameOfTheTableRecord(int index){
-        waitForElementVisibility(researchResultsTableRecords);
-        requirementName = getElements(researchResultsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
+        waitForElementVisibility(surveillanceResultsTableRecords);
+        facilityName = getElements(surveillanceResultsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText().trim();
+        System.out.println(facilityName);
+    }
+
+    public void saveCompanyNameOfTheTableRecord(int index){
+        waitForElementVisibility(surveillanceResultsTableRecords);
+        companyName = getElements(surveillanceResultsTableRecords).get(index).findElement(By.xpath("./td[2]")).getText().trim();
+        System.out.println(companyName);
     }
 
     public boolean isRequirementPresentInTheList(String jurisdiction, String aName, String rName){
@@ -178,6 +214,15 @@ public class ViewResultsPage extends PageTools {
             if (tableRecord.contains(jurisdiction)
                     || tableRecord.contains(aName)
                     || tableRecord.contains(rName))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean isResultPresentInTheList(String cName, String fName){
+        for(int i = 0;i < getElements(tableJobs).size();i++){
+            if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(cName)
+                    && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(fName))
                 return true;
         }
         return false;
