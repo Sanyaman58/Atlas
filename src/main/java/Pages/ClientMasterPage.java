@@ -5,16 +5,15 @@ import base.PageTools;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class ClientMasterPage extends PageTools {
@@ -39,17 +38,32 @@ public class ClientMasterPage extends PageTools {
 	By surveillancePageHeaders = By.xpath("//div[@class='dataTables_scrollHeadInner']//table//th");
 	By configurationRadioButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[1]/input");
 	By configurationDeleteButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button");
+	By deletePopupBodyText = By.xpath("//*[@id=\"confirmation-modal\"]/div/div/div[2]/p");
 	By deletePoupCloseButton = By.xpath("//*[@id=\"confirmation-modal\"]/div/div/div[1]/button");
 	By surveillanceSetupNextButton = By.xpath("//*[@id=\"submit-new\"]");
 	By nextButtonPopupBody = By.xpath("//*[@id=\"alert-msg\"]");
 	By nextButtonPopupCrossIcon = By.xpath("//*[@id=\"alert-modal\"]/div/div/div[1]/button");
 	By existingJobNextButton = By.xpath("//*[@id=\"copyfrom_research_job\"]");
+	By selectResidentStateLabel = By.xpath("//*[@id=\"mange-job-research\"]/div[1]/div/div/label");
+	By selectJurisdictionsLabel = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[1]/label");
+	By jusrisdictionPageSelectAllButton = By.xpath("//*[@id=\"jurisdictions_select_all\"]");
+	By jurisdictionPageClearAllButton = By.xpath("//*[@id=\"jurisdictions_unselect_all\"]");
+	By jurisdictionPageNextButton = By.xpath("//*[@id=\"save_juricdis\"]");
+	By jurisdictionPageCheckboxes = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[2]//input");
+    By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
+	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
 
 	String clientLabelText = "Client";
 	String companyLabelText = "Company *";
 	String facilityLabelText = "Facility * Help Tip";
 	String helpToolTipLabelText = "Help Tip";
+	String deletePopupText = "The selected research will be deleted and cannot be undone. Are you sure want to delete?";
 	String nextButtonPopupBodyText = "Please enter all required fields";
+	String selectResidentStateLabelText = "Please select the resident state for your facility: *";
+	String selectJurisdictionLabelText = "Please select all jurisdictions you would like to include in this facility configuration:";
+
+	HashMap<String, Boolean> jurisdictionPageCheckboxesInput = new HashMap<>();
 
 	public void clickClientMasterSidebarButton() {
 		waitForElementVisibility(clientMasterSidebarButton);
@@ -262,12 +276,12 @@ public class ClientMasterPage extends PageTools {
 		click(nextButtonPopupCrossIcon);
 	}
 
-	public void reloadBrowser() {
-		WebDriverRunner.getWebDriver().navigate().refresh();
-	}
-
 	public void selectJobOnSurveillancePage() {
 		WebDriverRunner.getWebDriver().navigate().back();
+	}
+
+	public void reloadBrowser() {
+		WebDriverRunner.getWebDriver().navigate().refresh();
 	}
 
 	public void existingJobRadioButton() {
@@ -276,9 +290,7 @@ public class ClientMasterPage extends PageTools {
 		click(existingJobNextButton);
 	}
 
-	By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
-	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
-	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
+	
 
 	public void verifyJurisdictionCheckboxLeftPosition() {
 		List<SelenideElement> checkboxTextElements = getElements(checkboxText);
@@ -308,5 +320,36 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
+	public void labelsOnJurisdictionPage() {
+		SelenideElement residentStateElement = getSelenideElement(selectResidentStateLabel);
+		assertEquals(residentStateElement.getText(), selectResidentStateLabelText);
+
+		SelenideElement selectJurisdictionElement = getSelenideElement(selectJurisdictionsLabel);
+		assertEquals(selectJurisdictionElement.getText(), selectJurisdictionLabelText);
+
+		waitForElementPresent(jusrisdictionPageSelectAllButton);
+		waitForElementPresent(jurisdictionPageClearAllButton);
+		waitForElementPresent(jurisdictionPageNextButton);
+
+		List<SelenideElement> jurisdictionPageCheckboxElement = getElements(jurisdictionPageCheckboxes);
+		for (SelenideElement element : jurisdictionPageCheckboxElement) {
+			element.isDisplayed();
+		}
+	}
+
+	public void clickClearAllButton() {
+		waitForElementPresent(jurisdictionPageClearAllButton);
+		click(jurisdictionPageClearAllButton);
+	}
+
+	public void unselectedCheckbox() {
+		List<SelenideElement> jurisdictionPageCheckBoxElement = getElements(jurisdictionPageCheckboxes);
+		for (SelenideElement jurisdictionCheckbox : jurisdictionPageCheckBoxElement) {
+			if (jurisdictionCheckbox.isSelected()) {
+				fail("Checkbox is selected: " + jurisdictionCheckbox.getAttribute("value"));
+			}
+		}
+	}
+	
 
 }
