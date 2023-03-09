@@ -140,5 +140,20 @@ public class ManagementAdminPageStepDefinitions {
 	public void selectRadioButton() {
 		Pages.clientMasterPage().existingJobRadioButton();
 	}
-
+	
+	@Then("Verify labels on [Jurisdiction] page")
+	public void verifyLabelsOnJurisdictionPage() {
+		Pages.clientMasterPage().labelsOnJurisdictionPage();
+    }
+	
+	@Then("Click on [Clear All] button")
+	public void verifyClickOnClearAllButton() {
+		Pages.clientMasterPage().clickClearAllButton();
+    }
+	
+	@And("Verify all checkboxes are not selected")
+    public void verifyUnSelectedCheckbox() {
+        Pages.clientMasterPage().unselectedCheckbox();
+    }
+	
 }
