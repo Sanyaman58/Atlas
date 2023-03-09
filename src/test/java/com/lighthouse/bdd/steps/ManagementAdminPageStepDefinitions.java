@@ -292,5 +292,11 @@ public class ManagementAdminPageStepDefinitions {
 	public void activateQuestionnaire() {
 		Pages.clientMasterPage().activateNewlyCreatedQuestionnaire();
 	}
+	
+	@And("Navigate to login page")
+	public void navigateLoginPage() {
+		Pages.clientMasterPage().navigateToLoginPage();
+	}
+	
 
 }
