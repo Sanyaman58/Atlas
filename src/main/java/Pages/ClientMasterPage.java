@@ -7,6 +7,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -273,6 +274,39 @@ public class ClientMasterPage extends PageTools {
 		click(configurationRadioButton);
 		SelenideTools.sleep(8);
 		click(existingJobNextButton);
+	}
+
+	By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
+	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
+
+	public void verifyJurisdictionCheckboxLeftPosition() {
+		List<SelenideElement> checkboxTextElements = getElements(checkboxText);
+		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
+
+		for (int i = 0; i < checkboxInputFieldElements.size(); i++) {
+			int checkboxX = checkboxInputFieldElements.get(i).getLocation().getX();
+			int textX = checkboxTextElements.get(i).getLocation().getX();
+
+			if (checkboxX >= textX) {
+				fail("Checkbox is not to  the left of Jurisdiction text");
+			}
+		}
+	}
+
+	public void verifyJurisdictionCheckboxLeftPositionOnSaveSubmitPage() {
+		List<SelenideElement> submitPageJurisidctionCheckboxTextElements = getElements(
+				submitPageJurisidctionCheckboxText);
+		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
+
+		for (int i = 0; i < checkboxInputFieldElements.size(); i++) {
+			int checkboxX = checkboxInputFieldElements.get(i).getLocation().getX();
+			int textX = submitPageJurisidctionCheckboxTextElements.get(i).getLocation().getX();
+
+			if (checkboxX >= textX) {
+				fail("Checkbox is not to  the left of Jurisdiction text");
+			}
+		}
 	}
 
 }
