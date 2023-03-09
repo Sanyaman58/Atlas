@@ -92,4 +92,24 @@ public class QuestionnaireAdminPageStepDefinitions {
     public void approveTheQuestionnaireVersionOnTheQuestionnaireVersionsPage(int index) {
         Pages.questionnaireAdminPage().approveTheQuestionnaireVersion(index-1);
     }
+
+    @And("Click on the Activate Deactivate context menu button on the [Questionnaire Admin] page")
+    public void clickOnTheActivateDeactivateContextMenuButtonOnTheQuestionnaireAdminPage() {
+        Pages.questionnaireAdminPage().clickOnContextMenuActivateDeactivateButton();
+    }
+
+    @Then("Select {string} value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
+    public void selectValueOfTheActivateDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(String value, int index) {
+        Pages.questionnaireAdminPage().selectActivateDeactivate(index, value);
+    }
+
+    @Then("The {int} question is deactivated")
+    public void theQuestionIsDeactivated(int index) {
+        Assert.assertTrue(Pages.questionnaireAdminPage().isQuestionDeactivated(index));
+    }
+
+    @Then("The {int} question is activated")
+    public void theQuestionIsActivated(int index) {
+        Assert.assertFalse(Pages.questionnaireAdminPage().isQuestionDeactivated(index));
+    }
 }
