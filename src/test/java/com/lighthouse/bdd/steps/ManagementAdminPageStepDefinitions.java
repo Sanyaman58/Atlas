@@ -140,5 +140,15 @@ public class ManagementAdminPageStepDefinitions {
 	public void selectRadioButton() {
 		Pages.clientMasterPage().existingJobRadioButton();
 	}
+	
+	@And("Validate that the checkbox is to the left of the Jurisdiction text")
+	public void validateCheckboxPositions() {
+		Pages.clientMasterPage().verifyJurisdictionCheckboxLeftPosition();
+	}
+	
+	@And("Verify the left position of Jurisdiction checkbox on save and submit configuration page")
+	public void leftPositionOnSaveSubmitPage() {
+		Pages.clientMasterPage().verifyJurisdictionCheckboxLeftPositionOnSaveSubmitPage();
+	}
 
 }
