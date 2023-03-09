@@ -10,6 +10,8 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.Selenide.*;
 
+import Constants.Constants;
+
 import static org.testng.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -510,6 +512,7 @@ public class ClientMasterPage extends PageTools {
 	public void clickSaveWithEmptyCategory() {
 		SelenideElement enterNewCategoryInputFieldElelment = getSelenideElement(enterNewCategoryInputField);
 		enterNewCategoryInputFieldElelment.is(Condition.empty);
+		SelenideTools.sleep(3);
 		click(newCategorySaveButton);
 		SelenideTools.sleep(5);
 		Alert alert = Selenide.switchTo().alert();
@@ -656,13 +659,12 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(2);
 		waitForElementVisibility(activateDeactivateDropdown);
 		List<SelenideElement> activateDeactivateDropdownElement = getElements(activateDeactivateDropdown);
-		System.out.println("Total count of all the activate and deactivate dropdown = "
-				+ activateDeactivateDropdownElement.size());
+		System.out.println("Total count of all the activate and deactivate dropdown = "+ activateDeactivateDropdownElement.size());
 
 		SelenideElement firstActivateDeactivateDropdownElement = getSelenideElement(firstActivateDeactivateDropdown);
-		firstActivateDeactivateDropdownElement.selectOption("Deactivate");
-		SelenideTools.sleep(2);
-		firstActivateDeactivateDropdownElement.is(Condition.exactText("Deactivate"));
+		firstActivateDeactivateDropdownElement.selectOption(1);
+		SelenideTools.sleep(4);
+//		firstActivateDeactivateDropdownElement.is(Condition.exactText("Deactivate"));
 
 		waitForElementVisibility(questionnairePageSaveButton);
 		click(questionnairePageSaveButton);
@@ -692,25 +694,28 @@ public class ClientMasterPage extends PageTools {
 	By firstQuestionnaireActivateButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button");
 	
 	public void activateNewlyCreatedQuestionnaire() {
+		SelenideTools.sleep(3);
 		SelenideElement questionnairePageVersionLabelElement = getSelenideElement(questionnairePageVersionLabel).shouldBe(Condition.visible);
 		questionnairePageVersionLabelElement.doubleClick();
-		SelenideTools.sleep(2);
 		
+//		WebDriverRunner.getWebDriver().navigate().refresh();
+		SelenideTools.sleep(3);
 		waitForElementVisibility(approveButton);
 		click(approveButton);
-		
 		waitForElementVisibility(approvePopupYesButton);
 		click(approvePopupYesButton);
 		SelenideTools.sleep(8);
-		
 		questionnairePageVersionLabelElement.doubleClick();
+		SelenideTools.sleep(3);
 		waitForElementVisibility(firstQuestionnaireActivateButton);
 		click(firstQuestionnaireActivateButton);
-		
 		waitForElementVisibility(approvePopupYesButton);
 		click(approvePopupYesButton);
 		SelenideTools.sleep(8);
+	}
 	
+	public void navigateToLoginPage() {
+		SelenideTools.openUrl("https://qa-atlas.lha.pharma.solutions/");
 	}
 
 }
