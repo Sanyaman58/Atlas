@@ -11,8 +11,8 @@ Feature: C104
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    And Select "Pharma Solutions USA" client from the client dropdown
-    And Select 5 company name
+    And Select "Test Pharma" client from the client dropdown
+    And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button
     Then The [Jurisdiction] page is opened
