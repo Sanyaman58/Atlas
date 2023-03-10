@@ -30,7 +30,7 @@ Feature: C115
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
-    When Click the [Next] button on the [Jurisdiction] page
+    And Click the [Next] button on the [Jurisdiction] page
     When Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
     And Click on the [Save Job] button

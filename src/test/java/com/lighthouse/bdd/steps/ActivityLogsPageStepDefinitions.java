@@ -3,10 +3,7 @@ package com.lighthouse.bdd.steps;
 import Pages.Pages;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.junit.Assert;
-
-import java.util.List;
 
 public class ActivityLogsPageStepDefinitions {
 
@@ -18,6 +15,11 @@ public class ActivityLogsPageStepDefinitions {
     @Then("Enter requirement name in the activity search on the [Activity Logs] page")
     public void enterRequirementNameInTheActivitySearchOnTheActivityLogsPage() {
         Pages.activityLogsPage().enterTextInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
+
+    @Then("Enter {string} in the activity search on the [Activity Logs] page")
+    public void enterInTheActivitySearchOnTheActivityLogsPage(String text) {
+        Pages.activityLogsPage().enterTextInTheSearchField(text);
     }
 
     @And("Verify that log containing {string} description text is displayed on the [Activity Logs] page")
@@ -32,11 +34,21 @@ public class ActivityLogsPageStepDefinitions {
 
     @Then("Enter requirement name saved on the [Research Results] page in the activity search on the [Activity Logs] page")
     public void enterRequirementNameSavedOnTheResearchResultsPageInTheActivitySearchOnTheActivityLogsPage() {
-        Pages.activityLogsPage().enterTextInTheSearchField(Pages.viewResultsPage().getRequirementNameOfTheTableRecord());
+        Pages.activityLogsPage().enterTextInTheSearchField(Pages.viewResultsPage().getFacilityNameOfTheTableRecord());
     }
 
     @And("Verify that log containing requirement name saved on the [Research Results] page in description text is displayed on the [Activity Logs] page")
     public void verifyThatLogContainingRequirementNameSavedOnTheResearchResultsPageInDescriptionTextIsDisplayedOnTheActivityLogsPage() {
-        Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(Pages.viewResultsPage().getRequirementNameOfTheTableRecord()));
+        Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(Pages.viewResultsPage().getFacilityNameOfTheTableRecord()));
+    }
+
+    @Then("Enter created requirement's name in the activity search on the [Activity Logs] page")
+    public void enterCreatedRequirementSNameInTheActivitySearchOnTheActivityLogsPage() {
+        Pages.activityLogsPage().enterTextInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
+
+    @And("Get activity logs count")
+    public void getActivityLogsCount() {
+        Pages.activityLogsPage().saveActivityLogsRecordsCount();
     }
 }

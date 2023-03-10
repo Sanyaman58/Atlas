@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -69,6 +70,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Verify that early created requirement name is in the list")
     public void verifyThatEarlyCreatedRequirementNameIsInTheList() {
+        SelenideTools.sleep(5);
         Assert.assertTrue(Pages.viewResultsPage().isRequirementPresentInTheList(Pages.requirementsAdminPage().getState()
                 , Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName()));
@@ -82,6 +84,12 @@ public class ViewResultsPageStepDefinitions {
     @And("Get requirement name of {int} records on [Research Results] page")
     public void getRequirementNameOfRecordsOnResearchResultsPage(int index) {
         Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
+    }
+
+    @And("Get requirement data of {int} records on [Research Results] page")
+    public void getRequirementDataOfRecordsOnResearchResultsPage(int index) {
+        Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
+        Pages.viewResultsPage().saveCompanyNameOfTheTableRecord(index-1);
     }
 
     @Then("Verify that records on the [View Results] page are sorted alphabetically backwards by {string} label")
@@ -120,7 +128,47 @@ public class ViewResultsPageStepDefinitions {
     }
 
     @Then("Verify that fixed labels coordinates didn't changed")
-    public void verifyThatFixedLabelsCoordinatesDidnTChanged() {
+    public void verifyThatFixedLabelsCoordinatesDidntChanged() {
         Assert.assertTrue(Pages.viewResultsPage().isFixedLabelsCoordinatesNotChanged());
+    }
+
+    @Then("Click on the [Delete] button of the {int} job on the [View Results] page")
+    public void clickOnTheDeleteButtonOfTheJobOnTheViewResultsPage(int index) {
+        Pages.viewResultsPage().clickOnTheDeleteButtonOfTheRecord(index);
+    }
+
+    @Then("Verify that deleted result is not displayed in the [View Results] table")
+    public void verifyThatDeletedResultIsNotDisplayedInTheViewResultsTable() {
+        Assert.assertFalse(Pages.viewResultsPage().isResultPresentInTheList(Pages.viewResultsPage().getCompanyNameOfTheTableRecord(), Pages.viewResultsPage().getFacilityNameOfTheTableRecord()));
+    }
+
+    @And("Get the number of records of the result on [Research Results] page")
+    public void getTheNumberOfRecordsOfTheResultOnResearchResultsPage() {
+        Pages.viewResultsPage().getResearchResultsRecordsCount();
+    }
+
+    @When("Click on the [Activity Logs] button of the {int} job on the [View Results] page")
+    public void clickOnTheActivityLogsButtonOfTheJobOnTheViewResultsPage(int index) {
+        Pages.viewResultsPage().clickOnTheActivityLogsButtonOfTheRecord(index);
+    }
+
+    @And("Verify that the number of activity logs and the number of the records on the [Research Results] page is the same")
+    public void verifyThatTheNumberOfActivityLogsAndTheNumberOfTheRecordsOnTheResearchResultsPageIsTheSame() {
+        Assert.assertEquals(Pages.viewResultsPage().getRequirementsCount(), Pages.activityLogsPage().getActivityLogsRecordsCount());
+    }
+
+    @When("Click on the [Results] sidebar button on Lighthouse")
+    public void clickOnTheResultsSidebarButtonOnLighthouse() {
+        Pages.viewResultsPage().clickOnResultsSidebarButton();
+    }
+
+    @When("Select {string} client from the client dropdown on the [View Results] page")
+    public void selectStringClientFromTheClientDropdownOnTheViewResultsPage(String client) {
+        Pages.viewResultsPage().selectClient(client);
+    }
+
+    @Then("{int} record is displayed in the table on the [View Results] page")
+    public void recordIsDisplayedInTheTableOnTheViewResultsPage(int numberOfRecords) {
+        Assert.assertTrue(Pages.viewResultsPage().getNumberOfResults()==numberOfRecords);
     }
 }
