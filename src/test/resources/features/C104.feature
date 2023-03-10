@@ -23,7 +23,7 @@ Feature: C104
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     And Validate the [Questionnaire] page elements
-    And Verify child questions ae unclickable as parent questions are not clicked
+    And Verify child questions are unclickable as parent questions are not clicked
     Then Get the questions values
     And Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
