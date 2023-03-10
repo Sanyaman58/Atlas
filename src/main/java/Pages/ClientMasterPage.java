@@ -2,6 +2,8 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
+
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -273,6 +275,17 @@ public class ClientMasterPage extends PageTools {
 		click(configurationRadioButton);
 		SelenideTools.sleep(8);
 		click(existingJobNextButton);
+	}
+	
+	By questionText = By.xpath("//*[@id=\"questionnaire-container\"]/ul[1]/li/label");
+	
+	String questionLabelText = "Does your company sell (for profit or charitable) the products managed at this facility?";
+	
+	public void verifyQuestionsElementsOnQuestionnairePage() {
+		SelenideElement questionTextElement = getSelenideElement(questionText);
+		String actualQuestionName = questionTextElement.getText();
+		System.out.println("Actual text of the question present = "+ actualQuestionName);
+		questionTextElement.shouldBe(Condition.text(questionLabelText));
 	}
 
 }
