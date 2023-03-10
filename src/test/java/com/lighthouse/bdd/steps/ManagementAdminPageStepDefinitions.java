@@ -140,5 +140,10 @@ public class ManagementAdminPageStepDefinitions {
 	public void selectRadioButton() {
 		Pages.clientMasterPage().existingJobRadioButton();
 	}
+	
+	@And("Verify the questions elements")
+	public void verifyQuestionsElements() {
+		Pages.clientMasterPage().verifyQuestionsElementsOnQuestionnairePage();
+	}
 
 }
