@@ -166,4 +166,9 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().unselectedCheckbox();
     }
 	
+	@And("Verify child questions are unclickable as parent questions are not clicked")
+    public void verifyChildQuestionUnclickable() {
+        Pages.clientMasterPage().clickChildQuestion();
+    }
+
 }
