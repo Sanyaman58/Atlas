@@ -5,15 +5,13 @@ import base.PageTools;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -24,6 +22,15 @@ public class ClientMasterPage extends PageTools {
 	By addClientButton = By.xpath("//button[text()='ADD Client ']");
 	By addClientsPopupWindowTitle = By.xpath("//p[@class='company-1 mb-1']");
 	By addClientTableLabels = By.xpath("//*[@id=\"modal-content\"]/div/div[2]//label");
+	By clientMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[1]");
+	By userMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[13]");
+	By userMasterPageTitle = By.xpath("//p[@class=' li-text']");
+	By addUserButton = By.xpath("//button[text()='ADD User ']");
+	By addUserPopupWindowTitle = By.xpath("//p[@class='company-1 mb-1']");
+	By categoryDropdown = By.xpath("//select[@id='UserCategoryKey']");
+	By categoryDropdownElements = By.xpath("//select[@id='UserCategoryKey']//option");
+	By userRoleComplianceDropdown = By.xpath("//select[@id='UserRoleComplianceKey']");
+	By userRoleComplianceDropdownElements = By.xpath("//select[@id='UserRoleComplianceKey']//option");
 	By clientLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[1]/div/label");
 	By companyLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[2]/label");
 	By facilityLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[3]/label");
@@ -45,6 +52,9 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionPageCheckboxes = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[2]//input");
 	By childQuestionRadioButton = By.xpath("//*[@id=\"POS1.1_Y\"]");
 	By questionnaireClearAllButton = By.xpath("//*[@id=\"clear_all_questionnaire\"]");
+    By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
+	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
 
 	By saveSubmitPageCompanyName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div/label");
 	By saveSubmitPageLabelName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[2]/div/label");
@@ -65,6 +75,11 @@ public class ClientMasterPage extends PageTools {
 	String saveSubmitPageResidentStateText = "Resident State :";
 
 	HashMap<String, Boolean> jurisdictionPageCheckboxesInput = new HashMap<>();
+
+	public void clickClientMasterSidebarButton() {
+		waitForElementVisibility(clientMasterSidebarButton);
+		click(clientMasterSidebarButton);
+	}
 
 	public boolean isClientMasterPageOpened() {
 		waitForElementVisibility(clientMasterPageTitle);
@@ -101,6 +116,93 @@ public class ClientMasterPage extends PageTools {
 				System.out.println("Value is not equal");
 			}
 		}
+	}
+
+	public void clickUserMasterSidebarButton() {
+		waitForElementVisibility(userMasterSidebarButton);
+		click(userMasterSidebarButton);
+	}
+
+	public boolean isUserMasterPageOpened() {
+		waitForElementVisibility(userMasterPageTitle);
+		return isElementVisible(userMasterPageTitle);
+	}
+
+	public void clickAddUserButton() {
+		waitForElementClickable(addUserButton);
+		click(addUserButton);
+		SelenideTools.sleep(6);
+	}
+
+	public boolean isAddUserPopupWindowOpened() {
+		waitForElementVisibility(addUserPopupWindowTitle);
+		return isElementVisible(addUserPopupWindowTitle);
+	}
+
+	public void clickCategoryDropdown() {
+		waitForElementClickable(categoryDropdown);
+		click(categoryDropdown);
+		SelenideTools.sleep(3);
+	}
+
+	public void isCategoryRolesPresentInDropdown(List<String> labels) {
+		List<String> tableLabelsList = new ArrayList<>();
+		List<SelenideElement> elements = getElements(categoryDropdownElements);
+		for (SelenideElement element : elements) {
+			tableLabelsList.add(element.getText());
+			System.out.println(element.getText());
+		}
+		System.out.println("-------------------------");
+		System.out.println("Verifying the data tables");
+		System.out.println("-------------------------");
+		tableLabelsList.add(getSelenideElement(categoryDropdownElements).getText());
+		for (int i = 0; i < labels.size(); i++) {
+			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
+			if ((labels.get(i) == null)) {
+				System.out.println("Value is null");
+			} else if (!labels.get(i).equals(tableLabelsList.get(i))) {
+				System.out.println("Value is not equal");
+			}
+		}
+	}
+
+	public void selectUserCategory(String client) {
+		waitForElementVisibility(categoryDropdown);
+		selectOption(client, categoryDropdown);
+		SelenideTools.sleep(10);
+	}
+
+	public void clickRolesComplianceIntelligenceDropdown() {
+		waitForElementClickable(userRoleComplianceDropdown);
+		click(userRoleComplianceDropdown);
+		SelenideTools.sleep(3);
+	}
+
+	public void isuserRoleCompliancePresentInDropdown(List<String> labels) {
+		List<String> tableLabelsList = new ArrayList<>();
+		List<SelenideElement> elements = getElements(userRoleComplianceDropdownElements);
+		for (SelenideElement element : elements) {
+			tableLabelsList.add(element.getText());
+			System.out.println(element.getText());
+		}
+		System.out.println("-------------------------");
+		System.out.println("Verifying the data tables");
+		System.out.println("-------------------------");
+		tableLabelsList.add(getSelenideElement(userRoleComplianceDropdownElements).getText());
+
+		for (int i = 0; i < labels.size(); i++) {
+			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
+			if ((labels.get(i) == null)) {
+				System.out.println("Value is null");
+			} else if (!labels.get(i).equals(tableLabelsList.get(i))) {
+				System.out.println("Value is not equal");
+			}
+		}
+	}
+
+	public boolean nouserRoleCompliancePresentInDropdown() {
+		SelenideElement userRoleCount = getSelenideElement(userRoleComplianceDropdownElements);
+		return isElementVisible(userRoleComplianceDropdownElements);
 	}
 
 	public void clientLabel() {
@@ -199,6 +301,36 @@ public class ClientMasterPage extends PageTools {
 		click(existingJobNextButton);
 	}
 
+	
+
+	public void verifyJurisdictionCheckboxLeftPosition() {
+		List<SelenideElement> checkboxTextElements = getElements(checkboxText);
+		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
+
+		for (int i = 0; i < checkboxInputFieldElements.size(); i++) {
+			int checkboxX = checkboxInputFieldElements.get(i).getLocation().getX();
+			int textX = checkboxTextElements.get(i).getLocation().getX();
+
+			if (checkboxX >= textX) {
+				fail("Checkbox is not to  the left of Jurisdiction text");
+			}
+		}
+	}
+
+	public void verifyJurisdictionCheckboxLeftPositionOnSaveSubmitPage() {
+		List<SelenideElement> submitPageJurisidctionCheckboxTextElements = getElements(
+				submitPageJurisidctionCheckboxText);
+		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
+
+		for (int i = 0; i < checkboxInputFieldElements.size(); i++) {
+			int checkboxX = checkboxInputFieldElements.get(i).getLocation().getX();
+			int textX = submitPageJurisidctionCheckboxTextElements.get(i).getLocation().getX();
+
+			if (checkboxX >= textX) {
+				fail("Checkbox is not to  the left of Jurisdiction text");
+			}
+		}
+	}
 	public void labelsOnJurisdictionPage() {
 		SelenideElement residentStateElement = getSelenideElement(selectResidentStateLabel);
 		assertEquals(residentStateElement.getText(), selectResidentStateLabelText);

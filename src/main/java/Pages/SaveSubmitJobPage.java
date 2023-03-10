@@ -48,8 +48,11 @@ public class SaveSubmitJobPage extends PageTools {
             if(isElementExistsWithNoLog(By.xpath("(//div[@class='list-scroll']/ul[@class='qa-ulList']//h5)["+(i+1)+"]/following-sibling::p"))){
                 questionsAnswers.put(elements.get(i).getText()
                         ,!elements.get(i).findElement(By.xpath("./following-sibling::p")).getText().equalsIgnoreCase("No"));
+                System.out.println(elements.get(i).getText());
+                System.out.println(elements.get(i).findElement(By.xpath("./following-sibling::p")).getText());
             }
         }
+
         return questionsAnswers.entrySet().stream().allMatch(e -> e.getValue().equals(questionsToCompare.get(e.getKey())));
     }
 

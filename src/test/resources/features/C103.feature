@@ -4,8 +4,8 @@ Feature: C103
   @TestRail(103)
   Scenario: Verify the "Jurisdictions" page functionality (Step 2)
     When Open Atlas
-    Then Enter login "sachin.arora@pharma.solutions" on login page
-    And Enter password "$hin@1122!!" on login page
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
@@ -13,8 +13,8 @@ Feature: C103
     And Verify the [Surveillance Setup] section
     Then Validate fields on the [Surveillance Setup] page
     And Reload the browser
-    And Select "Pharma Solutions USA" client from the client dropdown
-    And Select 5 company name
+    And Select "Test Pharma" client from the client dropdown
+    And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button
     Then The [Jurisdiction] page is opened
