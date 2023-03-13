@@ -14,7 +14,6 @@ public class EUIVersionPageStepDefinitions {
         Assert.assertTrue(Pages.euiVersionAdminPage().isEUIVersionAdminPageOpened());
     }
 
-
     @Then("Click on the {string} label on the [Versioned EUI] page")
     public void clickOnTheLabelOnTheVersionedEUIPage(String label) {
         Pages.euiVersionAdminPage().clickOnTheTableLabel(label);
@@ -29,12 +28,16 @@ public class EUIVersionPageStepDefinitions {
     @And("Approve the {int} EUI on the [Versioned EUI] page")
     public void approveTheEUIOnTheVersionedEUIPage(int index) {
         Pages.euiVersionAdminPage().clickOnTheApproveEUIButton(index-1);
-
     }
 
     @And("Click on the [Yes Approve] button on the [Versioned EUI] page")
     public void clickOnTheYesApproveButtonOnTheVersionedEUIPage() {
         Pages.euiVersionAdminPage().clickYesApproveButton();
         SelenideTools.sleep(10);
+    }
+
+    @Then("{int} EUI with status {string} is displayed on the [Versioned EUI] page")
+    public void euiWithStatusIsDisplayedOnTheVersionedEUIPage(int index, String status) {
+        Assert.assertTrue(Pages.euiVersionAdminPage().isEUIWithStatusDisplayed(index-1, status));
     }
 }
