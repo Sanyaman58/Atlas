@@ -5,14 +5,11 @@ import base.PageTools;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -53,6 +50,11 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionPageClearAllButton = By.xpath("//*[@id=\"jurisdictions_unselect_all\"]");
 	By jurisdictionPageNextButton = By.xpath("//*[@id=\"save_juricdis\"]");
 	By jurisdictionPageCheckboxes = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[2]//input");
+	By childQuestionRadioButton = By.xpath("//*[@id=\"POS1.1_Y\"]");
+	By questionnaireClearAllButton = By.xpath("//*[@id=\"clear_all_questionnaire\"]");
+    By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
+	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
 
 	String clientLabelText = "Client";
 	String companyLabelText = "Company *";
@@ -290,6 +292,36 @@ public class ClientMasterPage extends PageTools {
 		click(existingJobNextButton);
 	}
 
+	
+
+	public void verifyJurisdictionCheckboxLeftPosition() {
+		List<SelenideElement> checkboxTextElements = getElements(checkboxText);
+		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
+
+		for (int i = 0; i < checkboxInputFieldElements.size(); i++) {
+			int checkboxX = checkboxInputFieldElements.get(i).getLocation().getX();
+			int textX = checkboxTextElements.get(i).getLocation().getX();
+
+			if (checkboxX >= textX) {
+				fail("Checkbox is not to  the left of Jurisdiction text");
+			}
+		}
+	}
+
+	public void verifyJurisdictionCheckboxLeftPositionOnSaveSubmitPage() {
+		List<SelenideElement> submitPageJurisidctionCheckboxTextElements = getElements(
+				submitPageJurisidctionCheckboxText);
+		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
+
+		for (int i = 0; i < checkboxInputFieldElements.size(); i++) {
+			int checkboxX = checkboxInputFieldElements.get(i).getLocation().getX();
+			int textX = submitPageJurisidctionCheckboxTextElements.get(i).getLocation().getX();
+
+			if (checkboxX >= textX) {
+				fail("Checkbox is not to  the left of Jurisdiction text");
+			}
+		}
+	}
 	public void labelsOnJurisdictionPage() {
 		SelenideElement residentStateElement = getSelenideElement(selectResidentStateLabel);
 		assertEquals(residentStateElement.getText(), selectResidentStateLabelText);
@@ -320,6 +352,16 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
-	
+
+	public void clickChildQuestion() {
+		SelenideTools.sleep(2);
+		click(questionnaireClearAllButton);
+		SelenideTools.sleep(5);
+		SelenideElement childQuestionRadioButtonElement = getSelenideElement(childQuestionRadioButton);
+		if (childQuestionRadioButtonElement.isEnabled()) {
+			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
+		}
+
+	}
 
 }
