@@ -133,9 +133,9 @@ public class NewResearchPageStepDefinitions {
 	@When("Click on the [Configuration] sidebar button")
 	public void clickOnTheConfigurationSidebarButton() {
 		Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
-		SelenideTools.sleep(2);
+		SelenideTools.sleep(5);
 		Pages.newResearchPage().clickConfigurationSidebarButton();
-		SelenideTools.sleep(10);
+		SelenideTools.sleep(15);
 		SelenideTools.switchToLastTab();
 	}
 
