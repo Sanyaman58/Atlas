@@ -23,8 +23,6 @@ public class JurisdictionPageStepDefinitions {
     public void selectAllStatesOnTheQuestionnairePage() {
         Pages.jurisdictionPage().clickSelectAllJurisdictionsButton();
     }
-
-
     @And("Select the [Yes] requirements checks include radio button")
     public void selectTheYesRequirementsChecksIncludeRadioButton() {
         Pages.jurisdictionPage().clickRequirementsChecksIncludeYesRadio();

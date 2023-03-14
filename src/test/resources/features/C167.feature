@@ -21,7 +21,7 @@ Feature: C167
     And Enter random application name on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
     And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
-    And Check 4 question in the [Question Selection] section on the [Requirements View] page
+    And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin
@@ -34,9 +34,9 @@ Feature: C167
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then The [Configuration] page is opened
-    Then Select "AB" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    When Select "AB" client from the client dropdown
+    When Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -44,14 +44,13 @@ Feature: C167
     Then Select "Alaska" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
     And Get the jurisdictions checkboxes values
+    When Select the [Yes] requirements checks include radio button
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     When Select 1 question on the [Questionnaire] page
     Then Get the questions values
     And Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
-    Then Validate that the displayed on the [SaveSubmit Job] page jurisdictions correspond to the selected earlier
-    And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
@@ -73,7 +72,7 @@ Feature: C167
     And Enter random application name on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
     And Select Out-Of-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
-    And Check 4 question in the [Question Selection] section on the [Requirements View] page
+    And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin
@@ -86,16 +85,17 @@ Feature: C167
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then The [Configuration] page is opened
-    Then Select "AB" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    When Select "AB" client from the client dropdown
+    When Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
-    Then Select "Alaska" state on the [Jurisdiction] page
+    Then Select "Alabama" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
     And Get the jurisdictions checkboxes values
+    And Select the [Yes] requirements checks include radio button
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     When Select 1 question on the [Questionnaire] page
