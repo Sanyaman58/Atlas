@@ -2,6 +2,8 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
+
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -361,7 +363,126 @@ public class ClientMasterPage extends PageTools {
 		if (childQuestionRadioButtonElement.isEnabled()) {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
-
 	}
+	
+	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
+	By requirementViewOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
+	By versionRequirementsOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[4]");
+	By versionRequirementPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 
+	public void clickOnIntelligenceDropdown() {
+		waitForElementVisibility(intelligenceAdminDropdownButton);
+		click(intelligenceAdminDropdownButton);
+		SelenideTools.sleep(2);
+	}
+	
+	public void requirementViewDisplayed() {
+		waitForElementVisibility(requirementViewOption);
+		SelenideTools.sleep(2);
+	}
+	
+	public void clickVersionedRequirementButtonAndVerifyPage() {
+		waitForElementVisibility(versionRequirementsOption);
+		click(versionRequirementsOption);
+		SelenideTools.sleep(2);
+		waitForElementVisibility(versionRequirementPageHeader);
+		SelenideTools.sleep(2);
+	}
+	
+	By versionedStatusInputField = By.xpath("//input[@placeholder=\"Search Status\"]");
+	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+	By deleteRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[1]");
+	By editRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[2]");
+	By viewRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[1]");
+	
+	public void verifyActivateButton() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.val("Approved");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideTools.sleep(2);
+		
+		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
+		activateRequirementToggleElement.shouldBe(Condition.enabled);
+	}
+	
+	public void verifyDeleteButton() {
+		waitForElementVisibility(deleteRequirementToggle);
+		SelenideTools.sleep(2);
+		SelenideElement deleteRequirementToggleElement = getSelenideElement(deleteRequirementToggle);
+		deleteRequirementToggleElement.shouldBe(Condition.enabled);
+	}
+	
+	public void verifyEditButton() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.clear();
+		SelenideTools.sleep(1);
+		versionedStatusInputFieldElement.val("In-Progress");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideElement editRequirementButtonElement = getSelenideElement(editRequirementButton);
+		waitForElementVisibility(editRequirementButton);
+		editRequirementButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	public void verifyViewRequirementButton() {
+		waitForElementVisibility(viewRequirementButton);
+		SelenideTools.sleep(2);
+		SelenideElement viewRequirementButtonElement = getSelenideElement(viewRequirementButton);
+		viewRequirementButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	By permissionsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
+	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By approveRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+	
+	public void verifyApproveRequirementButton() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.clear();
+		SelenideTools.sleep(1);
+		versionedStatusInputFieldElement.val("Approval Pending");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideElement approveRequirementButtonElement = getSelenideElement(approveRequirementButton);
+		waitForElementVisibility(approveRequirementButton);
+		approveRequirementButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	By systemAdminCheckBoxes = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[2]/input");
+	
+	public void verifyIntelligencePermissionsEnabled() {
+		waitForElementVisibility(permissionsSidebarButton);
+		click(permissionsSidebarButton);
+		SelenideTools.sleep(4);
+		waitForElementVisibility(researchResultPageHeader);
+		
+		List<SelenideElement> systemAdminCheckBoxesElement = getElements(systemAdminCheckBoxes);
+		System.out.println("Size of System Admin checkboxes = "+ systemAdminCheckBoxesElement.size());
+		
+		for(SelenideElement checkbox : systemAdminCheckBoxesElement) {
+			checkbox.shouldBe(Condition.selected);
+		}
+	}
+		
+	public void verifyDeleteFacilityButtonIsEnabled() {		
+		SelenideElement configurationDeleteButtonElement = getSelenideElement(configurationDeleteButton);
+		waitForElementVisibility(approveRequirementButton);
+		configurationDeleteButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
+	By deleteResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
+	
+	public void verifyViewDeleteButtonEnabled() {		
+		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
+		waitForElementVisibility(viewResultButton);
+		viewResultButtonElement.shouldBe(Condition.enabled);
+		
+		SelenideElement deleteResultButtonElement = getSelenideElement(deleteResultButton);
+		waitForElementVisibility(deleteResultButton);
+		deleteResultButtonElement.shouldBe(Condition.enabled);
+	}
 }
