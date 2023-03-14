@@ -408,4 +408,27 @@ public class RequirementsAdminPageStepDefinitions {
     public void saveOldRequirementNameOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().saveOldRequirementsName();
     }
+
+    @When("Validate the [Add New Requirement] elements on the [Requirements View] page")
+    public void validateTheAddNewRequirementElementsOnTheRequirementsViewPage() {
+        Assert.assertTrue(Pages.requirementsAdminPage().isRequirementCategorySelectable());
+        Assert.assertTrue(Pages.requirementsAdminPage().isRequirementTypeSelectable());
+        Assert.assertTrue(Pages.requirementsAdminPage().isCreateNewRequirementButtonClickable());
+    }
+
+    @Then("Newly created job with status {string} is displayed in the table on the [Requirements View] page")
+    public void newlyCreatedJobWithStatusIsDisplayedInTheTableOnTheRequirementsViewPage(String status) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isRecordWithStatusDisplayed(Pages.requirementsAdminPage().getState(),
+                Pages.requirementsAdminPage().getRequirementName(),
+                Pages.requirementsAdminPage().getApplicationName(),
+                status));
+    }
+
+    @Then("Verify the [View Edit Existing Requirement] elements on the [Requirements View] page")
+    public void verifyTheViewEditExistingRequirementElementsOnTheRequirementsViewPage() {
+        Assert.assertTrue(Pages.requirementsAdminPage().isEditJurisdictionSelectVisible());
+        Assert.assertTrue(Pages.requirementsAdminPage().isEditRequirementTypeSelectVisible());
+        Assert.assertTrue(Pages.requirementsAdminPage().isEditRequirementCategoryVisible());
+        Assert.assertTrue(Pages.requirementsAdminPage().isEditRequirementNameSelectVisible());
+    }
 }
