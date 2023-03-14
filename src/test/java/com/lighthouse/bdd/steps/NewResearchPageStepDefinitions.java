@@ -275,7 +275,6 @@ public class NewResearchPageStepDefinitions {
 	@And("Close pop up window")
 	public void closePopUpWindow() {
 		Pages.newResearchPage().closePopUpWindow();
-		SelenideTools.refresh();
 	}
 
 	@Then("Click on the [Configuration] sidebar button on Lighthouse")

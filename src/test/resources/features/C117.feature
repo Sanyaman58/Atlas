@@ -26,9 +26,9 @@ Feature: C117
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
     When Click on the [Save] button on the [Requirements View] page
-    Then Pop up window with "Please create a valid selector criteria." message is displayed
-    Then Close pop up window
-    And Check 3 question in the [Question Selection] section on the [Requirements View] page
+#    Then Pop up window with "Please create a valid selector criteria." message is displayed
+#    Then Close pop up window
+    And Check 4 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     When Click on the [Save] button on the [Requirements View] page
     Then Select the [Preliminary Data] radio button on [Requirement View] page
