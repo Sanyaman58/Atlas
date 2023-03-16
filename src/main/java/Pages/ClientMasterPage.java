@@ -2,6 +2,8 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
+
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -361,7 +363,34 @@ public class ClientMasterPage extends PageTools {
 		if (childQuestionRadioButtonElement.isEnabled()) {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
-
 	}
+	
+	By entitlementHeader = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3");
+
+	public void noEntitlementMessage() {
+		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
+		entitlementHeaderElement.shouldNot(Condition.exist);
+	}
+	
+	By enitilementUpperLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[2]");
+	By entitlementLowerLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[1]");
+	
+	public void verifyEntitlementMessage() {
+		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
+		entitlementHeaderElement.should(Condition.exist);
+		
+		
+		List<SelenideElement> enitilementUpperLimitElement = getElements(enitilementUpperLimit);
+		List<SelenideElement> entitlementLowerLimitElement = getElements(entitlementLowerLimit);
+		
+		if(enitilementUpperLimitElement.size() > entitlementLowerLimitElement.size()) {
+			System.out.println("Correct entitlement message is shown");
+		}
+		else {
+			System.out.println("Correct entitlement message is not shown");
+		}
+	}
+	
+	
 
 }
