@@ -487,6 +487,15 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionDropdown = By.xpath("//select[@id=\"Jurisdiction\"]");
 	String jurisdictionDropdownName;
 	By applicationNameInput = By.xpath("//input[@name=\"Name_Application\"]");
+	By requirementRadioButton = By.xpath("//*[@id=\"requirements_checks_include_no\"]");
+	By questionSelectionHeader = By.xpath("//*[@id=\"Question_Selection\"]/section/div/div[1]/h2");
+	By residentCheckbox = By.xpath("//*[@id=\"RES1\"]");
+	By residentStateDropdown = By.xpath("//*[@id=\"res-container\"]/select");
+	String residentStateDropdownName;
+	By residentRequirementRadioButton = By.xpath("//*[@id=\"resident-requirement\"]");
+	By selectQuestionCheckbox = By.xpath("//*[@id=\"POS1\"]");
+	By requirementViewSubmitForApprovalButton = By.xpath("//*[@id=\"submit_selected_criteria\"]");
+	
 	
 	public void fillInfoOnRequirementViewPage(int index) {
 		SelenideElement requirementNameInputElement = getSelenideElement(requirementNameInput);
@@ -495,13 +504,134 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(5);
 		
 		waitForElementClickable(jurisdictionDropdown);
-		getSelenideElement(jurisdictionDropdown).selectOption(index);
+		getSelenideElement(jurisdictionDropdown).selectOption(3);
 		jurisdictionDropdownName = getSelenideElement(jurisdictionDropdown).getText();
 		SelenideTools.sleep(2);
 		
 		SelenideElement applicationNameInputElement = getSelenideElement(applicationNameInput);
 		waitForElementVisibility(applicationNameInput);
 		applicationNameInputElement.setValue("Test Automation Requirement");
+		
+		waitForElementVisibility(requirementRadioButton);
+		click(requirementRadioButton);
+		SelenideTools.sleep(2);
+		waitForElementVisibility(questionSelectionHeader);
+		click(questionSelectionHeader);
+		waitForElementVisibility(residentCheckbox);
+		click(residentCheckbox);
+		
+		waitForElementVisibility(residentStateDropdown);
+		getSelenideElement(residentStateDropdown).selectOption(4);
+		residentStateDropdownName = getSelenideElement(residentStateDropdown).getText();
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(residentRequirementRadioButton);
+		click(residentRequirementRadioButton);
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(selectQuestionCheckbox);
+		click(selectQuestionCheckbox);
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(requirementViewSubmitForApprovalButton);
+		click(requirementViewSubmitForApprovalButton);
+		SelenideTools.sleep(8);
+		}
+	
+	By notificationDropdownOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[6]/a");
+	By notificationsPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	
+	public void clickNotificationTab() {
+		waitForElementPresent(notificationDropdownOption);
+		click(notificationDropdownOption);
+		SelenideTools.sleep(6);
+		waitForElementVisibility(notificationsPageHeader);
+	}
+	
+	By newlyCreatedType = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[3]");
+	By requirementName = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[4]");
+	By prerequisiteData = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[7]/span");
+	
+	public void verifyNewlyCreatedRequirement() {
+		waitForElementVisibility(newlyCreatedType);
+		SelenideElement newlyCreatedTypeElement = getSelenideElement(newlyCreatedType);
+		if(newlyCreatedTypeElement.getText() == "New") {
+			System.out.println("Status of newly created requirement = "+ newlyCreatedTypeElement.getText());
+		}
+		else {
+			System.out.println("Status not found to be New");
+		}
+		
+		SelenideElement requirementNameElement = getSelenideElement(requirementName);
+		if(requirementNameElement.getText() == "Test Requirement") {
+			System.out.println("Requirement name matched as = "+ requirementNameElement.getText());
+		}
+		else {
+			System.out.println("Requirement name did not match");
+		}
+		//
+		SelenideElement prerequisiteDataElement = getSelenideElement(prerequisiteData);
+		if(prerequisiteDataElement.getText() == "No Change") {
+			System.out.println("Text on fields where no changes are made = "+ prerequisiteDataElement.getText());
+		}
+		else {
+			System.out.println("No chnage text not found");
+		}
+	}
+	
+	By requirementDataSourceRadioButton = By.xpath("//input[@id=\"preliminary-data\"]");
+	By filterJurisdictionDropdown = By.xpath("//select[@id=\"filter_Jurisdiction\"]");
+	String filterJurisdictionDropdownName;
+	By requirementCategoryFilterDropdown = By.xpath("//*[@id=\"filter_Requirement_Category\"]");
+	String requirementCtaegoryFilterDropdownName;
+	By requirementTypeFilterDropdown = By.xpath("//*[@id=\"filter_Requirement_Type\"]");
+	String requirementTypeFilterDropdownName;
+	By requirementNameFilterDropdown = By.xpath("//*[@id=\"filter_Name_Requirement\"]");
+	String requirementNameFilterDropdownName;
+	By requirementViewStatusDropdown = By.xpath("//*[@id=\"status\"]");
+	String requirementViewStatusDropdownName;
+	By resultTableRequirementName = By.xpath("//*[@id=\"DataTables_Table_4\"]/tbody/tr/td[3]");
+	
+	
+	public void verifyDataOnRequirementAdminPage() {
+		waitForElementVisibility(requirementDataSourceRadioButton);
+		click(requirementDataSourceRadioButton);
+		
+		waitForElementClickable(filterJurisdictionDropdown);
+		getSelenideElement(filterJurisdictionDropdown).selectOption(3);
+		filterJurisdictionDropdownName = getSelenideElement(filterJurisdictionDropdown).getText();
+		SelenideTools.sleep(2);
+		
+		
+		waitForElementVisibility(requirementCategoryFilterDropdown);
+		getSelenideElement(requirementCategoryFilterDropdown).selectOption(4);
+		requirementCtaegoryFilterDropdownName = getSelenideElement(requirementCategoryFilterDropdown).getText();
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(requirementTypeFilterDropdown);
+		getSelenideElement(requirementTypeFilterDropdown).selectOption(2);
+		requirementTypeFilterDropdownName = getSelenideElement(requirementTypeFilterDropdown).getText();
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(requirementNameFilterDropdown);
+		getSelenideElement(requirementNameFilterDropdown).selectOption("Test Requirement");
+		requirementNameFilterDropdownName = getSelenideElement(requirementNameFilterDropdown).getText();
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(requirementViewStatusDropdown);
+		getSelenideElement(requirementViewStatusDropdown).selectOption(2);
+		requirementViewStatusDropdownName = getSelenideElement(requirementViewStatusDropdown).getText();
+		SelenideTools.sleep(2);
+		
+		waitForElementVisibility(resultTableRequirementName);
+		SelenideElement resultTableRequirementNameElement = getSelenideElement(resultTableRequirementName);
+		if(resultTableRequirementNameElement.getText() == "Test Requirement") {
+			System.out.println("SErach Result found as = "+ resultTableRequirementNameElement.getText());
+		}
+		else {
+			System.out.println("Matching record not found");
+		}
+		
 		
 	}
 
