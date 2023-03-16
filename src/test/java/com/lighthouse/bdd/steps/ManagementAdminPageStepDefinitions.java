@@ -218,5 +218,20 @@ public class ManagementAdminPageStepDefinitions {
     public void fillRequiredInfo(int index) {
         Pages.clientMasterPage().fillInfoOnRequirementViewPage(index);
     }
+	
+	@And("Open Notification page")
+    public void openNotifictions() {
+        Pages.clientMasterPage().clickNotificationTab();
+    }
+	
+	@And("Verify the newly created requirement on Notifications page")
+    public void verifyRequirementViewData() {
+        Pages.clientMasterPage().verifyNewlyCreatedRequirement();
+    }
+	
+	@And("Search the newly created requirement on [Requirement View] page")
+    public void verifyRequirementViewDataOnRequirementAdminPage() {
+        Pages.clientMasterPage().verifyDataOnRequirementAdminPage();
+    }
 
 }
