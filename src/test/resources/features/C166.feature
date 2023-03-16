@@ -1,9 +1,9 @@
-@C100
+@C166
 
-Feature: C100
+Feature: C166
 
-  @TestRail(100)
-  Scenario: Verify the "New Facility" creation functionality
+  @TestRail(166)
+  Scenario: Verify that the "Showing X to Y of Z" is displayed under the table on the "Configuration" page
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
