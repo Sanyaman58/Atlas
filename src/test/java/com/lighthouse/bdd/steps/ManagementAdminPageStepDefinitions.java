@@ -170,5 +170,15 @@ public class ManagementAdminPageStepDefinitions {
     public void verifyChildQuestionUnclickable() {
         Pages.clientMasterPage().clickChildQuestion();
     }
+	
+	@And("Verify no [Intelligence Entitlement] message is shown without selecting any Client")
+    public void verifyNoEntitlementMessage() {
+        Pages.clientMasterPage().noEntitlementMessage();
+    }
+	
+	@Then("Verify the [Intelligence Entitlement] message is shown")
+    public void verifyEntitlementMessage() {
+        Pages.clientMasterPage().verifyEntitlementMessage();
+    }
 
 }
