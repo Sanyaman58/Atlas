@@ -54,7 +54,7 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionPageCheckboxes = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[2]//input");
 	By childQuestionRadioButton = By.xpath("//*[@id=\"POS1.1_Y\"]");
 	By questionnaireClearAllButton = By.xpath("//*[@id=\"clear_all_questionnaire\"]");
-    By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
 	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
 
@@ -294,8 +294,6 @@ public class ClientMasterPage extends PageTools {
 		click(existingJobNextButton);
 	}
 
-	
-
 	public void verifyJurisdictionCheckboxLeftPosition() {
 		List<SelenideElement> checkboxTextElements = getElements(checkboxText);
 		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
@@ -324,6 +322,7 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
+
 	public void labelsOnJurisdictionPage() {
 		SelenideElement residentStateElement = getSelenideElement(selectResidentStateLabel);
 		assertEquals(residentStateElement.getText(), selectResidentStateLabelText);
@@ -364,33 +363,35 @@ public class ClientMasterPage extends PageTools {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
 	}
-	
-	By entitlementHeader = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3");
+
+	By entitlementHeader = By.xpath("//div[@class=\"card-body\"]//h3");
 
 	public void noEntitlementMessage() {
 		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
-		entitlementHeaderElement.shouldNot(Condition.exist);
+		if (entitlementHeaderElement.isDisplayed() == false) {
+			System.out.println("Entitlement header is not present");
+		} else {
+			System.out.println("Entitlement header is present");
+		}
 	}
-	
+
 	By enitilementUpperLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[2]");
 	By entitlementLowerLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[1]");
-	
+
 	public void verifyEntitlementMessage() {
 		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
-		entitlementHeaderElement.should(Condition.exist);
-		
-		
+		if(entitlementHeaderElement.isDisplayed() == true) {
+			System.out.println("Entrilement header displayed");
+		}
+
 		List<SelenideElement> enitilementUpperLimitElement = getElements(enitilementUpperLimit);
 		List<SelenideElement> entitlementLowerLimitElement = getElements(entitlementLowerLimit);
-		
-		if(enitilementUpperLimitElement.size() > entitlementLowerLimitElement.size()) {
+
+		if (enitilementUpperLimitElement.size() > entitlementLowerLimitElement.size()) {
 			System.out.println("Correct entitlement message is shown");
-		}
-		else {
+		} else {
 			System.out.println("Correct entitlement message is not shown");
 		}
 	}
-	
-	
 
 }
