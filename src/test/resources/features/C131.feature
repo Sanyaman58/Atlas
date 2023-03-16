@@ -36,3 +36,8 @@ Feature: C131
     And Select 2 option Requirement type from doropdown
     And Click on Create New button
     And Fill the required details on Requirement view page
+    When Open Notification page
+    Then Verify the newly created requirement on Notifications page
+    When Click on the [Requirements View] sidebar button
+    Then The [Requirements View] page is opened
+    And Search the newly created requirement on [Requirement View] page
