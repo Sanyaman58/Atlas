@@ -44,9 +44,8 @@ public class QuestionnairePageStepDefinitions {
     @And("Select questions to match the complex selector criteria")
     public void selectQuestionsToMatchTheComplexSelectorCriteria() {
         Pages.questionnairePage().selectQuestion(1);
+        Pages.questionnairePage().selectQuestion(2);
         Pages.questionnairePage().selectQuestion(4);
-        Pages.questionnairePage().selectQuestion(5);
-        Pages.questionnairePage().selectQuestion(7);
     }
 
     @When("Click on the [Clear All] button on the [Questionnaire] page")

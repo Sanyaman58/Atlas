@@ -279,6 +279,7 @@ public class RequirementsAdminPageStepDefinitions {
     @And("Create a complex selector criteria")
     public void createAComplexSelectorCriteria() {
         SelenideTools.sleep(1);
+
         Pages.requirementsAdminPage().checkQuestion(3);
         Pages.requirementsAdminPage().checkQuestion(4);
         Pages.requirementsAdminPage().checkQuestion(5);
@@ -286,13 +287,15 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().checkQuestion(7);
         Pages.requirementsAdminPage().checkQuestion(8);
         Pages.requirementsAdminPage().checkQuestion(9);
-        Pages.requirementsAdminPage().checkQuestion(46);
+        Pages.requirementsAdminPage().checkQuestion(10);
         Pages.requirementsAdminPage().checkQuestion(47);
-        Pages.requirementsAdminPage().checkQuestion(51);
+        Pages.requirementsAdminPage().checkQuestion(48);
+        Pages.requirementsAdminPage().checkQuestion(66);
 
         Pages.requirementsAdminPage().deleteQuestion(0);
         Pages.requirementsAdminPage().deleteQuestion(0);
 
+        Pages.requirementsAdminPage().addGroup(0);
         Pages.requirementsAdminPage().addGroup(0);
         Pages.requirementsAdminPage().addGroup(0);
         Pages.requirementsAdminPage().addGroup(0);
@@ -300,29 +303,56 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().selectAndRule(1);
         Pages.requirementsAdminPage().selectAndRule(2);
         Pages.requirementsAdminPage().selectAndRule(3);
+        Pages.requirementsAdminPage().selectAndRule(4);
 
+        Pages.requirementsAdminPage().addRule(1);
         Pages.requirementsAdminPage().addRule(1);
         Pages.requirementsAdminPage().addRule(1);
         Pages.requirementsAdminPage().addRule(1);
 
         Pages.requirementsAdminPage().addRule(2);
         Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
 
         Pages.requirementsAdminPage().addRule(3);
         Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
 
         Pages.requirementsAdminPage().selectQuestionAndAnswer(1, 0, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 8, "No");
 
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
-
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 0, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 4, "Yes");
         Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 9, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(11, 7, "Yes");
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 4, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(14, 5, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(15, 6, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(16, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(17, 8, "No");
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(18, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(19, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(20, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(22, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(23, 1, "No");
     }
 
     @When("Check the [RES1: Apply Resident State Selector Criteria] checkbox")
