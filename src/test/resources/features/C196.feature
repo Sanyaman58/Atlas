@@ -11,9 +11,7 @@ Feature: C196
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
-    And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     And Select already created job by index 1 in the table on the [New Research] page
@@ -24,6 +22,7 @@ Feature: C196
     When Click on the [Clear All] button on the [Questionnaire] page
     Then Verify that all questions answers are 'No' on the [Questionnaire] page
     When Select 4 question on the [Questionnaire] page
+    Then Get the questions values
     And Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
@@ -35,6 +34,6 @@ Feature: C196
     And Get table records on [Research Results] page
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 

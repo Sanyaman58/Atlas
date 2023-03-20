@@ -44,10 +44,9 @@ public class QuestionnairePageStepDefinitions {
     @And("Select questions to match the complex selector criteria")
     public void selectQuestionsToMatchTheComplexSelectorCriteria() {
         Pages.questionnairePage().selectQuestion(1);
+        Pages.questionnairePage().selectQuestion(4);
         Pages.questionnairePage().selectQuestion(5);
-        Pages.questionnairePage().selectQuestion(6);
-        Pages.questionnairePage().selectQuestion(8);
-        Pages.questionnairePage().selectQuestion(9);
+        Pages.questionnairePage().selectQuestion(7);
     }
 
     @When("Click on the [Clear All] button on the [Questionnaire] page")
@@ -55,9 +54,34 @@ public class QuestionnairePageStepDefinitions {
         Pages.questionnairePage().clickClearAllButton();
     }
 
-    @Then("Verify that all questions answers are {string} on the [Questionnaire] page")
+    @Then("Verify that all questions answers are 'No' on the [Questionnaire] page")
     public void verifyThatAllQuestionsAnswersAreNoOnTheQuestionnairePage() {
         Pages.questionnairePage().getQuestionsAnswers();
         Assert.assertFalse(Pages.questionnairePage().getQuestionsAnswers().containsValue(false));
+    }
+
+    @And("The tooltip near the {int} question is visible on the [Questionnaire] page")
+    public void theTooltipNearTheQuestionIsVisibleOnTheQuestionnairePage(int index) {
+        Assert.assertTrue(Pages.questionnairePage().isTooltipVisible(index));
+    }
+
+    @When("Hover over tooltip near the {int} question on the [Questionnaire] page")
+    public void hoverOverTooltipNearTheQuestionOnTheQuestionnairePage(int index) {
+        Pages.questionnairePage().hoverOverTooltip(index);
+    }
+
+    @Then("The tooltip window is displayed")
+    public void theTooltipWindowIsDisplayed() {
+        Assert.assertTrue(Pages.questionnairePage().isTooltipWindowDisplayed());
+    }
+
+    @And("The tooltip window's comment is {string} on the [Questionnaire] page")
+    public void theTooltipWindowSCommentIsOnTheQuestionnairePage(String comment) {
+        Assert.assertEquals(Pages.questionnairePage().getTooltipWindowComment(), comment);
+    }
+
+    @And("The tooltip window's URL is {string} on the [Questionnaire] page")
+    public void theTooltipWindowSURLIsOnTheQuestionnairePage(String url) {
+        Assert.assertEquals(Pages.questionnairePage().getTooltipWindowURL(), url);
     }
 }

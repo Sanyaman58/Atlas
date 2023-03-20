@@ -32,9 +32,9 @@ Feature: C161
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -62,5 +62,5 @@ Feature: C161
     Then Enter "Selector Successfully matched for Active Requirement SKU" in the activity search on the [Activity Logs] page
     And Verify that log containing requirement name saved on the [Research Results] page in description text is displayed on the [Activity Logs] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

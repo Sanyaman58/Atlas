@@ -23,8 +23,6 @@ public class JurisdictionPageStepDefinitions {
     public void selectAllStatesOnTheQuestionnairePage() {
         Pages.jurisdictionPage().clickSelectAllJurisdictionsButton();
     }
-
-
     @And("Select the [Yes] requirements checks include radio button")
     public void selectTheYesRequirementsChecksIncludeRadioButton() {
         Pages.jurisdictionPage().clickRequirementsChecksIncludeYesRadio();
@@ -58,5 +56,10 @@ public class JurisdictionPageStepDefinitions {
         Pages.newResearchPage().goBackInBrowser();
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
+    }
+
+    @Then("Verify that all 52 states are visible and enabled")
+    public void verifyThatAllStatesAreVisibleAndEnabled() {
+        Pages.jurisdictionPage().areAllStatesCheckboxesVisibleAndClickable();
     }
 }

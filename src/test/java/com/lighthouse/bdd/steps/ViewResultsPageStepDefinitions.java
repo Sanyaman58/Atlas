@@ -156,4 +156,19 @@ public class ViewResultsPageStepDefinitions {
     public void verifyThatTheNumberOfActivityLogsAndTheNumberOfTheRecordsOnTheResearchResultsPageIsTheSame() {
         Assert.assertEquals(Pages.viewResultsPage().getRequirementsCount(), Pages.activityLogsPage().getActivityLogsRecordsCount());
     }
+
+    @When("Click on the [Results] sidebar button on Lighthouse")
+    public void clickOnTheResultsSidebarButtonOnLighthouse() {
+        Pages.viewResultsPage().clickOnResultsSidebarButton();
+    }
+
+    @When("Select {string} client from the client dropdown on the [View Results] page")
+    public void selectStringClientFromTheClientDropdownOnTheViewResultsPage(String client) {
+        Pages.viewResultsPage().selectClient(client);
+    }
+
+    @Then("{int} record is displayed in the table on the [View Results] page")
+    public void recordIsDisplayedInTheTableOnTheViewResultsPage(int numberOfRecords) {
+        Assert.assertTrue(Pages.viewResultsPage().getNumberOfResults()==numberOfRecords);
+    }
 }
