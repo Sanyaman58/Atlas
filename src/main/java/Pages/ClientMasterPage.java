@@ -41,9 +41,6 @@ public class ClientMasterPage extends PageTools {
 	By activityLogOption = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/a");
 	By activityLogTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By activityLogFilter = By.xpath("//*[@id=\"DataTables_Table_0_length\"]/label/select");
-	
-	
-	
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -203,13 +200,13 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(configurationDropdownButton);
 		waitForElementVisibility(resultsDropdownButton);
 	}
-	
+
 	public void clickResulsDropdownButton() {
 		waitForElementVisibility(resultsDropdownButton);
 		click(resultsDropdownButton);
 		SelenideTools.sleep(1);
 	}
-	
+
 	public void clickActivityLogOfLineItem() {
 		waitForElementVisibility(activityLogOption);
 		click(activityLogOption);
@@ -218,17 +215,14 @@ public class ClientMasterPage extends PageTools {
 	public void verifyActivityLogScreen() {
 		waitForElementVisibility(activityLogTitle);
 		waitForElementVisibility(activityLogFilter);
-		
+
 		SelenideElement activityLogFilterElement = getSelenideElement(activityLogFilter).shouldBe(Condition.visible);
 		activityLogFilterElement.getText();
-		if(activityLogFilterElement.getText() == "All") {
+		if (activityLogFilterElement.getText() == "All") {
 			System.out.println("Filter is already set to 'All'");
-		}
-		else {
+		} else {
 			System.out.println("Filter is not set to 'All'");
 		}
-		
 	}
 
-	
 }
