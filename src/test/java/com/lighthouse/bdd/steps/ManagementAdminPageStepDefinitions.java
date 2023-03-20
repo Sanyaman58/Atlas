@@ -170,5 +170,49 @@ public class ManagementAdminPageStepDefinitions {
     public void verifyChildQuestionUnclickable() {
         Pages.clientMasterPage().clickChildQuestion();
     }
-
+	
+	@And("Click on [Version Requirements] dropdown option")
+    public void clickVersionRequirement() {
+        Pages.clientMasterPage().openVersionRequirementsPage();
+    }
+	
+	@And("Verify that the [Activate Requirement] view option is enabled")
+    public void verifyActivateRequirementOptionEnabled() {
+        Pages.clientMasterPage().isActivateRequirementOptionEnabled();
+    }
+	
+	@And("Verify [Delete Requirement] option is enabled")
+    public void verifyDeleteRequirementOptionEnabled() {
+        Pages.clientMasterPage().isDeleteRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Edit Requirement] option is enabled")
+    public void verifyEditRequirementOptionEnabled() {
+        Pages.clientMasterPage().isEditRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [View Requirement] option is enabled")
+    public void verifyViewRequirementOptionEnabled() {
+        Pages.clientMasterPage().isViewRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Approve Requirement] option is enabled")
+    public void verifyApproveRequirementOptionEnabled() {
+        Pages.clientMasterPage().isApproveRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+    public void verifyIntelligencePermissionsAreEnabled() {
+        Pages.clientMasterPage().isIntelligencePermissionsEnabled();
+    }
+	
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+    public void verifyDeleteFacilityButtonIsEnabled() {
+        Pages.clientMasterPage().isDeleteFacilityButtonEnabled();
+    }
+	
+	@And("Verify [View Result] and [Delete Result] button is enabled")
+    public void verifyViewAndDeleteResultButtonIsEnabled() {
+        Pages.clientMasterPage().isViewAndDeleteButtonEnabled();
+    }
 }
