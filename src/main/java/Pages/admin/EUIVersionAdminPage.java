@@ -20,11 +20,9 @@ public class EUIVersionAdminPage extends PageTools {
 
 	public void clickOnTheTableLabel(String label){
 		List<SelenideElement> elements = getElements(euiVersionAdminTableLabels);
-		System.out.println(label);
 		for(SelenideElement element : elements){
 			if(element.getText().equals(label)){
 				element.click();
-				System.out.println(element.getText());
 				break;
 			}
 
@@ -39,6 +37,11 @@ public class EUIVersionAdminPage extends PageTools {
 	public void clickOnTheActivateEUIButton(int index){
 		waitForElementVisibility(euiVersionAdminTableRecords);
 		getElements(euiVersionAdminTableRecords).get(index).findElement(By.xpath("./td[8]/div/button[@title='Activate EUI']")).click();
+	}
+
+	public boolean isEUIWithStatusDisplayed(int index, String status){
+		waitForElementVisibility(euiVersionAdminTableRecords);
+		return getElements(euiVersionAdminTableRecords).get(index).findElement(By.xpath("./td[7]/span")).getText().trim().equals(status);
 	}
 
 	public void clickYesApproveButton(){

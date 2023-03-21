@@ -33,7 +33,8 @@ public class ViewResultsPage extends PageTools {
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
-
+    By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
+    By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
 
     List<List<String>> tableRecords;
     static String facilityName;
@@ -131,8 +132,10 @@ public class ViewResultsPage extends PageTools {
     public void clickOnTheLabel(String label){
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
-            if(element.getText()==label);
+            if(element.getText()==label) {
                 element.click();
+                break;
+            }
         }
     }
 
@@ -240,7 +243,7 @@ public class ViewResultsPage extends PageTools {
     public int getNumberOfResults(){
         if(isElementVisibleWithNoLog(researchResultsNoRecords))
             return 0;
-        return getElements(researchResultsTableRecords).size();
+        return getElements(surveillanceResultsTableRecords).size();
     }
     public boolean isNoRecordsFoundMessageDisplayed(){
         SelenideTools.sleep(2);
@@ -293,5 +296,15 @@ public class ViewResultsPage extends PageTools {
         }
 
         SelenideTools.sleep(5);
+    }
+
+    public void clickOnResultsSidebarButton(){
+        waitForElementVisibility(resultsSidebarButton);
+        click(resultsSidebarButton);
+    }
+
+    public void selectClient(String client){
+        waitForElementVisibility(clientSelect);
+        selectOption(client, clientSelect);
     }
 }
