@@ -24,7 +24,6 @@ public class ClientMasterPage extends PageTools {
 	By addClientTableLabels = By.xpath("//*[@id=\"modal-content\"]/div/div[2]//label");
 	By jurisdictionPageFirstCheckbox = By.xpath("//*[@id=\"Alabama\"]");
 	By EuiSaveButton = By.xpath("//*[@id=\"save_state\"]");
-
 	By EuiVersionApproveButton = By.xpath("//button[@class=\"approve approve-document\"]");
 	By EuiApprovePopupYesButton = By.xpath("//button[@id=\"yes_btn\"]");
 	By versionedEuiPageVersionHeader = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[3]/div/label");
@@ -41,10 +40,10 @@ public class ClientMasterPage extends PageTools {
 	By activityLogOption = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/a");
 	By activityLogTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By activityLogFilter = By.xpath("//*[@id=\"DataTables_Table_0_length\"]/label/select");
-
 	By setupPageNextButton = By.xpath("//*[@id=\"submit-new\"]");
 	By existingConfiguration = By.xpath("//*[@id=\"DataTables_Table_0\"]//tbody//tr");
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -240,9 +239,13 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 	
-	public void euiStatesNotVisible() {
+	public void euiStates() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = "+ endUpInStatesTitleElement);
+		List<SelenideElement> jurisdictionPageStatesElement = getElements(jurisdictionPageStates);
+		if(jurisdictionPageStatesElement.size() >0) {
+			System.out.println("EUI states visible");
+		}
 	}
 	
 	
