@@ -2,6 +2,7 @@ package Pages;
 
 import Pages.admin.*;
 import Pages.atlas.AtlasDashboardManagementPage;
+import Pages.atlas.RequirementsPage;
 import Utils.AllureLogger;
 
 public class Pages extends AllureLogger {
@@ -30,44 +31,43 @@ public class Pages extends AllureLogger {
 
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
+    private static RequirementsPage requirementsPage;
 
-    public static LoginPage loginPage() {
-        if (loginPage == null) {
-            loginPage = new LoginPage();
-        }
-        return loginPage;
-    }
+	public static LoginPage loginPage() {
+		if (loginPage == null) {
+			loginPage = new LoginPage();
+		}
+		return loginPage;
+	}
 
-    public static EmailVerificationPage emailVerificationPage() {
-        if (emailVerificationPage == null) {
-            emailVerificationPage = new EmailVerificationPage();
-        }
-        return emailVerificationPage;
-    }
+	public static EmailVerificationPage emailVerificationPage() {
+		if (emailVerificationPage == null) {
+			emailVerificationPage = new EmailVerificationPage();
+		}
+		return emailVerificationPage;
+	}
 
-    public static NewResearchPage newResearchPage() {
-        if (newResearchPage == null) {
-            newResearchPage = new NewResearchPage();
-        }
-        return newResearchPage;
-    }
-    
-    
-   //s
-    public static ClientMasterPage clientMasterPage() {
-        if (clientMasterPage == null) {
-        	clientMasterPage = new ClientMasterPage();
-        }
-        return clientMasterPage;
-    }
+	public static NewResearchPage newResearchPage() {
+		if (newResearchPage == null) {
+			newResearchPage = new NewResearchPage();
+		}
+		return newResearchPage;
+	}
 
-    public static JurisdictionPage jurisdictionPage() {
-        if (jurisdictionPage == null) {
-            jurisdictionPage = new JurisdictionPage();
-        }
-        return jurisdictionPage;
-    }
+	// s
+	public static ClientMasterPage clientMasterPage() {
+		if (clientMasterPage == null) {
+			clientMasterPage = new ClientMasterPage();
+		}
+		return clientMasterPage;
+	}
 
+	public static JurisdictionPage jurisdictionPage() {
+		if (jurisdictionPage == null) {
+			jurisdictionPage = new JurisdictionPage();
+		}
+		return jurisdictionPage;
+	}
     public static ResearchNotificationPage researchNotificationPage() {
         if (researchNotificationPage == null) {
             researchNotificationPage = new ResearchNotificationPage();
@@ -82,96 +82,116 @@ public class Pages extends AllureLogger {
         return questionnairePage;
     }
 
-    public static SaveSubmitJobPage saveSubmitJobPage() {
-        if (saveSubmitJobPage == null) {
-            saveSubmitJobPage = new SaveSubmitJobPage();
+	// public static QuestionnairePage questionnairePage() {
+	// 	if (questionnairePage == null) {
+	// 		questionnairePage = new QuestionnairePage();
+	// 	}
+	// 	return questionnairePage;
+	// }
+
+	public static SaveSubmitJobPage saveSubmitJobPage() {
+		if (saveSubmitJobPage == null) {
+			saveSubmitJobPage = new SaveSubmitJobPage();
+		}
+		return saveSubmitJobPage;
+	}
+
+	public static ViewResultsPage viewResultsPage() {
+		if (viewResultsPage == null) {
+			viewResultsPage = new ViewResultsPage();
+		}
+		return viewResultsPage;
+	}
+
+	public static LoginAdminPage loginAdminPage() {
+		if (loginAdminPage == null) {
+			loginAdminPage = new LoginAdminPage();
+		}
+		return loginAdminPage;
+	}
+
+	public static ResearchAdminPage researchAdminPage() {
+		if (researchAdminPage == null) {
+			researchAdminPage = new ResearchAdminPage();
+		}
+		return researchAdminPage;
+	}
+
+	public static RequirementsAdminPage requirementsAdminPage() {
+		if (requirementsAdminPage == null) {
+			requirementsAdminPage = new RequirementsAdminPage();
+		}
+		return requirementsAdminPage;
+	}
+
+	public static QuestionnaireAdminPage questionnaireAdminPage() {
+		if (questionnaireAdminPage == null) {
+			questionnaireAdminPage = new QuestionnaireAdminPage();
+		}
+		return questionnaireAdminPage;
+	}
+
+	public static EditRequirementAdminPage editRequirementAdminPage() {
+		if (editRequirementAdminPage == null) {
+			editRequirementAdminPage = new EditRequirementAdminPage();
+		}
+		return editRequirementAdminPage;
+	}
+
+	public static ViewRequirementsAdminPage viewRequirementsAdminPage() {
+		if (viewRequirementsAdminPage == null) {
+			viewRequirementsAdminPage = new ViewRequirementsAdminPage();
+		}
+		return viewRequirementsAdminPage;
+	}
+
+	public static ActivityLogsPage activityLogsPage() {
+		if (activityLogsPage == null) {
+			activityLogsPage = new ActivityLogsPage();
+		}
+		return activityLogsPage;
+	}
+
+	public static EndsUpInStatesAdminPage endsUpInStatesAdminPage() {
+		if (endsUpInStatesAdminPage == null) {
+			endsUpInStatesAdminPage = new EndsUpInStatesAdminPage();
+		}
+		return endsUpInStatesAdminPage;
+	}
+
+	public static AuditLogsAdminPage auditLogsAdminPage() {
+		if (auditLogsAdminPage == null) {
+			auditLogsAdminPage = new AuditLogsAdminPage();
+		}
+		return auditLogsAdminPage;
+	}
+
+	public static AtlasDashboardManagementPage atlasDashboardManagementPage() {
+		if (atlasDashboardManagementPage == null) {
+			atlasDashboardManagementPage = new AtlasDashboardManagementPage();
+		}
+		return atlasDashboardManagementPage;
+	}
+
+	public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
+		if (versionRequirementsAdminPage == null) {
+			versionRequirementsAdminPage = new VersionRequirementsAdminPage();
+		}
+		return versionRequirementsAdminPage;
+	}
+    public static RequirementsPage requirementsPage() {
+        if (requirementsPage == null) {
+            requirementsPage = new RequirementsPage();
         }
-        return saveSubmitJobPage;
+        return requirementsPage;
     }
 
-    public static ViewResultsPage viewResultsPage() {
-        if (viewResultsPage == null) {
-            viewResultsPage = new ViewResultsPage();
-        }
-        return viewResultsPage;
-    }
-
-    public static LoginAdminPage loginAdminPage() {
-        if (loginAdminPage == null) {
-            loginAdminPage = new LoginAdminPage();
-        }
-        return loginAdminPage;
-    }
-
-    public static ResearchAdminPage researchAdminPage() {
-        if (researchAdminPage == null) {
-            researchAdminPage = new ResearchAdminPage();
-        }
-        return researchAdminPage;
-    }
-
-    public static RequirementsAdminPage requirementsAdminPage() {
-        if (requirementsAdminPage == null) {
-            requirementsAdminPage = new RequirementsAdminPage();
-        }
-        return requirementsAdminPage;
-    }
-
-    public static QuestionnaireAdminPage questionnaireAdminPage() {
-        if (questionnaireAdminPage == null) {
-            questionnaireAdminPage = new QuestionnaireAdminPage();
-        }
-        return questionnaireAdminPage;
-    }
-
-    public static EditRequirementAdminPage editRequirementAdminPage() {
-        if (editRequirementAdminPage == null) {
-            editRequirementAdminPage = new EditRequirementAdminPage();
-        }
-        return editRequirementAdminPage;
-    }
-
-    public static ViewRequirementsAdminPage viewRequirementsAdminPage() {
-        if (viewRequirementsAdminPage == null) {
-            viewRequirementsAdminPage = new ViewRequirementsAdminPage();
-        }
-        return viewRequirementsAdminPage;
-    }
-
-    public static ActivityLogsPage activityLogsPage() {
-        if (activityLogsPage == null) {
-            activityLogsPage = new ActivityLogsPage();
-        }
-        return activityLogsPage;
-    }
-
-    public static EndsUpInStatesAdminPage endsUpInStatesAdminPage() {
-        if (endsUpInStatesAdminPage == null) {
-            endsUpInStatesAdminPage = new EndsUpInStatesAdminPage();
-        }
-        return endsUpInStatesAdminPage;
-    }
-
-    public static AuditLogsAdminPage auditLogsAdminPage() {
-        if (auditLogsAdminPage == null) {
-            auditLogsAdminPage = new AuditLogsAdminPage();
-        }
-        return auditLogsAdminPage;
-    }
-
-    public static AtlasDashboardManagementPage atlasDashboardManagementPage() {
-        if (atlasDashboardManagementPage == null) {
-            atlasDashboardManagementPage = new AtlasDashboardManagementPage();
-        }
-        return atlasDashboardManagementPage;
-    }
-
-    public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
-        if (versionRequirementsAdminPage == null) {
-            versionRequirementsAdminPage = new VersionRequirementsAdminPage();
-        }
-        return versionRequirementsAdminPage;
-    }
+    // public static VersionRequirementsAdminPage versionRequirementsAdminPage() {
+    //     if (versionRequirementsAdminPage == null) {
+    //         versionRequirementsAdminPage = new VersionRequirementsAdminPage();
+    //     }
+    //     return versionRequirementsAdminPage;
+    // }
 
     public static EUIVersionAdminPage euiVersionAdminPage() {
         if (euiVersionAdminPage == null) {

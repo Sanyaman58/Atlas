@@ -10,7 +10,18 @@ import java.util.List;
 
 import org.junit.Assert;
 
+import com.codeborne.selenide.Selenide;
+
 public class ManagementAdminPageStepDefinitions {
+
+	@When("Click on the [Client Master] sidebar button")
+	public void clickOnTheClientMasterSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickManagementAdminSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.clientMasterPage().clickClientMasterSidebarButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
 
 	@Then("The [Client Master] page is opened")
 	public void clientMasterPageIsOpened() {
@@ -72,11 +83,6 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().jurisdictionsInGeneralInfoPage();
 	}
 
-	@Then("Reload the browser")
-	public void browserReload() {
-		Pages.clientMasterPage().reloadBrowser();
-	}
-
 	@Then("Verify the Jurisdiction checkbox values and count")
 	public void jurisdictionCheckboxVlaueAndCount() {
 		Pages.clientMasterPage().getStateCheckboxesValuesAndCount();
@@ -116,4 +122,176 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().euiStates();
 	}
 
+	@When("Click on the [User Master] sidebar button")
+	public void clickOnTheUserMasterSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickManagementAdminSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.clientMasterPage().clickUserMasterSidebarButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
+
+	@Then("The [User Master] page is opened")
+	public void userMasterPageIsOpened() {
+		Assert.assertTrue(Pages.clientMasterPage().isClientMasterPageOpened());
+	}
+
+	@Then("Click [Add User] button")
+	public void clickAddUserButton() {
+		Pages.clientMasterPage().clickAddUserButton();
+	}
+
+	@Then("Add User popup window opened")
+	public void addUserPopupWindowIsOpened() {
+		Selenide.sleep(5);
+		Assert.assertTrue(Pages.clientMasterPage().isAddUserPopupWindowOpened());
+	}
+
+	@Then("Verify [Category] roles in the [Category] dropdown")
+	public void verifyCategoryRolesInDropdown(List<String> listOfLabels) {
+		Pages.clientMasterPage().clickCategoryDropdown();
+		Pages.clientMasterPage().isCategoryRolesPresentInDropdown(listOfLabels);
+	}
+
+	@Then("Select {string} from the category dropdown menu")
+	public void selectCategoryFromDropdown(String category) {
+		Pages.clientMasterPage().selectUserCategory(category);
+		SelenideTools.sleep(4);
+	}
+
+	@Then("Verify [Roles-Compliance Intelligence] roles in dropdown")
+	public void verifyRolesComplianceElementsInDropdown(List<String> listOfLabels) {
+		Pages.clientMasterPage().clickRolesComplianceIntelligenceDropdown();
+		Pages.clientMasterPage().isuserRoleCompliancePresentInDropdown(listOfLabels);
+	}
+
+	@Then("Verify [Roles-Compliance Intelligence] roles in dropdown are none")
+	public void verifyNoRolesComplianceElementsInDropdown() {
+		Pages.clientMasterPage().clickRolesComplianceIntelligenceDropdown();
+		Pages.clientMasterPage().nouserRoleCompliancePresentInDropdown();
+	}
+
+	@And("Verify the [Surveillance Setup] section")
+	public void verifySurveillanceSetupSection() {
+		Pages.clientMasterPage().clientLabel();
+		Pages.clientMasterPage().companyLabel();
+		Pages.clientMasterPage().facilityLabel();
+		Pages.clientMasterPage().helpToolTip();
+	}
+
+	@And("Validate the [Modify Existing Surveillance Configuration] table elements")
+	public void verifyModifyExistingSurveillanceTableData(List<String> listOfLabels) {
+		Pages.clientMasterPage().surveillancePageTableHeaders(listOfLabels);
+	}
+
+	@And("Verify radio button is enabled")
+	public void verifyRadioButton() {
+		Pages.clientMasterPage().radioButtonEnabled();
+	}
+
+	@And("Verify [Delete] button is clickable")
+	public void verifyDeleteButton() {
+		Pages.clientMasterPage().deleteButtonClickable();
+	}
+
+	@Then("Click surveillance setup [Next] button")
+	public void clickSurveillanceSetupNextButton() {
+		SelenideTools.sleep(10);
+		Pages.clientMasterPage().clickNextButton();
+	}
+
+	@And("Verify the Validation popup")
+	public void verifyNextButtonPopup() {
+		Pages.clientMasterPage().nextButtonValidationPopup();
+	}
+
+	@And("Reload the browser")
+	public void browserReload() {
+		Pages.clientMasterPage().reloadBrowser();
+	}
+
+	@And("Navigate back to surveillance page")
+	public void selectJob() {
+		Pages.clientMasterPage().selectJobOnSurveillancePage();
+	}
+
+	@And("Select radio button of existing job and click Next")
+	public void selectRadioButton() {
+		Pages.clientMasterPage().existingJobRadioButton();
+	}
+	
+	@And("Validate that the checkbox is to the left of the Jurisdiction text")
+	public void validateCheckboxPositions() {
+		Pages.clientMasterPage().verifyJurisdictionCheckboxLeftPosition();
+	}
+	
+	@And("Verify the left position of Jurisdiction checkbox on save and submit configuration page")
+	public void leftPositionOnSaveSubmitPage() {
+		Pages.clientMasterPage().verifyJurisdictionCheckboxLeftPositionOnSaveSubmitPage();
+	}
+
+	@Then("Verify labels on [Jurisdiction] page")
+	public void verifyLabelsOnJurisdictionPage() {
+		Pages.clientMasterPage().labelsOnJurisdictionPage();
+    }
+	
+	@Then("Click on [Clear All] button")
+	public void verifyClickOnClearAllButton() {
+		Pages.clientMasterPage().clickClearAllButton();
+    }
+	
+	@And("Verify all checkboxes are not selected")
+    public void verifyUnSelectedCheckbox() {
+        Pages.clientMasterPage().unselectedCheckbox();
+    }
+	
+	@And("Verify child questions are unclickable as parent questions are not clicked")
+    public void verifyChildQuestionUnclickable() {
+        Pages.clientMasterPage().clickChildQuestion();
+    }
+	
+	@And("Click on [Version Requirements] dropdown option")
+    public void clickVersionRequirement() {
+        Pages.clientMasterPage().openVersionRequirementsPage();
+    }
+	
+	@And("Verify that the [Activate Requirement] view option is enabled")
+    public void verifyActivateRequirementOptionEnabled() {
+        Pages.clientMasterPage().isActivateRequirementOptionEnabled();
+    }
+	
+	@And("Verify [Delete Requirement] option is enabled")
+    public void verifyDeleteRequirementOptionEnabled() {
+        Pages.clientMasterPage().isDeleteRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Edit Requirement] option is enabled")
+    public void verifyEditRequirementOptionEnabled() {
+        Pages.clientMasterPage().isEditRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [View Requirement] option is enabled")
+    public void verifyViewRequirementOptionEnabled() {
+        Pages.clientMasterPage().isViewRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Approve Requirement] option is enabled")
+    public void verifyApproveRequirementOptionEnabled() {
+        Pages.clientMasterPage().isApproveRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+    public void verifyIntelligencePermissionsAreEnabled() {
+        Pages.clientMasterPage().isIntelligencePermissionsEnabled();
+    }
+	
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+    public void verifyDeleteFacilityButtonIsEnabled() {
+        Pages.clientMasterPage().isDeleteFacilityButtonEnabled();
+    }
+	
+	@And("Verify [View Result] and [Delete Result] button is enabled")
+    public void verifyViewAndDeleteResultButtonIsEnabled() {
+        Pages.clientMasterPage().isViewAndDeleteButtonEnabled();
+    }
 }

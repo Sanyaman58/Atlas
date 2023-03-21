@@ -56,7 +56,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	By requirementViewersTable = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']");
 	By requirementViewersTableLabels = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']/thead/tr/th");
-	By requirementViewersTableRecords = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']/tbody/tr");
+	By requirementViewersTableRecords = By.xpath("//div[@id='requirement-table']//table/tbody/tr");
 	By contextMenu = By.xpath("//div[@id='context-menu']");
 	By contextMenuViewButton = By.xpath("//div[@id='context-menu']/div[@id='view']/a");
 	By contextMenuEditButton = By.xpath("//div[@id='context-menu']/div[@id='edit']/a");
@@ -87,12 +87,18 @@ public class RequirementsAdminPage extends PageTools {
 	By RES1OutOfStateRadioButton = By.xpath("//input[@id='non-resident-requirement']/following-sibling::label");
 	By submitForApprovalButton = By.xpath("//button[@id='submit_selected_criteria']");
 	By saveButton = By.xpath("//button[@id='save_selected_criteria']");
+	By noRecords = By.xpath("//td[@class='dataTables_empty']");
 
 	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
 	By intelligenceAdminSidebarCollapseButton = By.xpath("//ul[@id='menu']/li[10]");
+	By editJurisdictionSelect = By.xpath("//select[@id='edit_Jurisdiction']");
+	By editRequirementCategorySelect = By.xpath("//select[@id='edit_Requirement_Category']");
+	By editRequirementTypeSelect = By.xpath("//select[@id='edit_Requirement_Type']");
+	By editRequirementNameSelect = By.xpath("//select[@id='edit_Name_Requirement']");
 
 	String requirementName;
+	String oldRequirementName;
 	String applicationName;
 	String state;
 	String RESState;
@@ -467,9 +473,19 @@ public class RequirementsAdminPage extends PageTools {
 		selectOption(category, newRequirementCategorySelect);
 	}
 
+	public boolean isRequirementCategorySelectable(){
+		waitForElementVisibility(newRequirementCategorySelect);
+		return isElementClickable(newRequirementCategorySelect);
+	}
+
 	public void selectNewRequirementType(String type){
 		waitForElementVisibility(newRequirementTypeSelect);
 		selectOption(type, newRequirementTypeSelect);
+	}
+
+	public boolean isRequirementTypeSelectable(){
+		waitForElementVisibility(newRequirementTypeSelect);
+		return isElementClickable(newRequirementTypeSelect);
 	}
 
 	public void clickCreateNewRequirementButton(){
@@ -477,8 +493,15 @@ public class RequirementsAdminPage extends PageTools {
 		click(createNewRequirementButton);
 	}
 
+	public boolean isCreateNewRequirementButtonClickable(){
+		waitForElementVisibility(createNewRequirementButton);
+		return isElementClickable(createNewRequirementButton);
+	}
+
 	public void enterRequirementName(String name){
+		SelenideTools.sleep(5);
 		waitForElementVisibility(requirementNameGeneralInformationInput);
+		getSelenideElement(requirementNameGeneralInformationInput).clear();
 		type(name, requirementNameGeneralInformationInput);
 		requirementName = name;
 	}
@@ -525,6 +548,10 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void selectOrRule(int index){
 		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[2]")).click();
+	}
+
+	public String getSelectorValue(int index){
+		return getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[contains(@class,'active')]/input")).getAttribute("value").trim();
 	}
 
 	public void selectAndRule(int index){
@@ -624,6 +651,17 @@ public class RequirementsAdminPage extends PageTools {
 		return false;
 	}
 
+	public boolean isRecordWithStatusDisplayed(String state, String requirementName, String applicationName, String status){
+		for (SelenideElement element : getElements(requirementViewersTableRecords)){
+			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
+					&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
+					&& element.findElement(By.xpath("./td[3]")).getText().equals(applicationName)
+					&& element.findElement(By.xpath("./td[4]/span")).getText().equals(status))
+				return true;
+		}
+		return false;
+	}
+
 	public boolean areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionSelect);
 		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==53;
@@ -645,11 +683,40 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean isTableRecordWithJurisdictionDisplayed(String jurisdiction){
 		waitForElementVisibility(requirementViewersTableRecords);
+		if(isElementVisible(noRecords))
+			return false;
 		for(int i = 0; i < getElements(requirementViewersTableRecords).size();i++){
 			if(!getElements(requirementViewersTableRecords).get(i).findElement(By.xpath("./td[1]")).getText().equals(jurisdiction))
 				return false;
 		}
 		return true;
+	}
+
+	public void saveOldRequirementsName(){
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementNameGeneralInformationInput);
+		oldRequirementName = getSelenideElement(requirementNameGeneralInformationInput).getValue();
+		System.out.println(getSelenideElement(requirementNameGeneralInformationInput).getValue());
+	}
+
+	public String getOldRequirementName(){
+		return oldRequirementName;
+	}
+
+	public boolean isEditJurisdictionSelectVisible(){
+		return isElementVisible(editJurisdictionSelect);
+	}
+
+	public boolean isEditRequirementCategoryVisible(){
+		return isElementVisible(editRequirementCategorySelect);
+	}
+
+	public boolean isEditRequirementTypeSelectVisible(){
+		return isElementVisible(editRequirementTypeSelect);
+	}
+
+	public boolean isEditRequirementNameSelectVisible(){
+		return isElementVisible(editRequirementNameSelect);
 	}
 
 }
