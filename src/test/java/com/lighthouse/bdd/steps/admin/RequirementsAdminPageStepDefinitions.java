@@ -398,7 +398,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @And("Verify that newly created requirement is displayed in the [Requirement Viewer] table")
     public void verifyThatNewlyCreatedRequirementIsDisplayedInTheRequirementViewerTable() {
-        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
+        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getApplicationName(), Pages.requirementsAdminPage().getRequirementName()));
 
     }
 

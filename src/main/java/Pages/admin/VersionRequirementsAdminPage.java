@@ -15,7 +15,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By versionRequirementsTable = By.xpath("//table[@id='DataTables_Table_0']/tbody");
 	By versionRequirementsTableLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
 	By versionRequirementsTableActionLabel = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th[text()='Action']");
-	By versionRequirementsTableRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
+	By versionRequirementsTableRecords = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr");
 	By versionRequirementsTableRecordElements = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr/td");
 	By versionRequirementsTableNoRecords = By.xpath("//td[@class='dataTables_empty']");
 	By numberOfEntriesSelect = By.xpath("//select[@name='DataTables_Table_0_length']");

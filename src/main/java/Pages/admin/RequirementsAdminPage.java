@@ -480,6 +480,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void selectNewRequirementType(String type){
 		waitForElementVisibility(newRequirementTypeSelect);
+		scrollToElement(newRequirementCategorySelect);
 		selectOption(type, newRequirementTypeSelect);
 	}
 
@@ -641,11 +642,11 @@ public class RequirementsAdminPage extends PageTools {
 		return isElementVisible(questionSelectionsResidentType);
 	}
 
-	public boolean isRecordDisplayed(String state, String requirementName, String applicationName){
+	public boolean isRecordDisplayed(String state,String applicationName, String requirementName){
 		for (SelenideElement element : getElements(requirementViewersTableRecords)){
 			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
-			&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
-			&& element.findElement(By.xpath("./td[3]")).getText().equals(applicationName))
+			&& element.findElement(By.xpath("./td[2]")).getText().equals(applicationName)
+			&& element.findElement(By.xpath("./td[3]")).getText().equals(requirementName))
 				return true;
 			}
 		return false;

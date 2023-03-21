@@ -13,7 +13,7 @@ import java.util.List;
 public class ResearchNotificationPage extends PageTools {
     By researchNotificationPageTitle = By.xpath("//h2[text()='Research Notification']");
     By researchNotificationTable = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody");
-    By researchNotificationTableLabels = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/thead/tr/th");
+    By researchNotificationTableLabels = By.xpath("//div[contains(@id,'DataTables_Table')]//div[@class='dataTables_scrollHeadInner']//table[contains(@class,'requirementsViewerTable')]/thead/tr[1]/th");
     By researchNotificationTableRecords = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody/tr");
     By researchNotificationTableRecordElements = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody/tr/td");
     By researchNotificationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");
@@ -37,14 +37,14 @@ public class ResearchNotificationPage extends PageTools {
         List<String> tableLabelsList = new ArrayList<>();
         List<SelenideElement> elements = getElements(researchNotificationTableLabels);
         for(SelenideElement element : elements) {
-            tableLabelsList.add(element.getText());
-            System.out.println(element.getText());
+            tableLabelsList.add(element.getAttribute("aria-label"));
+            System.out.println(element.getAttribute("aria-label"));
         }
         System.out.println(" //////////////////////// ");
         tableLabelsList.add(getSelenideElement(researchNotificationTableLabels).getText());
         for(int i = 0; i < labels.size(); i++){
             System.out.println(labels.get(i)+" "+tableLabelsList.get(i));
-            if(!labels.get(i).equals(tableLabelsList.get(i)))
+            if(!tableLabelsList.get(i).contains(labels.get(i)))
                 return false;
         }
         return true;
