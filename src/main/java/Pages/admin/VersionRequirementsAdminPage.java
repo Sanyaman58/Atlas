@@ -13,8 +13,8 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By versionedRequirementsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'versions')])[1]");
 	By versionRequirementsPageTitle = By.xpath("//h2[contains(text(),'Versioned Requirements')]");
 	By versionRequirementsTable = By.xpath("//table[@id='DataTables_Table_0']/tbody");
-	By versionRequirementsTableLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
-	By versionRequirementsTableActionLabel = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th[text()='Action']");
+	By versionRequirementsTableLabels = By.xpath("//table/thead/tr/th/div/label");
+	By versionRequirementsTableActionLabel = By.xpath("//table/thead/tr/th[text()='Action']");
 	By versionRequirementsTableRecords = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr");
 	By versionRequirementsTableRecordElements = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr/td");
 	By versionRequirementsTableNoRecords = By.xpath("//td[@class='dataTables_empty']");
