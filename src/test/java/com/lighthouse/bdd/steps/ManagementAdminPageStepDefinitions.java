@@ -111,9 +111,9 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().verifyNextButtonEnabled();
 	}
 	
-	@And("Verify no [EUI] states are visible")
-	public void verifyEuiStatesNotVisible() {
-		Pages.clientMasterPage().euiStatesNotVisible();
+	@And("Verify the EUI states on Jurisdictions page")
+	public void verifyEuiStatesVisible() {
+		Pages.clientMasterPage().euiStates();
 	}
 
 }
