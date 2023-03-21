@@ -9,7 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.util.*;
 
 public class ViewResultsPage extends PageTools {
-    By viewResultsPageTitle = By.xpath("//h2[text()='Surveillance Results']");
+    By viewResultsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
     By table= By.xpath("//table[@id='DataTables_Table_0']/tbody");
     By tableJobs = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
     By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th/div/label");
