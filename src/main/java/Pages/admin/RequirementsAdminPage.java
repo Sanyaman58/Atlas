@@ -652,6 +652,10 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public boolean isRecordWithStatusDisplayed(String state, String requirementName, String applicationName, String status){
+		System.out.println(state);
+		System.out.println(requirementName);
+		System.out.println(applicationName);
+		System.out.println(status);
 		for (SelenideElement element : getElements(requirementViewersTableRecords)){
 			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
 					&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
