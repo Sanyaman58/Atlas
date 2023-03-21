@@ -2,7 +2,6 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
@@ -242,9 +241,9 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Text of elements present in jurisdiction dropdown = " + options);
 		} else {
 			System.out.println("Count mismatch");
-		}
 	}
-	
+}
+
 	public void clickUserMasterSidebarButton() {
 		waitForElementVisibility(userMasterSidebarButton);
 		click(userMasterSidebarButton);
