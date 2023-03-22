@@ -39,6 +39,11 @@ public class EUIVersionAdminPage extends PageTools {
 		getElements(euiVersionAdminTableRecords).get(index).findElement(By.xpath("./td[8]/div/button[@title='Activate EUI']")).click();
 	}
 
+	public boolean isEUIWithStatusDisplayed(int index, String status){
+		waitForElementVisibility(euiVersionAdminTableRecords);
+		return getElements(euiVersionAdminTableRecords).get(index).findElement(By.xpath("./td[7]/span")).getText().trim().equals(status);
+	}
+
 	public void clickYesApproveButton(){
 		waitForElementClickable(yesApproveButton);
 		click(yesApproveButton);
