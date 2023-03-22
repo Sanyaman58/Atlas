@@ -12,7 +12,7 @@ public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//h2[text()='Surveillance Results']");
     By table= By.xpath("//table[@id='DataTables_Table_0']/tbody");
     By tableJobs = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
-    By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th/div/label");
+    By tableLabels = By.xpath("(//table)[1]/thead[1]/tr[1]/th");
     By actionTableLabel = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th[last()]");
     By showResultsSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
     By researchResults = By.xpath("//div[@id='viewResult']");
@@ -116,8 +116,10 @@ public class ViewResultsPage extends PageTools {
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
             tableLabelsList.add(element.getText());
+            System.out.println(element.getText());
         }
-        tableLabelsList.add(getSelenideElement(actionTableLabel).getText());
+        System.out.println(tableLabelsList.size());
+//        tableLabelsList.add(getSelenideElement(actionTableLabel).getText());
         return tableLabelsList.equals(labels);
     }
 
