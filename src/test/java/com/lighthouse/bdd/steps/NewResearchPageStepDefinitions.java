@@ -56,12 +56,12 @@ public class NewResearchPageStepDefinitions {
 //        SelenideTools.refresh();
 //    }
 
-    @And("Window with {string} message is displayed")
-    public void windowWithMessageIsDisplayed(String message) {
-        SelenideTools.sleep(2);
-        Assert.assertTrue(Pages.newResearchPage().isAlertMessageVisible());
-        Assert.assertEquals(Pages.newResearchPage().getAlertMessage(),message);
-    }
+	@And("Window with {string} message is displayed")
+	public void windowWithMessageIsDisplayed(String message) {
+		SelenideTools.sleep(2);
+		Assert.assertTrue(Pages.newResearchPage().isAlertMessageVisible());
+		Assert.assertEquals(Pages.newResearchPage().getAlertMessage(), message);
+	}
 
 	@And("The {string} message is displayed")
 	public void theMessageIsDisplayed(String message) {
@@ -83,21 +83,24 @@ public class NewResearchPageStepDefinitions {
 		Assert.assertTrue(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
 	}
 
-	// @When("Select already created job by index {int} in the table on the [New Research] page")
-	// public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
-	// 	SelenideTools.sleep(5);
-	// 	Pages.newResearchPage().selectTheJobFromTheTable(index);
+	// @When("Select already created job by index {int} in the table on the [New
+	// Research] page")
+	// public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index)
+	// {
+	// SelenideTools.sleep(5);
+	// Pages.newResearchPage().selectTheJobFromTheTable(index);
 	// }
 
 	@Then("Click the [Copy From Research Job] button")
 	public void clickTheCopyFromResearchJobButton() {
 		Pages.newResearchPage().clickCopyFromResearchButton();
 	}
-    @When("Select already created job by index {int} in the table on the [New Research] page")
-    public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
-        SelenideTools.sleep(5);
-        Pages.newResearchPage().selectTheJobFromTheTable(index-1);
-    }
+
+	@When("Select already created job by index {int} in the table on the [New Research] page")
+	public void selectAlreadyCreatedJobInTheTableOnTheNewResearchPage(int index) {
+		SelenideTools.sleep(5);
+		Pages.newResearchPage().selectTheJobFromTheTable(index - 1);
+	}
 
 	@When("Select already created job in the table on the [New Research] page")
 	public void selectAlreadyCreatedJobWithCompanyAndFacilityNameInTheTableOnTheNewResearchPage() {
@@ -304,30 +307,36 @@ public class NewResearchPageStepDefinitions {
 		}
 	}
 
+	@When("Create a new surveillance with status [Incomplete] for {string} client with {int} company name, {int} facility name and {string} state")
+	public void createANewSurveillanceWithStatusIncompleteForClientWithCompanyNameFacilityNameAndState(String client,
+			int companyNameIndex, int facilityNameIndex, String state) {
+		selectClientFromTheClientDropdown(client);
+		deleteJobFromTheTableIfExists();
+		selectClientFromTheClientDropdown(client);
+		Pages.newResearchPage().selectCompanyName(companyNameIndex);
+		Pages.newResearchPage().selectFacilityName(facilityNameIndex);
+		Pages.newResearchPage().clickSubmitNewJobButton();
+		Pages.jurisdictionPage().selectState(state);
+		Pages.jurisdictionPage().clickSelectAllJurisdictionsButton();
+		Pages.jurisdictionPage().getStateCheckboxesValues();
+		Pages.jurisdictionPage().clickTheNextButton();
+		Pages.newResearchPage().clickOnSurveillanceSetupBreadcrumb();
+		Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
+	}
 
-    @When("Create a new surveillance with status [Incomplete] for {string} client with {int} company name, {int} facility name and {string} state")
-    public void createANewSurveillanceWithStatusIncompleteForClientWithCompanyNameFacilityNameAndState(String client, int companyNameIndex, int facilityNameIndex, String state) {
-        selectClientFromTheClientDropdown(client);
-        deleteJobFromTheTableIfExists();
-        selectClientFromTheClientDropdown(client);
-        Pages.newResearchPage().selectCompanyName(companyNameIndex);
-        Pages.newResearchPage().selectFacilityName(facilityNameIndex);
-        Pages.newResearchPage().clickSubmitNewJobButton();
-        Pages.jurisdictionPage().selectState(state);
-        Pages.jurisdictionPage().clickSelectAllJurisdictionsButton();
-        Pages.jurisdictionPage().getStateCheckboxesValues();
-        Pages.jurisdictionPage().clickTheNextButton();
-        Pages.newResearchPage().clickOnSurveillanceSetupBreadcrumb();
-        Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
-    }
-
-    @And("No records are displayed on the [Research Notification] page")
-    public void noRecordsAreDisplayedOnTheResearchNotificationPage() {
-        Assert.assertTrue(Pages.researchNotificationPage().isNoRecordsFoundMessageDisplayed());
-    }
+	@And("No records are displayed on the [Research Notification] page")
+	public void noRecordsAreDisplayedOnTheResearchNotificationPage() {
+		Assert.assertTrue(Pages.researchNotificationPage().isNoRecordsFoundMessageDisplayed());
+	}
 
 	@Then("{int} record is displayed in the table on the [Configuration] page")
 	public void recordIsDisplayedInTheTableOnTheConfigurationPage(int numberOfRecords) {
-		Assert.assertTrue(Pages.newResearchPage().getNumberOfJobs()==numberOfRecords);
+		Assert.assertTrue(Pages.newResearchPage().getNumberOfJobs() == numberOfRecords);
 	}
+
+	@Then("Click on [Configuration Table] next button")
+	public void clickConfigurationTableNextButton() {
+		Pages.newResearchPage().selectConfigurationTableNextButton();
+	}
+
 }
