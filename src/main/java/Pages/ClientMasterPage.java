@@ -49,6 +49,8 @@ public class ClientMasterPage extends PageTools {
 	By existingConfiguration = By.xpath("//*[@id=\"DataTables_Table_0\"]//tbody//tr");
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By jobProgressBar = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]/div/div");
+	By jobPendingStatusText = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]");
 	By clientMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[1]");
 	By userMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[13]");
 	By userMasterPageTitle = By.xpath("//p[@class=' li-text']");
@@ -486,6 +488,23 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("EUI states visible");
 		}
 		return endUpInStatesTitleElement;
+	}
+	
+	public void euiStatesNotVisible() {
+		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
+		System.out.println("Element displayed = " + endUpInStatesTitleElement);
+	}
+
+	public void progressBarOfNewJob() {
+		SelenideElement progressBarElement = getSelenideElement(jobProgressBar).shouldBe(Condition.visible);
+		Assert.assertTrue(progressBarElement.isDisplayed());
+		SelenideElement progressBarTextElement = getSelenideElement(jobPendingStatusText).shouldBe(Condition.visible);
+		System.out.println("Progress bar text = " + progressBarTextElement.getText());
+		if (progressBarTextElement.getText().contains("Result Pending")) {
+			System.out.println("Progress bar contains text as = " + progressBarTextElement.getText());
+		} else {
+			System.out.println("Text mismatch");
+		}
 	}
 
 	public void existingJobRadioButton() {

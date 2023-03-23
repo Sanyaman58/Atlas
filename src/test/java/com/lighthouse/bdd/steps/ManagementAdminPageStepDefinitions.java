@@ -29,7 +29,7 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@Then("Click [Add Client] button")
-	public void clickAddClinetButton() {
+	public void clickAddClientButton() {
 		Pages.clientMasterPage().clickSubmitNewJobButton();
 	}
 
@@ -120,6 +120,17 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
 		Assert.assertTrue(Pages.clientMasterPage().euiStates());
+	}
+
+	@And("Verify no [EUI] states are visible")
+	public void verifyEuiStatesNotVisible() {
+		Pages.clientMasterPage().euiStatesNotVisible();
+	}
+
+	@And("Verify the [Progress Bar] against the newly created job on the screen")
+	public void verifyProgressBar() {
+		Pages.clientMasterPage().progressBarOfNewJob();
+		SelenideTools.sleep(70);
 	}
 
 	@When("Click on the [User Master] sidebar button")
