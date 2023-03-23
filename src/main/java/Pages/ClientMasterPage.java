@@ -2,7 +2,6 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
@@ -484,14 +483,11 @@ public class ClientMasterPage extends PageTools {
 	public void euiStatesNotVisible() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = " + endUpInStatesTitleElement);
-//		if(endUpInStatesTitleElement)
 	}
 
 	public void progressBarOfNewJob() {
 		SelenideElement progressBarElement = getSelenideElement(jobProgressBar).shouldBe(Condition.visible);
 		Assert.assertTrue(progressBarElement.isDisplayed());
-//		progressBarElement.isDisplayed();
-
 		SelenideElement progressBarTextElement = getSelenideElement(jobPendingStatusText).shouldBe(Condition.visible);
 		System.out.println("Progress bar text = " + progressBarTextElement.getText());
 		if (progressBarTextElement.getText().contains("Result Pending")) {

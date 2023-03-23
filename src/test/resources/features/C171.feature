@@ -4,8 +4,8 @@ Feature: C171
   @TestRail(171)
   Scenario: Verify that user is able to see show "All" filter option in Activity Logs screen
     When Open Atlas
-    Then Enter login "sachin.arora@pharma.solutions" on login page
-    And Enter password "$hin@1122!!" on login page
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     And Management Dashboard page is opened
     When Click on [Surveillance Intelligence] dropdown button and verify options
