@@ -48,6 +48,7 @@ public class ClientMasterPage extends PageTools {
 	By setupPageNextButton = By.xpath("//*[@id=\"submit-new\"]");
 	By existingConfiguration = By.xpath("//*[@id=\"DataTables_Table_0\"]//tbody//tr");
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By jobProgressBar = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]/div/div");
 	By jobPendingStatusText = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]");
 	By clientMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[1]");
@@ -459,7 +460,6 @@ public class ClientMasterPage extends PageTools {
 	public void verifyActivityLogScreen() {
 		waitForElementVisibility(activityLogTitle);
 		waitForElementVisibility(activityLogFilter);
-
 		SelenideElement activityLogFilterElement = getSelenideElement(activityLogFilter).shouldBe(Condition.visible);
 		activityLogFilterElement.getText();
 		if (activityLogFilterElement.getText() == "All") {
@@ -480,6 +480,16 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 
+	public boolean euiStates() {
+		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
+		System.out.println("Element displayed = " + endUpInStatesTitleElement);
+		List<SelenideElement> jurisdictionPageStatesElement = getElements(jurisdictionPageStates);
+		if (jurisdictionPageStatesElement.size() > 0) {
+			System.out.println("EUI states visible");
+		}
+		return endUpInStatesTitleElement;
+	}
+	
 	public void euiStatesNotVisible() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = " + endUpInStatesTitleElement);
