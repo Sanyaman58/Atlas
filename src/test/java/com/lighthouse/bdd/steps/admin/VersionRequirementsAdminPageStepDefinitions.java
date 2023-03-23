@@ -237,4 +237,9 @@ public class VersionRequirementsAdminPageStepDefinitions {
     public void enterOldRequirementNameInTheRequirementSearchOnTheVersionedRequirementsPage() {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getOldRequirementName());
     }
+
+    @And("Save {int} requirement sku on the [Versioned Requirements] page")
+    public void saveRequirementSkuOnTheVersionedRequirementsPage(int index) {
+
+    }
 }

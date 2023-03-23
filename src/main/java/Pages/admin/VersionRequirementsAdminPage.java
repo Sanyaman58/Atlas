@@ -375,4 +375,8 @@ public class VersionRequirementsAdminPage extends PageTools {
 		}
 		return false;
 	}
+	public void saveRequirementSku(int index){
+		waitForElementVisibility(versionRequirementsTableRecords);
+
+	}
 }

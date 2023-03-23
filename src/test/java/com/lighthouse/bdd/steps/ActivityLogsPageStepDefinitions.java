@@ -51,4 +51,10 @@ public class ActivityLogsPageStepDefinitions {
     public void getActivityLogsCount() {
         Pages.activityLogsPage().saveActivityLogsRecordsCount();
     }
+
+    @And("Verify that log containing created earlier requirement in description text is displayed on the [Activity Logs] page")
+    public void verifyThatLogContainingCreatedEarlierRequirementInDescriptionTextIsDisplayedOnTheActivityLogsPage() {
+        Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(Pages.versionRequirementsAdminPage().getRequirementSku()));
+
+    }
 }
