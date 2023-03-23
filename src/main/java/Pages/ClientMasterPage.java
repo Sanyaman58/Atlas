@@ -79,7 +79,7 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionPageCheckboxes = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[2]//input");
 	By childQuestionRadioButton = By.xpath("//*[@id=\"POS1.1_Y\"]");
 	By questionnaireClearAllButton = By.xpath("//*[@id=\"clear_all_questionnaire\"]");
-    By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
+	By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
 	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
 	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
@@ -97,7 +97,6 @@ public class ClientMasterPage extends PageTools {
 	By statusInputField = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[10]/input");
 	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/div/label/input");
 
-	
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
 	String categoryName;
@@ -241,8 +240,8 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Text of elements present in jurisdiction dropdown = " + options);
 		} else {
 			System.out.println("Count mismatch");
+		}
 	}
-}
 
 	public void clickUserMasterSidebarButton() {
 		waitForElementVisibility(userMasterSidebarButton);
@@ -478,14 +477,15 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Next button is disabled");
 		}
 	}
-	
-	public void euiStates() {
+
+	public boolean euiStates() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
-		System.out.println("Element displayed = "+ endUpInStatesTitleElement);
+		System.out.println("Element displayed = " + endUpInStatesTitleElement);
 		List<SelenideElement> jurisdictionPageStatesElement = getElements(jurisdictionPageStates);
-		if(jurisdictionPageStatesElement.size() >0) {
+		if (jurisdictionPageStatesElement.size() > 0) {
 			System.out.println("EUI states visible");
 		}
+		return endUpInStatesTitleElement;
 	}
 
 	public void existingJobRadioButton() {
@@ -522,6 +522,7 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
+
 	public void labelsOnJurisdictionPage() {
 		SelenideElement residentStateElement = getSelenideElement(selectResidentStateLabel);
 		assertEquals(residentStateElement.getText(), selectResidentStateLabelText);
@@ -562,26 +563,24 @@ public class ClientMasterPage extends PageTools {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
 	}
-	
+
 	public void openVersionRequirementsPage() {
 		waitForElementVisibility(versionRequirementsOption);
 		click(versionRequirementsOption);
 		SelenideTools.sleep(3);
 		waitForElementVisibility(versionRequirementsHeader);
 	}
-	
+
 	public void isActivateRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
 		statusInputFieldElement.setValue("Activated");
 		SelenideTools.sleep(2);
-		
+
 		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
 		activateRequirementToggleElement.shouldBe(Condition.enabled);
 	}
-	
-	
-	
+
 	public void isDeleteRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
@@ -590,8 +589,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement deleteRequirementButtonElement = getSelenideElement(deleteRequirementButton);
 		deleteRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
-	
+
 	public void isEditRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
@@ -600,16 +598,12 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement editRequirementButtonElement = getSelenideElement(editRequirementButton);
 		editRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
-	
-	
+
 	public void isViewRequirementOptionEnabled() {
 		SelenideElement viewRequirementButtonElement = getSelenideElement(viewRequirementButton);
 		viewRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
-	
-	
+
 	public void isApproveRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
@@ -618,36 +612,30 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement approveRequirementButtonElement = getSelenideElement(approveRequirementButton);
 		approveRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
-	
-	
+
 	public void isIntelligencePermissionsEnabled() {
 		waitForElementVisibility(permissionsDropdownOption);
 		click(permissionsDropdownOption);
 		SelenideTools.sleep(3);
 		waitForElementVisibility(permissionsPageHeader);
 		List<SelenideElement> systemAdminPermissionsCheckboxesElement = getElements(systemAdminPermissionsCheckboxes);
-		System.out.println("Count of System Admin checkboxes = "+ systemAdminPermissionsCheckboxesElement.size());
-		for(SelenideElement checkbox : systemAdminPermissionsCheckboxesElement) {
+		System.out.println("Count of System Admin checkboxes = " + systemAdminPermissionsCheckboxesElement.size());
+		for (SelenideElement checkbox : systemAdminPermissionsCheckboxesElement) {
 			checkbox.shouldBe(Condition.selected);
 		}
 	}
-	
-	
-	
+
 	public void isDeleteFacilityButtonEnabled() {
 		waitForElementVisibility(facilityDeleteButton);
 		SelenideElement facilityDeleteButtonElement = getSelenideElement(facilityDeleteButton);
 		facilityDeleteButtonElement.shouldBe(Condition.enabled);
 	}
-	
-	
-	
+
 	public void isViewAndDeleteButtonEnabled() {
 		waitForElementVisibility(viewResultButton);
 		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
 		viewResultButtonElement.shouldBe(Condition.enabled);
-		
+
 		waitForElementVisibility(deleteResultButtton);
 		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
 		deleteResultButttonElement.shouldBe(Condition.enabled);
