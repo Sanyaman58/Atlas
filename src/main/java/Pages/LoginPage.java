@@ -118,10 +118,10 @@ public class LoginPage extends PageTools {
 	}
 
 	public void logOutFromAtlas() {
-		SelenideElement atlasProfileDropDownElement = getSelenideElement(atlasProfileDropDown);
+		SelenideTools.sleep(10);
 		waitForElementVisibility(atlasProfileDropDown);
-		atlasProfileDropDownElement.click();
-
+	    click(atlasProfileDropDown);
+	    SelenideTools.sleep(2);
 		waitForElementVisibility(atlasLogOutButton);
 		click(atlasLogOutButton);
 	}
