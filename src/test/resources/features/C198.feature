@@ -30,7 +30,9 @@ Feature: C198
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
+    When Delete job from the table if exists
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -55,6 +57,6 @@ Feature: C198
     Then Verify that early created requirement name is in the list
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 
