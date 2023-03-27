@@ -54,8 +54,10 @@ public class AuditLogsAdminPage extends PageTools {
 	public void clickOnTheLabel(String label){
 		List<SelenideElement> elements = getElements(auditLogsTableLabels);
 		for(SelenideElement element : elements){
-			if(element.getText().equals(label));
-			element.click();
+			if(element.getText().equals(label)) {
+				element.click();
+				break;
+			}
 		}
 	}
 

@@ -5,16 +5,16 @@ Feature: C169
   @TestRail(169)
   Scenario: Verify that the show Results progress status when in Results Pending Status
     When Open Atlas
-    Then Enter login "sachin.arora@pharma.solutions" on login page
-    And Enter password "$hin@1122!!" on login page
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     When Validate fields on the [Surveillance Setup] page
-    When Select 5 company name
+    When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
@@ -36,6 +36,6 @@ Feature: C169
     Then The [View Results] page is opened
     And Verify the [Progress Bar] against the newly created job on the screen
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 
