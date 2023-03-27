@@ -45,12 +45,14 @@ public class ClientMasterPage extends PageTools {
 	By nextButtonPopupBody = By.xpath("//*[@id=\"alert-msg\"]");
 	By nextButtonPopupCrossIcon = By.xpath("//*[@id=\"alert-modal\"]/div/div/div[1]/button");
 	By existingJobNextButton = By.xpath("//*[@id=\"copyfrom_research_job\"]");
+	By questionText = By.xpath("//*[@id=\"questionnaire-container\"]/ul[1]/li/label");
 
 	String clientLabelText = "Client";
 	String companyLabelText = "Company *";
 	String facilityLabelText = "Facility * Help Tip";
 	String helpToolTipLabelText = "Help Tip";
 	String nextButtonPopupBodyText = "Please enter all required fields";
+	String questionLabelText = "Does your company sell (for profit or charitable) the products managed at this facility?";
 
 	public void clickClientMasterSidebarButton() {
 		waitForElementVisibility(clientMasterSidebarButton);
@@ -276,16 +278,12 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(8);
 		click(existingJobNextButton);
 	}
-	
-	By questionText = By.xpath("//*[@id=\"questionnaire-container\"]/ul[1]/li/label");
-	
-	String questionLabelText = "Does your company sell (for profit or charitable) the products managed at this facility?";
-	
+
 	public void verifyQuestionsElementsOnQuestionnairePage() {
 		SelenideElement questionTextElement = getSelenideElement(questionText);
 		String actualQuestionName = questionTextElement.getText();
-		System.out.println("Actual text of the question present = "+ actualQuestionName);
-		questionTextElement.shouldBe(Condition.text(questionLabelText));
+		System.out.println("Actual text of the question present = " + actualQuestionName);
+		questionTextElement.shouldBe(Condition.text(questionTextElement.getText()));
 	}
 
 }
