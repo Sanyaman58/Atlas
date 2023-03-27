@@ -1,5 +1,4 @@
 @C111
-
 Feature: C111
 
   @TestRail(111)
@@ -22,5 +21,3 @@ Feature: C111
     When Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     And Verify the questions elements
-    
-
