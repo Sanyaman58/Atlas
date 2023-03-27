@@ -286,6 +286,7 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Click on the [Questionnaire Versions] sidebar button")
 	public void clickQuestionnaireVersionsButton() {
 		Pages.clientMasterPage().selectQuestionnarieVersions();
+		SelenideTools.sleep(4);
 	}
 	
 	@And("Activate the newly created questionnaire")
