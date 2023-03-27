@@ -94,6 +94,10 @@ public class ClientMasterPage extends PageTools {
 	By editQuestionInputField = By.xpath("//*[@id=\"input-FIN1\"]");
 	By editQuestionUpdateButton = By.xpath("//*[@id=\"update-FIN1\"]");
 	By editQuestionCancelButton = By.xpath("//*[@id=\"cancel-FIN1\"]");
+	By questionnairePageVersionLabel = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]//div[1]//th[3]/div/label");
+	By approveButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button[1]");
+	By approvePopupYesButton = By.xpath("//button[@id=\"yes_btn\"]");
+	By firstQuestionnaireActivateButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -688,18 +692,11 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(questionnaireVersionPageTitle);
 	}
 	
-	By questionnairePageVersionLabel = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[3]/div/label");
-	By approveButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button[1]");
-	By approvePopupYesButton = By.xpath("//button[@id=\"yes_btn\"]");
-	By firstQuestionnaireActivateButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button");
-	
 	public void activateNewlyCreatedQuestionnaire() {
-		SelenideTools.sleep(3);
+		SelenideTools.sleep(5);
 		SelenideElement questionnairePageVersionLabelElement = getSelenideElement(questionnairePageVersionLabel).shouldBe(Condition.visible);
 		questionnairePageVersionLabelElement.doubleClick();
-		
-//		WebDriverRunner.getWebDriver().navigate().refresh();
-		SelenideTools.sleep(3);
+		SelenideTools.sleep(5);
 		waitForElementVisibility(approveButton);
 		click(approveButton);
 		waitForElementVisibility(approvePopupYesButton);
