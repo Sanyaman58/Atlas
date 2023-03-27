@@ -4,6 +4,7 @@ import Utils.SelenideTools;
 import base.PageTools;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -12,10 +13,11 @@ public class QuestionnaireAdminPage extends PageTools {
 	By questionnaireVersionsPageTitle = By.xpath("//h2[text()='Versioned QUESTIONNAIRE']");
 	By questionnaireVersionsLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
 	By questionnaireVersionsRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
-
 	By questionnaireQuestions = By.xpath("//div[@id='category']/div/ul//li/label");
 	By questionnaireQuestionTooltip = By.xpath("(//div[@id='category']/div/ul//li/label)[%s]/span[@id='comment-info-popover-FIN1']");
 	By saveQuestionnaireButton = By.xpath("//button[@id='save_in_dynamo']");
+	By contextMenuActivateDeactivateButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a)[5]");
+
 	By contextMenuAddCommentButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a)[6]");
 	By commentWindowContentTextarea = By.xpath("//div[@class='modal-content']//textarea");
 	By commentWindowURLInput = By.xpath("//div[@class='modal-content']//input[@type='text']");
@@ -38,6 +40,11 @@ public class QuestionnaireAdminPage extends PageTools {
 		getElements(questionnaireQuestions).get(index).contextClick();
 	}
 
+	public void clickOnContextMenuActivateDeactivateButton(){
+		waitForElementVisibility(contextMenuActivateDeactivateButton);
+		click(contextMenuActivateDeactivateButton);
+	}
+
 	public void clickOnContextMenuAddCommentButton(){
 		waitForElementVisibility(contextMenuAddCommentButton);
 		click(contextMenuAddCommentButton);
@@ -46,6 +53,12 @@ public class QuestionnaireAdminPage extends PageTools {
 	public void clickOnUpdateCommentIcon(int index){
 		waitForElementVisibility(questionnaireQuestions);
 		getElements(questionnaireQuestions).get(index).findElement(By.xpath("./i[contains(@class,'update-comment-icon')]")).click();
+	}
+
+	public void selectActivateDeactivate(int index,String activateDeactivate){
+		waitForElementVisibility(questionnaireQuestions);
+		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active-FIN1')]")));
+		select.selectByVisibleText(activateDeactivate);
 	}
 
 	public boolean isCommentWindowOpened(){
@@ -102,6 +115,12 @@ public class QuestionnaireAdminPage extends PageTools {
 	public void clickYesApproveButton(){
 		waitForElementClickable(yesApproveButton);
 		click(yesApproveButton);
+	}
+
+	public boolean isQuestionDeactivated(int index){
+		waitForElementVisibility(questionnaireQuestions);
+		return getElements(questionnaireQuestions).get(index).findElement(By.xpath("./span[2]")).getAttribute("class").contains("deactive-question");
+
 	}
 
 }

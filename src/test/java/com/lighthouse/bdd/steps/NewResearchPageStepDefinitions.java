@@ -275,7 +275,6 @@ public class NewResearchPageStepDefinitions {
 	@And("Close pop up window")
 	public void closePopUpWindow() {
 		Pages.newResearchPage().closePopUpWindow();
-		SelenideTools.refresh();
 	}
 
 	@Then("Click on the [Configuration] sidebar button on Lighthouse")
@@ -326,4 +325,9 @@ public class NewResearchPageStepDefinitions {
     public void noRecordsAreDisplayedOnTheResearchNotificationPage() {
         Assert.assertTrue(Pages.researchNotificationPage().isNoRecordsFoundMessageDisplayed());
     }
+
+	@Then("{int} record is displayed in the table on the [Configuration] page")
+	public void recordIsDisplayedInTheTableOnTheConfigurationPage(int numberOfRecords) {
+		Assert.assertTrue(Pages.newResearchPage().getNumberOfJobs()==numberOfRecords);
+	}
 }

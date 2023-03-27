@@ -354,7 +354,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 		waitForElementVisibility(versionRequirementsTableRecords);
 		System.out.println(getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText());
 		System.out.println(selectorCriteria);
-		return getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText().equals(selectorCriteria);
+		return getSelenideElement(versionRequirementsTableRecords).findElement(By.xpath("./td[6]")).getText().contains(selectorCriteria);
 	}
 
 	public void enterChangeNoteForCustomer(String text){
