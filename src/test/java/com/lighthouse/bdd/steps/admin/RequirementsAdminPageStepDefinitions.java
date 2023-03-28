@@ -407,12 +407,12 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().selectRequirementsViewerFiltersStatus(status);
     }
 
-    @And("Verify that all 52 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
+    @And("Verify that all 53 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
     public void verifyThatAllStatesAreSelectableInTheRequirementsViewerFiltersJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect());
     }
 
-    @Then("Verify that all 52 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
+    @Then("Verify that all 53 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
     public void verifyThatAllStatesAreSelectableInTheGeneralInformationJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheGeneralInformationJurisdictionSelect());
 
@@ -466,5 +466,10 @@ public class RequirementsAdminPageStepDefinitions {
     public void verifyThatSelectorChoiceIs(int index, String orAnd) {
         System.out.println(Pages.requirementsAdminPage().getSelectorValue(index-1));
         Assert.assertEquals(Pages.requirementsAdminPage().getSelectorValue(index-1), orAnd);
+    }
+
+    @And("Verify that the Submit for Approval button is visible")
+    public void verifyThatTheSubmitForApprovalButtonIsVisible() {
+        Pages.requirementsAdminPage().isSubmitForApprovalButtonVisible();
     }
 }

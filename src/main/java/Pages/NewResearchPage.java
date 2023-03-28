@@ -322,6 +322,11 @@ public class NewResearchPage extends PageTools {
 		getElements(configurationDeleteButton).get(number).click();
 	}
 
+	public boolean isDeleteButtonVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(configurationDeleteButton);
+	}
+
 	public void clickOnTheDeleteButton(String status) {
 		for (int i = 0; i < getElements(tableJobs).size(); i++) {
 			if (getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)

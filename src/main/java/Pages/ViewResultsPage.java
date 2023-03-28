@@ -36,6 +36,8 @@ public class ViewResultsPage extends PageTools {
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
 
+    By companySelect = By.xpath("//select[@class='company_val form-control']");
+
     List<List<String>> tableRecords;
     static String facilityName;
     static String companyName;
@@ -84,8 +86,18 @@ public class ViewResultsPage extends PageTools {
         getSelenideElement(researchResultsViewResultButton, index).click();
     }
 
+    public boolean isViewResultButtonVisible(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsViewResultButton, 1);
+    }
+
     public void clickOnTheDeleteButtonOfTheRecord(int index){
         getSelenideElement(researchResultsDeleteResultButton, index).click();
+    }
+
+    public boolean isDeleteResultButtonVisible(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsDeleteResultButton, 1);
     }
 
     public void clickOnTheActivityLogsButtonOfTheRecord(int index){
@@ -308,5 +320,10 @@ public class ViewResultsPage extends PageTools {
     public void selectClient(String client){
         waitForElementVisibility(clientSelect);
         selectOption(client, clientSelect);
+    }
+
+    public void selectCompany(String client){
+        waitForElementVisibility(companySelect);
+        selectOption(client, companySelect);
     }
 }

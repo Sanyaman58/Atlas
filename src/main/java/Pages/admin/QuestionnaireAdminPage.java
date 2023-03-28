@@ -57,7 +57,7 @@ public class QuestionnaireAdminPage extends PageTools {
 
 	public void selectActivateDeactivate(int index,String activateDeactivate){
 		waitForElementVisibility(questionnaireQuestions);
-		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active-FIN1')]")));
+		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active')]")));
 		select.selectByVisibleText(activateDeactivate);
 	}
 

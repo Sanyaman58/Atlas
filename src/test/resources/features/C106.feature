@@ -15,9 +15,9 @@ Feature: C106
     Then The [View Results] page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button

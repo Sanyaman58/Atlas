@@ -330,4 +330,9 @@ public class NewResearchPageStepDefinitions {
 	public void recordIsDisplayedInTheTableOnTheConfigurationPage(int numberOfRecords) {
 		Assert.assertTrue(Pages.newResearchPage().getNumberOfJobs()==numberOfRecords);
 	}
+
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+	public void verifyDeleteFacilityButtonIsEnabledOnConfigurationPage() {
+		Assert.assertTrue(Pages.newResearchPage().isDeleteButtonVisible());
+	}
 }

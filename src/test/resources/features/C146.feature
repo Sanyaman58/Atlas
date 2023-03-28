@@ -15,7 +15,7 @@ Feature: C146
     Then The [Questionnaire Admin] page is opened
     When Right click on 1 question on the [Questionnaire Admin] page
     And Click on the Activate Deactivate context menu button on the [Questionnaire Admin] page
-    When Select "Deactivate" value of the Activate Deactivate select near the 1 question on the [Questionnaire Admin] page
+    When Select "Deactive" value of the Activate Deactivate select near the 1 question on the [Questionnaire Admin] page
     And Click on the [Save] button on the [Questionnaire Admin] page
     Then The 1 question is deactivated
     When Right click on 1 question on the [Questionnaire Admin] page

@@ -589,6 +589,10 @@ public class RequirementsAdminPage extends PageTools {
 		waitForElementVisibility(submitForApprovalButton);
 		click(submitForApprovalButton);
 	}
+	public boolean isSubmitForApprovalButtonVisible(){
+		SelenideTools.sleep(5);
+		return isElementVisible(submitForApprovalButton);
+	}
 
 	public void clickSaveButton(){
 		scrollToElement(saveButton);
@@ -669,12 +673,12 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionSelect);
-		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==53;
+		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==54;
 	}
 
 	public boolean areAllStatesSelectableInTheGeneralInformationJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionGeneralInformationSelect);
-		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==53;
+		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==54;
 	}
 
 	public boolean isTableRecordWithRequirementNameDisplayed(String requirementName){

@@ -54,7 +54,7 @@ public class JurisdictionPage extends PageTools {
 	}
 
 	public boolean areAllStatesCheckboxesVisibleAndClickable(){
-		if(getElements(stateCheckboxes).size()!=52)
+		if(getElements(stateCheckboxes).size()!=53)
 			return false;
 		for(SelenideElement element : getElements(stateCheckboxes)){
 			if(!element.findElement(By.xpath(".//input")).isEnabled())

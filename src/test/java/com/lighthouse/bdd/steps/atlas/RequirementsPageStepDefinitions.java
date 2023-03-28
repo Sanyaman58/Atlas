@@ -39,4 +39,9 @@ public class RequirementsPageStepDefinitions {
     public void closeTheErrorWindowOnTheRequirementsPage() {
         Pages.requirementsPage().clickErrorWindowOkButton();
     }
+
+    @When("Click on the +PDF button of any requirement on the [Requirements] page")
+    public void clickOnThePDFButtonOfAnyRequirementOnTheRequirementsPage() {
+        Pages.requirementsPage().clickOnThePlusPDFButton();
+    }
 }

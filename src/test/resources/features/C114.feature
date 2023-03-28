@@ -12,8 +12,9 @@ Feature: C114
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     When The client dropdown is visible and clickable
-    Then Select "Test" client from the client dropdown
-#    When Create a new surveillance
+    Then Select "AB Test" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -27,11 +28,11 @@ Feature: C114
     Then The [SaveSubmit Job] page is opened
     When Click on the [Save Job] button
     Then The [Configuration] page is opened
-    When Select "Test" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Newly created job with status "Saved" is displayed in the table on the [New Research] page
     When Select "Adam Drugs" client from the client dropdown
     Then Newly created job with status "Saved" is not displayed in the table on the [New Research] page
-    When Select "Test" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Saved"
     And Verify that the configuration is deleted on the [Configuration] page
     When Log out from Lighthouse

@@ -57,4 +57,9 @@ public class ActivityLogsPageStepDefinitions {
         Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(Pages.versionRequirementsAdminPage().getRequirementSku()));
 
     }
+
+    @Then("Enter requirement SKU in the activity search on the [Activity Logs] page")
+    public void enterRequirementSKUInTheActivitySearchOnTheActivityLogsPage() {
+        Pages.activityLogsPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
+    }
 }

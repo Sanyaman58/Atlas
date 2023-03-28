@@ -28,13 +28,14 @@ public class ActivityLogsPage extends PageTools {
         SelenideTools.sleep(3);
         waitForElementVisibility(searchField);
         type(text, searchField);
+        System.out.println(text);
     }
 
     public boolean isRecordDescriptionContainsText(String text){
         waitForElementVisibility(tableLogs);
         for(int i = 0; i < getElements(tableLogs).size();i++){
             System.out.println(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText());
-            if(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText().replaceAll("\\s", "").contains(text))
+            if(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText().contains(text))
                 return true;
         }
         return false;
