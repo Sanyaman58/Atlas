@@ -11,6 +11,7 @@ import com.codeborne.selenide.Selenide.*;
 import Constants.Constants;
 import static org.testng.Assert.assertEquals;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import static org.testng.Assert.assertEquals;
@@ -150,12 +151,17 @@ public class ClientMasterPage extends PageTools {
 	By questionnairePageExitButton = By.xpath("//button[@id=\"exit-state\"]");
 	By questionnaireVersionSidebarButton  = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[8]/a");
 	By questionnaireVersionPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
-
 	By saveSubmitPageCompanyName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div/label");
 	By saveSubmitPageLabelName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[2]/div/label");
 	By saveSubmitPageResidentState = By.xpath("//*[@id=\"mange-job-research\"]/div/div[3]/div/label");
 	By saveSubmitPageCheckbox = By.xpath("//input[@name='juricdictions[]']");
 	By saveSubmitPageChangeButton = By.xpath("//a[@class='btn common-btn']");
+	By requirementViewButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
+	By requirementViewPageHeader = By.xpath("//*[@id=\"versionned_requirement_form\"]/div/div[1]/section/div[1]/h2");
+	By jurisdictionDropdown = By.xpath("//select[@id=\"filter_Jurisdiction\"]");
+	By jurisdictionDropdownOption = By.xpath("//select[@id=\"filter_Jurisdiction\"]//option");
+	By jurisdictionName = By.xpath("//div[@class=\"list-checkbox\"]//label");
+	
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -174,6 +180,8 @@ public class ClientMasterPage extends PageTools {
 	String saveSubmitPageCompanyNameText = "Company Name :";
 	String saveSubmitPageFacilityNameText = "Facility Name :";
 	String saveSubmitPageResidentStateText = "Resident State :";
+	String washingtonText = "Washington DC";
+	String disctrictOfColumbiaText = "District Of Columbia";
 
 	HashMap<String, Boolean> jurisdictionPageCheckboxesInput = new HashMap<>();
 
@@ -949,6 +957,56 @@ public class ClientMasterPage extends PageTools {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
 	}
+	
+	
+	
+	public void verifyJurisdictionName() {
+		List<SelenideElement> jurisdictionNameElement = getElements(jurisdictionName);
+		for(int i =0; i<jurisdictionNameElement.size(); i++) {
+			String jurisdictionText = jurisdictionNameElement.get(i).getText();
+			if(jurisdictionText.contains(washingtonText)) {
+				System.out.println("Washington DC Jurisdiction found in Jurisdiction list");
+				throw new AssertionError("Element " + i + " contains text: " + washingtonText);
+			}
+			else {
+				System.out.println("Washington DC Jurisdiction not found in Jurisdiction list");
+			}
+		}
+	}
+	
+	public void verifyDistrictOfColumbia() {
+		List<SelenideElement> jurisdictionNameElement = getElements(jurisdictionName);
+		for(int i =0; i<jurisdictionNameElement.size(); i++) {
+			String jurisdictionText = jurisdictionNameElement.get(i).getText();
+			if(jurisdictionText.contains(disctrictOfColumbiaText)) {
+				System.out.println("Washington DC Jurisdiction is renamed with District of Columbia");
+			}
+			else {
+				System.out.println("Washington DC Jurisdiction is not renamed with District of Columbia");
+			}
+		}
+	}
+	
+	
+	
+	public void clickRequirementViewButton() {
+		waitForElementVisibility(requirementViewButton);
+		click(requirementViewButton);
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementViewPageHeader);
+	}
+	
+	public void clickJurisdictionDropdownAndVerifyJurisdiction() {
+		waitForElementVisibility(jurisdictionDropdown);
+		click(jurisdictionDropdown);
+		List<SelenideElement> jurisdictionDropdownOptionElement = getElements(jurisdictionDropdownOption);
+		for(int i = 0; i < jurisdictionDropdownOptionElement.size(); i++) {
+			String jurisdictionDropdownOptionText = jurisdictionDropdownOptionElement.get(i).getText();
+			if(jurisdictionDropdownOptionText.contains("District of Columbia")) {
+				System.out.println("Found [District of Columbia in the list of Jurisdiction]");
+			}
+		}
+	}
 
 	public void openVersionRequirementsPage() {
 		waitForElementVisibility(versionRequirementsOption);
@@ -1021,7 +1079,6 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(viewResultButton);
 		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
 		viewResultButtonElement.shouldBe(Condition.enabled);
-
 		waitForElementVisibility(deleteResultButtton);
 		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
 		deleteResultButttonElement.shouldBe(Condition.enabled);
