@@ -17,7 +17,6 @@ public class QuestionnaireAdminPage extends PageTools {
 	By questionnaireQuestionTooltip = By.xpath("(//div[@id='category']/div/ul//li/label)[%s]/span[@id='comment-info-popover-FIN1']");
 	By saveQuestionnaireButton = By.xpath("//button[@id='save_in_dynamo']");
 	By contextMenuActivateDeactivateButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a)[5]");
-
 	By contextMenuAddCommentButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a)[6]");
 	By commentWindowContentTextarea = By.xpath("//div[@class='modal-content']//textarea");
 	By commentWindowURLInput = By.xpath("//div[@class='modal-content']//input[@type='text']");

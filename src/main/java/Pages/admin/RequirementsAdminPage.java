@@ -550,6 +550,10 @@ public class RequirementsAdminPage extends PageTools {
 		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[2]")).click();
 	}
 
+	public String getSelectorValue(int index){
+		return getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[contains(@class,'active')]/input")).getAttribute("value").trim();
+	}
+
 	public void selectAndRule(int index){
 		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[1]")).click();
 	}
