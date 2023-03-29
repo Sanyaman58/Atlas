@@ -187,4 +187,9 @@ public class ViewResultsPageStepDefinitions {
     public void selectCompanyFromTheClientDropdownOnTheViewResultsPage(String text) {
         Pages.viewResultsPage().selectCompany(text);
     }
+
+    @When("Click on the [Export] button on the [Research Results] page")
+    public void clickOnTheExportButtonOnTheResearchResultsPage() {
+        Pages.viewResultsPage().clickExportButton();
+    }
 }

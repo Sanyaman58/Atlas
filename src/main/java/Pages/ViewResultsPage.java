@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.ExcelReader;
 import Utils.SelenideTools;
 import base.PageTools;
 import com.codeborne.selenide.SelenideElement;
@@ -37,8 +38,10 @@ public class ViewResultsPage extends PageTools {
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
 
     By companySelect = By.xpath("//select[@class='company_val form-control']");
+    By exportButton = By.xpath("//button[contains(text(),'Export')]");
 
     List<List<String>> tableRecords;
+    List<List<String>> excelTableRecords;
     static String facilityName;
     static String companyName;
     static int requirementsCount;
@@ -325,5 +328,31 @@ public class ViewResultsPage extends PageTools {
     public void selectCompany(String client){
         waitForElementVisibility(companySelect);
         selectOption(client, companySelect);
+    }
+
+    public void clickExportButton(){
+        waitForElementVisibility(exportButton);
+        click(exportButton);
+    }
+
+    public Object[][] getData(String filename, String SheetName) {
+        ExcelReader excel;
+        if (System.getProperty("os.name").contains("Windows")) {
+            excel = new ExcelReader(
+                    System.getProperty("user.dir") + "\\src\\test\\resources\\data\\ExcelFile\\" + filename);
+        }else {
+            excel = new ExcelReader(
+                    System.getProperty("user.dir") + "/src/test/resources/data/" + filename + ".xlsx");
+        }
+        int rows = excel.getRowCount(SheetName);
+        int columns = excel.getColumnCountAtRow(SheetName,1);
+        System.out.println("Rows: "+rows+"\nColumns:"+columns);
+        Object[][] data = new Object[rows - 1][columns];
+        for (int rowNum = 2; rowNum <= rows; rowNum++) {
+            for (int colNum = 0; colNum < columns; colNum++) {
+                data[rowNum - 2][colNum] = excel.getCellData(SheetName, colNum, rowNum);
+            }
+        }
+        return data;
     }
 }
