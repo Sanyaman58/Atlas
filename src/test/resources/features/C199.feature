@@ -18,13 +18,11 @@ Feature: C199
     And Enter random application name on the [Requirements View] page
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
-#    And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
     And Create a complex selector criteria
-#    And Get the selector criteria data in the [Selector Criteria] section
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin
     Then Enter requirement name in the requirement search on the [Versioned Requirements] page
-    And Verify that newly created requirement contains "((FIN1 = Y and FIN1.1 = N and FIN1.2 = N and POS1 = Y) or (POS1.11 = Y and POS1.11.1 = N and POS1.1.9 = Y) or (PRO1 = N and PRO1.1 = N and PRO1.2 = N))" selector criteria
+    And Verify that newly created requirement contains "((FIN1 = Y and FIN1.1 = N and FIN1.2 = N and POS1 = Y) or (POS1.1 = Y and POS1.1.9 = N and POS1.1.4 = Y) or (PRO1 = N and PRO1.1 = N and PRO2 = N))" selector criteria
     And Click on the [Approve Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
     Then Click on the [Activate Requirement] button of the record by 1 index on the [Versioned Requirements] page
@@ -32,15 +30,16 @@ Feature: C199
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     Then Select "Alaska" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
+    And Select the [Yes] requirements checks include radio button
     And Get the jurisdictions checkboxes values
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
@@ -59,8 +58,8 @@ Feature: C199
     When Click on the [Activity Logs] button of the newly created job on the [View Results] page
     And The [Activity Logs] page is opened
     Then Enter requirement name in the activity search on the [Activity Logs] page
-    And Verify that log containing "((FIN1 = Y and FIN1.1 = N and FIN1.2 = N and POS1 = Y) or (POS1.11 = Y and POS1.11.1 = N and POS1.1.9 = Y) or (PRO1 = N and PRO1.1 = N and PRO1.2 = N))" description text is displayed on the [Activity Logs] page
+    And Verify that log containing "((FIN1 = Y and FIN1.1 = N and FIN1.2 = N and POS1 = Y) or (POS1.1 = Y and POS1.1.9 = N and POS1.1.4 = Y) or (PRO1 = N and PRO1.1 = N and PRO2 = N))" description text is displayed on the [Activity Logs] page
 
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
