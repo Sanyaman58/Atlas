@@ -37,9 +37,9 @@ Feature: C172
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     When Click on the [Configuration] sidebar button on Lighthouse
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
