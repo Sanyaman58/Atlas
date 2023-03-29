@@ -237,5 +237,107 @@ public class ManagementAdminPageStepDefinitions {
     public void verifyChildQuestionUnclickable() {
         Pages.clientMasterPage().clickChildQuestion();
     }
+	
+<<<<<<<<< Temporary merge branch 1
+	@And("Click on [Intelligence Admin] dropdown button")
+    public void verifyClickOnIntelligenceDropdown() {
+        Pages.clientMasterPage().clickOnIntelligenceDropdown();
+    }
+	
+	@And("Verify [Requirement View] option is displayed")
+    public void verifyRequirementViewOption() {
+        Pages.clientMasterPage().requirementViewDisplayed();
+    }
+	
+	@And("Click on [Version Requirement] side bar button and verify page")
+    public void verifyClickOnVersionedRequirement() {
+        Pages.clientMasterPage().clickVersionedRequirementButtonAndVerifyPage();
+    }
+	
+	@And("Verify that the [Activate Requirement] view option is enabled")
+    public void verifyActivateButtonIsEnabled() {
+        Pages.clientMasterPage().verifyActivateButton();
+    }
+	
+	@And("Verify [Delete Requirement] option is enabled")
+    public void verifyDeleteButtonIsEnabled() {
+        Pages.clientMasterPage().verifyDeleteButton();
+    }
+	
+	@And("Verify that the [Edit Requirement] option is enabled")
+    public void verifyEditButtonIsEnabled() {
+        Pages.clientMasterPage().verifyEditButton();
+    }
+	
+	@And("Verify that the [View Requirement] option is enabled")
+    public void verifyViewRequirementIsEnabled() {
+        Pages.clientMasterPage().verifyViewRequirementButton();
+    }
+	
+	@And("Verify that the [Approve Requirement] option is enabled")
+    public void verifyApproveRequirementIsEnabled() {
+        Pages.clientMasterPage().verifyApproveRequirementButton();
+    }
+	
+	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+    public void verifyIntelligencePermissions() {
+        Pages.clientMasterPage().verifyIntelligencePermissionsEnabled();
+    }
+	
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+    public void verifyDeleteFacilityButton() {
+        Pages.clientMasterPage().verifyDeleteFacilityButtonIsEnabled();
+    }
+	
+	@And("Verify [View Result] and [Delete Result] button is enabled")
+    public void verifyViewDeleteButton() {
+        Pages.clientMasterPage().verifyViewDeleteButtonEnabled();
+    }
 
+=========
+	@And("Click on [Version Requirements] dropdown option")
+    public void clickVersionRequirement() {
+        Pages.clientMasterPage().openVersionRequirementsPage();
+    }
+	
+	@And("Verify that the [Activate Requirement] view option is enabled")
+    public void verifyActivateRequirementOptionEnabled() {
+        Pages.clientMasterPage().isActivateRequirementOptionEnabled();
+    }
+	
+	@And("Verify [Delete Requirement] option is enabled")
+    public void verifyDeleteRequirementOptionEnabled() {
+        Pages.clientMasterPage().isDeleteRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Edit Requirement] option is enabled")
+    public void verifyEditRequirementOptionEnabled() {
+        Pages.clientMasterPage().isEditRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [View Requirement] option is enabled")
+    public void verifyViewRequirementOptionEnabled() {
+        Pages.clientMasterPage().isViewRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Approve Requirement] option is enabled")
+    public void verifyApproveRequirementOptionEnabled() {
+        Pages.clientMasterPage().isApproveRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+    public void verifyIntelligencePermissionsAreEnabled() {
+        Pages.clientMasterPage().isIntelligencePermissionsEnabled();
+    }
+	
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+    public void verifyDeleteFacilityButtonIsEnabled() {
+        Pages.clientMasterPage().isDeleteFacilityButtonEnabled();
+    }
+	
+	@And("Verify [View Result] and [Delete Result] button is enabled")
+    public void verifyViewAndDeleteResultButtonIsEnabled() {
+        Pages.clientMasterPage().isViewAndDeleteButtonEnabled();
+    }
+>>>>>>>>> Temporary merge branch 2
 }

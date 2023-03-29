@@ -62,4 +62,9 @@ public class JurisdictionPageStepDefinitions {
     public void verifyThatAllStatesAreVisibleAndEnabled() {
         Pages.jurisdictionPage().areAllStatesCheckboxesVisibleAndClickable();
     }
+    
+    @When("Verify Jurisdictions state is {string} as selected earlier on the [Jurisdiction] page")
+    public void verifyJurisdictionState(String Selectedstate) {
+        Pages.jurisdictionPage().selectedState(Selectedstate);
+    }
 }

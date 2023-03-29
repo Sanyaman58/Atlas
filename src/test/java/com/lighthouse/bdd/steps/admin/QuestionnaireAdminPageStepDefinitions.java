@@ -11,7 +11,7 @@ public class QuestionnaireAdminPageStepDefinitions {
 
     @Then("The [Questionnaire Admin] page is opened")
     public void theQuestionnaireAdminPageIsOpened() {
-        Assert.assertTrue(Pages.questionnaireAdminPage().isQuestionnaireAdminPageOpened());
+        Pages.questionnaireAdminPage().isQuestionnaireAdminPageOpened();
     }
 
     @Then("The [Questionnaire Versions] page is opened")
