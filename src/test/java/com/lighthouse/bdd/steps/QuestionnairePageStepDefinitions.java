@@ -83,4 +83,16 @@ public class QuestionnairePageStepDefinitions {
     public void theTooltipWindowSURLIsOnTheQuestionnairePage(String url) {
         Assert.assertEquals(Pages.questionnairePage().getTooltipWindowURL(), url);
     }
+
+    @And("Select questions to match the complex selector criteria 2.0")
+    public void selectQuestionsToMatchTheComplexSelectorCriteria2() {
+        Pages.questionnairePage().selectQuestion(1);
+        Pages.questionnairePage().selectQuestion(3);
+        Pages.questionnairePage().selectQuestion(42);
+        Pages.questionnairePage().selectQuestion(46);
+        Pages.questionnairePage().selectQuestion(77);
+        Pages.questionnairePage().selectQuestion(78);
+        Pages.questionnairePage().selectQuestion(81);
+        Pages.questionnairePage().selectQuestion(83);
+    }
 }

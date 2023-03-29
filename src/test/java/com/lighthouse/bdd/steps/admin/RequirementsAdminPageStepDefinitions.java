@@ -472,4 +472,36 @@ public class RequirementsAdminPageStepDefinitions {
     public void verifyThatTheSubmitForApprovalButtonIsVisible() {
         Pages.requirementsAdminPage().isSubmitForApprovalButtonVisible();
     }
+
+    @And("Create a complex selector criteria 2.0")
+    public void createAComplexSelectorCriteria2() {
+        SelenideTools.sleep(1);
+
+        Pages.requirementsAdminPage().checkQuestion(3);
+        Pages.requirementsAdminPage().checkQuestion(5);
+        Pages.requirementsAdminPage().checkQuestion(44);
+        Pages.requirementsAdminPage().checkQuestion(48);
+        Pages.requirementsAdminPage().checkQuestion(79);
+        Pages.requirementsAdminPage().checkQuestion(80);
+        Pages.requirementsAdminPage().checkQuestion(83);
+        Pages.requirementsAdminPage().checkQuestion(85);
+
+        Pages.requirementsAdminPage().selectAndRule(0);
+
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(1, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "Yes");
+
+    }
 }
