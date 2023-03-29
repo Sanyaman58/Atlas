@@ -1147,7 +1147,7 @@ public class ClientMasterPage extends PageTools {
 		
 	public void verifyDeleteFacilityButtonIsEnabled() {		
 		SelenideElement configurationDeleteButtonElement = getSelenideElement(configurationDeleteButton);
-		waitForElementVisibility(approveRequirementButton);
+		waitForElementVisibility(configurationDeleteButton);
 		configurationDeleteButtonElement.shouldBe(Condition.enabled);
 	}
 	
