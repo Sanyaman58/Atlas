@@ -351,6 +351,11 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().existingJobRadioButton();
 	}
 
+	@And("Verify the questions elements")
+	public void verifyQuestionsElements() {
+		Pages.clientMasterPage().verifyQuestionsElementsOnQuestionnairePage();
+	}
+
 	@And("Validate that the checkbox is to the left of the Jurisdiction text")
 	public void validateCheckboxPositions() {
 		Pages.clientMasterPage().verifyJurisdictionCheckboxLeftPosition();

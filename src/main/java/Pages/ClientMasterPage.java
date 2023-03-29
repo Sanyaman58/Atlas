@@ -113,6 +113,7 @@ public class ClientMasterPage extends PageTools {
 	By nextButtonPopupBody = By.xpath("//*[@id=\"alert-msg\"]");
 	By nextButtonPopupCrossIcon = By.xpath("//*[@id=\"alert-modal\"]/div/div/div[1]/button");
 	By existingJobNextButton = By.xpath("//*[@id=\"copyfrom_research_job\"]");
+	By questionText = By.xpath("//*[@id=\"questionnaire-container\"]/ul[1]/li/label");
 	By selectResidentStateLabel = By.xpath("//*[@id=\"mange-job-research\"]/div[1]/div/div/label");
 	By selectJurisdictionsLabel = By.xpath("//*[@id=\"mange-job-research\"]/div[2]/div/div/div[1]/label");
 	By jusrisdictionPageSelectAllButton = By.xpath("//*[@id=\"jurisdictions_select_all\"]");
@@ -167,6 +168,7 @@ public class ClientMasterPage extends PageTools {
 	String helpToolTipLabelText = "Help Tip";
 	String deletePopupText = "The selected research will be deleted and cannot be undone. Are you sure want to delete?";
 	String nextButtonPopupBodyText = "Please enter all required fields";
+	String questionLabelText = "Does your company sell (for profit or charitable) the products managed at this facility?";
 	String selectResidentStateLabelText = "Please select the resident state for your facility: *";
 	String selectJurisdictionLabelText = "Please select all jurisdictions you would like to include in this facility configuration:";
 	String saveSubmitPageCompanyNameText = "Company Name :";
@@ -670,6 +672,13 @@ public class ClientMasterPage extends PageTools {
 		click(existingJobNextButton);
 	}
 
+	public void verifyQuestionsElementsOnQuestionnairePage() {
+		SelenideElement questionTextElement = getSelenideElement(questionText);
+		String actualQuestionName = questionTextElement.getText();
+		System.out.println("Actual text of the question present = " + actualQuestionName);
+		questionTextElement.shouldBe(Condition.text(questionTextElement.getText()));
+	}
+	
 	public void verifyJurisdictionCheckboxLeftPosition() {
 		List<SelenideElement> checkboxTextElements = getElements(checkboxText);
 		List<SelenideElement> checkboxInputFieldElements = getElements(checkboxInputField);
