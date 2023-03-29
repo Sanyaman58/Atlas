@@ -398,7 +398,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @And("Verify that newly created requirement is displayed in the [Requirement Viewer] table")
     public void verifyThatNewlyCreatedRequirementIsDisplayedInTheRequirementViewerTable() {
-        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
+        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getApplicationName(), Pages.requirementsAdminPage().getRequirementName()));
 
     }
 
@@ -407,12 +407,12 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().selectRequirementsViewerFiltersStatus(status);
     }
 
-    @And("Verify that all 52 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
+    @And("Verify that all 53 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
     public void verifyThatAllStatesAreSelectableInTheRequirementsViewerFiltersJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect());
     }
 
-    @Then("Verify that all 52 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
+    @Then("Verify that all 53 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
     public void verifyThatAllStatesAreSelectableInTheGeneralInformationJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheGeneralInformationJurisdictionSelect());
 
@@ -466,5 +466,42 @@ public class RequirementsAdminPageStepDefinitions {
     public void verifyThatSelectorChoiceIs(int index, String orAnd) {
         System.out.println(Pages.requirementsAdminPage().getSelectorValue(index-1));
         Assert.assertEquals(Pages.requirementsAdminPage().getSelectorValue(index-1), orAnd);
+    }
+
+    @And("Verify that the Submit for Approval button is visible")
+    public void verifyThatTheSubmitForApprovalButtonIsVisible() {
+        Pages.requirementsAdminPage().isSubmitForApprovalButtonVisible();
+    }
+
+    @And("Create a complex selector criteria 2.0")
+    public void createAComplexSelectorCriteria2() {
+        SelenideTools.sleep(1);
+
+        Pages.requirementsAdminPage().checkQuestion(3);
+        Pages.requirementsAdminPage().checkQuestion(5);
+        Pages.requirementsAdminPage().checkQuestion(44);
+        Pages.requirementsAdminPage().checkQuestion(48);
+        Pages.requirementsAdminPage().checkQuestion(79);
+        Pages.requirementsAdminPage().checkQuestion(80);
+        Pages.requirementsAdminPage().checkQuestion(83);
+        Pages.requirementsAdminPage().checkQuestion(85);
+
+        Pages.requirementsAdminPage().selectAndRule(0);
+
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(1, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "Yes");
+
     }
 }

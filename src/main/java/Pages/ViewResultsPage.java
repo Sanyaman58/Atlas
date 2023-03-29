@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.ExcelReader;
 import Utils.SelenideTools;
 import base.PageTools;
 import com.codeborne.selenide.SelenideElement;
@@ -12,7 +13,7 @@ public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
     By table= By.xpath("//table[@id='DataTables_Table_0']/tbody");
     By tableJobs = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
-    By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th/div/label");
+    By tableLabels = By.xpath("(//table)[1]/thead[1]/tr[1]/th");
     By actionTableLabel = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th[last()]");
     By showResultsSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
     By researchResults = By.xpath("//div[@id='viewResult']");
@@ -36,7 +37,11 @@ public class ViewResultsPage extends PageTools {
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
 
+    By companySelect = By.xpath("//select[@class='company_val form-control']");
+    By exportButton = By.xpath("//button[contains(text(),'Export')]");
+
     List<List<String>> tableRecords;
+    List<List<String>> excelTableRecords;
     static String facilityName;
     static String companyName;
     static int requirementsCount;
@@ -84,8 +89,18 @@ public class ViewResultsPage extends PageTools {
         getSelenideElement(researchResultsViewResultButton, index).click();
     }
 
+    public boolean isViewResultButtonVisible(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsViewResultButton, 1);
+    }
+
     public void clickOnTheDeleteButtonOfTheRecord(int index){
         getSelenideElement(researchResultsDeleteResultButton, index).click();
+    }
+
+    public boolean isDeleteResultButtonVisible(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsDeleteResultButton, 1);
     }
 
     public void clickOnTheActivityLogsButtonOfTheRecord(int index){
@@ -116,8 +131,10 @@ public class ViewResultsPage extends PageTools {
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
             tableLabelsList.add(element.getText());
+            System.out.println(element.getText());
         }
-        tableLabelsList.add(getSelenideElement(actionTableLabel).getText());
+        System.out.println(tableLabelsList.size());
+//        tableLabelsList.add(getSelenideElement(actionTableLabel).getText());
         return tableLabelsList.equals(labels);
     }
 
@@ -306,5 +323,36 @@ public class ViewResultsPage extends PageTools {
     public void selectClient(String client){
         waitForElementVisibility(clientSelect);
         selectOption(client, clientSelect);
+    }
+
+    public void selectCompany(String client){
+        waitForElementVisibility(companySelect);
+        selectOption(client, companySelect);
+    }
+
+    public void clickExportButton(){
+        waitForElementVisibility(exportButton);
+        click(exportButton);
+    }
+
+    public Object[][] getData(String filename, String SheetName) {
+        ExcelReader excel;
+        if (System.getProperty("os.name").contains("Windows")) {
+            excel = new ExcelReader(
+                    System.getProperty("user.dir") + "\\src\\test\\resources\\data\\ExcelFile\\" + filename);
+        }else {
+            excel = new ExcelReader(
+                    System.getProperty("user.dir") + "/src/test/resources/data/" + filename + ".xlsx");
+        }
+        int rows = excel.getRowCount(SheetName);
+        int columns = excel.getColumnCountAtRow(SheetName,1);
+        System.out.println("Rows: "+rows+"\nColumns:"+columns);
+        Object[][] data = new Object[rows - 1][columns];
+        for (int rowNum = 2; rowNum <= rows; rowNum++) {
+            for (int colNum = 0; colNum < columns; colNum++) {
+                data[rowNum - 2][colNum] = excel.getCellData(SheetName, colNum, rowNum);
+            }
+        }
+        return data;
     }
 }

@@ -11,9 +11,9 @@ Feature: C101
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "Pharma Solutions USA" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "Pharma Solutions USA" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button

@@ -480,6 +480,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void selectNewRequirementType(String type){
 		waitForElementVisibility(newRequirementTypeSelect);
+		scrollToElement(newRequirementCategorySelect);
 		selectOption(type, newRequirementTypeSelect);
 	}
 
@@ -588,6 +589,10 @@ public class RequirementsAdminPage extends PageTools {
 		waitForElementVisibility(submitForApprovalButton);
 		click(submitForApprovalButton);
 	}
+	public boolean isSubmitForApprovalButtonVisible(){
+		SelenideTools.sleep(5);
+		return isElementVisible(submitForApprovalButton);
+	}
 
 	public void clickSaveButton(){
 		scrollToElement(saveButton);
@@ -641,11 +646,11 @@ public class RequirementsAdminPage extends PageTools {
 		return isElementVisible(questionSelectionsResidentType);
 	}
 
-	public boolean isRecordDisplayed(String state, String requirementName, String applicationName){
+	public boolean isRecordDisplayed(String state,String applicationName, String requirementName){
 		for (SelenideElement element : getElements(requirementViewersTableRecords)){
 			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
-			&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
-			&& element.findElement(By.xpath("./td[3]")).getText().equals(applicationName))
+			&& element.findElement(By.xpath("./td[2]")).getText().equals(applicationName)
+			&& element.findElement(By.xpath("./td[3]")).getText().equals(requirementName))
 				return true;
 			}
 		return false;
@@ -668,12 +673,12 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionSelect);
-		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==53;
+		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==54;
 	}
 
 	public boolean areAllStatesSelectableInTheGeneralInformationJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionGeneralInformationSelect);
-		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==53;
+		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==54;
 	}
 
 	public boolean isTableRecordWithRequirementNameDisplayed(String requirementName){

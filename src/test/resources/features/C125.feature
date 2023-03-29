@@ -3,7 +3,7 @@
 Feature: C125
 
   @TestRail(125)
-  Scenario: Verify the box should default to 'And', while building a new Selector for a Requirement
+  Scenario: Verify the box should default to 'Or', while building a new Selector for a Requirement
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -16,7 +16,7 @@ Feature: C125
     And Click the [Create New] button in the [Add New Requirement] section
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Check 3 question in the [Question Selection] section on the [Requirements View] page
-    Then Verify that 1 selector choice is "AND" on the [Requirements View] page
+    Then Verify that 1 selector choice is "OR" on the [Requirements View] page
     
 
 

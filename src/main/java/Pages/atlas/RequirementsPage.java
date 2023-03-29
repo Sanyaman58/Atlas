@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 public class RequirementsPage extends PageTools {
 	By requirementsPageTitle = By.xpath("//div[@id='task-grid']//p[contains(text(),'Requirements')]");
 	By requirementsTableRecords = By.xpath("//table[@id='licenses-list-main']/tbody/tr");
+	By requirementsTableRecordsPdfUploadButton = By.xpath("//table[@id='licenses-list-main']/tbody/tr/td[14]/a");
+
 	By requirementsPDFUpload = By.xpath("//div[@class='modal-content']//p[contains(text(),'Requirement PDF Upload')]");
 	By closeRequirementsPDFUploadWindowButton = By.xpath("//div[@id='modal']//button[@class='close']");
 	By errorText = By.xpath("//div[@id='text_error']");
@@ -21,6 +23,11 @@ public class RequirementsPage extends PageTools {
 	public void clickOnThePlusPDFButton(int index){
 		waitForElementVisibility(requirementsTableRecords);
 		getElements(requirementsTableRecords).get(index).findElement(By.xpath("./td[14]/a")).click();
+	}
+
+	public void clickOnThePlusPDFButton(){
+		waitForElementVisibility(requirementsTableRecordsPdfUploadButton);
+		click(requirementsTableRecordsPdfUploadButton);
 	}
 
 	public boolean isRequirementsPDFUploadPageOpened(){

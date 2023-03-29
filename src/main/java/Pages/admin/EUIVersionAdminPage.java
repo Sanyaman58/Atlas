@@ -9,7 +9,7 @@ import java.util.List;
 
 public class EUIVersionAdminPage extends PageTools {
 	By EUIVersionAdminPageTitle = By.xpath("//h2[text()='Versioned EUI']");
-	By euiVersionAdminTableLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
+	By euiVersionAdminTableLabels = By.xpath("//table/thead/tr/th/div/label");
 	By euiVersionAdminTableRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
 	

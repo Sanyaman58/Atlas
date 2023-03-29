@@ -12,6 +12,7 @@ public class JurisdictionPageStepDefinitions {
     @Then("The [Jurisdiction] page is opened")
     public void theQuestionnairePageIsOpened() {
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
+        SelenideTools.sleep(3);
     }
 
     @When("Select {string} state on the [Jurisdiction] page")
@@ -58,7 +59,7 @@ public class JurisdictionPageStepDefinitions {
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
     }
 
-    @Then("Verify that all 52 states are visible and enabled")
+    @Then("Verify that all 53 states are visible and enabled")
     public void verifyThatAllStatesAreVisibleAndEnabled() {
         Pages.jurisdictionPage().areAllStatesCheckboxesVisibleAndClickable();
     }

@@ -11,8 +11,8 @@ import java.util.List;
 public class QuestionnaireAdminPage extends PageTools {
 	By questionnaireAdminPageTitle = By.xpath("//h2[text()='Questionnaire']");
 	By questionnaireVersionsPageTitle = By.xpath("//h2[text()='Versioned QUESTIONNAIRE']");
-	By questionnaireVersionsLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
-	By questionnaireVersionsRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
+	By questionnaireVersionsLabels = By.xpath("//table/thead/tr/th/div/label");
+	By questionnaireVersionsRecords = By.xpath("//table/tbody/tr");
 	By questionnaireQuestions = By.xpath("//div[@id='category']/div/ul//li/label");
 	By questionnaireQuestionTooltip = By.xpath("(//div[@id='category']/div/ul//li/label)[%s]/span[@id='comment-info-popover-FIN1']");
 	By saveQuestionnaireButton = By.xpath("//button[@id='save_in_dynamo']");
@@ -56,7 +56,7 @@ public class QuestionnaireAdminPage extends PageTools {
 
 	public void selectActivateDeactivate(int index,String activateDeactivate){
 		waitForElementVisibility(questionnaireQuestions);
-		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active-FIN1')]")));
+		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active')]")));
 		select.selectByVisibleText(activateDeactivate);
 	}
 
