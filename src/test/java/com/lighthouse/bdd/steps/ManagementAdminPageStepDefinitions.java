@@ -257,9 +257,14 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@And("Verify child questions are unclickable as parent questions are not clicked")
-	public void verifyChildQuestionUnclickable() {
-		Pages.clientMasterPage().clickChildQuestion();
-	}
+    public void verifyChildQuestionUnclickable() {
+        Pages.clientMasterPage().clickChildQuestion();
+    }
+	
+	@And("Validate the lables on the [SaveSubmit Job] page")
+    public void verifySaveSubmitPageLabels() {
+        Pages.clientMasterPage().saveSubmitPageLabels();
+    }
 
 	@And("Click on [Version Requirements] dropdown option")
 	public void clickVersionRequirement() {

@@ -98,6 +98,11 @@ public class ClientMasterPage extends PageTools {
 	By deleteRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button");
 	By statusInputField = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[10]/input");
 	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/div/label/input");
+	By saveSubmitPageCompanyName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div/label");
+	By saveSubmitPageLabelName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[2]/div/label");
+	By saveSubmitPageResidentState = By.xpath("//*[@id=\"mange-job-research\"]/div/div[3]/div/label");
+	By saveSubmitPageCheckbox = By.xpath("//input[@name='juricdictions[]']");
+	By saveSubmitPageChangeButton = By.xpath("//a[@class='btn common-btn']");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -112,6 +117,9 @@ public class ClientMasterPage extends PageTools {
 	String nextButtonPopupBodyText = "Please enter all required fields";
 	String selectResidentStateLabelText = "Please select the resident state for your facility: *";
 	String selectJurisdictionLabelText = "Please select all jurisdictions you would like to include in this facility configuration:";
+	String saveSubmitPageCompanyNameText = "Company Name :";
+	String saveSubmitPageFacilityNameText = "Facility Name :";
+	String saveSubmitPageResidentStateText = "Resident State :";
 
 	HashMap<String, Boolean> jurisdictionPageCheckboxesInput = new HashMap<>();
 
@@ -658,6 +666,27 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(deleteResultButtton);
 		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
 		deleteResultButttonElement.shouldBe(Condition.enabled);
+	}
+
+	public void saveSubmitPageLabels() {
+		SelenideElement saveSubmitPageCompanyNameElement = getSelenideElement(saveSubmitPageCompanyName);
+		assertEquals(saveSubmitPageCompanyNameElement.getText(), saveSubmitPageCompanyNameText);
+
+		SelenideElement saveSubmitPageFacilityNameElement = getSelenideElement(saveSubmitPageLabelName);
+		assertEquals(saveSubmitPageFacilityNameElement.getText(), saveSubmitPageFacilityNameText);
+
+		SelenideElement saveSubmitPageResidentStateElement = getSelenideElement(saveSubmitPageResidentState);
+		assertEquals(saveSubmitPageResidentStateElement.getText(), saveSubmitPageResidentStateText);
+
+		List<SelenideElement> saveSubmitPageCheckboxElement = getElements(saveSubmitPageCheckbox);
+		for (SelenideElement element : saveSubmitPageCheckboxElement) {
+			element.isDisplayed();
+		}
+
+		List<SelenideElement> saveSubmitPageChangeButtonElement = getElements(saveSubmitPageChangeButton);
+		for (SelenideElement element1 : saveSubmitPageChangeButtonElement) {
+			element1.isDisplayed();
+		}
 	}
 
 }
