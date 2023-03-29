@@ -1,9 +1,9 @@
-@C127
+@C128
 
-Feature: C127
+Feature: C128
 
-  @TestRail(127)
-  Scenario: Verify that user is able to see "Requirement Name" to the "Activity Log" output.
+  @TestRail(128)
+  Scenario: Verify that the Washington DC Jurisdiction Renamed to District of Columbia in the application
   When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -12,6 +12,8 @@ Feature: C127
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
+    And Select "Test Pharma" client from the client dropdown
+    And Delete job from the table if exists
     And Select "Test Pharma" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
