@@ -1008,6 +1008,34 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 
+	By entitlementHeader = By.xpath("//div[@class=\"card-body\"]//h3");
+
+	public void noEntitlementMessage() {
+		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
+		if (entitlementHeaderElement.isDisplayed() == false) {
+			System.out.println("Entitlement header is not present");
+		} else {
+			System.out.println("Entitlement header is present");
+		}
+	}
+
+	By enitilementUpperLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[2]");
+	By entitlementLowerLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[1]");
+	List<SelenideElement> enitilementUpperLimitElement = getElements(enitilementUpperLimit);
+		List<SelenideElement> entitlementLowerLimitElement = getElements(entitlementLowerLimit);
+
+	public void verifyEntitlementMessage() {
+		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
+		if(entitlementHeaderElement.isDisplayed() == true) {
+			System.out.println("Entrilement header displayed");
+		}
+		if (enitilementUpperLimitElement.size() > entitlementLowerLimitElement.size()) {
+			System.out.println("Correct entitlement message is shown");
+		} else {
+			System.out.println("Correct entitlement message is not shown");
+		}
+	}
+	
 	public void openVersionRequirementsPage() {
 		waitForElementVisibility(versionRequirementsOption);
 		click(versionRequirementsOption);
