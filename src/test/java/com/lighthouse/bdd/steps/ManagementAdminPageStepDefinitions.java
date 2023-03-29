@@ -386,6 +386,61 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().clickChildQuestion();
     }
 	
+	@And("Click on [Intelligence Admin] dropdown button")
+    public void verifyClickOnIntelligenceDropdown() {
+        Pages.clientMasterPage().clickOnIntelligenceDropdown();
+    }
+	
+	@And("Verify [Requirement View] option is displayed")
+    public void verifyRequirementViewOption() {
+        Pages.clientMasterPage().requirementViewDisplayed();
+    }
+	
+	@And("Click on [Version Requirement] side bar button and verify page")
+    public void verifyClickOnVersionedRequirement() {
+        Pages.clientMasterPage().clickVersionedRequirementButtonAndVerifyPage();
+    }
+	
+	@And("Verify that the [Activate Requirement] view option is enabled")
+    public void verifyActivateButtonIsEnabled() {
+        Pages.clientMasterPage().verifyActivateButton();
+    }
+	
+	@And("Verify [Delete Requirement] option is enabled")
+    public void verifyDeleteButtonIsEnabled() {
+        Pages.clientMasterPage().verifyDeleteButton();
+    }
+	
+	@And("Verify that the [Edit Requirement] option is enabled")
+    public void verifyEditButtonIsEnabled() {
+        Pages.clientMasterPage().verifyEditButton();
+    }
+	
+	@And("Verify that the [View Requirement] option is enabled")
+    public void verifyViewRequirementIsEnabled() {
+        Pages.clientMasterPage().verifyViewRequirementButton();
+    }
+	
+	@And("Verify that the [Approve Requirement] option is enabled")
+    public void verifyApproveRequirementIsEnabled() {
+        Pages.clientMasterPage().verifyApproveRequirementButton();
+    }
+	
+	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+    public void verifyIntelligencePermissions() {
+        Pages.clientMasterPage().verifyIntelligencePermissionsEnabled();
+    }
+	
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+    public void verifyDeleteFacilityButton() {
+        Pages.clientMasterPage().verifyDeleteFacilityButtonIsEnabled();
+    }
+	
+	@And("Verify [View Result] and [Delete Result] button is enabled")
+    public void verifyViewDeleteButton() {
+        Pages.clientMasterPage().verifyViewDeleteButtonEnabled();
+	}
+	
 	@And("Verify no [Intelligence Entitlement] message is shown without selecting any Client")
     public void verifyNoEntitlementMessage() {
         Pages.clientMasterPage().noEntitlementMessage();

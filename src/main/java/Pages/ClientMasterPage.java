@@ -66,7 +66,6 @@ public class ClientMasterPage extends PageTools {
 	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By jobProgressBar = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]/div/div");
 	By jobPendingStatusText = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[5]");
-	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[9]/a");
 	By permissionsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By deleteFacilityCheckbox = By.xpath("//input[@name=\"permissions[1][delete_facility]\"]");
@@ -126,20 +125,18 @@ public class ClientMasterPage extends PageTools {
 	By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
 	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
-	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
 	By deleteResultButtton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
 	By versionRequirementsOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[4]/a");
 	By versionRequirementsHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 	By editRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[2]");
 	By viewRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[1]");
-	By approveRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
 	By permissionsDropdownOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
 	By permissionsPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By systemAdminPermissionsCheckboxes = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[2]/input");
 	By facilityDeleteButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button");
 	By deleteRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button");
 	By statusInputField = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[10]/input");
-	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/div/label/input");
+	// By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/div/label/input");
 	By addQuestionAddButton = By.xpath("//button[@id=\"add-question-FIN1.1-0\"]");
 	By addQuestionCancelButton = By.xpath("//button[@id=\"cancel-question-FIN1.1-0\"]");
 	By questionPopupEditOption = By.xpath("//*[@id=\"context-menu-question\"]/ul/li[2]/a");
@@ -156,6 +153,12 @@ public class ClientMasterPage extends PageTools {
 	By saveSubmitPageResidentState = By.xpath("//*[@id=\"mange-job-research\"]/div/div[3]/div/label");
 	By saveSubmitPageCheckbox = By.xpath("//input[@name='juricdictions[]']");
 	By saveSubmitPageChangeButton = By.xpath("//a[@class='btn common-btn']");
+	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By approveRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+	By versionedStatusInputField = By.xpath("//input[@placeholder=\"Search Status\"]");
+	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
+	By deleteResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
 	By requirementViewButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
 	By requirementViewPageHeader = By.xpath("//*[@id=\"versionned_requirement_form\"]/div/div[1]/section/div[1]/h2");
 	By jurisdictionDropdown = By.xpath("//select[@id=\"filter_Jurisdiction\"]");
@@ -1132,5 +1135,117 @@ public class ClientMasterPage extends PageTools {
 			element1.isDisplayed();
 		}
 	}
+	
+	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
+	By requirementViewOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
+	By versionRequirementPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 
+	public void clickOnIntelligenceDropdown() {
+		waitForElementVisibility(intelligenceAdminDropdownButton);
+		click(intelligenceAdminDropdownButton);
+		SelenideTools.sleep(2);
+	}
+	
+	public void requirementViewDisplayed() {
+		waitForElementVisibility(requirementViewOption);
+		SelenideTools.sleep(2);
+	}
+	
+	public void clickVersionedRequirementButtonAndVerifyPage() {
+		waitForElementVisibility(versionRequirementsOption);
+		click(versionRequirementsOption);
+		SelenideTools.sleep(2);
+		waitForElementVisibility(versionRequirementPageHeader);
+		SelenideTools.sleep(2);
+	}
+	
+	
+	By deleteRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[1]");	
+	public void verifyActivateButton() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.val("Approved");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideTools.sleep(2);
+		
+		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
+		activateRequirementToggleElement.shouldBe(Condition.enabled);
+	}
+	
+	public void verifyDeleteButton() {
+		waitForElementVisibility(deleteRequirementToggle);
+		SelenideTools.sleep(2);
+		SelenideElement deleteRequirementToggleElement = getSelenideElement(deleteRequirementToggle);
+		deleteRequirementToggleElement.shouldBe(Condition.enabled);
+	}
+	
+	public void verifyEditButton() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.clear();
+		SelenideTools.sleep(1);
+		versionedStatusInputFieldElement.val("In-Progress");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideElement editRequirementButtonElement = getSelenideElement(editRequirementButton);
+		waitForElementVisibility(editRequirementButton);
+		editRequirementButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	public void verifyViewRequirementButton() {
+		waitForElementVisibility(viewRequirementButton);
+		SelenideTools.sleep(2);
+		SelenideElement viewRequirementButtonElement = getSelenideElement(viewRequirementButton);
+		viewRequirementButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	
+	
+	public void verifyApproveRequirementButton() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.clear();
+		SelenideTools.sleep(1);
+		versionedStatusInputFieldElement.val("Approval Pending");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideElement approveRequirementButtonElement = getSelenideElement(approveRequirementButton);
+		waitForElementVisibility(approveRequirementButton);
+		approveRequirementButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	By systemAdminCheckBoxes = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[2]/input");
+	
+	public void verifyIntelligencePermissionsEnabled() {
+		waitForElementVisibility(permissionsSidebarButton);
+		click(permissionsSidebarButton);
+		SelenideTools.sleep(4);
+		waitForElementVisibility(researchResultPageHeader);
+		
+		List<SelenideElement> systemAdminCheckBoxesElement = getElements(systemAdminCheckBoxes);
+		System.out.println("Size of System Admin checkboxes = "+ systemAdminCheckBoxesElement.size());
+		
+		for(SelenideElement checkbox : systemAdminCheckBoxesElement) {
+			checkbox.shouldBe(Condition.selected);
+		}
+	}
+		
+	public void verifyDeleteFacilityButtonIsEnabled() {		
+		SelenideElement configurationDeleteButtonElement = getSelenideElement(configurationDeleteButton);
+		waitForElementVisibility(configurationDeleteButton);
+		configurationDeleteButtonElement.shouldBe(Condition.enabled);
+	}
+	
+	
+	
+	public void verifyViewDeleteButtonEnabled() {		
+		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
+		waitForElementVisibility(viewResultButton);
+		viewResultButtonElement.shouldBe(Condition.enabled);
+		
+		SelenideElement deleteResultButtonElement = getSelenideElement(deleteResultButton);
+		waitForElementVisibility(deleteResultButton);
+		deleteResultButtonElement.shouldBe(Condition.enabled);
+	}
 }
