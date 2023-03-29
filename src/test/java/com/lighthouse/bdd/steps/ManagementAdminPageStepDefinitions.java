@@ -29,7 +29,7 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@Then("Click [Add Client] button")
-	public void clickAddClientButton() {
+	public void clickAddClinetButton() {
 		Pages.clientMasterPage().clickSubmitNewJobButton();
 	}
 
@@ -190,6 +190,126 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().helpToolTip();
 	}
 
+	@When("Click the [Permissions] button on the left sidebar")
+	public void clickPermissionsButton() {
+		Pages.clientMasterPage().clickIntelligenceAdminDropdownButton();
+		Pages.clientMasterPage().clickPermissionsSidebarButton();
+		SelenideTools.switchToLastTab();
+	}
+
+	@Then("Verify [Permissions] page is opened")
+	public void verifyPermissionsPageOpened() {
+		Assert.assertTrue(Pages.clientMasterPage().isPermissionsPageOpened());
+	}
+
+	@And("Disable the [Delete Facility] checkbox for [System Admin]")
+	public void disableDeleteFacilityCheckboxOfSystemAdmin() {
+		Pages.clientMasterPage().disableDeleteFacilityCheckbox();
+	}
+
+	@And("Click on [Update Permission] button")
+	public void clickUpdatePermissionsButton() {
+		Pages.clientMasterPage().clickUpdatePermission();
+		SelenideTools.sleep(5);
+	}
+
+	@And("Logout from the application")
+	public void logout() {
+		Pages.clientMasterPage().userLogout();
+	}
+
+	@And("Verify that the [Delete] action button is diabled")
+	public void verifyDeleteActionButton() {
+		Pages.clientMasterPage().deleteActionButton();
+	}
+
+	@And("Enable the [Delete Facility] checkbox for [System Admin]")
+	public void enableDeleteFacilityCheckboxOfSystemAdmin() {
+		Pages.clientMasterPage().enableDeleteFacilityCheckbox();
+	}
+
+	@And("Verify Delete button is enabled and click on it")
+	public void verifyDeleteActionButtonEnabledAndClick() {
+		Pages.clientMasterPage().deleteActionButtonEnabledAndClick();
+	}
+
+	@And("Verify the names of the questions on questionnaire page")
+	public void verifyNamesOnQuestion() {
+		Pages.clientMasterPage().verifyQuestionName();
+	}
+
+	@And("Select any category and click on [Add new category] button")
+	public void clickAddCategory() {
+		Pages.clientMasterPage().addCategoryButton();
+	}
+
+	@And("Click on [Save] category button with empty category name field and verify the validation")
+	public void clickSaveButtonWithoutEnteringName() {
+		Pages.clientMasterPage().clickSaveWithEmptyCategory();
+	}
+
+	@And("Add a new category and verify new category is added")
+	public void addCategoryAndVerify() {
+		Pages.clientMasterPage().addNewCategory();
+	}
+
+	@And("Select any category header and click on [Reorder category] button")
+	public void clickReorderCategory() {
+		Pages.clientMasterPage().reorderCategoryButton();
+	}
+	
+	@And("Reorder the category headers")
+	public void reorderTheCategory() {
+		Pages.clientMasterPage().reorderCategoryHeaders();
+	}
+	
+	@And("Right click on question and click on [Add New Question] buttton")
+	public void clickAddNewQuestion() {
+		Pages.clientMasterPage().addNewQuestion();
+	}
+	
+	@And("Click on [Plus] icon besides the question")
+	public void clickPlusIconBesidesQuestion() {
+		Pages.clientMasterPage().clickQuestionsPlusIcon();
+	}
+	
+	@And("Enter the name of question and Click [Add] button")
+	public void enterQuestionNameAndAdd() {
+		Pages.clientMasterPage().enterQuestionClickAdd();
+	}
+	
+	@And("Right click on displayed question and select [Edit Question] option")
+	public void editQuestion() {
+		Pages.clientMasterPage().clickAndEditQuestion();
+	}
+	
+	@And("Edit the particular question and verify the edit fields")
+	public void editQuestionsAndVerifyFields() {
+		Pages.clientMasterPage().editTheQuestionAndVerifyEditFields();
+	}
+	
+	@And("Right click on question and verify the activate and deactivate functionality")
+	public void verifyActivateAndDeactivateButton() {
+		Pages.clientMasterPage().activateDeactivateButtonFunctionality();
+	}
+	
+	@And("Click on the [Questionnaire Versions] sidebar button")
+	public void clickQuestionnaireVersionsButton() {
+		Pages.clientMasterPage().selectQuestionnarieVersions();
+		SelenideTools.sleep(4);
+	}
+	
+	@And("Activate the newly created questionnaire")
+	public void activateQuestionnaire() {
+		Pages.clientMasterPage().activateNewlyCreatedQuestionnaire();
+	}
+	
+	@And("Navigate to login page")
+	public void navigateLoginPage() {
+		Pages.clientMasterPage().navigateToLoginPage();
+	}
+	
+
 	@And("Validate the [Modify Existing Surveillance Configuration] table elements")
 	public void verifyModifyExistingSurveillanceTableData(List<String> listOfLabels) {
 		Pages.clientMasterPage().surveillancePageTableHeaders(listOfLabels);
@@ -262,9 +382,14 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@And("Verify child questions are unclickable as parent questions are not clicked")
-	public void verifyChildQuestionUnclickable() {
-		Pages.clientMasterPage().clickChildQuestion();
-	}
+    public void verifyChildQuestionUnclickable() {
+        Pages.clientMasterPage().clickChildQuestion();
+    }
+	
+	@And("Validate the lables on the [SaveSubmit Job] page")
+    public void verifySaveSubmitPageLabels() {
+        Pages.clientMasterPage().saveSubmitPageLabels();
+    }
 
 	@And("Click on [Version Requirements] dropdown option")
 	public void clickVersionRequirement() {

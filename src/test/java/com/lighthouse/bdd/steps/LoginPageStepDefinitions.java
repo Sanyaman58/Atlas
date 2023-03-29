@@ -95,4 +95,19 @@ public class LoginPageStepDefinitions {
     public void logOutFromAtlas() {
         Pages.loginPage().logOutFromAtlas();
     }
+    
+    @When("Clear Password filed")
+    public void clearPasswordField() {
+        Pages.loginPage().clearPassword();
+    }
+    
+    @When("Clear Email field")
+    public void clearEmailField() {
+        Pages.loginPage().clearEmail();
+    }
+    
+    @When("Verify empty Email and Password field")
+    public void verifyEmptyFields() {
+        Pages.loginPage().verifyEmptyEmailPasswordField();
+    }
 }

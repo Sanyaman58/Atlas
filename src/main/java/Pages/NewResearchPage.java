@@ -385,5 +385,15 @@ public class NewResearchPage extends PageTools {
 			doubleClick(alertYesDeleteButton, 3);
 		}
 	}
+	
+	By configurationTableNextButton = By.xpath("//button[@id=\"copyfrom_research_job\"]");
+	
+	public void selectConfigurationTableNextButton() {
+		waitForElementVisibility(configurationTableNextButton);
+		click(configurationTableNextButton);
+		SelenideTools.sleep(5);
+	}
+	
+	
 
 }

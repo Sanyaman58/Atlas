@@ -12,12 +12,11 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By requirementsSidebarButton = By.xpath("//ul[@id='menu']/li[4]/ul/li/a");
 	By activitiesSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[2]");
 	By tasksSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[3]");
-
 	By surveillanceIntelligenceSidebarCollapse = By.xpath("//ul[@id='menu']/li[5]");
 	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li/a");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
 	By intelligenceAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li[10]");
-	By researchSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li/a");
+	By researchSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[1]/a");
 	By auditLogSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[2]/a");
 	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[3]/a");
 	By versionRequirementsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[4]/a");

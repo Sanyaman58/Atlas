@@ -21,9 +21,9 @@ Feature: C115
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     And Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    When Select "Pharma Solutions USA" client from the client dropdown
+    When Select "Test Pharma" client from the client dropdown
     And Delete job from the table if exists
-    When Select "Pharma Solutions USA" client from the client dropdown
+    When Select "Test Pharma" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
