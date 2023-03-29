@@ -396,6 +396,26 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().verifyEntitlementMessage();
 	}
 	
+	@And("Verify [ Washington DC Jurisdiction] Jurisdiction is renamed with [District of Columbia]")
+    public void verifyDistrictOfColumbia() {
+        Pages.clientMasterPage().verifyJurisdictionName();
+    }
+	
+	@And("Verify the [District of Columbia] in list of Jurisdiction")
+    public void verifyJurisdictionDistrictOfColumbia() {
+        Pages.clientMasterPage().verifyDistrictOfColumbia();
+    }
+	
+	@And("Click on [Requirement View] sidebar button")
+    public void selectRequirementView() {
+        Pages.clientMasterPage().clickRequirementViewButton();
+    }
+	
+	@And("Click Jurisdiction dropdown and verify the [District of Columbia] jurisdiction")
+    public void verifyDistrictOfColumbiaInDropndow() {
+        Pages.clientMasterPage().clickJurisdictionDropdownAndVerifyJurisdiction();
+	}
+	
 	@And("Validate the lables on the [SaveSubmit Job] page")
     public void verifySaveSubmitPageLabels() {
         Pages.clientMasterPage().saveSubmitPageLabels();
