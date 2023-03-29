@@ -13,6 +13,7 @@ public class AtlasDashboardManagementPageStepDefinitions {
     @Then("Management Dashboard page is opened")
     public void managementDashboardPageIsOpened() {
         Assert.assertTrue(Pages.atlasDashboardManagementPage().isDashboardPageOpened());
+        SelenideTools.sleep(5);
     }
 
     @When("Click on the [Results] sidebar atlas button")
