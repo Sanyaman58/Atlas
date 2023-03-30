@@ -22,9 +22,9 @@ Feature: C106
     And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
+    And Verify the breadcrumbs on the [Jurisdiction] page
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
-    And Verify the breadcrumbs on the [Jurisdiction] page
     When Click the [Next] button on the [Jurisdiction] page
     Then Verify the breadcrumbs on the [Questionnaire] page
     When Click the [Next] button on the [Questionnaire] page

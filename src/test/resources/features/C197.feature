@@ -11,8 +11,7 @@ Feature: C197
     Then Management Dashboard page is opened
     When Click on the [Versioned Requirements] sidebar button
     Then Versioned Requirement page is opened
-    When Click on the "Created" label on the [Versioned Requirements] page
-    And Click on the "Created" label on the [Versioned Requirements] page
+    When Click on the "Status" label on the [Versioned Requirements] page
     And Enter "Nikita" requirement created in the requirement search on the [Versioned Requirements] page
     When Click on the [Edit Requirement] button of the 1 record on the [Versioned Requirements] page
     Then Get requirement name from the [Edit Requirement] name

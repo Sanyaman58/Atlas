@@ -24,7 +24,7 @@ public class LoginPage extends PageTools {
 	By fillOutFieldMessage = By.xpath("//*[contains(.,'Please fill out this field')]");
 	By errorMessage = By.xpath("//p[@class='error_msg']");
 	By roleSelect = By.xpath("//form[@method='POST']/div/select[@name='type']");
-	By atlasProfileDropDown = By.xpath("//*[text()=\"Nikita Danilevskiy\"]");
+	By atlasProfileDropDown = By.xpath("(//*[@id='dropdown06']/i)[last()]");
 	By atlasLogOutButton = By.xpath("//a[text()='Logout']");
 
 	public void openLighthouse() {

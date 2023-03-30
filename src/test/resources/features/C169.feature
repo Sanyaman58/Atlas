@@ -13,6 +13,8 @@ Feature: C169
     Then The [Configuration] page is opened
     And Reload the browser
     Then Select "Test Pharma" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "Test Pharma" client from the client dropdown
     When Validate fields on the [Surveillance Setup] page
     When Select 1 company name
     And Select 1 facility name

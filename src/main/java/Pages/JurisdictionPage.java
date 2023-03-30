@@ -65,6 +65,7 @@ public class JurisdictionPage extends PageTools {
 	}
 
 	public void clickRequirementsChecksIncludeYesRadio(){
+		waitForElementVisibility(requirementsChecksIncludeYesRadio);
 		click(requirementsChecksIncludeYesRadio);
 	}
 
@@ -98,6 +99,9 @@ public class JurisdictionPage extends PageTools {
 		if(selectedResidentStateElement.getText() == Selectedstate) {
 			System.out.println("Resident state found to be same as selected earlier = "+ Selectedstate);
 		}		
+	}
+	public boolean isEUIStatesRadioButtonsVisible(){
+		return isElementVisible(requirementsChecksIncludeYesRadio) && isElementVisible(requirementsChecksIncludeNoRadio);
 	}
 
 }

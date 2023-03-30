@@ -461,7 +461,7 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void getRequirementNameFromEditRequirement(){
-		requirementName = getSelenideElement(requirementNameGeneralInformationInput).getText();
+		requirementName = getSelenideElement(requirementNameGeneralInformationInput).getValue();
 	}
 
 	public boolean isChangeNoteForCustomerWorking(){

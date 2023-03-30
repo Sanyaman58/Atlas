@@ -57,7 +57,4 @@ Feature: C195
     And Get table records on [Research Results] page
     Then Verify that early created requirement name is in the list
     And Close [Research Results] window
-    Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
-    And Delete newly created configuration with status "Submitted"
 

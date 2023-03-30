@@ -27,8 +27,8 @@ Feature: C109
     Then The [Configuration] page is opened
     When Select "Test Pharma" client from the client dropdown
     Then Newly created job with status "Incomplete" is displayed in the table on the [New Research] page
-    And Select already created job in the table on the [New Research] page
-    And Click on [Configuration Table] next button
+    And Select already created job by index 1 in the table on the [New Research] page
+    And Click on [Next] button under the table on the [New Research] page
     Then The [Jurisdiction] page is opened
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened

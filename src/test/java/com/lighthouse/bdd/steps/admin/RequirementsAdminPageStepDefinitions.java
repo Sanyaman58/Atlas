@@ -244,6 +244,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("Click on the [Submit for Approval] button on the [Requirements View] page")
     public void clickOnTheSubmitForApprovalButtonOnTheRequirementsViewPage() {
+        SelenideTools.sleep(2);
         Pages.requirementsAdminPage().clickSubmitForApprovalButton();
         SelenideTools.sleep(8);
     }
@@ -272,6 +273,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("Get requirement name from the [Edit Requirement] name")
     public void getRequirementNameFromTheEditRequirementName() {
+        SelenideTools.sleep(6);
         Pages.requirementsAdminPage().getRequirementNameFromEditRequirement();
     }
 

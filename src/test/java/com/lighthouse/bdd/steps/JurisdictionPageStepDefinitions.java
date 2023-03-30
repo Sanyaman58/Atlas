@@ -56,7 +56,6 @@ public class JurisdictionPageStepDefinitions {
         Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
         Pages.newResearchPage().goBackInBrowser();
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
-        Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
     }
 
     @Then("Verify that all 53 states are visible and enabled")
@@ -67,5 +66,10 @@ public class JurisdictionPageStepDefinitions {
     @When("Verify Jurisdictions state is {string} as selected earlier on the [Jurisdiction] page")
     public void verifyJurisdictionState(String Selectedstate) {
         Pages.jurisdictionPage().selectedState(Selectedstate);
+    }
+
+    @And("EUI states radio buttons are visible")
+    public void euiStatesRadioButtonsAreVisible() {
+        Assert.assertTrue(Pages.jurisdictionPage().isEUIStatesRadioButtonsVisible());
     }
 }

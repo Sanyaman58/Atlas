@@ -37,7 +37,7 @@ Feature: C114
     And Verify that the configuration is deleted on the [Configuration] page
     When Log out from Lighthouse
     When Open Atlas
-    Then Enter login "momludilte@gufum.com" on login page
+    Then Enter login "tiretem642@vootin.com" on login page
     And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened

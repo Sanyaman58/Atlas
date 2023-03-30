@@ -2,16 +2,13 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
-<<<<<<<<< Temporary merge branch 1
 
 import com.codeborne.selenide.Condition;
-=========
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
->>>>>>>>> Temporary merge branch 2
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
@@ -83,20 +80,20 @@ public class ClientMasterPage extends PageTools {
     By checkboxText = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By checkboxInputField = By.xpath("//input[@name=\"juricdictions[]\"]");
 	By submitPageJurisidctionCheckboxText = By.xpath("//div[@class=\"ml-2\"]//label");
-	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
-	By deleteResultButtton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
+	By viewResultButton = By.xpath("//tbody/tr[1]/td[6]/div/button[1]");
+	By deleteResultButtton = By.xpath("//tbody/tr[1]/td[6]/div/button[2]");
 	By versionRequirementsOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[4]/a");
-	By versionRequirementsHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
-	By editRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[2]");
-	By viewRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[1]");
-	By approveRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+	By versionRequirementsHeader = By.xpath("//main/div/section/div[1]/div[1]/h2");
+	By editRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/a[2]");
+	By viewRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/a[1]");
+	By approveRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/button[2]");
 	By permissionsDropdownOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
-	By permissionsPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
-	By systemAdminPermissionsCheckboxes = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[2]/input");
-	By facilityDeleteButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button");
-	By deleteRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button");
-	By statusInputField = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[10]/input");
-	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/div/label/input");
+	By permissionsPageHeader = By.xpath("//main/div/section/div/div[1]/h2");
+	By systemAdminPermissionsCheckboxes = By.xpath("//tbody//td[2]/input");
+	By facilityDeleteButton = By.xpath("//tbody/tr[1]/td[6]/div/button");
+	By deleteRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/button");
+	By statusInputField = By.xpath("//thead/tr/th[10]/input");
+	By activateRequirementToggle = By.xpath("//tbody/tr[1]/td[11]/div/div/label/input");
 
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
@@ -545,8 +542,6 @@ public class ClientMasterPage extends PageTools {
 		if (childQuestionRadioButtonElement.isEnabled()) {
 			fail("Checkbox is enabled" + childQuestionRadioButtonElement.getAttribute("value"));
 		}
-<<<<<<<<< Temporary merge branch 1
-=========
 	}
 	
 	
@@ -641,15 +636,12 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(deleteResultButtton);
 		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
 		deleteResultButttonElement.shouldBe(Condition.enabled);
->>>>>>>>> Temporary merge branch 2
 	}
 	
 	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
 	By requirementViewOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
-	By versionRequirementsOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[4]");
 	By versionRequirementPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 
-<<<<<<<<< Temporary merge branch 1
 	public void clickOnIntelligenceDropdown() {
 		waitForElementVisibility(intelligenceAdminDropdownButton);
 		click(intelligenceAdminDropdownButton);
@@ -670,10 +662,10 @@ public class ClientMasterPage extends PageTools {
 	}
 	
 	By versionedStatusInputField = By.xpath("//input[@placeholder=\"Search Status\"]");
-	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+//	By activateRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
 	By deleteRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[1]");
-	By editRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[2]");
-	By viewRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[1]");
+//	By editRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[2]");
+//	By viewRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/a[1]");
 	
 	public void verifyActivateButton() {
 		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
@@ -716,7 +708,7 @@ public class ClientMasterPage extends PageTools {
 	
 	By permissionsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
 	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
-	By approveRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
+//	By approveRequirementButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[2]");
 	
 	public void verifyApproveRequirementButton() {
 		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
@@ -753,7 +745,7 @@ public class ClientMasterPage extends PageTools {
 		configurationDeleteButtonElement.shouldBe(Condition.enabled);
 	}
 	
-	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
+//	By viewResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
 	By deleteResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
 	
 	public void verifyViewDeleteButtonEnabled() {		
@@ -765,7 +757,4 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(deleteResultButton);
 		deleteResultButtonElement.shouldBe(Condition.enabled);
 	}
-=========
-
->>>>>>>>> Temporary merge branch 2
 }

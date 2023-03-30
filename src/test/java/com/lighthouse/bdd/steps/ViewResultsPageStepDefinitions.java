@@ -192,4 +192,9 @@ public class ViewResultsPageStepDefinitions {
     public void clickOnTheExportButtonOnTheResearchResultsPage() {
         Pages.viewResultsPage().clickExportButton();
     }
+
+    @And("Verify the [Progress Bar] against the newly created job on the screen")
+    public void verifyTheProgressBarAgainstTheNewlyCreatedJobOnTheScreen() {
+        Assert.assertTrue(Pages.viewResultsPage().isProgressBarVisible());
+    }
 }

@@ -1,7 +1,6 @@
 @C117
 
 Feature: C117
-  ######## Need to rewrote after QA environment is fixed #########
   @TestRail(117)
   Scenario: Requirements Admin
     When Open Atlas
@@ -49,7 +48,6 @@ Feature: C117
     Then Newly created job with status "Approval Pending" is displayed in the table on the [Requirements View] page
     When Right click on a record with status "In-Progress" in the [Requirement Viewer] table
     When Click on the [Edit Requirement] button on the [Requirement View] page
-#    Then Verify the [View Edit Existing Requirement] elements on the [Requirements View] page
     Then Validate the [General Information] elements on the [Requirements View] page
     When Click on the [Required] collapse on the [Requirements View] page
     Then Validate the [Required] elements on the [Requirements View] page

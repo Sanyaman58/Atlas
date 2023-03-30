@@ -36,6 +36,7 @@ public class ViewResultsPage extends PageTools {
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
+    By progressBar = By.xpath("//tr//div[@class='progress']");
 
     By companySelect = By.xpath("//select[@class='company_val form-control']");
     By exportButton = By.xpath("//button[contains(text(),'Export')]");
@@ -333,6 +334,10 @@ public class ViewResultsPage extends PageTools {
     public void clickExportButton(){
         waitForElementVisibility(exportButton);
         click(exportButton);
+    }
+
+    public boolean isProgressBarVisible(){
+        return isElementVisible(progressBar);
     }
 
     public Object[][] getData(String filename, String SheetName) {

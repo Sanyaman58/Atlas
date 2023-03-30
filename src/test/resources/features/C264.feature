@@ -1,7 +1,7 @@
-@C99
-Feature: C99
+@C264
+Feature: C264
 
-  @TestRail(99)
+  @TestRail(264)
   Scenario: Verify the Login page functionality
     When Open Atlas
     Then The [Login] page is opened
