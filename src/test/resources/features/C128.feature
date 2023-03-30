@@ -21,12 +21,14 @@ Feature: C128
     Then The [Jurisdiction] page is opened
     And Reload the browser
     When Select "Georgia" state on the [Jurisdiction] page
-    Then Verify [ Washington DC Jurisdiction] Jurisdiction is renamed with [District of Columbia]
+    And Get the jurisdictions checkboxes values
+    Then Verify that "District of Columbia" state is displayed on the [Jurisdiction] page
     When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
     When Click on the [Research] sidebar button on admin
     Then The [Research Admin] page is opened
     When Click on the [Ends Up In State] button on admin
     Then The [Ends Up In States Admin] page is opened
-    And Verify the [District of Columbia] in list of Jurisdiction
-    And Click on [Requirement View] sidebar button
-    And Click Jurisdiction dropdown and verify the [District of Columbia] jurisdiction
+    And Verify the "District of Columbia" in list of Jurisdiction
+    And Click on [Requirements View] sidebar button
+    And The [Requirements Admin] page is opened
+    And Click Jurisdiction dropdown and verify that "District of Columbia" jurisdiction is displayed

@@ -506,4 +506,9 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "Yes");
 
     }
+
+    @And("Click Jurisdiction dropdown and verify that {string} jurisdiction is displayed")
+    public void clickJurisdictionDropdownAndVerifyThatJurisdictionIsDisplayed(String state) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isJurisdictionDisplayed(state));
+    }
 }

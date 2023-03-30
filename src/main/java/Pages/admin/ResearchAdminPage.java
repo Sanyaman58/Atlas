@@ -33,6 +33,7 @@ public class ResearchAdminPage extends PageTools {
 	By notificationsPageHeader = By.xpath("//h2[text()='Research Notifications']");
 	By EUIVersionPageHeader = By.xpath("//h2[text()='Versioned EUI']");
 	By permissionsPageHeader = By.xpath("//h2[text()='Research Results']");
+	By systemAdminDeleteFacilityCheckbox = By.xpath("//");
 
 	public void openLighthouse(){
 		SelenideTools.openUrl(Constants.URL);

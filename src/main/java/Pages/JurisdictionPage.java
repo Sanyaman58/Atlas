@@ -104,4 +104,8 @@ public class JurisdictionPage extends PageTools {
 		return isElementVisible(requirementsChecksIncludeYesRadio) && isElementVisible(requirementsChecksIncludeNoRadio);
 	}
 
+	public boolean isJurisdictionPresent(String jurisdiction){
+		return statesCheckboxes.containsKey(jurisdiction);
+	}
+
 }

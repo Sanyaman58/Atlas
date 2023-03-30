@@ -108,4 +108,11 @@ public class QuestionnairePage extends PageTools {
         System.out.println(getSelenideElement(tooltipWindowURL).getText());
         return getSelenideElement(tooltipWindowURL).getAttribute("href");
     }
+
+    public boolean isQuestionElementsVisible(){
+        waitForElementVisibility(questions);
+        return isElementVisible(By.xpath("//div[@id='questionnaire-container']//li/label/i"))
+                && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input(value()='Y')"))
+                && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input(value()='N')"));
+    }
 }

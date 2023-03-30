@@ -95,4 +95,9 @@ public class QuestionnairePageStepDefinitions {
         Pages.questionnairePage().selectQuestion(81);
         Pages.questionnairePage().selectQuestion(83);
     }
+
+    @And("Verify the questions elements")
+    public void verifyTheQuestionsElements() {
+        Assert.assertTrue(Pages.questionnairePage().isQuestionElementsVisible());
+    }
 }

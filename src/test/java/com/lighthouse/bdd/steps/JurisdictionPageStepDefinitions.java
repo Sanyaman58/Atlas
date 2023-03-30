@@ -72,4 +72,9 @@ public class JurisdictionPageStepDefinitions {
     public void euiStatesRadioButtonsAreVisible() {
         Assert.assertTrue(Pages.jurisdictionPage().isEUIStatesRadioButtonsVisible());
     }
+
+    @Then("Verify that {string} state is displayed on the [Jurisdiction] page")
+    public void verifyThatDistrictOfColumbiaStateIsDisplayedOnTheJurisdictionPage(String state) {
+        Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPresent(state));
+    }
 }

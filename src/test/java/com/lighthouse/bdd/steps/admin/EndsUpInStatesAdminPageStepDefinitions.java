@@ -47,4 +47,8 @@ public class EndsUpInStatesAdminPageStepDefinitions {
         Assert.assertTrue(Pages.endsUpInStatesAdminPage().areCheckboxLabelsSortedAlphabetically());
     }
 
+    @And("Verify the {string} in list of Jurisdiction")
+    public void verifyTheInListOfJurisdiction(String state) {
+        Assert.assertTrue(Pages.endsUpInStatesAdminPage().isStatePresent(state));
+    }
 }

@@ -22,4 +22,5 @@ Feature: C111
     And Get the jurisdictions checkboxes values
     When Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
+    And Validate the [Questionnaire] page elements
     And Verify the questions elements

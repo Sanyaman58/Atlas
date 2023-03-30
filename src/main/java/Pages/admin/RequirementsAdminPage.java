@@ -715,6 +715,13 @@ public class RequirementsAdminPage extends PageTools {
 	public boolean isEditJurisdictionSelectVisible(){
 		return isElementVisible(editJurisdictionSelect);
 	}
+	public boolean isJurisdictionDisplayed(String state){
+		for(int i = 0; i < getElements(editJurisdictionSelect).size();i++){
+			if(getElements(editJurisdictionSelect).get(i).findElement(By.xpath("./option")).getText().equals(state))
+				return true;
+		}
+		return false;
+	}
 
 	public boolean isEditRequirementCategoryVisible(){
 		return isElementVisible(editRequirementCategorySelect);

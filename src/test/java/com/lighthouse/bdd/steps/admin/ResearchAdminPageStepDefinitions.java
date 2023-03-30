@@ -2,6 +2,7 @@ package com.lighthouse.bdd.steps.admin;
 
 import Pages.Pages;
 import Utils.SelenideTools;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -139,4 +140,8 @@ public class ResearchAdminPageStepDefinitions {
 		Pages.researchAdminPage().isPermissionsPageOpened();
 	}
 
+	@And("Disable the [Delete Facility] checkbox for [System Admin]")
+	public void disableTheDeleteFacilityCheckboxForSystemAdmin() {
+
+	}
 }
