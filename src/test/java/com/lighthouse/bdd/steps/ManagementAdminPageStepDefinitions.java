@@ -11,6 +11,7 @@ import java.util.List;
 import org.junit.Assert;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 
 public class ManagementAdminPageStepDefinitions {
 
@@ -236,6 +237,68 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Verify child questions are unclickable as parent questions are not clicked")
     public void verifyChildQuestionUnclickable() {
         Pages.clientMasterPage().clickChildQuestion();
+    }
+	
+	@And("The labels are displayed on the [Research Notification] table")
+    public void verifyLabelsOnNotifictionPage(List<String> listOfLabels) {
+		Pages.clientMasterPage().isresearchNotifictionsLabelsPresent(listOfLabels);
+    }
+	
+	@And("Click on Label and Verify Data is sorted alphabetically")
+    public void verifyAlphabeticalSortedData(List<SelenideElement> tableDataList) {
+        Pages.clientMasterPage().isDataSortedAlphabetically(tableDataList);
+    }
+	
+	@And("Again click on Label and Verify that Data is sorted backward")
+    public void verifyAlphabeticalSortedBackward(List<SelenideElement> tableDataList) {
+        Pages.clientMasterPage().isDataSortedAlphabeticallyBackward(tableDataList);
+    }
+	
+	@And("Enter invalid data in Serach field and verify validation")
+    public void enterInvalidDataInSearchField() {
+        Pages.clientMasterPage().searchFieldValidation();
+    }
+	
+	@And("Enter valid data in Search field and verify the data")
+    public void entervalidDataInSearchField() {
+        Pages.clientMasterPage().searchFieldDataValidation();
+    }
+	
+	@When("Select {int} option Requirement category dropdown")
+	public void selectRequirementCategoryFromDropdown(int index) {
+		Pages.clientMasterPage().selectRequirementCataegory(index);
+		SelenideTools.sleep(4);
+	}
+	
+	@When("Select {int} option Requirement type from doropdown")
+	public void selectRequirementTypeFromDropdown(int index) {
+		Pages.clientMasterPage().selectRequirementType(index);
+		SelenideTools.sleep(4);
+	}
+	
+	@And("Click on Create New button")
+    public void clickCreateNewRrequirement() {
+        Pages.clientMasterPage().clickCreateNewButton();
+    }
+	
+	@And("Fill the required details on Requirement view page")
+    public void fillRequiredInfo(int index) {
+        Pages.clientMasterPage().fillInfoOnRequirementViewPage(index);
+    }
+	
+	@And("Open Notification page")
+    public void openNotifictions() {
+        Pages.clientMasterPage().clickNotificationTab();
+    }
+	
+	@And("Verify the newly created requirement on Notifications page")
+    public void verifyRequirementViewData() {
+        Pages.clientMasterPage().verifyNewlyCreatedRequirement();
+    }
+	
+	@And("Search the newly created requirement on [Requirement View] page")
+    public void verifyRequirementViewDataOnRequirementAdminPage() {
+        Pages.clientMasterPage().verifyDataOnRequirementAdminPage();
     }
 
 	@And("Click on [Intelligence Admin] dropdown button")
