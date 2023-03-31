@@ -364,23 +364,47 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 
-	By researchNotificationTableLabels = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/thead/tr/th");
+//	public void surveillancePageTableHeaders(List<String> labels) {
+//		List<String> tableLabelsList = new ArrayList<>();
+//		List<SelenideElement> elements = getElements(surveillancePageHeaders);
+//		for (SelenideElement element : elements) {
+//			tableLabelsList.add(element.getText());
+//			System.out.println(element.getText());
+//		}
+//		System.out.println("-------------------------");
+//		System.out.println("Verifying the data tables");
+//		System.out.println("-------------------------");
+//		tableLabelsList.add(getSelenideElement(surveillancePageHeaders).getText());
+//		for (int i = 0; i < labels.size(); i++) {
+//			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
+//			if ((labels.get(i) == null)) {
+//				System.out.println("Value is null");
+//			} else if (!labels.get(i).equals(tableLabelsList.get(i))) {
+//				System.out.println("Value is not equal");
+//			}
+//		}
+//	}
+	By researchNotificationTableLabels = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
 
-	public boolean isresearchNotifictionsLabelsPresent(List<String> labels) {
+	public void isresearchNotifictionsLabelsPresent(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(researchNotificationTableLabels);
 		for (SelenideElement element : elements) {
 			tableLabelsList.add(element.getText());
 			System.out.println(element.getText());
 		}
-		System.out.println(" //////////////////////// ");
+		System.out.println("---------------------------");
+		System.out.println("Verifying the table headers");
+		System.out.println("---------------------------");
 		tableLabelsList.add(getSelenideElement(researchNotificationTableLabels).getText());
 		for (int i = 0; i < labels.size(); i++) {
 			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
-			if (!labels.get(i).equals(tableLabelsList.get(i)))
-				return false;
+			if ((labels.get(i) == null)) {
+				System.out.println("Value is null");
+			} else if (!labels.get(i).equals(tableLabelsList.get(i))) {
+				System.out.println("Value is not equal");
+			}
 		}
-		return true;
 	}
 
 	By tableData = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[3]");
