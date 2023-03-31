@@ -330,4 +330,14 @@ public class NewResearchPageStepDefinitions {
 	public void recordIsDisplayedInTheTableOnTheConfigurationPage(int numberOfRecords) {
 		Assert.assertTrue(Pages.newResearchPage().getNumberOfJobs()==numberOfRecords);
 	}
+
+	@And("Click on [Next] button under the table on the [New Research] page")
+	public void clickOnNextButtonUnderTheTableOnTheNewResearchPage() {
+		Pages.newResearchPage().clickCopyFromResearchButton();
+	}
+
+//	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+//	public void verifyDeleteFacilityButtonIsEnabledOnConfigurationPage() {
+//		Assert.assertTrue(Pages.newResearchPage().isDeleteButtonVisible());
+//	}
 }

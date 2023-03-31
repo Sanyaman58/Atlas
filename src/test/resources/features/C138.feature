@@ -11,7 +11,7 @@ Feature: C138
     Then Management Dashboard page is opened
     When Click on the [Versioned Requirements] sidebar button
     Then Versioned Requirement page is opened
-    When Enter "AK-State" requirement SKU in the requirement search on the [Versioned Requirements] page
-    And Enter "Shared Pharmacy Services" requirement name in the requirement search on the [Versioned Requirements] page
-    And Enter "(RES1 = AK) and (FIN1 = Y and FIN1 = Y and FIN1 = Y)" requirement query criteria in the requirement search on the [Versioned Requirements] page
+    When Enter "UT-StateLicensing" requirement SKU in the requirement search on the [Versioned Requirements] page
+    And Enter "Pharmacy: Class E" requirement name in the requirement search on the [Versioned Requirements] page
+    And Enter "((FIN1 = N and POS1 = N and POS2 = Y and POS1.1 = N))" requirement query criteria in the requirement search on the [Versioned Requirements] page
     Then The entries are displayed on the [Versioned Requirements] page

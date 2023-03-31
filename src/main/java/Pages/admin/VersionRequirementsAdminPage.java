@@ -13,9 +13,15 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By versionedRequirementsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'versions')])[1]");
 	By versionRequirementsPageTitle = By.xpath("//h2[contains(text(),'Versioned Requirements')]");
 	By versionRequirementsTable = By.xpath("//table[@id='DataTables_Table_0']/tbody");
-	By versionRequirementsTableLabels = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th/div/label");
-	By versionRequirementsTableActionLabel = By.xpath("//table[@id='DataTables_Table_0']/thead/tr/th[text()='Action']");
-	By versionRequirementsTableRecords = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
+	By versionRequirementsTableLabels = By.xpath("//table/thead/tr/th/div/label");
+	By versionRequirementsTableActionLabel = By.xpath("//table/thead/tr/th[text()='Action']");
+	By versionRequirementsTableRecords = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr");
+	By versionRequirementsActivateRequirementButton = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr/td[11]/div/button[@title='Activate Requirement']");
+	By versionRequirementsDeleteRequirementButton = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr/td[11]/div/button[@title='Delete Latest Requirement']");
+	By versionRequirementsApproveRequirementButton = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr/td[11]/div/button[@title='Approve Requirement']");
+	By versionRequirementsEditRequirementButton = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr/td[11]/div/a[@title='Edit Requirement']");
+	By versionRequirementsViewRequirementButton = By.xpath("//table[contains(@id,'DataTables_Table')]/tbody/tr/td[11]/div/a[@title='View Requirement']");
+
 	By versionRequirementsTableRecordElements = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr/td");
 	By versionRequirementsTableNoRecords = By.xpath("//td[@class='dataTables_empty']");
 	By numberOfEntriesSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
@@ -282,8 +288,28 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public boolean isRequirementActivateButtonClickable(int index){
 		return getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/button[@title='Activate Requirement']")).isDisplayed();
 	}
+
+	public boolean isRequirementActivateButtonVisible(){
+ 		return isElementVisible(versionRequirementsActivateRequirementButton);
+ 	}
 	public boolean isRequirementDeleteButtonClickable(int index){
 		return getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/button[@title='Delete Latest Requirement']")).isDisplayed();
+	}
+
+	public boolean isRequirementDeleteButtonVisible(){
+		return isElementVisible(versionRequirementsDeleteRequirementButton);
+	}
+
+	public boolean isRequirementViewButtonVisible(){
+		return isElementVisible(versionRequirementsViewRequirementButton);
+	}
+
+	public boolean isRequirementEditButtonVisible(){
+		return isElementVisible(versionRequirementsEditRequirementButton);
+	}
+
+	public boolean isRequirementApproveButtonVisible(){
+		return isElementVisible(versionRequirementsApproveRequirementButton);
 	}
 
 	public void enterRequirementJJReqtypeInTheSearchField(String requiremenJJReqtype){
@@ -304,6 +330,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public void enterRequirementNameInTheSearchField(String requirementName){
 		waitForElementVisibility(requirementNameSearchField);
 		type(requirementName, requirementNameSearchField);
+		System.out.println(requirementName);
 	}
 
 	public void saveTextFromSearchField(){
@@ -374,5 +401,9 @@ public class VersionRequirementsAdminPage extends PageTools {
 			}
 		}
 		return false;
+	}
+	public void saveRequirementSku(int index){
+		waitForElementVisibility(versionRequirementsTableRecords);
+
 	}
 }

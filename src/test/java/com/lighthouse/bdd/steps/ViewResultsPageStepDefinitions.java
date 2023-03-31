@@ -171,4 +171,30 @@ public class ViewResultsPageStepDefinitions {
     public void recordIsDisplayedInTheTableOnTheViewResultsPage(int numberOfRecords) {
         Assert.assertTrue(Pages.viewResultsPage().getNumberOfResults()==numberOfRecords);
     }
+
+    @And("Verify that [View Result] button is visible")
+    public void verifyThatViewResultButtonIsVisible() {
+        Assert.assertTrue(Pages.viewResultsPage().isViewResultButtonVisible());
+    }
+
+    @And("Verify that [Delete Result] button is visible")
+    public void verifyThatDeleteResultButtonIsVisible() {
+        Assert.assertTrue(Pages.viewResultsPage().isDeleteResultButtonVisible());
+
+    }
+
+    @And("Select {string} company from the client dropdown on the [View Results] page")
+    public void selectCompanyFromTheClientDropdownOnTheViewResultsPage(String text) {
+        Pages.viewResultsPage().selectCompany(text);
+    }
+
+    @When("Click on the [Export] button on the [Research Results] page")
+    public void clickOnTheExportButtonOnTheResearchResultsPage() {
+        Pages.viewResultsPage().clickExportButton();
+    }
+
+    @And("Verify the [Progress Bar] against the newly created job on the screen")
+    public void verifyTheProgressBarAgainstTheNewlyCreatedJobOnTheScreen() {
+        Assert.assertTrue(Pages.viewResultsPage().isProgressBarVisible());
+    }
 }

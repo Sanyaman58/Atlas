@@ -17,6 +17,8 @@ Feature: C196
     And Select already created job by index 1 in the table on the [New Research] page
     And Click the [Copy From Research Job] button
     Then The [Jurisdiction] page is opened
+    And Select "Alaska" state on the [Jurisdiction] page
+    And Select all jurisdictions on the [Jurisdiction] page
     When Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
     When Click on the [Clear All] button on the [Questionnaire] page

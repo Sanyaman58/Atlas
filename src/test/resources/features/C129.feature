@@ -1,9 +1,9 @@
-@C100
+@C129
 
-Feature: C100
+Feature: C129
 
-  @TestRail(100)
-  Scenario: Verify the "New Facility" creation functionality
+  @TestRail(129)
+  Scenario: Verify that the recently submitted job is displayed on the results screen without refreshing the page
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -11,12 +11,15 @@ Feature: C100
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
-    When Validate fields on the [Surveillance Setup] page
+    Then Select "Test Pharma" client from the client dropdown
+    Then Click [Submit new job] button
+    And Pop up window with "Please enter all required fields" message is displayed
+    And Close pop up window
+    Then Select "Test Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
-    When Select 1 company name
-    And Select 1 facility name
+    Then Select "Test Pharma" client from the client dropdown
+    Then Select 1 company name
+    Then Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
@@ -37,6 +40,6 @@ Feature: C100
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 

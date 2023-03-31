@@ -65,4 +65,11 @@ public class EndsUpInStatesAdminPage extends PageTools {
 		}
 		return checkboxLabels.stream().sorted().collect(Collectors.toList()).equals(checkboxLabels);
 	}
+
+	public boolean isStatePresent(String state){
+		for(int i = 0; i < getElements(endsUpInStatesCheckboxesLabels).size()-1; i++){
+			checkboxLabels.add(getElements(endsUpInStatesCheckboxesLabels).get(i).getText().trim());
+		}
+		return checkboxLabels.contains(state);
+	}
 }

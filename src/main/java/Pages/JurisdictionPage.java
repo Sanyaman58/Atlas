@@ -16,6 +16,7 @@ public class JurisdictionPage extends PageTools {
 	By requirementsChecksIncludeNoRadio = By.xpath("//input[@id='requirements_checks_include_no']");
 	By nextButton = By.xpath("//button[@id='save_juricdis']");
 	By jurisdictionBreadcrumb = By.xpath("//h4[contains(@class,'cardInner-heading')]/a[2]/span[contains(text(),'Jurisdictions')]");
+	By selectedResidentState = By.xpath("//*[@id=\"mange-job-research\"]/div/div[3]/div/span");
 
 
 
@@ -54,7 +55,7 @@ public class JurisdictionPage extends PageTools {
 	}
 
 	public boolean areAllStatesCheckboxesVisibleAndClickable(){
-		if(getElements(stateCheckboxes).size()!=52)
+		if(getElements(stateCheckboxes).size()!=53)
 			return false;
 		for(SelenideElement element : getElements(stateCheckboxes)){
 			if(!element.findElement(By.xpath(".//input")).isEnabled())
@@ -64,6 +65,7 @@ public class JurisdictionPage extends PageTools {
 	}
 
 	public void clickRequirementsChecksIncludeYesRadio(){
+		waitForElementVisibility(requirementsChecksIncludeYesRadio);
 		click(requirementsChecksIncludeYesRadio);
 	}
 
@@ -90,6 +92,20 @@ public class JurisdictionPage extends PageTools {
 
 	public HashMap<String,Boolean> getJurisdictionStatesValues(){
 		return statesCheckboxes;
+	}
+	
+	public void selectedState(String Selectedstate){
+		SelenideElement selectedResidentStateElement = getSelenideElement(selectedResidentState);
+		if(selectedResidentStateElement.getText() == Selectedstate) {
+			System.out.println("Resident state found to be same as selected earlier = "+ Selectedstate);
+		}		
+	}
+	public boolean isEUIStatesRadioButtonsVisible(){
+		return isElementVisible(requirementsChecksIncludeYesRadio) && isElementVisible(requirementsChecksIncludeNoRadio);
+	}
+
+	public boolean isJurisdictionPresent(String jurisdiction){
+		return statesCheckboxes.containsKey(jurisdiction);
 	}
 
 }

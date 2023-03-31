@@ -44,10 +44,8 @@ public class QuestionnairePageStepDefinitions {
     @And("Select questions to match the complex selector criteria")
     public void selectQuestionsToMatchTheComplexSelectorCriteria() {
         Pages.questionnairePage().selectQuestion(1);
-        Pages.questionnairePage().selectQuestion(5);
-        Pages.questionnairePage().selectQuestion(6);
-        Pages.questionnairePage().selectQuestion(8);
-        Pages.questionnairePage().selectQuestion(9);
+        Pages.questionnairePage().selectQuestion(2);
+        Pages.questionnairePage().selectQuestion(4);
     }
 
     @When("Click on the [Clear All] button on the [Questionnaire] page")
@@ -84,5 +82,22 @@ public class QuestionnairePageStepDefinitions {
     @And("The tooltip window's URL is {string} on the [Questionnaire] page")
     public void theTooltipWindowSURLIsOnTheQuestionnairePage(String url) {
         Assert.assertEquals(Pages.questionnairePage().getTooltipWindowURL(), url);
+    }
+
+    @And("Select questions to match the complex selector criteria 2.0")
+    public void selectQuestionsToMatchTheComplexSelectorCriteria2() {
+        Pages.questionnairePage().selectQuestion(1);
+        Pages.questionnairePage().selectQuestion(3);
+        Pages.questionnairePage().selectQuestion(42);
+        Pages.questionnairePage().selectQuestion(46);
+        Pages.questionnairePage().selectQuestion(77);
+        Pages.questionnairePage().selectQuestion(78);
+        Pages.questionnairePage().selectQuestion(81);
+        Pages.questionnairePage().selectQuestion(83);
+    }
+
+    @And("Verify the questions elements")
+    public void verifyTheQuestionsElements() {
+        Assert.assertTrue(Pages.questionnairePage().isQuestionElementsVisible());
     }
 }

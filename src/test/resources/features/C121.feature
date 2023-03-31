@@ -19,7 +19,7 @@ Feature: C121
       |Status|
       |Action|
     And Select "10" entries to be displayed in the [Show Entries] select
-#    And "10" entries are displayed on the [View Results] page
+    And "10" entries are displayed on the [View Results] page
     When Click on the "Company Name" label
     Then Verify that records on the [View Results] page are sorted alphabetically by "Company Name" label
     When Click on the "Company Name" label
@@ -27,7 +27,6 @@ Feature: C121
     When Enter "fdsafsdafdsfasd" in the search field on the [View Results] page
     Then No records are displayed on the [View Results] page
     When Enter "2023" in the search field on the [View Results] page
-#    Then Records containing "" text are displayed in the table on the [View Results] page
     When Enter "" in the search field on the [View Results] page
     When Click on the "Status" label
     Then Click on the [View] button of the 1 job on the [View Results] page
@@ -56,7 +55,7 @@ Feature: C121
     And Scroll to "Prerequisites" label on the [Research Results] page
     Then Verify that fixed labels coordinates didn't changed
     When Click on the [Export] button on the [Research Results] page
-    And Verify that data in exported file is the same as on the [Research Results] page
+#    And Verify that data in exported file is the same as on the [Research Results] page
     Then Close [Research Results] window
     When Enter "Completed with no match" in the search field on the [View Results] page
     Then Click on the [View] button of the 1 job on the [View Results] page

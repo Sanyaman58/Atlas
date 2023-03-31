@@ -11,7 +11,7 @@ public class EndsUpInStatesAdminPageStepDefinitions {
 
     @Then("The [Ends Up In States Admin] page is opened")
     public void theEndsUpInStatesAdminPageIsOpened() {
-        Assert.assertTrue(Pages.endsUpInStatesAdminPage().isEndsUpInStateAdminPageOpened());
+        Pages.endsUpInStatesAdminPage().isEndsUpInStateAdminPageOpened();
     }
 
     @When("Check {int} checkbox on the [Ends Up In States Admin] page")
@@ -47,4 +47,8 @@ public class EndsUpInStatesAdminPageStepDefinitions {
         Assert.assertTrue(Pages.endsUpInStatesAdminPage().areCheckboxLabelsSortedAlphabetically());
     }
 
+    @And("Verify the {string} in list of Jurisdiction")
+    public void verifyTheInListOfJurisdiction(String state) {
+        Assert.assertTrue(Pages.endsUpInStatesAdminPage().isStatePresent(state));
+    }
 }

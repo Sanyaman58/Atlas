@@ -30,7 +30,7 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@Then("Click [Add Client] button")
-	public void clickAddClientButton() {
+	public void clickAddClinetButton() {
 		Pages.clientMasterPage().clickSubmitNewJobButton();
 	}
 
@@ -42,6 +42,73 @@ public class ManagementAdminPageStepDefinitions {
 	@Then("verify the following fileds are displayed on the client master page")
 	public void theFollowingAddClientLabelsAreDisplayed(List<String> listOfLabels) {
 		Pages.clientMasterPage().isAddClientTableLabelsPresent(listOfLabels);
+	}
+
+	@And("Check or uncheck the jurisdiction checkbox on [End Up in States]")
+	public void checkOrUncheckJurisdictionCheckbox() {
+		Pages.clientMasterPage().chekcUncheckEuiCheckbox();
+	}
+
+	@Then("Click on EUI save button")
+	public void clickEuiSaveButton() {
+		Pages.clientMasterPage().jurisdictionEuiSaveButton();
+	}
+
+	@And("Approve and Activate the newly created EUI version")
+	public void approveAndActivateEuiVersion() {
+		Pages.clientMasterPage().approveActivateEUIVersion();
+	}
+
+	@And("Verify all the Jurisdictions are displayed in [Jurisidction] dropdown")
+	public void verifyAllJurisdictionOnRequirementAdminPage() {
+		Pages.clientMasterPage().jurisdictionsInJurisdictionDropdown();
+	}
+
+	@And("Select {int} value from [Requirement Category] dropdown")
+	public void selectValueFronRequirementCategory(int index) {
+		Pages.clientMasterPage().selectFromRequirementCategoryDropdown(index);
+	}
+
+	@And("Select {int} value from [Requirement Type] dropdown")
+	public void selectValueFronRequirementType(int index) {
+		Pages.clientMasterPage().selectFromRequirementCategoryType(index);
+	}
+
+	@And("Click on [Create New] button")
+	public void clickCreateNewButton() {
+		Pages.clientMasterPage().createNewButton();
+	}
+
+	@And("Click on [General information] Jurisdiction dropdown and verify the count")
+	public void verifyAllJurisdictionOnGeneralInfoPage() {
+		Pages.clientMasterPage().jurisdictionsInGeneralInfoPage();
+	}
+
+	@Then("Verify the Jurisdiction checkbox values and count")
+	public void jurisdictionCheckboxVlaueAndCount() {
+		Pages.clientMasterPage().getStateCheckboxesValuesAndCount();
+	}
+
+	@And("Click on [Surveillance Intelligence] dropdown button and verify options")
+	public void clickSurveillanceIntelligenceDrodown() {
+		Pages.clientMasterPage().clickSurveillanceDropdown();
+	}
+
+	@And("Click on [Results] dropdown button")
+	public void clickResultsOption() {
+		Pages.clientMasterPage().clickResulsDropdownButton();
+		SelenideTools.sleep(10);
+		SelenideTools.switchToLastTab();
+	}
+	
+	@And("Click on [Activity Logs] option of the line item")
+	public void clickActivityLogsOption() {
+		Pages.clientMasterPage().clickActivityLogOfLineItem();
+	}
+	
+	@And("Verify [Activity Logs] screen and default filter is set to [All]")
+	public void verifyActivityLogScreenAndFilter() {
+		Pages.clientMasterPage().verifyActivityLogScreen();
 	}
 
 	@When("Click on the [User Master] sidebar button")
@@ -234,4 +301,103 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().verifyDataOnRequirementAdminPage();
     }
 
+	@And("Click on [Intelligence Admin] dropdown button")
+    public void verifyClickOnIntelligenceDropdown() {
+        Pages.clientMasterPage().clickOnIntelligenceDropdown();
+    }
+	
+	@And("Verify [Requirement View] option is displayed")
+    public void verifyRequirementViewOption() {
+        Pages.clientMasterPage().requirementViewDisplayed();
+    }
+	
+	@And("Click on [Version Requirement] side bar button and verify page")
+    public void verifyClickOnVersionedRequirement() {
+        Pages.clientMasterPage().clickVersionedRequirementButtonAndVerifyPage();
+    }
+	
+	@And("Verify that the [Activate Requirement] view option is enabled")
+    public void verifyActivateButtonIsEnabled() {
+        Pages.clientMasterPage().verifyActivateButton();
+    }
+	
+	@And("Verify [Delete Requirement] option is enabled")
+    public void verifyDeleteButtonIsEnabled() {
+        Pages.clientMasterPage().verifyDeleteButton();
+    }
+	
+//	@And("Verify that the [Edit Requirement] option is enabled")
+//    public void verifyEditButtonIsEnabled() {
+//        Pages.clientMasterPage().verifyEditButton();
+//    }
+	
+	@And("Verify that the [View Requirement] option is enabled")
+    public void verifyViewRequirementIsEnabled() {
+        Pages.clientMasterPage().verifyViewRequirementButton();
+    }
+	
+//	@And("Verify that the [Approve Requirement] option is enabled")
+//    public void verifyApproveRequirementIsEnabled() {
+//        Pages.clientMasterPage().verifyApproveRequirementButton();
+//    }
+	
+//	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+//    public void verifyIntelligencePermissions() {
+//        Pages.clientMasterPage().verifyIntelligencePermissionsEnabled();
+//    }
+	
+//	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+//    public void verifyDeleteFacilityButton() {
+//        Pages.clientMasterPage().verifyDeleteFacilityButtonIsEnabled();
+//    }
+	
+//	@And("Verify [View Result] and [Delete Result] button is enabled")
+//    public void verifyViewDeleteButton() {
+//        Pages.clientMasterPage().verifyViewDeleteButtonEnabled();
+//    }
+
+	@And("Click on [Version Requirements] dropdown option")
+    public void clickVersionRequirement() {
+        Pages.clientMasterPage().openVersionRequirementsPage();
+    }
+	
+//	@And("Verify that the [Activate Requirement] view option is enabled")
+//    public void verifyActivateRequirementOptionEnabled() {
+//        Pages.clientMasterPage().isActivateRequirementOptionEnabled();
+//    }
+	
+//	@And("Verify [Delete Requirement] option is enabled")
+//    public void verifyDeleteRequirementOptionEnabled() {
+//        Pages.clientMasterPage().isDeleteRequirementOptionEnabled();
+//    }
+	
+	@And("Verify that the [Edit Requirement] option is enabled")
+    public void verifyEditRequirementOptionEnabled() {
+        Pages.clientMasterPage().isEditRequirementOptionEnabled();
+    }
+	
+	@And("Verify that [View Requirement] option is enabled")
+    public void verifyViewRequirementOptionEnabled() {
+        Pages.clientMasterPage().isViewRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Approve Requirement] option is enabled")
+    public void verifyApproveRequirementOptionEnabled() {
+        Pages.clientMasterPage().isApproveRequirementOptionEnabled();
+    }
+	
+	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
+    public void verifyIntelligencePermissionsAreEnabled() {
+        Pages.clientMasterPage().isIntelligencePermissionsEnabled();
+    }
+	
+	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
+    public void verifyDeleteFacilityButtonIsEnabled() {
+        Pages.clientMasterPage().isDeleteFacilityButtonEnabled();
+    }
+	
+	@And("Verify [View Result] and [Delete Result] button is enabled")
+    public void verifyViewAndDeleteResultButtonIsEnabled() {
+        Pages.clientMasterPage().isViewAndDeleteButtonEnabled();
+    }
 }

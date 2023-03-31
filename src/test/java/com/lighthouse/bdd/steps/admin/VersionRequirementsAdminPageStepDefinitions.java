@@ -237,4 +237,32 @@ public class VersionRequirementsAdminPageStepDefinitions {
     public void enterOldRequirementNameInTheRequirementSearchOnTheVersionedRequirementsPage() {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getOldRequirementName());
     }
+
+//    @And("Verify that the [Activate Requirement] view option is enabled")
+//    public void verifyThatTheActivateRequirementViewOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible());
+//    }
+
+//    @And("Verify [Delete Requirement] option is enabled")
+//    public void verifyDeleteRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementDeleteButtonVisible());
+//
+//    }
+
+//    @And("Verify that the [Edit Requirement] option is enabled")
+//    public void verifyThatTheEditRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementEditButtonVisible());
+//
+//    }
+
+//    @And("Verify that the [View Requirement] option is enabled")
+//    public void verifyThatTheViewRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementViewButtonVisible());
+//
+//    }
+
+//    @And("Verify that the [Approve Requirement] option is enabled")
+//    public void verifyThatTheApproveRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementApproveButtonVisible());
+//    }
 }

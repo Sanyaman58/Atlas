@@ -1,20 +1,23 @@
-@C99
+@C264
+Feature: C264
 
-Feature: C99
-
-  @TestRail(99)
+  @TestRail(264)
   Scenario: Verify the Login page functionality
-
     When Open Atlas
     Then The [Login] page is opened
     And Validate the [Login] page elements
-    When Click the [Login Assistance] button
-    Then Enter login "Test" on login page
-    #Then Validate that the "Please fill out the field" message appears
     When Enter password "Test" on login page
+    When Click the [Login] button
+    And Clear Password filed
+    Then Enter login "Test" on login page
+    When Click the [Login] button
+    And Clear Email field
+    And Enter password "Test" on login page
+    And Enter login "Test" on login page
     When Click the [Login] button
     Then Validate that the "Invalid Username or Password . Please try again" error message displayed
     And CLick the [Cancel] button
+    And Verify empty Email and Password field
     When Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
     When Click the [Login] button

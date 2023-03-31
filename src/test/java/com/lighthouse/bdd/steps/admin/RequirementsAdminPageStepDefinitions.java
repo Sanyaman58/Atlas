@@ -244,6 +244,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("Click on the [Submit for Approval] button on the [Requirements View] page")
     public void clickOnTheSubmitForApprovalButtonOnTheRequirementsViewPage() {
+        SelenideTools.sleep(2);
         Pages.requirementsAdminPage().clickSubmitForApprovalButton();
         SelenideTools.sleep(8);
     }
@@ -272,6 +273,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("Get requirement name from the [Edit Requirement] name")
     public void getRequirementNameFromTheEditRequirementName() {
+        SelenideTools.sleep(6);
         Pages.requirementsAdminPage().getRequirementNameFromEditRequirement();
     }
 
@@ -279,20 +281,23 @@ public class RequirementsAdminPageStepDefinitions {
     @And("Create a complex selector criteria")
     public void createAComplexSelectorCriteria() {
         SelenideTools.sleep(1);
+
         Pages.requirementsAdminPage().checkQuestion(3);
         Pages.requirementsAdminPage().checkQuestion(4);
         Pages.requirementsAdminPage().checkQuestion(5);
+        Pages.requirementsAdminPage().checkQuestion(6);
         Pages.requirementsAdminPage().checkQuestion(7);
         Pages.requirementsAdminPage().checkQuestion(8);
         Pages.requirementsAdminPage().checkQuestion(9);
-        Pages.requirementsAdminPage().checkQuestion(11);
-        Pages.requirementsAdminPage().checkQuestion(44);
-        Pages.requirementsAdminPage().checkQuestion(45);
-        Pages.requirementsAdminPage().checkQuestion(46);
+        Pages.requirementsAdminPage().checkQuestion(10);
+        Pages.requirementsAdminPage().checkQuestion(47);
+        Pages.requirementsAdminPage().checkQuestion(48);
+        Pages.requirementsAdminPage().checkQuestion(66);
 
         Pages.requirementsAdminPage().deleteQuestion(0);
         Pages.requirementsAdminPage().deleteQuestion(0);
 
+        Pages.requirementsAdminPage().addGroup(0);
         Pages.requirementsAdminPage().addGroup(0);
         Pages.requirementsAdminPage().addGroup(0);
         Pages.requirementsAdminPage().addGroup(0);
@@ -300,29 +305,56 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().selectAndRule(1);
         Pages.requirementsAdminPage().selectAndRule(2);
         Pages.requirementsAdminPage().selectAndRule(3);
+        Pages.requirementsAdminPage().selectAndRule(4);
 
+        Pages.requirementsAdminPage().addRule(1);
         Pages.requirementsAdminPage().addRule(1);
         Pages.requirementsAdminPage().addRule(1);
         Pages.requirementsAdminPage().addRule(1);
 
         Pages.requirementsAdminPage().addRule(2);
         Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
+        Pages.requirementsAdminPage().addRule(2);
 
         Pages.requirementsAdminPage().addRule(3);
         Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+        Pages.requirementsAdminPage().addRule(3);
+
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
+        Pages.requirementsAdminPage().addRule(4);
 
         Pages.requirementsAdminPage().selectQuestionAndAnswer(1, 0, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 8, "No");
 
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "Yes");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
-
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 0, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 4, "Yes");
         Pages.requirementsAdminPage().selectQuestionAndAnswer(9, 8, "No");
-        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 9, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(10, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(11, 7, "Yes");
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(12, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(13, 4, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(14, 5, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(15, 6, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(16, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(17, 8, "No");
+
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(18, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(19, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(20, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(22, 10, "No");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(23, 1, "No");
     }
 
     @When("Check the [RES1: Apply Resident State Selector Criteria] checkbox")
@@ -368,7 +400,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @And("Verify that newly created requirement is displayed in the [Requirement Viewer] table")
     public void verifyThatNewlyCreatedRequirementIsDisplayedInTheRequirementViewerTable() {
-        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
+        Assert.assertTrue(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getApplicationName(), Pages.requirementsAdminPage().getRequirementName()));
 
     }
 
@@ -377,12 +409,12 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().selectRequirementsViewerFiltersStatus(status);
     }
 
-    @And("Verify that all 52 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
+    @And("Verify that all 53 states are selectable in the Requirements Viewer Filters Jurisdiction select on the [Requirements View] page")
     public void verifyThatAllStatesAreSelectableInTheRequirementsViewerFiltersJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect());
     }
 
-    @Then("Verify that all 52 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
+    @Then("Verify that all 53 states are selectable in the General Information Jurisdiction select on the [Requirements View] page")
     public void verifyThatAllStatesAreSelectableInTheGeneralInformationJurisdictionSelectOnTheRequirementsViewPage() {
         Assert.assertTrue(Pages.requirementsAdminPage().areAllStatesSelectableInTheGeneralInformationJurisdictionSelect());
 
@@ -419,8 +451,8 @@ public class RequirementsAdminPageStepDefinitions {
     @Then("Newly created job with status {string} is displayed in the table on the [Requirements View] page")
     public void newlyCreatedJobWithStatusIsDisplayedInTheTableOnTheRequirementsViewPage(String status) {
         Assert.assertTrue(Pages.requirementsAdminPage().isRecordWithStatusDisplayed(Pages.requirementsAdminPage().getState(),
-                Pages.requirementsAdminPage().getRequirementName(),
                 Pages.requirementsAdminPage().getApplicationName(),
+                Pages.requirementsAdminPage().getRequirementName(),
                 status));
     }
 
@@ -430,5 +462,53 @@ public class RequirementsAdminPageStepDefinitions {
         Assert.assertTrue(Pages.requirementsAdminPage().isEditRequirementTypeSelectVisible());
         Assert.assertTrue(Pages.requirementsAdminPage().isEditRequirementCategoryVisible());
         Assert.assertTrue(Pages.requirementsAdminPage().isEditRequirementNameSelectVisible());
+    }
+
+    @Then("Verify that {int} selector choice is {string} on the [Requirements View] page")
+    public void verifyThatSelectorChoiceIs(int index, String orAnd) {
+        System.out.println(Pages.requirementsAdminPage().getSelectorValue(index-1));
+        Assert.assertEquals(Pages.requirementsAdminPage().getSelectorValue(index-1), orAnd);
+    }
+
+    @And("Verify that the Submit for Approval button is visible")
+    public void verifyThatTheSubmitForApprovalButtonIsVisible() {
+        Pages.requirementsAdminPage().isSubmitForApprovalButtonVisible();
+    }
+
+    @And("Create a complex selector criteria 2.0")
+    public void createAComplexSelectorCriteria2() {
+        SelenideTools.sleep(1);
+
+        Pages.requirementsAdminPage().checkQuestion(3);
+        Pages.requirementsAdminPage().checkQuestion(5);
+        Pages.requirementsAdminPage().checkQuestion(44);
+        Pages.requirementsAdminPage().checkQuestion(48);
+        Pages.requirementsAdminPage().checkQuestion(79);
+        Pages.requirementsAdminPage().checkQuestion(80);
+        Pages.requirementsAdminPage().checkQuestion(83);
+        Pages.requirementsAdminPage().checkQuestion(85);
+
+        Pages.requirementsAdminPage().selectAndRule(0);
+
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().addRule(0);
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(1, 0, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(2, 1, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(3, 2, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(4, 3, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(5, 4, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(6, 5, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(7, 6, "Yes");
+        Pages.requirementsAdminPage().selectQuestionAndAnswer(8, 7, "Yes");
+
+    }
+
+    @And("Click Jurisdiction dropdown and verify that {string} jurisdiction is displayed")
+    public void clickJurisdictionDropdownAndVerifyThatJurisdictionIsDisplayed(String state) {
+        Assert.assertTrue(Pages.requirementsAdminPage().isJurisdictionDisplayed(state));
     }
 }

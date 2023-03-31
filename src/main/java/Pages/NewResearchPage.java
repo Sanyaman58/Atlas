@@ -322,6 +322,11 @@ public class NewResearchPage extends PageTools {
 		getElements(configurationDeleteButton).get(number).click();
 	}
 
+	public boolean isDeleteButtonVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(configurationDeleteButton);
+	}
+
 	public void clickOnTheDeleteButton(String status) {
 		for (int i = 0; i < getElements(tableJobs).size(); i++) {
 			if (getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)
@@ -385,5 +390,15 @@ public class NewResearchPage extends PageTools {
 			doubleClick(alertYesDeleteButton, 3);
 		}
 	}
+	
+	By configurationTableNextButton = By.xpath("//button[@id=\"copyfrom_research_job\"]");
+	
+	public void selectConfigurationTableNextButton() {
+		waitForElementVisibility(configurationTableNextButton);
+		click(configurationTableNextButton);
+		SelenideTools.sleep(5);
+	}
+	
+	
 
 }

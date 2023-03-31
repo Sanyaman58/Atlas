@@ -1,7 +1,6 @@
 @C117
 
 Feature: C117
-  ######## Need to rewrote after QA environment is fixed #########
   @TestRail(117)
   Scenario: Requirements Admin
     When Open Atlas
@@ -23,9 +22,9 @@ Feature: C117
     Then Close pop up window
     When Enter random requirement name on the [Requirements View] page
     And Enter random application name on the [Requirements View] page
-    Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
     When Click on the [Save] button on the [Requirements View] page
+    Then Click on the [Question Selection] collapse on the [Requirements View] page
 #    Then Pop up window with "Please create a valid selector criteria." message is displayed
 #    Then Close pop up window
     And Check 4 question in the [Question Selection] section on the [Requirements View] page
@@ -47,10 +46,8 @@ Feature: C117
     Then Select the [Preliminary Data] radio button on [Requirement View] page
     And Select "Alaska" jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     Then Newly created job with status "Approval Pending" is displayed in the table on the [Requirements View] page
-    When Click on the [Versioned Requirements] sidebar button from admin
-    Then Versioned Requirement page is opened
-    When Click on the [Edit Requirement] button of record with status "In-Progress" on the [Versioned Requirements] page
-    Then Verify the [View Edit Existing Requirement] elements on the [Requirements View] page
+    When Right click on a record with status "In-Progress" in the [Requirement Viewer] table
+    When Click on the [Edit Requirement] button on the [Requirement View] page
     Then Validate the [General Information] elements on the [Requirements View] page
     When Click on the [Required] collapse on the [Requirements View] page
     Then Validate the [Required] elements on the [Requirements View] page

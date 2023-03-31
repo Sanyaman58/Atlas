@@ -1,9 +1,8 @@
-@C100
+@C105
+Feature: C105
 
-Feature: C100
-
-  @TestRail(100)
-  Scenario: Verify the "New Facility" creation functionality
+  @TestRail(105)
+  Scenario: Verify the "Save/Submit Configuration" page functionality (Step 4)
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -11,14 +10,13 @@ Feature: C100
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
-    When Validate fields on the [Surveillance Setup] page
-    And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
-    When Select 1 company name
+    And Reload the browser
+    And Select "Test Pharma" client from the client dropdown
+    And Select 1 company name
     And Select 1 facility name
-    When Click [Submit new job] button
+    When Click surveillance setup [Next] button
     Then The [Jurisdiction] page is opened
+    And Reload the browser
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
     And Get the jurisdictions checkboxes values
@@ -33,10 +31,10 @@ Feature: C100
     And Click the [Next] button on the [Questionnaire] page
     Then Validate that the displayed on the [SaveSubmit Job] page jurisdictions correspond to the selected earlier
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
+#    And Validate the lales on the [SaveSubmit Job] page
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "Test Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
-

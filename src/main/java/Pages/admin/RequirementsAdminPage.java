@@ -461,7 +461,7 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void getRequirementNameFromEditRequirement(){
-		requirementName = getSelenideElement(requirementNameGeneralInformationInput).getText();
+		requirementName = getSelenideElement(requirementNameGeneralInformationInput).getValue();
 	}
 
 	public boolean isChangeNoteForCustomerWorking(){
@@ -480,6 +480,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void selectNewRequirementType(String type){
 		waitForElementVisibility(newRequirementTypeSelect);
+		scrollToElement(newRequirementCategorySelect);
 		selectOption(type, newRequirementTypeSelect);
 	}
 
@@ -550,6 +551,10 @@ public class RequirementsAdminPage extends PageTools {
 		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[2]")).click();
 	}
 
+	public String getSelectorValue(int index){
+		return getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[contains(@class,'active')]/input")).getAttribute("value").trim();
+	}
+
 	public void selectAndRule(int index){
 		getElements(selectorCriteriaAndOrSelection).get(index).findElement(By.xpath("./label[1]")).click();
 	}
@@ -583,6 +588,10 @@ public class RequirementsAdminPage extends PageTools {
 		scrollToElement(submitForApprovalButton);
 		waitForElementVisibility(submitForApprovalButton);
 		click(submitForApprovalButton);
+	}
+	public boolean isSubmitForApprovalButtonVisible(){
+		SelenideTools.sleep(5);
+		return isElementVisible(submitForApprovalButton);
 	}
 
 	public void clickSaveButton(){
@@ -637,17 +646,21 @@ public class RequirementsAdminPage extends PageTools {
 		return isElementVisible(questionSelectionsResidentType);
 	}
 
-	public boolean isRecordDisplayed(String state, String requirementName, String applicationName){
+	public boolean isRecordDisplayed(String state,String applicationName, String requirementName){
 		for (SelenideElement element : getElements(requirementViewersTableRecords)){
 			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
-			&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
-			&& element.findElement(By.xpath("./td[3]")).getText().equals(applicationName))
+			&& element.findElement(By.xpath("./td[2]")).getText().equals(applicationName)
+			&& element.findElement(By.xpath("./td[3]")).getText().equals(requirementName))
 				return true;
 			}
 		return false;
 	}
 
 	public boolean isRecordWithStatusDisplayed(String state, String requirementName, String applicationName, String status){
+		System.out.println(state);
+		System.out.println(requirementName);
+		System.out.println(applicationName);
+		System.out.println(status);
 		for (SelenideElement element : getElements(requirementViewersTableRecords)){
 			if(element.findElement(By.xpath("./td[1]")).getText().equals(state)
 					&& element.findElement(By.xpath("./td[2]")).getText().equals(requirementName)
@@ -660,12 +673,12 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean areAllStatesSelectableInTheRequirementsViewerFiltersJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionSelect);
-		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==53;
+		return getSelenideElement(jurisdictionSelect).findElements(By.xpath("./option")).size()==54;
 	}
 
 	public boolean areAllStatesSelectableInTheGeneralInformationJurisdictionSelect(){
 		waitForElementVisibility(jurisdictionGeneralInformationSelect);
-		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==53;
+		return getSelenideElement(jurisdictionGeneralInformationSelect).findElements(By.xpath("./option")).size()==54;
 	}
 
 	public boolean isTableRecordWithRequirementNameDisplayed(String requirementName){
@@ -701,6 +714,13 @@ public class RequirementsAdminPage extends PageTools {
 
 	public boolean isEditJurisdictionSelectVisible(){
 		return isElementVisible(editJurisdictionSelect);
+	}
+	public boolean isJurisdictionDisplayed(String state){
+		for(int i = 0; i < getElements(editJurisdictionSelect).size();i++){
+			if(getElements(editJurisdictionSelect).get(i).findElement(By.xpath("./option")).getText().equals(state))
+				return true;
+		}
+		return false;
 	}
 
 	public boolean isEditRequirementCategoryVisible(){

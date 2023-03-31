@@ -93,9 +93,9 @@ Feature: C116
     Then The resident state select and resident type radio buttons are displayed
     When Uncheck the [RES1: Apply Resident State Selector Criteria] checkbox
     Then The resident state select and resident type radio buttons are not displayed
-    When Right click on 1 record in the [Requirement Viewer] table
-    Then Click on the [Edit Requirement] button on the [Requirement View] page
+    When Click on the [Edit Requirement] button of record with status "In-Progress" on the [Versioned Requirements] page
     And Compare the data on the [Edit Requirement] with the data from the [View Requirement] page
+    When Select "Approved" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     When Right click on a record with status "Approved" in the [Requirement Viewer] table
     Then The [Delete Requirement] button is not visible
     When Select "Pending-Approval" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page

@@ -12,8 +12,7 @@ Feature: C198
     Then Management Dashboard page is opened
     When Click on the [Versioned Requirements] sidebar button
     Then Versioned Requirement page is opened
-    When Click on the "Created" label on the [Versioned Requirements] page
-    And Click on the "Created" label on the [Versioned Requirements] page
+    When Click on the "Status" label on the [Versioned Requirements] page
     And Enter "Nikita" requirement created in the requirement search on the [Versioned Requirements] page
     When Click on the [Edit Requirement] button of the 1 record on the [Versioned Requirements] page
     Then Get requirement name from the [Edit Requirement] name
@@ -30,7 +29,9 @@ Feature: C198
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
+    When Delete job from the table if exists
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -55,6 +56,6 @@ Feature: C198
     Then Verify that early created requirement name is in the list
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 
