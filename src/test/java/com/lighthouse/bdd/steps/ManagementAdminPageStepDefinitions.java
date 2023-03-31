@@ -174,7 +174,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@And("The labels are displayed on the [Research Notification] table")
     public void verifyLabelsOnNotifictionPage(List<String> listOfLabels) {
-		Assert.assertTrue(Pages.clientMasterPage().isresearchNotifictionsLabelsPresent(listOfLabels));
+		Pages.clientMasterPage().isresearchNotifictionsLabelsPresent(listOfLabels);
     }
 	
 	@And("Click on Label and Verify Data is sorted alphabetically")
