@@ -97,7 +97,8 @@ public class ClientMasterPage extends PageTools {
 	By deleteRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/button");
 	By statusInputField = By.xpath("//thead/tr/th[10]/input");
 	By activateRequirementToggle = By.xpath("//tbody/tr[1]/td[11]/div/div/label/input");
-	By researchNotificationTableLabels = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
+	By researchNotificationTableLabels = By
+			.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
 	By deleteResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
 	By permissionsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
 	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
@@ -145,15 +146,28 @@ public class ClientMasterPage extends PageTools {
 	By firstActivateDeactivateDropdown = By.xpath("//*[@id=\"is_active-FIN1\"]");
 	By questionnairePageSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By questionnairePageExitButton = By.xpath("//button[@id=\"exit-state\"]");
-	By questionnaireVersionSidebarButton  = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[8]/a");
+	By questionnaireVersionSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[8]/a");
 	By questionnaireVersionPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 	By questionnairePageVersionLabel = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]//div[1]//th[3]/div/label");
 	By approveButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button[1]");
 	By approvePopupYesButton = By.xpath("//button[@id=\"yes_btn\"]");
 	By firstQuestionnaireActivateButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button");
-
-
+	By saveSubmitPageCompanyName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div/label");
+	By saveSubmitPageLabelName = By.xpath("//*[@id=\"mange-job-research\"]/div/div[2]/div/label");
+	By saveSubmitPageResidentState = By.xpath("//*[@id=\"mange-job-research\"]/div/div[3]/div/label");
+	By saveSubmitPageCheckbox = By.xpath("//input[@name='juricdictions[]']");
+	By saveSubmitPageChangeButton = By.xpath("//a[@class='btn common-btn']");
+	By jurisdictionName = By.xpath("//div[@class=\"list-checkbox\"]//label");
+	By requirementViewButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
+	By requirementViewPageHeader = By.xpath("//*[@id=\"versionned_requirement_form\"]/div/div[1]/section/div[1]/h2");
+	By jurisdictionDropdownOption = By.xpath("//select[@id=\"filter_Jurisdiction\"]//option");
+	By entitlementHeader = By.xpath("//div[@class=\"card-body\"]//h3");
+	By enitilementUpperLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[2]");
+	By entitlementLowerLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[1]");
+	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
+	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	
+
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
 	String categoryName;
@@ -172,6 +186,11 @@ public class ClientMasterPage extends PageTools {
 	String requirementTypeFilterDropdownName;
 	String requirementNameFilterDropdownName;
 	String requirementViewStatusDropdownName;
+	String saveSubmitPageCompanyNameText = "Company Name :";
+	String saveSubmitPageFacilityNameText = "Facility Name :";
+	String saveSubmitPageResidentStateText = "Resident State :";
+	String washingtonText = "Washington DC";
+	String disctrictOfColumbiaText = "District Of Columbia";
 
 	HashMap<String, Boolean> jurisdictionPageCheckboxesInput = new HashMap<>();
 
@@ -302,8 +321,8 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Text of elements present in jurisdiction dropdown = " + options);
 		} else {
 			System.out.println("Count mismatch");
+		}
 	}
-}
 
 	public void clickUserMasterSidebarButton() {
 		waitForElementVisibility(userMasterSidebarButton);
@@ -606,8 +625,6 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 
-	
-
 	public void isresearchNotifictionsLabelsPresent(List<String> labels) {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(researchNotificationTableLabels);
@@ -631,12 +648,12 @@ public class ClientMasterPage extends PageTools {
 
 	By tableData = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[3]");
 	By notificationTypeLabel = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[3]");
-	
+
 	public void isDataSortedAlphabetically(List<SelenideElement> tableData) {
 		waitForElementVisibility(notificationTypeLabel);
 		click(notificationTypeLabel);
 		SelenideTools.sleep(2);
-		
+
 		List<String> originalList = new ArrayList<>();
 		List<String> sortedList = new ArrayList<>();
 		for (SelenideElement beforeSorting : tableData) {
@@ -650,27 +667,28 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("The data is not sorted alphabetically");
 		}
 	}
-	
+
 	By tableDataOnNotificationPage = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[3]");
-	
+
 	public void isDataSortedAlphabeticallyBackward(List<SelenideElement> tableData) {
-		List<SelenideElement> tableDataOnNotificationPageElements = getElements(tableDataOnNotificationPage);	
+		List<SelenideElement> tableDataOnNotificationPageElements = getElements(tableDataOnNotificationPage);
 		String[] actualList = new String[tableDataOnNotificationPageElements.size()];
 		int i = 0;
-		for(SelenideElement element : tableDataOnNotificationPageElements) {
+		for (SelenideElement element : tableDataOnNotificationPageElements) {
 			actualList[i] = element.text();
 			i++;
 		}
-		String[] expedtedList = tableDataOnNotificationPageElements.stream().map(element -> element.text()).sorted((a,b) -> b.compareTo(a)).toArray(String[]::new);
+		String[] expedtedList = tableDataOnNotificationPageElements.stream().map(element -> element.text())
+				.sorted((a, b) -> b.compareTo(a)).toArray(String[]::new);
 		assertTrue(actualList.length == expedtedList.length);
-		for(i = 0; i < expedtedList.length; i++) {
+		for (i = 0; i < expedtedList.length; i++) {
 			assertTrue(expedtedList[i].equals(actualList[i]));
 		}
 	}
-	
+
 	By notificationsPageSearchInput = By.xpath("//*[@id=\"DataTables_Table_0_filter\"]/label/input");
 	By noRecodeFoundValidation = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr/td");
-	
+
 	public void searchFieldValidation() {
 		SelenideElement notificationsPageSearchInputElement = getSelenideElement(notificationsPageSearchInput);
 		waitForElementVisibility(notificationsPageSearchInput);
@@ -678,53 +696,51 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(2);
 		SelenideElement noRecodeFoundValidationElement = getSelenideElement(noRecodeFoundValidation);
 		String noRecordFoundText = "No matching records found";
-		if(noRecodeFoundValidationElement.getText() == noRecordFoundText) {
-			System.out.println("Found correct validation = "+ noRecodeFoundValidationElement.getText());
-		}
-		else {
+		if (noRecodeFoundValidationElement.getText() == noRecordFoundText) {
+			System.out.println("Found correct validation = " + noRecodeFoundValidationElement.getText());
+		} else {
 			System.out.println("Correct validation not found");
 		}
 	}
-	
+
 	By searchResultUpdateData = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[3]");
-	
+
 	public void searchFieldDataValidation() {
 		SelenideElement notificationsPageSearchInputElement = getSelenideElement(notificationsPageSearchInput);
 		waitForElementVisibility(notificationsPageSearchInput);
 		notificationsPageSearchInputElement.clear();
 		notificationsPageSearchInputElement.setValue("Update");
 		SelenideTools.sleep(2);
-		
+
 		List<SelenideElement> searchResultUpdateDataElements = getElements(searchResultUpdateData);
-		if(searchResultUpdateDataElements.size() > 0) {
-			System.out.println("Search result found = "+ searchResultUpdateDataElements.size());
-		}
-		else {
+		if (searchResultUpdateDataElements.size() > 0) {
+			System.out.println("Search result found = " + searchResultUpdateDataElements.size());
+		} else {
 			System.out.println("SEarch result not found");
 		}
 	}
-	
+
 	String requirementCategoryDropdownName;
 	String requirementTypeDropdownName;
-	
+
 	public void selectRequirementCataegory(int index) {
 		waitForElementClickable(requirementCategoryDropdown);
 		getSelenideElement(requirementCategoryDropdown).selectOption(index);
 		requirementCategoryDropdownName = getSelenideElement(requirementCategoryDropdown).getText();
 	}
-	
+
 	public void selectRequirementType(int index) {
 		waitForElementClickable(requirementTypeDropdown);
 		getSelenideElement(requirementTypeDropdown).selectOption(index);
 		requirementTypeDropdownName = getSelenideElement(requirementTypeDropdown).getText();
 	}
-		
+
 	public void clickCreateNewButton() {
 		waitForElementPresent(requirementCreateNewButton);
 		click(requirementCreateNewButton);
 		SelenideTools.sleep(5);
 	}
-	
+
 	By requirementNameInput = By.xpath("//input[@name=\"Name_Requirement\"]");
 	By jurisdictionDropdown = By.xpath("//select[@id=\"Jurisdiction\"]");
 	String jurisdictionDropdownName;
@@ -737,23 +753,22 @@ public class ClientMasterPage extends PageTools {
 	By residentRequirementRadioButton = By.xpath("//*[@id=\"resident-requirement\"]");
 	By selectQuestionCheckbox = By.xpath("//*[@id=\"POS1\"]");
 	By requirementViewSubmitForApprovalButton = By.xpath("//*[@id=\"submit_selected_criteria\"]");
-	
-	
+
 	public void fillInfoOnRequirementViewPage(int index) {
 		SelenideElement requirementNameInputElement = getSelenideElement(requirementNameInput);
 		waitForElementPresent(requirementNameInput);
 		requirementNameInputElement.setValue("Test Requirement");
 		SelenideTools.sleep(5);
-		
+
 		waitForElementClickable(jurisdictionDropdown);
 		getSelenideElement(jurisdictionDropdown).selectOption(3);
 		jurisdictionDropdownName = getSelenideElement(jurisdictionDropdown).getText();
 		SelenideTools.sleep(2);
-		
+
 		SelenideElement applicationNameInputElement = getSelenideElement(applicationNameInput);
 		waitForElementVisibility(applicationNameInput);
 		applicationNameInputElement.setValue("Test Automation Requirement");
-		
+
 		waitForElementVisibility(requirementRadioButton);
 		click(requirementRadioButton);
 		SelenideTools.sleep(2);
@@ -761,128 +776,119 @@ public class ClientMasterPage extends PageTools {
 		click(questionSelectionHeader);
 		waitForElementVisibility(residentCheckbox);
 		click(residentCheckbox);
-		
+
 		waitForElementVisibility(residentStateDropdown);
 		getSelenideElement(residentStateDropdown).selectOption(4);
 		residentStateDropdownName = getSelenideElement(residentStateDropdown).getText();
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(residentRequirementRadioButton);
 		click(residentRequirementRadioButton);
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(selectQuestionCheckbox);
 		click(selectQuestionCheckbox);
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(requirementViewSubmitForApprovalButton);
 		click(requirementViewSubmitForApprovalButton);
 		SelenideTools.sleep(8);
-		}
-	
+	}
+
 	By notificationDropdownOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[6]/a");
 	By notificationsPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
-	
+
 	public void clickNotificationTab() {
 		waitForElementPresent(notificationDropdownOption);
 		click(notificationDropdownOption);
 		SelenideTools.sleep(6);
 		waitForElementVisibility(notificationsPageHeader);
 	}
-	
+
 	By newlyCreatedType = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[3]");
 	By requirementName = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[4]");
 	By prerequisiteData = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[7]/span");
-	
+
 	public void verifyNewlyCreatedRequirement() {
 		waitForElementVisibility(newlyCreatedType);
 		SelenideElement newlyCreatedTypeElement = getSelenideElement(newlyCreatedType);
-		if(newlyCreatedTypeElement.getText() == "New") {
-			System.out.println("Status of newly created requirement = "+ newlyCreatedTypeElement.getText());
-		}
-		else {
+		if (newlyCreatedTypeElement.getText() == "New") {
+			System.out.println("Status of newly created requirement = " + newlyCreatedTypeElement.getText());
+		} else {
 			System.out.println("Status not found to be New");
 		}
-		
+
 		SelenideElement requirementNameElement = getSelenideElement(requirementName);
-		if(requirementNameElement.getText() == "Test Requirement") {
-			System.out.println("Requirement name matched as = "+ requirementNameElement.getText());
-		}
-		else {
+		if (requirementNameElement.getText() == "Test Requirement") {
+			System.out.println("Requirement name matched as = " + requirementNameElement.getText());
+		} else {
 			System.out.println("Requirement name did not match");
 		}
 		//
 		SelenideElement prerequisiteDataElement = getSelenideElement(prerequisiteData);
-		if(prerequisiteDataElement.getText() == "No Change") {
-			System.out.println("Text on fields where no changes are made = "+ prerequisiteDataElement.getText());
-		}
-		else {
+		if (prerequisiteDataElement.getText() == "No Change") {
+			System.out.println("Text on fields where no changes are made = " + prerequisiteDataElement.getText());
+		} else {
 			System.out.println("No chnage text not found");
 		}
 	}
-	
-	
-	
-	
+
 	public void verifyDataOnRequirementAdminPage() {
 		waitForElementVisibility(requirementDataSourceRadioButton);
 		click(requirementDataSourceRadioButton);
-		
+
 		waitForElementClickable(filterJurisdictionDropdown);
 		getSelenideElement(filterJurisdictionDropdown).selectOption(3);
 		filterJurisdictionDropdownName = getSelenideElement(filterJurisdictionDropdown).getText();
 		SelenideTools.sleep(2);
-		
-		
+
 		waitForElementVisibility(requirementCategoryFilterDropdown);
 		getSelenideElement(requirementCategoryFilterDropdown).selectOption(4);
 		requirementCtaegoryFilterDropdownName = getSelenideElement(requirementCategoryFilterDropdown).getText();
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(requirementTypeFilterDropdown);
 		getSelenideElement(requirementTypeFilterDropdown).selectOption(2);
 		requirementTypeFilterDropdownName = getSelenideElement(requirementTypeFilterDropdown).getText();
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(requirementNameFilterDropdown);
 		getSelenideElement(requirementNameFilterDropdown).selectOption("Test Requirement");
 		requirementNameFilterDropdownName = getSelenideElement(requirementNameFilterDropdown).getText();
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(requirementViewStatusDropdown);
 		getSelenideElement(requirementViewStatusDropdown).selectOption(2);
 		requirementViewStatusDropdownName = getSelenideElement(requirementViewStatusDropdown).getText();
 		SelenideTools.sleep(2);
-		
+
 		waitForElementVisibility(resultTableRequirementName);
 		SelenideElement resultTableRequirementNameElement = getSelenideElement(resultTableRequirementName);
-		if(resultTableRequirementNameElement.getText() == "Test Requirement") {
-			System.out.println("SErach Result found as = "+ resultTableRequirementNameElement.getText());
-		}
-		else {
+		if (resultTableRequirementNameElement.getText() == "Test Requirement") {
+			System.out.println("SErach Result found as = " + resultTableRequirementNameElement.getText());
+		} else {
 			System.out.println("Matching record not found");
 		}
-		
-		
+
 	}
-	
+
 	public void openVersionRequirementsPage() {
 		waitForElementVisibility(versionRequirementsOption);
 		click(versionRequirementsOption);
 		SelenideTools.sleep(3);
 		waitForElementVisibility(versionRequirementsHeader);
 	}
-	
+
 	public void isActivateRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
 		statusInputFieldElement.setValue("Activated");
 		SelenideTools.sleep(2);
-		
+
 		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
 		activateRequirementToggleElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void isDeleteRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
@@ -891,7 +897,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement deleteRequirementButtonElement = getSelenideElement(deleteRequirementButton);
 		deleteRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void isEditRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
@@ -900,12 +906,12 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement editRequirementButtonElement = getSelenideElement(editRequirementButton);
 		editRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void isViewRequirementOptionEnabled() {
 		SelenideElement viewRequirementButtonElement = getSelenideElement(viewRequirementButton);
 		viewRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void isApproveRequirementOptionEnabled() {
 		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
 		statusInputFieldElement.clear();
@@ -914,30 +920,30 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement approveRequirementButtonElement = getSelenideElement(approveRequirementButton);
 		approveRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void isIntelligencePermissionsEnabled() {
 		waitForElementVisibility(permissionsDropdownOption);
 		click(permissionsDropdownOption);
 		SelenideTools.sleep(3);
 		waitForElementVisibility(permissionsPageHeader);
 		List<SelenideElement> systemAdminPermissionsCheckboxesElement = getElements(systemAdminPermissionsCheckboxes);
-		System.out.println("Count of System Admin checkboxes = "+ systemAdminPermissionsCheckboxesElement.size());
-		for(SelenideElement checkbox : systemAdminPermissionsCheckboxesElement) {
+		System.out.println("Count of System Admin checkboxes = " + systemAdminPermissionsCheckboxesElement.size());
+		for (SelenideElement checkbox : systemAdminPermissionsCheckboxesElement) {
 			checkbox.shouldBe(Condition.selected);
 		}
 	}
-	
+
 	public void isDeleteFacilityButtonEnabled() {
 		waitForElementVisibility(facilityDeleteButton);
 		SelenideElement facilityDeleteButtonElement = getSelenideElement(facilityDeleteButton);
 		facilityDeleteButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void isViewAndDeleteButtonEnabled() {
 		waitForElementVisibility(viewResultButton);
 		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
 		viewResultButtonElement.shouldBe(Condition.enabled);
-		
+
 		waitForElementVisibility(deleteResultButtton);
 		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
 		deleteResultButttonElement.shouldBe(Condition.enabled);
@@ -948,12 +954,12 @@ public class ClientMasterPage extends PageTools {
 		click(intelligenceAdminDropdownButton);
 		SelenideTools.sleep(2);
 	}
-	
+
 	public void requirementViewDisplayed() {
 		waitForElementVisibility(requirementViewOption);
 		SelenideTools.sleep(2);
 	}
-	
+
 	public void clickVersionedRequirementButtonAndVerifyPage() {
 		waitForElementVisibility(versionRequirementsOption);
 		click(versionRequirementsOption);
@@ -961,7 +967,7 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(versionRequirementPageHeader);
 		SelenideTools.sleep(2);
 	}
-	
+
 	public void verifyActivateButton() {
 		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
 		waitForElementVisibility(versionedStatusInputField);
@@ -969,18 +975,18 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(2);
 		versionedStatusInputFieldElement.pressEnter();
 		SelenideTools.sleep(2);
-		
+
 		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
 		activateRequirementToggleElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void verifyDeleteButton() {
 		waitForElementVisibility(deleteRequirementToggle);
 		SelenideTools.sleep(2);
 		SelenideElement deleteRequirementToggleElement = getSelenideElement(deleteRequirementToggle);
 		deleteRequirementToggleElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void verifyEditButton() {
 		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
 		waitForElementVisibility(versionedStatusInputField);
@@ -993,14 +999,14 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(editRequirementButton);
 		editRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void verifyViewRequirementButton() {
 		waitForElementVisibility(viewRequirementButton);
 		SelenideTools.sleep(2);
 		SelenideElement viewRequirementButtonElement = getSelenideElement(viewRequirementButton);
 		viewRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void verifyApproveRequirementButton() {
 		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
 		waitForElementVisibility(versionedStatusInputField);
@@ -1013,41 +1019,42 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(approveRequirementButton);
 		approveRequirementButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void verifyIntelligencePermissionsEnabled() {
 		waitForElementVisibility(permissionsSidebarButton);
 		click(permissionsSidebarButton);
 		SelenideTools.sleep(4);
 		waitForElementVisibility(researchResultPageHeader);
-		
+
 		List<SelenideElement> systemAdminCheckBoxesElement = getElements(systemAdminCheckBoxes);
-		System.out.println("Size of System Admin checkboxes = "+ systemAdminCheckBoxesElement.size());
-		
-		for(SelenideElement checkbox : systemAdminCheckBoxesElement) {
+		System.out.println("Size of System Admin checkboxes = " + systemAdminCheckBoxesElement.size());
+
+		for (SelenideElement checkbox : systemAdminCheckBoxesElement) {
 			checkbox.shouldBe(Condition.selected);
 		}
 	}
-		
-	public void verifyDeleteFacilityButtonIsEnabled() {		
+
+	public void verifyDeleteFacilityButtonIsEnabled() {
 		SelenideElement configurationDeleteButtonElement = getSelenideElement(configurationDeleteButton);
 		waitForElementVisibility(configurationDeleteButton);
 		configurationDeleteButtonElement.shouldBe(Condition.enabled);
 	}
-	
-	public void verifyViewDeleteButtonEnabled() {		
+
+	public void verifyViewDeleteButtonEnabled() {
 		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
 		waitForElementVisibility(viewResultButton);
 		viewResultButtonElement.shouldBe(Condition.enabled);
-		
+
 		SelenideElement deleteResultButtonElement = getSelenideElement(deleteResultButton);
 		waitForElementVisibility(deleteResultButton);
 		deleteResultButtonElement.shouldBe(Condition.enabled);
 	}
-	
+
 	public void verifyQuestionName() {
 		List<SelenideElement> finSectionQuestionNameelements = getElements(finSectionQuestionName);
 		int finSectionQuestionNameelementsCount = finSectionQuestionNameelements.size();
-		System.out.println("Count of question names present on questionnaire page = " + finSectionQuestionNameelementsCount);
+		System.out.println(
+				"Count of question names present on questionnaire page = " + finSectionQuestionNameelementsCount);
 		for (int i = 0; i < finSectionQuestionNameelementsCount; i++) {
 			finSectionQuestionNameelements.get(i);
 			String finSectionQuestionNameelementsText = finSectionQuestionNameelements.get(i).getText();
@@ -1060,7 +1067,7 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
-	
+
 	public void addCategoryButton() {
 		waitForElementVisibility(financialCategoryHeader);
 		SelenideElement financialCategoryHeaderElelment = getSelenideElement(financialCategoryHeader);
@@ -1073,7 +1080,7 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(newCategorySaveButton);
 		waitForElementVisibility(newCategoryCancelButton);
 	}
-	
+
 	public void clickSaveWithEmptyCategory() {
 		SelenideElement enterNewCategoryInputFieldElelment = getSelenideElement(enterNewCategoryInputField);
 		enterNewCategoryInputFieldElelment.is(Condition.empty);
@@ -1088,7 +1095,7 @@ public class ClientMasterPage extends PageTools {
 		Selenide.switchTo().defaultContent();
 		System.out.println("Switched back to default content");
 	}
-	
+
 	public void addNewCategory() {
 		SelenideElement enterNewCategoryInputFieldElelment = getSelenideElement(enterNewCategoryInputField);
 		enterNewCategoryInputFieldElelment.setValue("Test Category");
@@ -1108,7 +1115,7 @@ public class ClientMasterPage extends PageTools {
 			}
 		}
 	}
-	
+
 	public void reorderCategoryButton() {
 		waitForElementVisibility(financialCategoryHeader);
 		SelenideElement financialCategoryHeaderElelment = getSelenideElement(financialCategoryHeader);
@@ -1120,16 +1127,17 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(reorderSourceButton);
 		waitForElementVisibility(reorderSaveButton);
 	}
-	
+
 	public void reorderCategoryHeaders() {
 		SelenideElement reorderSourceButtonElement = getSelenideElement(reorderSourceButton);
 		SelenideElement reorderDropButtonElement = getSelenideElement(reorderDropButton);
 		SelenideTools.sleep(5);
 		Actions actions = new Actions(WebDriverRunner.getWebDriver());
-		new Actions(WebDriverRunner.getWebDriver()).clickAndHold(reorderSourceButtonElement).moveToElement(reorderDropButtonElement).release().perform();
+		new Actions(WebDriverRunner.getWebDriver()).clickAndHold(reorderSourceButtonElement)
+				.moveToElement(reorderDropButtonElement).release().perform();
 		SelenideTools.sleep(8);
 	}
-	
+
 	public void addNewQuestion() {
 		waitForElementVisibility(questionLabel);
 		SelenideElement questionLabelElement = getSelenideElement(questionLabel);
@@ -1144,7 +1152,7 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(addQuestionPlusIcon);
 		System.out.println("Total count of all the plus icons visible = " + addQuestionPlusIconElement.size());
 	}
-	
+
 	public void clickQuestionsPlusIcon() {
 		SelenideElement finQuestionPlusIconElemnt = getSelenideElement(finQuestionPlusIcon);
 		waitForElementVisibility(finQuestionPlusIcon);
@@ -1154,7 +1162,7 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(addQuestionAddButton);
 		waitForElementVisibility(addQuestionCancelButton);
 	}
-	
+
 	public void enterQuestionClickAdd() {
 		SelenideElement questionInputFieldElelment = getSelenideElement(questionInputField);
 		questionInputFieldElelment.is(Condition.empty);
@@ -1167,22 +1175,23 @@ public class ClientMasterPage extends PageTools {
 		waitForElementInvisibility(addQuestionAddButton);
 		waitForElementInvisibility(addQuestionCancelButton);
 	}
-	
+
 	public void clickAndEditQuestion() {
 		waitForElementVisibility(questionLabel);
 		SelenideElement questionLabelElement = getSelenideElement(questionLabel);
 		Actions actions = new Actions(WebDriverRunner.getWebDriver());
 		actions.contextClick(questionLabelElement).perform();
-		Selenide.sleep(3);		
+		Selenide.sleep(3);
 		waitForElementVisibility(questionContextMenu);
 		waitForElementVisibility(questionPopupEditOption);
 		click(questionPopupEditOption);
 		SelenideTools.sleep(10);
 		waitForElementVisibility(questionsEditIcon);
 		List<SelenideElement> questionsEditIconElelment = getElements(questionsEditIcon);
-		System.out.println("Total count of edit icons present besides the question = " + questionsEditIconElelment.size());
+		System.out.println(
+				"Total count of edit icons present besides the question = " + questionsEditIconElelment.size());
 	}
-	
+
 	public void editTheQuestionAndVerifyEditFields() {
 		waitForElementVisibility(firstEditIcon);
 		click(firstEditIcon);
@@ -1199,7 +1208,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(10);
 		waitForElementInvisibility(editQuestionUpdateButton);
 	}
-	
+
 	public void activateDeactivateButtonFunctionality() {
 		waitForElementVisibility(questionLabel);
 		SelenideElement questionLabelElement = getSelenideElement(questionLabel);
@@ -1211,7 +1220,8 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(2);
 		waitForElementVisibility(activateDeactivateDropdown);
 		List<SelenideElement> activateDeactivateDropdownElement = getElements(activateDeactivateDropdown);
-		System.out.println("Total count of all the activate and deactivate dropdown = "+ activateDeactivateDropdownElement.size());
+		System.out.println("Total count of all the activate and deactivate dropdown = "
+				+ activateDeactivateDropdownElement.size());
 
 		SelenideElement firstActivateDeactivateDropdownElement = getSelenideElement(firstActivateDeactivateDropdown);
 		firstActivateDeactivateDropdownElement.selectOption(1);
@@ -1230,17 +1240,18 @@ public class ClientMasterPage extends PageTools {
 		click(questionnairePageExitButton);
 		SelenideTools.sleep(3);
 	}
-	
+
 	public void selectQuestionnarieVersions() {
 		waitForElementVisibility(questionnaireVersionSidebarButton);
 		click(questionnaireVersionSidebarButton);
 		SelenideTools.sleep(2);
 		waitForElementVisibility(questionnaireVersionPageTitle);
 	}
-	
+
 	public void activateNewlyCreatedQuestionnaire() {
 		SelenideTools.sleep(5);
-		SelenideElement questionnairePageVersionLabelElement = getSelenideElement(questionnairePageVersionLabel).shouldBe(Condition.visible);
+		SelenideElement questionnairePageVersionLabelElement = getSelenideElement(questionnairePageVersionLabel)
+				.shouldBe(Condition.visible);
 		questionnairePageVersionLabelElement.doubleClick();
 		SelenideTools.sleep(5);
 		waitForElementVisibility(approveButton);
@@ -1255,5 +1266,105 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(approvePopupYesButton);
 		click(approvePopupYesButton);
 		SelenideTools.sleep(8);
+	}
+
+	public void saveSubmitPageLabels() {
+		SelenideElement saveSubmitPageCompanyNameElement = getSelenideElement(saveSubmitPageCompanyName);
+		assertEquals(saveSubmitPageCompanyNameElement.getText(), saveSubmitPageCompanyNameText);
+
+		SelenideElement saveSubmitPageFacilityNameElement = getSelenideElement(saveSubmitPageLabelName);
+		assertEquals(saveSubmitPageFacilityNameElement.getText(), saveSubmitPageFacilityNameText);
+
+		SelenideElement saveSubmitPageResidentStateElement = getSelenideElement(saveSubmitPageResidentState);
+		assertEquals(saveSubmitPageResidentStateElement.getText(), saveSubmitPageResidentStateText);
+
+		List<SelenideElement> saveSubmitPageCheckboxElement = getElements(saveSubmitPageCheckbox);
+		for (SelenideElement element : saveSubmitPageCheckboxElement) {
+			element.isDisplayed();
+		}
+
+		List<SelenideElement> saveSubmitPageChangeButtonElement = getElements(saveSubmitPageChangeButton);
+		for (SelenideElement element1 : saveSubmitPageChangeButtonElement) {
+			element1.isDisplayed();
+		}
+	}
+	
+	public void verifyJurisdictionName() {
+		List<SelenideElement> jurisdictionNameElement = getElements(jurisdictionName);
+		for(int i =0; i<jurisdictionNameElement.size(); i++) {
+			String jurisdictionText = jurisdictionNameElement.get(i).getText();
+			if(jurisdictionText.contains(washingtonText)) {
+				System.out.println("Washington DC Jurisdiction found in Jurisdiction list");
+				throw new AssertionError("Element " + i + " contains text: " + washingtonText);
+			}
+			else {
+				System.out.println("Washington DC Jurisdiction not found in Jurisdiction list");
+			}
+		}
+	}
+	
+	public void verifyDistrictOfColumbia() {
+		List<SelenideElement> jurisdictionNameElement = getElements(jurisdictionName);
+		for(int i =0; i<jurisdictionNameElement.size(); i++) {
+			String jurisdictionText = jurisdictionNameElement.get(i).getText();
+			if(jurisdictionText.contains(disctrictOfColumbiaText)) {
+				System.out.println("Washington DC Jurisdiction is renamed with District of Columbia");
+			}
+			else {
+				System.out.println("Washington DC Jurisdiction is not renamed with District of Columbia");
+			}
+		}
+	}
+	
+	public void clickRequirementViewButton() {
+		waitForElementVisibility(requirementViewButton);
+		click(requirementViewButton);
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementViewPageHeader);
+	}
+	
+	public void clickJurisdictionDropdownAndVerifyJurisdiction() {
+		waitForElementVisibility(jurisdictionDropdown);
+		click(jurisdictionDropdown);
+		List<SelenideElement> jurisdictionDropdownOptionElement = getElements(jurisdictionDropdownOption);
+		for(int i = 0; i < jurisdictionDropdownOptionElement.size(); i++) {
+			String jurisdictionDropdownOptionText = jurisdictionDropdownOptionElement.get(i).getText();
+			if(jurisdictionDropdownOptionText.contains("District of Columbia")) {
+				System.out.println("Found [District of Columbia in the list of Jurisdiction]");
+			}
+		}
+	}
+	
+	public void noEntitlementMessage() {
+		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
+		if (entitlementHeaderElement.isDisplayed() == false) {
+			System.out.println("Entitlement header is not present");
+		} else {
+			System.out.println("Entitlement header is present");
+		}
+	}
+	
+	public void verifyEntitlementMessage() {
+		List<SelenideElement> enitilementUpperLimitElement = getElements(enitilementUpperLimit);
+		List<SelenideElement> entitlementLowerLimitElement = getElements(entitlementLowerLimit);
+		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
+		if(entitlementHeaderElement.isDisplayed() == true) {
+			System.out.println("Entrilement header displayed");
+		}
+		if (enitilementUpperLimitElement.size() > entitlementLowerLimitElement.size()) {
+			System.out.println("Correct entitlement message is shown");
+		} else {
+			System.out.println("Correct entitlement message is not shown");
+		}
+	}
+	
+	public boolean euiStates() {
+		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
+		System.out.println("Element displayed = " + endUpInStatesTitleElement);
+		List<SelenideElement> jurisdictionPageStatesElement = getElements(jurisdictionPageStates);
+		if (jurisdictionPageStatesElement.size() > 0) {
+			System.out.println("EUI states visible");
+		}
+		return endUpInStatesTitleElement;
 	}
 }
