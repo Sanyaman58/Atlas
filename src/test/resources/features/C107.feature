@@ -1,5 +1,4 @@
 @C107
-
 Feature: C107
 
   @TestRail(107)
@@ -19,7 +18,3 @@ Feature: C107
     Then Verify that alert message about submitted job deletion is displayed
     And Click on Yes Delete button on the alert window for the third time
     And Verify that the configuration is deleted on the [Configuration] page
-
-
-
-    
