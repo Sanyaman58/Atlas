@@ -335,9 +335,9 @@ public class NewResearchPageStepDefinitions {
 	public void clickOnNextButtonUnderTheTableOnTheNewResearchPage() {
 		Pages.newResearchPage().clickCopyFromResearchButton();
 	}
-
-//	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
-//	public void verifyDeleteFacilityButtonIsEnabledOnConfigurationPage() {
-//		Assert.assertTrue(Pages.newResearchPage().isDeleteButtonVisible());
-//	}
+	
+	@Then("Click on [Configuration Table] next button")
+	public void clickConfigurationTableNextButton() {
+		Pages.newResearchPage().selectConfigurationTableNextButton();
+	}
 }
