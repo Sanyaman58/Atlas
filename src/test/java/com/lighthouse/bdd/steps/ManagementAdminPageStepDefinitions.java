@@ -326,50 +326,15 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().verifyDeleteButton();
     }
 	
-//	@And("Verify that the [Edit Requirement] option is enabled")
-//    public void verifyEditButtonIsEnabled() {
-//        Pages.clientMasterPage().verifyEditButton();
-//    }
-	
 	@And("Verify that the [View Requirement] option is enabled")
     public void verifyViewRequirementIsEnabled() {
         Pages.clientMasterPage().verifyViewRequirementButton();
     }
-	
-//	@And("Verify that the [Approve Requirement] option is enabled")
-//    public void verifyApproveRequirementIsEnabled() {
-//        Pages.clientMasterPage().verifyApproveRequirementButton();
-//    }
-	
-//	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
-//    public void verifyIntelligencePermissions() {
-//        Pages.clientMasterPage().verifyIntelligencePermissionsEnabled();
-//    }
-	
-//	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
-//    public void verifyDeleteFacilityButton() {
-//        Pages.clientMasterPage().verifyDeleteFacilityButtonIsEnabled();
-//    }
-	
-//	@And("Verify [View Result] and [Delete Result] button is enabled")
-//    public void verifyViewDeleteButton() {
-//        Pages.clientMasterPage().verifyViewDeleteButtonEnabled();
-//    }
 
 	@And("Click on [Version Requirements] dropdown option")
     public void clickVersionRequirement() {
         Pages.clientMasterPage().openVersionRequirementsPage();
     }
-	
-//	@And("Verify that the [Activate Requirement] view option is enabled")
-//    public void verifyActivateRequirementOptionEnabled() {
-//        Pages.clientMasterPage().isActivateRequirementOptionEnabled();
-//    }
-	
-//	@And("Verify [Delete Requirement] option is enabled")
-//    public void verifyDeleteRequirementOptionEnabled() {
-//        Pages.clientMasterPage().isDeleteRequirementOptionEnabled();
-//    }
 	
 	@And("Verify that the [Edit Requirement] option is enabled")
     public void verifyEditRequirementOptionEnabled() {
@@ -400,4 +365,77 @@ public class ManagementAdminPageStepDefinitions {
     public void verifyViewAndDeleteResultButtonIsEnabled() {
         Pages.clientMasterPage().isViewAndDeleteButtonEnabled();
     }
+	
+	@And("Verify the names of the questions on questionnaire page")
+	public void verifyNamesOnQuestion() {
+		Pages.clientMasterPage().verifyQuestionName();
+	}
+	
+	@And("Select any category and click on [Add new category] button")
+	public void clickAddCategory() {
+		Pages.clientMasterPage().addCategoryButton();
+	}
+	
+	@And("Click on [Save] category button with empty category name field and verify the validation")
+	public void clickSaveButtonWithoutEnteringName() {
+		Pages.clientMasterPage().clickSaveWithEmptyCategory();
+	}
+	
+	@And("Add a new category and verify new category is added")
+	public void addCategoryAndVerify() {
+		Pages.clientMasterPage().addNewCategory();
+	}
+	
+	@And("Select any category header and click on [Reorder category] button")
+	public void clickReorderCategory() {
+		Pages.clientMasterPage().reorderCategoryButton();
+	}
+	
+	@And("Reorder the category headers")
+	public void reorderTheCategory() {
+		Pages.clientMasterPage().reorderCategoryHeaders();
+	}
+	
+	@And("Right click on question and click on [Add New Question] buttton")
+	public void clickAddNewQuestion() {
+		Pages.clientMasterPage().addNewQuestion();
+	}
+	
+	@And("Click on [Plus] icon besides the question")
+	public void clickPlusIconBesidesQuestion() {
+		Pages.clientMasterPage().clickQuestionsPlusIcon();
+	}
+	
+	@And("Enter the name of question and Click [Add] button")
+	public void enterQuestionNameAndAdd() {
+		Pages.clientMasterPage().enterQuestionClickAdd();
+	}
+	
+	@And("Right click on displayed question and select [Edit Question] option")
+	public void editQuestion() {
+		SelenideTools.sleep(5);
+		Pages.clientMasterPage().clickAndEditQuestion();
+	}
+	
+	@And("Edit the particular question and verify the edit fields")
+	public void editQuestionsAndVerifyFields() {
+		SelenideTools.sleep(2);
+		Pages.clientMasterPage().editTheQuestionAndVerifyEditFields();
+	}
+	
+	@And("Right click on question and verify the activate and deactivate functionality")
+	public void verifyActivateAndDeactivateButton() {
+		Pages.clientMasterPage().activateDeactivateButtonFunctionality();
+	}
+	
+	@And("Click on the [Questionnaire Versions] sidebar button")
+	public void clickQuestionnaireVersionsButton() {
+		Pages.clientMasterPage().selectQuestionnarieVersions();
+		SelenideTools.sleep(4);
+	}
+	
+	@And("Activate the newly created questionnaire")
+	public void activateQuestionnaire() {
+		Pages.clientMasterPage().activateNewlyCreatedQuestionnaire();
+	}
 }
