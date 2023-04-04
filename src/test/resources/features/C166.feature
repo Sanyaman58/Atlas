@@ -1,5 +1,4 @@
 @C166
-
 Feature: C166
 
   @TestRail(166)
@@ -12,5 +11,5 @@ Feature: C166
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Verify no [Intelligence Entitlement] message is shown without selecting any Client
-    When Select "PharmaSol USA" client from the client dropdown
+    When Select "Test Pharma" client from the client dropdown
     Then Verify the [Intelligence Entitlement] message is shown

@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ResearchNotificationPage extends PageTools {
-    By researchNotificationPageTitle = By.xpath("//h2[text()='Research Notification']");
+    By researchNotificationPageTitle = By.xpath("//h2[text()='Research Notifications']");
     By researchNotificationTable = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody");
     By researchNotificationTableLabels = By.xpath("//div[contains(@id,'DataTables_Table')]//div[@class='dataTables_scrollHeadInner']//table[contains(@class,'requirementsViewerTable')]/thead/tr[1]/th");
     By researchNotificationTableRecords = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody/tr");
     By researchNotificationTableRecordElements = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody/tr/td");
-    By researchNotificationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");
+    By researchNotificationSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[6]/a");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchNotificationsNoRecords = By.xpath("//td[@class='dataTables_empty']");
     String requirementName;
@@ -29,8 +29,11 @@ public class ResearchNotificationPage extends PageTools {
     }
 
     public void clickOnResearchNotificationSidebarButton(){
+    	Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
         waitForElementVisibility(researchNotificationSidebarButton);
         click(researchNotificationSidebarButton);
+        SelenideTools.sleep(10);
     }
 
     public boolean isTableLabelsPresent(List<String> labels){
