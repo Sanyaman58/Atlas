@@ -84,7 +84,7 @@ public class SendEmail {
                 
             
             String currentDateTime = new SimpleDateFormat("dd-MMM-yyyy_h:mm a z").format(Calendar.getInstance().getTime());
-            msg.setSubject("Web Automation Tests Run Report on "+currentDateTime);
+            msg.setSubject("Web Automation LHA Tests Run Report on "+currentDateTime);
             msg.setText("Report is attached as a zip file, download, extract in a folder and you can see report files there.");
             Multipart multipart = new MimeMultipart();
             BodyPart textPart = new MimeBodyPart(); 
