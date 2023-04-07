@@ -1,5 +1,4 @@
 @C129
-
 Feature: C129
 
   @TestRail(129)
@@ -42,4 +41,3 @@ Feature: C129
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then Select "Test Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
-

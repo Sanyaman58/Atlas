@@ -12,6 +12,8 @@ Feature: C105
     Then The [Configuration] page is opened
     And Reload the browser
     And Select "Test Pharma" client from the client dropdown
+    And Delete job from the table if exists
+    And Select "Test Pharma" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button
@@ -31,7 +33,7 @@ Feature: C105
     And Click the [Next] button on the [Questionnaire] page
     Then Validate that the displayed on the [SaveSubmit Job] page jurisdictions correspond to the selected earlier
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
-#    And Validate the lales on the [SaveSubmit Job] page
+    And Validate the lables on the [SaveSubmit Job] page
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
