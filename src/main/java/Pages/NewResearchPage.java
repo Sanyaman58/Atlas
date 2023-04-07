@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 public class NewResearchPage extends PageTools {
 
-	By surveillanceSetupPageTitle = By.xpath("//h2[text()='Surveillance Configuration']");
+	By surveillanceSetupPageTitle = By.xpath("//h2[text()='Configuration']");
 	By companyLabelAsterisk = By.xpath("//div[@class='form-row']/label[contains(text(),'Company')]/span[@class='red']");
 	By facilityLabelAsterisk = By
 			.xpath("//div[@class='form-row']/label[contains(text(),'Facility')]/span[@class='red']");
@@ -42,10 +42,11 @@ public class NewResearchPage extends PageTools {
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");
 	By surveillanceSetupBreadcrumb = By
-			.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Surveillance Setup')]");
+			.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Configuration Setup')]");
 	By configurationDeleteButton = By.xpath("//button[contains(@class,'delete-job-research')]");
 	By alertYesDeleteButton = By.xpath("(//button[text()='Yes Delete'])[%s]");
 	By createdLabelSort = By.xpath("//table//tr/th[text()='Created']");
+	By intelligenceCountMessage = By.xpath("//div[@class='dataTables_info']");
 
 	String companyName;
 	String facilityName;
@@ -215,6 +216,7 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public int getNumberOfJobs() {
+		System.out.println(getElements(tableJobs).size());
 		if (isElementVisible(noDataInTable))
 			return 0;
 		else
@@ -397,6 +399,10 @@ public class NewResearchPage extends PageTools {
 		waitForElementVisibility(configurationTableNextButton);
 		click(configurationTableNextButton);
 		SelenideTools.sleep(5);
+	}
+
+	public boolean isIntelligenceCountMessageDisplayed(){
+		return isElementVisible(intelligenceCountMessage);
 	}
 	
 	

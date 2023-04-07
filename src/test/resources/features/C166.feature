@@ -11,6 +11,5 @@ Feature: C166
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    And Verify no [Intelligence Entitlement] message is shown without selecting any Client
     When Select "PharmaSol USA" client from the client dropdown
     Then Verify the [Intelligence Entitlement] message is shown

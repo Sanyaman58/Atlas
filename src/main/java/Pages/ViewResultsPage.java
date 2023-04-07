@@ -33,7 +33,7 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTableRecordsElements = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr/td");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
-    By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
+    By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Knowledge Results']/following-sibling::button");
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
     By progressBar = By.xpath("//tr//div[@class='progress']");

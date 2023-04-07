@@ -112,7 +112,7 @@ public class QuestionnairePage extends PageTools {
     public boolean isQuestionElementsVisible(){
         waitForElementVisibility(questions);
         return isElementVisible(By.xpath("//div[@id='questionnaire-container']//li/label/i"))
-                && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input(value()='Y')"))
-                && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input(value()='N')"));
+                && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input[@value='Y']"))
+                && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input[@value='N']"));
     }
 }

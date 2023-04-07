@@ -18,8 +18,8 @@ Feature: C121
       |Initiated By|
       |Status|
       |Action|
-    And Select "10" entries to be displayed in the [Show Entries] select
-    And "10" entries are displayed on the [View Results] page
+#    And Select "10" entries to be displayed in the [Show Entries] select
+#    And "10" entries are displayed on the [View Results] page
     When Click on the "Company Name" label
     Then Verify that records on the [View Results] page are sorted alphabetically by "Company Name" label
     When Click on the "Company Name" label

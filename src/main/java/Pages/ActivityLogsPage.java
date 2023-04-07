@@ -33,6 +33,7 @@ public class ActivityLogsPage extends PageTools {
 
     public boolean isRecordDescriptionContainsText(String text){
         waitForElementVisibility(tableLogs);
+        System.out.println(text);
         for(int i = 0; i < getElements(tableLogs).size();i++){
             System.out.println(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText());
             if(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText().contains(text))

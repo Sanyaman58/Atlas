@@ -92,7 +92,7 @@ public class RequirementsAdminPage extends PageTools {
 	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
 	By intelligenceAdminSidebarCollapseButton = By.xpath("//ul[@id='menu']/li[10]");
-	By editJurisdictionSelect = By.xpath("//select[@id='edit_Jurisdiction']");
+	By editJurisdictionSelect = By.xpath("//select[@id='filter_Jurisdiction']");
 	By editRequirementCategorySelect = By.xpath("//select[@id='edit_Requirement_Category']");
 	By editRequirementTypeSelect = By.xpath("//select[@id='edit_Requirement_Type']");
 	By editRequirementNameSelect = By.xpath("//select[@id='edit_Name_Requirement']");
@@ -716,8 +716,11 @@ public class RequirementsAdminPage extends PageTools {
 		return isElementVisible(editJurisdictionSelect);
 	}
 	public boolean isJurisdictionDisplayed(String state){
-		for(int i = 0; i < getElements(editJurisdictionSelect).size();i++){
-			if(getElements(editJurisdictionSelect).get(i).findElement(By.xpath("./option")).getText().equals(state))
+		getSelenideElement(editJurisdictionSelect).click();
+		System.out.println();
+		for(int i = 0; i < getSelenideElement(editJurisdictionSelect).findElements(By.xpath("./option")).size();i++){
+			System.out.println(getSelenideElement(editJurisdictionSelect).findElements(By.xpath("./option")).get(i).getText());
+			if(getSelenideElement(editJurisdictionSelect).findElements(By.xpath("./option")).get(i).getText().equals(state))
 				return true;
 		}
 		return false;

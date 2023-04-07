@@ -336,6 +336,11 @@ public class NewResearchPageStepDefinitions {
 		Pages.newResearchPage().clickCopyFromResearchButton();
 	}
 
+	@Then("Verify the [Intelligence Entitlement] message is shown")
+	public void verifyTheIntelligenceEntitlementMessageIsShown() {
+		Assert.assertTrue(Pages.newResearchPage().isIntelligenceCountMessageDisplayed());
+	}
+
 //	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
 //	public void verifyDeleteFacilityButtonIsEnabledOnConfigurationPage() {
 //		Assert.assertTrue(Pages.newResearchPage().isDeleteButtonVisible());

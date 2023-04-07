@@ -28,7 +28,7 @@ Feature: C128
     Then The [Research Admin] page is opened
     When Click on the [Ends Up In State] button on admin
     Then The [Ends Up In States Admin] page is opened
-    And Verify the "District of Columbia" in list of Jurisdiction
+    And Verify the "District Of Columbia" in list of Jurisdiction
     And Click on [Requirements View] sidebar button
     And The [Requirements Admin] page is opened
     And Click Jurisdiction dropdown and verify that "District of Columbia" jurisdiction is displayed
