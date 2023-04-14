@@ -649,7 +649,7 @@ public class ClientMasterPage extends PageTools {
 	By tableData = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[3]");
 	By notificationTypeLabel = By.xpath("//*[@id=\"DataTables_Table_0\"]/thead/tr/th[3]");
 
-	public void isDataSortedAlphabetically(List<SelenideElement> tableData) {
+	public boolean isDataSortedAlphabetically(List<SelenideElement> tableData) {
 		waitForElementVisibility(notificationTypeLabel);
 		click(notificationTypeLabel);
 		SelenideTools.sleep(2);
@@ -663,8 +663,10 @@ public class ClientMasterPage extends PageTools {
 		Collections.sort(sortedList);
 		if (originalList.equals(sortedList)) {
 			System.out.println("The data is sorted alphabetically");
+			return true;
 		} else {
 			System.out.println("The data is not sorted alphabetically");
+			return false;
 		}
 	}
 
@@ -921,6 +923,15 @@ public class ClientMasterPage extends PageTools {
 		approveRequirementButtonElement.shouldBe(Condition.enabled);
 	}
 
+	public void isApproveRequirementOptionDisabled() {
+		SelenideElement statusInputFieldElement = getSelenideElement(statusInputField);
+		statusInputFieldElement.clear();
+		statusInputFieldElement.setValue("Pending");
+		SelenideTools.sleep(2);
+		SelenideElement approveRequirementButtonElement = getSelenideElement(approveRequirementButton);
+		approveRequirementButtonElement.shouldBe(Condition.disabled);
+	}
+
 	public void isIntelligencePermissionsEnabled() {
 		waitForElementVisibility(permissionsDropdownOption);
 		click(permissionsDropdownOption);
@@ -978,6 +989,18 @@ public class ClientMasterPage extends PageTools {
 
 		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
 		activateRequirementToggleElement.shouldBe(Condition.enabled);
+	}
+
+	public void verifyActivateButtonDisabled() {
+		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		waitForElementVisibility(versionedStatusInputField);
+		versionedStatusInputFieldElement.val("Activated");
+		SelenideTools.sleep(2);
+		versionedStatusInputFieldElement.pressEnter();
+		SelenideTools.sleep(2);
+
+		SelenideElement activateRequirementToggleElement = getSelenideElement(activateRequirementToggle);
+		activateRequirementToggleElement.shouldBe(Condition.disabled);
 	}
 
 	public void verifyDeleteButton() {

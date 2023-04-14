@@ -167,6 +167,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void selectPreliminaryDataRadioButton(){
 		waitForElementVisibility(preliminaryDataRadioButton);
+		scrollToElement(preliminaryDataRadioButton);
 		click(preliminaryDataRadioButton);
 	}
 

@@ -7,7 +7,7 @@ import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 public class AtlasDashboardManagementPage extends PageTools {
-	By dashboardGrid = By.xpath("//a[text()[contains(.,'Dashboard')]] | //a[@href='https://stagingatlas.pharma.solutions/Dashboard'] | //img[@src='https://stagingatlas.pharma.solutions/theme/build/images/Group 907_p.svg']");
+	By dashboardGrid = By.xpath("//a[text()[contains(.,'Dashboard')]] | //a[@href='https://qa-atlas.lha.pharma.solutions/home'] | //img[@src='https://stagingatlas.pharma.solutions/theme/build/images/Group 907_p.svg']");
 	By requirementsManagementCollapse = By.xpath("//ul[@id='menu']/li[4]");
 	By requirementsSidebarButton = By.xpath("//ul[@id='menu']/li[4]/ul/li/a");
 	By activitiesSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[2]");

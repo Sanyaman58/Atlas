@@ -3,10 +3,10 @@
 Feature: C146
 
   @TestRail(146)
-  Scenario: Verify that as an "System Admin" user I am able to Activate/Deactivate questions.
+  Scenario: Verify that as an "External User" user I am able to Activate/Deactivate questions.
     When Open Atlas
-    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
-    And Enter password "Testing2022!!" on login page
+    Then Enter login "yepsizigna@gufum.com" on login page
+    And Enter password "Testing2022%%" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Research] sidebar button

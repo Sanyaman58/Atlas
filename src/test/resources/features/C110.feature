@@ -4,8 +4,8 @@ Feature: C110
   @TestRail(110)
   Scenario: Research Permissions
     When Open Atlas
-    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
-    And Enter password "Testing2022!!" on login page
+    Then Enter login "yepsizigna@gufum.com" on login page
+    And Enter password "Testing2022%%" on login page
     And Click the [Login] button
     And Management Dashboard page is opened
     When Click on the [Research] sidebar button

@@ -246,7 +246,7 @@ public class ManagementAdminPageStepDefinitions {
 
 	@And("Click on Label and Verify Data is sorted alphabetically")
 	public void verifyAlphabeticalSortedData(List<SelenideElement> tableDataList) {
-		Pages.clientMasterPage().isDataSortedAlphabetically(tableDataList);
+		Assert.assertTrue(Pages.clientMasterPage().isDataSortedAlphabetically(tableDataList));
 	}
 
 	@And("Again click on Label and Verify that Data is sorted backward")
@@ -321,6 +321,11 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().verifyActivateButton();
 	}
 
+	@And("Verify that the [Activate Requirement] view option is disabled")
+	public void verifyActivateButtonIsDisabled() {
+		Pages.clientMasterPage().verifyActivateButtonDisabled();
+	}
+
 	@And("Verify [Delete Requirement] option is enabled")
 	public void verifyDeleteButtonIsEnabled() {
 		Pages.clientMasterPage().verifyDeleteButton();
@@ -349,6 +354,11 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Verify that the [Approve Requirement] option is enabled")
 	public void verifyApproveRequirementOptionEnabled() {
 		Pages.clientMasterPage().isApproveRequirementOptionEnabled();
+	}
+
+	@And("Verify that the [Approve Requirement] option is disabled")
+	public void verifyApproveRequirementOptionDisabled() {
+		Pages.clientMasterPage().isApproveRequirementOptionDisabled();
 	}
 
 	@And("Verify that the [Intelligence Permissions] from the side menu is enabled")
@@ -469,10 +479,10 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().noEntitlementMessage();
     }
 	
-	@Then("Verify the [Intelligence Entitlement] message is shown")
-    public void verifyEntitlementMessage() {
-        Pages.clientMasterPage().verifyEntitlementMessage();
-	}
+//	@Then("Verify the [Intelligence Entitlement] message is shown")
+//    public void verifyEntitlementMessage() {
+//        Pages.clientMasterPage().verifyEntitlementMessage();
+//	}
 	
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {

@@ -5,8 +5,8 @@ Feature: C131
   @TestRail(131)
   Scenario: Save Change Details for Notifications on Admin
     When Open Atlas
-    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
-    And Enter password "Testing2022!!" on login page
+    Then Enter login "yepsizigna@gufum.com" on login page
+    And Enter password "Testing2022%%" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Research Notification] sidebar button on Lighthouse
@@ -41,3 +41,4 @@ Feature: C131
     When Click on the [Requirements View] sidebar button
     Then The [Requirements View] page is opened
     And Search the newly created requirement on [Requirement View] page
+    And Verify the [Intelligence Entitlement] message is shown
