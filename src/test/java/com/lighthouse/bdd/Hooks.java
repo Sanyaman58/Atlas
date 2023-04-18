@@ -35,7 +35,7 @@ public class Hooks extends AllureLogger {
     @Before
     public void setUpBrowser(){
         logInfo("Creating web driver configuration...");
-        SelenideConfig.createBrowserConfig(System.getProperty("selenide.browser", "opera"));
+        SelenideConfig.createBrowserConfig(System.getProperty("selenide.browser", "chrome"));
         logInfo("Open browser...");
     }
 
@@ -47,7 +47,7 @@ public class Hooks extends AllureLogger {
 //        logInfo("Web driver closed!");
 //    }
 
-    @After(order = 2)
+    @After()
     public void afterScenario(Scenario scenario) throws IOException {
         String scenarioName = scenario.getName();
         String testCaseIdFromScenario = scenario.getName().split(",")[0];
