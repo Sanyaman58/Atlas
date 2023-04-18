@@ -29,7 +29,7 @@ public class SelenideConfig {
         if (Constants.REMOTE_URL != null) {
             capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
             capabilities.setBrowserName(System.getProperty("browserName", "chrome"));
-            capabilities.setVersion(System.getProperty("browserVersion", "94.0"));
+            capabilities.setVersion(System.getProperty("browserVersion", "112.0.5615.121"));
             capabilities.setCapability("enableVNC", Boolean.parseBoolean(System.getProperty("enableVnc", "true")));
             capabilities.setCapability("enableVideo", Boolean.parseBoolean(System.getProperty("enableVideo", "true")));
             //capabilities.setCapability("videoName", String.format("video_%s.mp4", DateTime.getLocalDateTimeByPattern(VIDEO_NAME_PATTERN)));
@@ -37,7 +37,7 @@ public class SelenideConfig {
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             capabilities.setCapability("browserName", "chrome");
-            capabilities.setCapability("browserVersion", "94.0");
+            capabilities.setCapability("browserVersion", "112.0.5615.121");
         }
         capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
         return capabilities;
