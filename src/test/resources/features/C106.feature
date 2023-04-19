@@ -14,9 +14,9 @@ Feature: C106
     Then The [View Results] page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "Sachin" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "Sachin" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
