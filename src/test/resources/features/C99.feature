@@ -22,5 +22,6 @@ Feature: C99
     And Enter password "Testing2022!!" on login page
     When Click the [Login] button
     Then Management Dashboard page is opened
+    And Reload the browser
     When Log out from Atlas
     Then The [Login] page is opened
