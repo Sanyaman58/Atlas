@@ -118,12 +118,14 @@ public class LoginPage extends PageTools {
 	}
 
 	public void logOutFromAtlas() {
-		SelenideTools.sleep(10);
+		SelenideTools.sleep(5);
 		waitForElementVisibility(atlasProfileDropDown);
-	    click(atlasProfileDropDown);
-	    SelenideTools.sleep(5);
+		click(atlasProfileDropDown);
+		SelenideTools.sleep(6);
 		waitForElementVisibility(atlasLogOutButton);
 		click(atlasLogOutButton);
+		SelenideTools.sleep(12);
+//		Pages.clientMasterPage().reloadBrowser();
 	}
 
 	public void clearPassword() {
