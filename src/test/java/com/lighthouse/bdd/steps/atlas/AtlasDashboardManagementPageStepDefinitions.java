@@ -36,7 +36,7 @@ public class AtlasDashboardManagementPageStepDefinitions {
         SelenideTools.sleep(10);
         SelenideTools.switchToLastTab();
         //SelenideTools.closeCurrentTab();
-        SelenideTools.sleep(2);
+        SelenideTools.sleep(5);
         Assert.assertTrue(Pages.researchAdminPage().isResearchAdminPageOpened());
     }
 
