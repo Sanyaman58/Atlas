@@ -20,6 +20,7 @@ Feature: C108
     Then The [Research Admin] page is opened
     And Click on the [Ends Up In State] button on admin
     Then The [Ends Up In States Admin] page is opened
+    And Reload the browser
     And Verify the child buttons under [Intelligence Admin] section
     When Click on the [Research] sidebar button
     Then The [Research Admin] page is opened

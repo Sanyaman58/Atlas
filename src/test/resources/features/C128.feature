@@ -12,9 +12,9 @@ Feature: C128
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    And Select "Test Pharma" client from the client dropdown
+    And Select "Sachin" client from the client dropdown
     And Delete job from the table if exists
-    And Select "Test Pharma" client from the client dropdown
+    And Select "Sachin" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button
@@ -23,8 +23,9 @@ Feature: C128
     When Select "Georgia" state on the [Jurisdiction] page
     And Get the jurisdictions checkboxes values
     Then Verify that "District of Columbia" state is displayed on the [Jurisdiction] page
-    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
-    When Click on the [Research] sidebar button on admin
+    When Click on the [Research] sidebar button
+    #When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
+    #When Click on the [Research] sidebar button on admin
     Then The [Research Admin] page is opened
     When Click on the [Ends Up In State] button on admin
     Then The [Ends Up In States Admin] page is opened
