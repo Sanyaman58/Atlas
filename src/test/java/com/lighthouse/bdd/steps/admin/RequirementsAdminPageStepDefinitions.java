@@ -264,6 +264,7 @@ public class RequirementsAdminPageStepDefinitions {
     @When("Click on the [Intelligence Admin] sidebar collapse button on Lighthouse")
     public void clickOnTheIntelligenceAdminSidebarCollapseButtonOnLighthouse() {
         Pages.requirementsAdminPage().clickOnIntelligenceAdminSidebarCollapseButton();
+        SelenideTools.sleep(3);
     }
 
     @And("Select the last select option of the {int} select in the [Selector Criteria] section")
