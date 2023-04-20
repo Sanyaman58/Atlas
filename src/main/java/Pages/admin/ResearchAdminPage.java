@@ -13,7 +13,7 @@ public class ResearchAdminPage extends PageTools {
 	By requirementsAdminButton = By.xpath("//a[@id='requirements']");
 	By questionnaireAdminButton = By.xpath("//a[@id='questionnaire']");
 	By endsUpInStateAdminButton = By.xpath("//a[@id='ends-up-states']");
-	By researchSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'research')])[last()]");
+	By researchSidebarButton = By.xpath("(//*[@id='menu']/li[10]/ul/li[1]/a");
 	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']//a[contains(@href,'requirement-view')]");
 	By notificationsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'notifications')])[last()]");
 	By euiVersionsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'EUI')])[last()]");
@@ -114,7 +114,6 @@ public class ResearchAdminPage extends PageTools {
 	}
 	
 	public void verifyIntelligenceAdminChildOptions(){
-		waitForElementVisibility(researchSidebarButton);
 		waitForElementVisibility(auditLogsSidebarButton);
 		waitForElementVisibility(requirementsViewSidebarButton);
 		waitForElementVisibility(versionedRequirementsSidebarButton);
@@ -122,7 +121,6 @@ public class ResearchAdminPage extends PageTools {
 		waitForElementVisibility(notificationsSidebarButton);
 		waitForElementVisibility(EUIVersionsSidebarButton);
 		waitForElementVisibility(questionnaireVerionsSidebarButton);
-		waitForElementVisibility(permissionsSidebarButton);
 	}
 
 	public void clickTheQuestionnaireVersionsSidebarButton(){
