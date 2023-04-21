@@ -16,7 +16,7 @@ public class QuestionnaireAdminPage extends PageTools {
 	By questionnaireQuestions = By.xpath("//div[@id='category']/div/ul//li/label");
 	By questionnaireQuestionTooltip = By.xpath("(//div[@id='category']/div/ul//li/label)[%s]/span[@id='comment-info-popover-FIN1']");
 	By saveQuestionnaireButton = By.xpath("//button[@id='save_in_dynamo']");
-	By contextMenuActivateDeactivateButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a)[5]");
+	By contextMenuActivateDeactivateButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a/i)[5]");
 	By contextMenuAddCommentButton = By.xpath("(//nav[@id='context-menu-question']/ul/li/a)[6]");
 	By commentWindowContentTextarea = By.xpath("//div[@class='modal-content']//textarea");
 	By commentWindowURLInput = By.xpath("//div[@class='modal-content']//input[@type='text']");
@@ -37,11 +37,13 @@ public class QuestionnaireAdminPage extends PageTools {
 	public void rightClickOnQuestion(int index){
 		waitForElementVisibility(questionnaireQuestions);
 		getElements(questionnaireQuestions).get(index).contextClick();
+		SelenideTools.sleep(2);
 	}
 
 	public void clickOnContextMenuActivateDeactivateButton(){
 		waitForElementVisibility(contextMenuActivateDeactivateButton);
 		click(contextMenuActivateDeactivateButton);
+		SelenideTools.sleep(5);
 	}
 
 	public void clickOnContextMenuAddCommentButton(){
@@ -54,10 +56,16 @@ public class QuestionnaireAdminPage extends PageTools {
 		getElements(questionnaireQuestions).get(index).findElement(By.xpath("./i[contains(@class,'update-comment-icon')]")).click();
 	}
 
-	public void selectActivateDeactivate(int index,String activateDeactivate){
+	public void selectActivate(int index){
 		waitForElementVisibility(questionnaireQuestions);
 		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active')]")));
-		select.selectByVisibleText(activateDeactivate);
+		select.selectByIndex(0);
+	}
+
+	public void selectDeactivate(int index){
+		waitForElementVisibility(questionnaireQuestions);
+		Select select = new Select(getElements(questionnaireQuestions).get(index).findElement(By.xpath("./select[contains(@id,'is_active')]")));
+		select.selectByIndex(1);
 	}
 
 	public boolean isCommentWindowOpened(){

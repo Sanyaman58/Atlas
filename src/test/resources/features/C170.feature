@@ -11,9 +11,9 @@ Feature: C170
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button

@@ -47,8 +47,8 @@ public class LoginPageStepDefinitions {
             Pages.emailVerificationPage().clickOnValidationSubmitButton();
         }
 
-        SelenideTools.getDriver().switchTo().alert().accept();
-        SelenideTools.sleep(2);
+//        SelenideTools.getDriver().switchTo().alert().accept();
+//        SelenideTools.sleep(2);
     }
 
     @Then("Validate the [Login] page elements")

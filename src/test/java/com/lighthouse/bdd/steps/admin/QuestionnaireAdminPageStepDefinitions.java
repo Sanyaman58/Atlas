@@ -98,9 +98,14 @@ public class QuestionnaireAdminPageStepDefinitions {
         Pages.questionnaireAdminPage().clickOnContextMenuActivateDeactivateButton();
     }
 
-    @Then("Select {string} value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
-    public void selectValueOfTheActivateDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(String value, int index) {
-        Pages.questionnaireAdminPage().selectActivateDeactivate(index, value);
+    @Then("Select Activate value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
+    public void selectValueOfTheActivateDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(int index) {
+        Pages.questionnaireAdminPage().selectActivate(index);
+    }
+
+    @Then("Select Deactivate value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
+    public void selectValueOfTheDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(int index) {
+        Pages.questionnaireAdminPage().selectDeactivate(index);
     }
 
     @Then("The {int} question is deactivated")

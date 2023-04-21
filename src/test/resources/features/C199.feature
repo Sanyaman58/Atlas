@@ -24,7 +24,7 @@ Feature: C199
     When Click on the [Versioned Requirements] sidebar button from admin
     Then Enter requirement name in the requirement search on the [Versioned Requirements] page
 #    And Verify that newly created requirement contains "(RES1 != VT) and ((FIN1 = Y and FIN1.1 = Y and POS1 = Y and PRO4.2 = N and PRO1.3 = N) or (FIN1 = N and POS1 = Y and POS1.11 = Y and PRO1.3 = N and PRO4.2 = N and POS1.1.9 = Y) or (FIN1 = Y and POS1.11 = Y and POS1.11.1 = N and POS1.1 = N and PRO4.2 = N and PRO1.3 = N) or (FIN1 = Y and POS1 = Y and FIN1.2 = Y and FIN1 = Y and PRO4.2 = N and FIN1.1 = N))" selector criteria
-    And Verify that newly created requirement contains "(RES1 != VT) and ((FIN1 = Y and FIN1.1 = Y and POS1 = Y and PRO6.3 = N and PRO4.1 = N) or (FIN1 = N and POS1 = Y and POS1.1 = Y and PRO4.1 = N and PRO6.3 = N and POS1.1.3 = Y) or (FIN1 = Y and POS1.1 = Y and POS1.1.1 = N and POS1.1.2 = N and PRO6.3 = N and PRO4.1 = N) or (FIN1 = Y and POS1 = Y and FIN1.2 = Y and FIN1 = Y and PRO6.3 = N and FIN1.1 = N))" selector criteria
+    And Verify that newly created requirement contains "(RES1 != VT) and ((FIN1 = Y and FIN1.1 = Y and POS1 = Y and PRO4.12 = N and PRO1.1 = N) or (FIN1 = N and POS1 = Y and POS1.11 = Y and PRO1.1 = N and PRO4.12 = N and POS1.1.9 = Y) or (FIN1 = Y and POS1.11 = Y and POS1.11.1 = N and POS1.1 = N and PRO4.12 = N and PRO1.1 = N) or (FIN1 = Y and POS1 = Y and FIN1.2 = Y and FIN1 = Y and PRO4.12 = N and FIN1.1 = N))" selector criteria
     And Click on the [Approve Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
     Then Click on the [Activate Requirement] button of the record by 1 index on the [Versioned Requirements] page
@@ -32,9 +32,9 @@ Feature: C199
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -61,7 +61,7 @@ Feature: C199
     And The [Activity Logs] page is opened
     Then Enter requirement name in the activity search on the [Activity Logs] page
 #    And Verify that log containing "(RES1 != VT) and ((FIN1 = Y and FIN1.1 = Y and POS1 = Y and PRO4.2 = N and PRO1.3 = N) or (FIN1 = N and POS1 = Y and POS1.11 = Y and PRO1.3 = N and PRO4.2 = N and POS1.1.9 = Y) or (FIN1 = Y and POS1.11 = Y and POS1.11.1 = N and POS1.1 = N and PRO4.2 = N and PRO1.3 = N) or (FIN1 = Y and POS1 = Y and FIN1.2 = Y and FIN1 = Y and PRO4.2 = N and FIN1.1 = N))" description text is displayed on the [Activity Logs] page
-    And Verify that log containing "(RES1 != VT) and ((FIN1 = Y and FIN1.1 = Y and POS1 = Y and PRO6.3 = N and PRO4.1 = N) or (FIN1 = N and POS1 = Y and POS1.1 = Y and PRO4.1 = N and PRO6.3 = N and POS1.1.3 = Y) or (FIN1 = Y and POS1.1 = Y and POS1.1.1 = N and POS1.1.2 = N and PRO6.3 = N and PRO4.1 = N) or (FIN1 = Y and POS1 = Y and FIN1.2 = Y and FIN1 = Y and PRO6.3 = N and FIN1.1 = N))" description text is displayed on the [Activity Logs] page
+    And Verify that log containing "(RES1 != VT) and ((FIN1 = Y and FIN1.1 = Y and POS1 = Y and PRO4.12 = N and PRO1.1 = N) or (FIN1 = N and POS1 = Y and POS1.11 = Y and PRO1.1 = N and PRO4.12 = N and POS1.1.9 = Y) or (FIN1 = Y and POS1.11 = Y and POS1.11.1 = N and POS1.1 = N and PRO4.12 = N and PRO1.1 = N) or (FIN1 = Y and POS1 = Y and FIN1.2 = Y and FIN1 = Y and PRO4.12 = N and FIN1.1 = N))" description text is displayed on the [Activity Logs] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

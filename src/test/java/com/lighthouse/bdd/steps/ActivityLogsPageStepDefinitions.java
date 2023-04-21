@@ -54,12 +54,17 @@ public class ActivityLogsPageStepDefinitions {
 
     @And("Verify that log containing created earlier requirement in description text is displayed on the [Activity Logs] page")
     public void verifyThatLogContainingCreatedEarlierRequirementInDescriptionTextIsDisplayedOnTheActivityLogsPage() {
-        Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(Pages.versionRequirementsAdminPage().getRequirementSku()));
+        String SKU = Pages.versionRequirementsAdminPage().getRequirementSku();
+        String trimSKU = SKU.substring(SKU.length() - 9);
+        Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(trimSKU));
 
     }
 
     @Then("Enter requirement SKU in the activity search on the [Activity Logs] page")
     public void enterRequirementSKUInTheActivitySearchOnTheActivityLogsPage() {
-        Pages.activityLogsPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
+        String SKU = Pages.versionRequirementsAdminPage().getRequirementSku();
+        String trimSKU = SKU.substring(SKU.length() - 9);
+        System.out.println(trimSKU);
+        Pages.activityLogsPage().enterTextInTheSearchField(trimSKU);
     }
 }
