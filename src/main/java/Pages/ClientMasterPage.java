@@ -126,24 +126,24 @@ public class ClientMasterPage extends PageTools {
 	By reorderSourceButton = By.xpath("//*[@id=\"sort_cat-0\"]/div/h4/i[1]");
 	By reorderSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By reorderDropButton = By.xpath("//*[@id=\"sort_cat-1\"]/div/h4/i[1]");
-	By questionLabel = By.xpath("//label[@id=\"hover-FIN1\"]//span[1]");
+	By questionLabel = By.xpath("//label[@id=\"hover-FIN1.1.1\"]//span[1]");
 	By questionContextMenu = By.xpath("//*[@id=\"context-menu-question\"]/ul");
 	By addNewQuestionOption = By.xpath("//*[@id=\"context-menu-question\"]/ul/li[1]/a");
 	By addQuestionPlusIcon = By.xpath("//i[@class=\"icon fa fa-plus add-icon-question \"]");
-	By finQuestionPlusIcon = By.xpath("//i[@id=\"add-question-sub-FIN1.1\"]");
-	By questionInputField = By.xpath("//textarea[@id=\"add-question-FIN1.1-0\"]");
-	By addQuestionAddButton = By.xpath("//button[@id=\"add-question-FIN1.1-0\"]");
-	By addQuestionCancelButton = By.xpath("//button[@id=\"cancel-question-FIN1.1-0\"]");
+	By finQuestionPlusIcon = By.xpath("//i[@id=\"add-question-sub-FIN1.1.1\"]");
+	By questionInputField = By.xpath("//textarea[@id=\"add-question-FIN1.1.1-0\"]");
+	By addQuestionAddButton = By.xpath("//button[@id=\"add-question-FIN1.1.1-0\"]");
+	By addQuestionCancelButton = By.xpath("//button[@id=\"cancel-question-FIN1.1.1-0\"]");
 	By questionnaireSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By questionPopupEditOption = By.xpath("//*[@id=\"context-menu-question\"]/ul/li[2]/a/i");
 	By questionsEditIcon = By.xpath("//i[@class=\"fa fa-edit edit-icon\"]");
-	By firstEditIcon = By.xpath("//*[@id=\"edit-FIN1\"]");
-	By editQuestionInputField = By.xpath("//*[@id=\"input-FIN1\"]");
-	By editQuestionUpdateButton = By.xpath("//*[@id=\"update-FIN1\"]");
-	By editQuestionCancelButton = By.xpath("//*[@id=\"cancel-FIN1\"]");
+	By firstEditIcon = By.xpath("//*[@id=\"edit-FIN1.1.1\"]");
+	By editQuestionInputField = By.xpath("//*[@id=\"input-FIN1.1.1\"]");
+	By editQuestionUpdateButton = By.xpath("//*[@id=\"update-FIN1.1.1\"]");
+	By editQuestionCancelButton = By.xpath("//*[@id=\"cancel-FIN1.1.1\"]");
 	By questionPopupActivateOption = By.xpath("//*[@id=\"context-menu-question\"]/ul/li[5]/a");
 	By activateDeactivateDropdown = By.xpath("//select[@class=\"activate-deactivate-dropdown \"]");
-	By firstActivateDeactivateDropdown = By.xpath("//*[@id=\"is_active-FIN1\"]");
+	By firstActivateDeactivateDropdown = By.xpath("//*[@id=\"is_active-FIN1.1.1\"]");
 	By questionnairePageSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By questionnairePageExitButton = By.xpath("//button[@id=\"exit-state\"]");
 	By questionnaireVersionSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[8]/a");
@@ -1169,7 +1169,7 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(questionContextMenu);
 		waitForElementVisibility(addNewQuestionOption);
 		click(addNewQuestionOption);
-		SelenideTools.sleep(4);
+		SelenideTools.sleep(8);
 
 		List<SelenideElement> addQuestionPlusIconElement = getElements(addQuestionPlusIcon);
 		waitForElementVisibility(addQuestionPlusIcon);
@@ -1241,10 +1241,9 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(questionPopupActivateOption);
 		click(questionPopupActivateOption);
 		SelenideTools.sleep(2);
-		waitForElementVisibility(activateDeactivateDropdown);
+//		waitForElementVisibility(activateDeactivateDropdown);
 		List<SelenideElement> activateDeactivateDropdownElement = getElements(activateDeactivateDropdown);
-		System.out.println("Total count of all the activate and deactivate dropdown = "
-				+ activateDeactivateDropdownElement.size());
+		System.out.println("Total count of all the activate and deactivate dropdown = "+ activateDeactivateDropdownElement.size());
 
 		SelenideElement firstActivateDeactivateDropdownElement = getSelenideElement(firstActivateDeactivateDropdown);
 		firstActivateDeactivateDropdownElement.selectOption(1);
@@ -1281,7 +1280,7 @@ public class ClientMasterPage extends PageTools {
 		click(approveButton);
 		waitForElementVisibility(approvePopupYesButton);
 		click(approvePopupYesButton);
-		SelenideTools.sleep(8);
+		SelenideTools.sleep(5);
 		questionnairePageVersionLabelElement.doubleClick();
 		SelenideTools.sleep(3);
 		waitForElementVisibility(firstQuestionnaireActivateButton);
