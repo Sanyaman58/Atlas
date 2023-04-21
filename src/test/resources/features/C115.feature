@@ -17,7 +17,6 @@ Feature: C115
       | Client Name   |
       | Company Name  |
       | Facility Name |
-    When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     When Select "Sachin" client from the client dropdown
@@ -41,12 +40,11 @@ Feature: C115
     When Get audit logs from the table
     Then Verify that new log with "New Facility" type is in the list
     And Reload the browser
-    #When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     When Click on the [Configuration] sidebar button
-    #Then The [Configuration] page is opened
-    #When Select "Sachin" client from the client dropdown
-    #And Delete newly created configuration with status "Saved"
-    #When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
-    #And Click on the [Audit Logs] sidebar button on Lighthouse
-    #When Get audit logs from the table
-    #Then Verify that new log with "Delete Result" type is in the list
+    Then The [Configuration] page is opened
+    When Select "Sachin" client from the client dropdown
+    And Delete newly created configuration with status "Saved"
+    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
+    And Click on the [Audit Logs] sidebar button on Lighthouse
+    When Get audit logs from the table
+    Then Verify that new log with "Delete Result" type is in the list
