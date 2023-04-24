@@ -40,6 +40,12 @@ public class ViewResultsPage extends PageTools {
 
     By companySelect = By.xpath("//select[@class='company_val form-control']");
     By exportButton = By.xpath("//button[contains(text(),'Export')]");
+    By dateTimeInputSearchbar = By.xpath("//input[@placeholder=\"Search Date/Time\"]");
+    By companyNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Company Name\"]");
+    By facilityNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Facility Name\"]");
+    By initiatedByInputSearchbar = By.xpath("//input[@placeholder=\"Search Initiated By\"]");
+    By searchStatusInputSearchbar = By.xpath("//input[@placeholder=\"Search Status\"]");
+    By resultPageSearchbar = By.xpath("//div[2]/div/div/div[1]/div/table/thead/tr[2]/th/input");
 
     List<List<String>> tableRecords;
     List<List<String>> excelTableRecords;
@@ -360,14 +366,6 @@ public class ViewResultsPage extends PageTools {
         }
         return data;
     }
-    
-    By dateTimeInputSearchbar = By.xpath("//input[@placeholder=\"Search Date/Time\"]");
-    By companyNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Company Name\"]");
-    By facilityNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Facility Name\"]");
-    By initiatedByInputSearchbar = By.xpath("//input[@placeholder=\"Search Initiated By\"]");
-    By searchStatusInputSearchbar = By.xpath("//input[@placeholder=\"Search Status\"]");
-    By resultPageSearchbar = By.xpath("//div[2]/div/div/div[1]/div/table/thead/tr[2]/th/input");
-    
     
     public void verifySearchBarUnderColumns(){
         waitForElementVisibility(dateTimeInputSearchbar);
