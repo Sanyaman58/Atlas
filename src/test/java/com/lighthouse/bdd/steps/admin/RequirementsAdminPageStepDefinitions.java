@@ -64,7 +64,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("The following labels are displayed in the [Requirements Viewer] table")
     public void theFollowingLabelsAreDisplayed(List<String> listOfLabels) {
-        Assert.assertTrue(Pages.researchNotificationPage().isTableLabelsPresent(listOfLabels));
+        Assert.assertTrue(Pages.requirementsAdminPage().isTableLabelsPresent(listOfLabels));
     }
 
     @Then("The [Requirement Viewer] table is displayed")
