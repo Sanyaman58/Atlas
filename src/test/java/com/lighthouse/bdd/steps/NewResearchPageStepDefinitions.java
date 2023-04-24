@@ -2,6 +2,7 @@ package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
 import Utils.SelenideTools;
+import com.codeborne.selenide.Selenide;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -340,6 +341,12 @@ public class NewResearchPageStepDefinitions {
 	public void verifyTheIntelligenceEntitlementMessageIsShown() {
 		Assert.assertTrue(Pages.newResearchPage().isIntelligenceCountMessageDisplayed());
 	}
+
+    @When("Refresh the page")
+    public void refreshThePage() {
+		SelenideTools.sleep(5);
+		Selenide.refresh();
+    }
 
 //	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
 //	public void verifyDeleteFacilityButtonIsEnabledOnConfigurationPage() {

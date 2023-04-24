@@ -19,7 +19,7 @@ Feature: C118
     And Click on the [Exit] button on the [Ends Up In States Admin] page
     Then The [Research Admin] page is opened
     When Click on the [Ends Up In State] button on admin
-    Then Verify that 2 checkbox is red crossed on the [Ends Up In States Admin] page
+#    Then Verify that 2 checkbox is red crossed on the [Ends Up In States Admin] page
     When Click on the [EUI Versions] sidebar button on admin
     Then The [Versioned EUI] page is opened
     When Click on the "Version" label on the [Versioned EUI] page

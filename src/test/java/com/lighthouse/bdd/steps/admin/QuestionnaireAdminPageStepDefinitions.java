@@ -117,4 +117,14 @@ public class QuestionnaireAdminPageStepDefinitions {
     public void theQuestionIsActivated(int index) {
         Assert.assertFalse(Pages.questionnaireAdminPage().isQuestionDeactivated(index));
     }
+
+    @Then("The Activate questionnaire version button is not visible on the [Questionnaire Versions] page")
+    public void theActivateQuestionnaireVersionButtonIsNotVisibleOnTheQuestionnaireVersionsPage() {
+        Assert.assertFalse(Pages.questionnaireAdminPage().isActivateQuestionnaireVersionButtonVisible());
+    }
+
+    @And("The View questionnaire version button is visible on the [Questionnaire Versions] page")
+    public void theViewQuestionnaireVersionButtonIsVisibleOnTheQuestionnaireVersionsPage() {
+        Assert.assertTrue(Pages.questionnaireAdminPage().isViewQuestionnaireVersionButtonVisible());
+    }
 }

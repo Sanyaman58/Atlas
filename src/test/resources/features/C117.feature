@@ -30,6 +30,7 @@ Feature: C117
     And Check 4 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     When Click on the [Save] button on the [Requirements View] page
+    When Refresh the page
     Then Select the [Preliminary Data] radio button on [Requirement View] page
     And Select "Alaska" jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     Then Newly created job with status "In-Progress" is displayed in the table on the [Requirements View] page

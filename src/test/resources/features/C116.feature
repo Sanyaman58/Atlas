@@ -12,7 +12,7 @@ Feature: C116
     When Click on the [Requirements View] sidebar button
     Then The [Requirements View] page is opened
     And Validate the [Requirements Viewer Filters] elements on the [Requirements View] page
-    Then Select the [Production Data] radio button on [Requirement View] page
+    Then Select the [Preliminary Data] radio button on [Requirement View] page
     Then The [Requirement Viewer] table is displayed
     Then The following labels are displayed in the [Requirements Viewer] table
       |Jurisdiction|
