@@ -20,7 +20,7 @@ Feature: C161
     When Enter random requirement name on the [Requirements View] page
     And Enter random application name on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
-    And Check 6 question in the [Question Selection] section on the [Requirements View] page
+    And Check 7 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin
@@ -32,9 +32,9 @@ Feature: C161
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -44,7 +44,7 @@ Feature: C161
     And Get the jurisdictions checkboxes values
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
-    And Select 4 question on the [Questionnaire] page
+    And Select 5 question on the [Questionnaire] page
     Then Get the questions values
     And Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
@@ -59,8 +59,9 @@ Feature: C161
     Then Verify that early created requirement name is in the list
     And Close [Research Results] window
     When Click on the [Activity Logs] button of the newly created job on the [View Results] page
-    Then Enter "Selector Successfully matched for Active Requirement SKU" in the activity search on the [Activity Logs] page
+    When Enter requirement SKU in the activity search on the [Activity Logs] page
+#    Then Enter "Selector Successfully matched for Active Requirement SKU" in the activity search on the [Activity Logs] page
     And Verify that log containing created earlier requirement in description text is displayed on the [Activity Logs] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

@@ -291,9 +291,9 @@ public class RequirementsAdminPageStepDefinitions {
         Pages.requirementsAdminPage().checkQuestion(8);
         Pages.requirementsAdminPage().checkQuestion(9);
         Pages.requirementsAdminPage().checkQuestion(10);
-        Pages.requirementsAdminPage().checkQuestion(47);
-        Pages.requirementsAdminPage().checkQuestion(48);
-        Pages.requirementsAdminPage().checkQuestion(66);
+        Pages.requirementsAdminPage().checkQuestion(44);
+        Pages.requirementsAdminPage().checkQuestion(49);
+        Pages.requirementsAdminPage().checkQuestion(62);
 
         Pages.requirementsAdminPage().deleteQuestion(0);
         Pages.requirementsAdminPage().deleteQuestion(0);

@@ -12,11 +12,11 @@ Feature: C158
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And The client dropdown is visible and clickable
-    Then Select "Adam Drugs" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then 1 record is displayed in the table on the [Configuration] page
     When Click on the [Results] sidebar button on Lighthouse
     Then The [View Results] page is opened
-    When Select "Adam Drugs" client from the client dropdown on the [View Results] page
+    Then Select "AR Pharma" client from the client dropdown on [View Results] page
 #    And Select "newcompany" company from the client dropdown on the [View Results] page
     Then 1 record is displayed in the table on the [View Results] page
 

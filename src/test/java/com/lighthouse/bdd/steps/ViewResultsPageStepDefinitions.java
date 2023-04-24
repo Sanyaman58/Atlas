@@ -70,7 +70,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Verify that early created requirement name is in the list")
     public void verifyThatEarlyCreatedRequirementNameIsInTheList() {
-        SelenideTools.sleep(5);
+        SelenideTools.sleep(10);
         Assert.assertTrue(Pages.viewResultsPage().isRequirementPresentInTheList(Pages.requirementsAdminPage().getState()
                 , Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName()));
@@ -196,5 +196,10 @@ public class ViewResultsPageStepDefinitions {
     @And("Verify the [Progress Bar] against the newly created job on the screen")
     public void verifyTheProgressBarAgainstTheNewlyCreatedJobOnTheScreen() {
         Assert.assertTrue(Pages.viewResultsPage().isProgressBarVisible());
+    }
+
+    @Then("Select {string} client from the client dropdown on [View Results] page")
+    public void selectClientFromTheClientDropdownOnViewResultsPage(String client) {
+        Pages.viewResultsPage().selectClient(client);
     }
 }

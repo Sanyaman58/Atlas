@@ -50,7 +50,7 @@ public class LoginPageStepDefinitions {
 
 //        SelenideTools.getDriver().switchTo().alert().accept();
 //        SelenideTools.sleep(2);
-	}
+    }
 
 	@Then("Validate the [Login] page elements")
 	public void validateTheLoginPageElements() {
