@@ -360,4 +360,26 @@ public class ViewResultsPage extends PageTools {
         }
         return data;
     }
+    
+    By dateTimeInputSearchbar = By.xpath("//input[@placeholder=\"Search Date/Time\"]");
+    By companyNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Company Name\"]");
+    By facilityNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Facility Name\"]");
+    By initiatedByInputSearchbar = By.xpath("//input[@placeholder=\"Search Initiated By\"]");
+    By searchStatusInputSearchbar = By.xpath("//input[@placeholder=\"Search Status\"]");
+    By resultPageSearchbar = By.xpath("//div[2]/div/div/div[1]/div/table/thead/tr[2]/th/input");
+    
+    
+    public void verifySearchBarUnderColumns(){
+        waitForElementVisibility(dateTimeInputSearchbar);
+        waitForElementVisibility(companyNameInputSearchbar);
+        waitForElementVisibility(facilityNameInputSearchbar);
+        waitForElementVisibility(initiatedByInputSearchbar);
+        waitForElementVisibility(searchStatusInputSearchbar);
+        SelenideTools.sleep(5);
+        List<SelenideElement> elements = getElements(resultPageSearchbar);
+        if(elements.size() ==5) {
+        	System.out.println("Verified the count of search bar to be "+  elements.size());
+        }
+        
+    }
 }
