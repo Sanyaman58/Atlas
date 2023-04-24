@@ -59,4 +59,10 @@ public class AtlasDashboardManagementPageStepDefinitions {
         Pages.atlasDashboardManagementPage().clickRequirementsSidebarButton();
         SelenideTools.sleep(3);
     }
+
+    @When("Click on the [Intelligence Admin] sidebar collapse button")
+    public void clickOnTheIntelligenceAdminSidebarCollapseButton() {
+        Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+        SelenideTools.sleep(2);
+    }
 }

@@ -55,7 +55,7 @@ public class RequirementsAdminPage extends PageTools {
 
 
 	By requirementViewersTable = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']");
-	By requirementViewersTableLabels = By.xpath("//div[@id='requirement-table']//table[@class='table table-inner table-hove fixed_headers']/thead/tr/th");
+	By requirementViewersTableLabels = By.xpath("//div[@id='requirement-table']//table//thead/tr/th");
 	By requirementViewersTableRecords = By.xpath("//div[@id='requirement-table']//table/tbody/tr");
 	By contextMenu = By.xpath("//div[@id='context-menu']");
 	By contextMenuViewButton = By.xpath("//div[@id='context-menu']/div[@id='view']/a");
@@ -328,14 +328,14 @@ public class RequirementsAdminPage extends PageTools {
 		List<String> tableLabelsList = new ArrayList<>();
 		List<SelenideElement> elements = getElements(requirementViewersTableLabels);
 		for(SelenideElement element : elements) {
-			tableLabelsList.add(element.getText());
-			System.out.println(element.getText());
+			tableLabelsList.add(element.getAttribute("aria-label"));
+			System.out.println(element.getAttribute("aria-label"));
 		}
 		System.out.println(" //////////////////////// ");
-		tableLabelsList.add(getSelenideElement(requirementViewersTableLabels).getText());
+//		tableLabelsList.add(getSelenideElement(requirementViewersTableLabels).getAttribute("aria-label"));
 		for(int i = 0; i < labels.size(); i++){
 			System.out.println(labels.get(i)+" "+tableLabelsList.get(i));
-			if(!labels.get(i).equals(tableLabelsList.get(i)))
+			if(!tableLabelsList.get(i).contains(labels.get(i)))
 				return false;
 		}
 		return true;

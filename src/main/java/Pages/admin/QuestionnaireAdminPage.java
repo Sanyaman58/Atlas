@@ -22,6 +22,8 @@ public class QuestionnaireAdminPage extends PageTools {
 	By commentWindowURLInput = By.xpath("//div[@class='modal-content']//input[@type='text']");
 	By saveCommentButton = By.xpath("//div[@class='modal-content']//button[@id='yes_btn']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
+	By questionnaireViewButton = By.xpath("//table[@id='DataTables_Table_0']//a[@class='view']");
+	By questionnaireActivateButton = By.xpath("//table[@id='DataTables_Table_0']//button[@title='Activate questionnaire']");
 
 
 	public boolean isQuestionnaireAdminPageOpened(){
@@ -38,6 +40,14 @@ public class QuestionnaireAdminPage extends PageTools {
 		waitForElementVisibility(questionnaireQuestions);
 		getElements(questionnaireQuestions).get(index).contextClick();
 		SelenideTools.sleep(2);
+	}
+
+	public boolean isViewQuestionnaireVersionButtonVisible(){
+		return isElementVisible(questionnaireViewButton);
+	}
+
+	public boolean isActivateQuestionnaireVersionButtonVisible(){
+		return isElementVisible(questionnaireActivateButton);
 	}
 
 	public void clickOnContextMenuActivateDeactivateButton(){
