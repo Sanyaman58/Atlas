@@ -37,8 +37,9 @@ public class NewResearchPage extends PageTools {
 	By tableJobsRadioButton = By.xpath(
 			"//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td/input[@name='copy_from_job_id']");
 	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')]");
+	By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[5]/a");
 	By clientDropdownResults = By.xpath("//select[contains(@class,'new_client_id')]");
-	By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[5]");
+	// By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[5]");
 	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[1]/a");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");

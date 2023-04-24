@@ -1,4 +1,4 @@
-@C109 @Test
+	@C109 @Test
 Feature: C109
 
   @TestRail(109)
@@ -10,9 +10,9 @@ Feature: C109
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "Sachin" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "Sachin" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -25,10 +25,10 @@ Feature: C109
     Then Get the questions values
     When Click on the [Surveillance Setup] breadcrumb
     Then The [Configuration] page is opened
-    When Select "Test Pharma" client from the client dropdown
+    When Select "Sachin" client from the client dropdown
     Then Newly created job with status "Incomplete" is displayed in the table on the [New Research] page
     And Select already created job in the table on the [New Research] page
-    And Click on [Configuration Table] next button
+    And Select radio button of existing job and click Next
     Then The [Jurisdiction] page is opened
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened

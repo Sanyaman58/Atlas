@@ -52,6 +52,7 @@ public class ResearchAdminPageStepDefinitions {
 
 	@When("Verify the child buttons under [Intelligence Admin] section")
 	public void verifyButtonsUnderIntelligenceAdmin() {
+//		SelenideTools.sleep(3);
 		Pages.researchAdminPage().verifyIntelligenceAdminChildOptions();
 	}
 

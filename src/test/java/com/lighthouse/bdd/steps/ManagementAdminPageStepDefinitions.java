@@ -197,6 +197,7 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Reload the browser")
 	public void browserReload() {
 		Pages.clientMasterPage().reloadBrowser();
+		SelenideTools.sleep(5);
 	}
 
 	@And("Navigate back to surveillance page")
