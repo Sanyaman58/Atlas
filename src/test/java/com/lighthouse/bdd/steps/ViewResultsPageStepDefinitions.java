@@ -202,4 +202,14 @@ public class ViewResultsPageStepDefinitions {
     public void selectClientFromTheClientDropdownOnViewResultsPage(String client) {
         Pages.viewResultsPage().selectClient(client);
     }
+    
+    @And("Click on result page view icon")
+    public void clickResultViewIcon() {
+        Pages.viewResultsPage().clickOnResultViewButton();
+    }
+    
+    @And("Verify the [Category] column on Knowledge Results page")
+    public void verifyCategoryColumn() {
+        Pages.viewResultsPage().verifyCategoryColumnOnResultsPage();
+    }
 }
