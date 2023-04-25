@@ -2,6 +2,8 @@ package Pages;
 
 import Utils.SelenideTools;
 import base.PageTools;
+
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -115,4 +117,33 @@ public class QuestionnairePage extends PageTools {
                 && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input[@value='Y']"))
                 && isElementVisible (By.xpath("//div[@id='questionnaire-container']//li/span[2]/input[@value='N']"));
     }
+    
+    By questionNoButton = By.xpath("//input[@name=\"questionnaire[FIN1]\"][@value=\"N\"]");
+    By disabledChildQuestion = By.xpath("//input[@name=\"questionnaire[FIN1.1]\"][@value=\"N\"]");
+    
+    public void clickQuestionNoButton(){
+       waitForElementVisibility(questionNoButton);
+       click(questionNoButton);
+    }
+    
+    public void verifyDisabledQuestion(){
+    	SelenideElement disabledChildQuestionElement = getSelenideElement(disabledChildQuestion);
+//        waitForElementVisibility(disabledChildQuestion);
+//        String disabledChildQuestionAttribute = disabledChildQuestionElement.getAttribute("HTML");
+//        if (disabledChildQuestionAttribute.contains("deactive-question")) {
+//    		System.out.println("Question is disabled");
+//    	} else {
+//    		System.out.println("Question is enabled");
+//    	}
+    	String disbaledValue = disabledChildQuestionElement.getAttribute("disabled");
+    	if(disbaledValue != null && (disbaledValue.equals("true") || disbaledValue.equals("disbaled"))) {
+    		disabledChildQuestionElement.shouldBe(Condition.disabled);
+    		System.out.println("Verified disabled child question");
+    	}
+    	else {
+    		disabledChildQuestionElement.shouldNotBe(Condition.disabled);
+    	}
+     }
+    
+
 }
