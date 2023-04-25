@@ -51,7 +51,7 @@ public class ClientMasterPage extends PageTools {
 	By activityLogTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By activityLogFilter = By.xpath("//*[@id=\"DataTables_Table_0_length\"]/label/select");
 	By clientMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[1]");
-	By userMasterSidebarButton = By.xpath("//ul[@id='menu']/li[9]/ul/li[13]");
+	By userMasterSidebarButton = By.xpath("//ul/li/a[contains(text(),'User Master')]");
 	By userMasterPageTitle = By.xpath("//p[@class=' li-text']");
 	By addUserButton = By.xpath("//button[text()='ADD User ']");
 	By addUserPopupWindowTitle = By.xpath("//p[@class='company-1 mb-1']");
@@ -59,6 +59,9 @@ public class ClientMasterPage extends PageTools {
 	By categoryDropdownElements = By.xpath("//select[@id='UserCategoryKey']//option");
 	By userRoleComplianceDropdown = By.xpath("//select[@id='UserRoleComplianceKey']");
 	By userRoleComplianceDropdownElements = By.xpath("//select[@id='UserRoleComplianceKey']//option");
+
+	By userRoleManagementDropdown = By.xpath("//select[@id='UserRoleKey']");
+	By userRoleManagementDropdownElements = By.xpath("//select[@id='UserRoleKey']//option");
 	By clientLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[1]/div/label");
 	By companyLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[2]/label");
 	By facilityLabel = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[2]/div/div[3]/label");
@@ -114,7 +117,7 @@ public class ClientMasterPage extends PageTools {
 	By requirementTypeFilterDropdown = By.xpath("//*[@id=\"filter_Requirement_Type\"]");
 	By requirementNameFilterDropdown = By.xpath("//*[@id=\"filter_Name_Requirement\"]");
 	By requirementViewStatusDropdown = By.xpath("//*[@id=\"status\"]");
-	By resultTableRequirementName = By.xpath("//*[@id=\"DataTables_Table_4\"]/tbody/tr/td[3]");
+	By resultTableRequirementName = By.xpath("//table[@id='user-list-main']//tbody/tr/td[3]");
 	By finSectionQuestionName = By.xpath("//div[@id=\"sort_cat-0\"]//li //span[@class=\"indexing-color\"]");
 	By financialCategoryHeader = By.xpath("//*[@id=\"sort_cat-0\"]/div/h4/span");
 	By addNewCategoryButton = By.xpath("//*[@id=\"context-menu-category\"]/ul/li[1]/a");
@@ -166,7 +169,7 @@ public class ClientMasterPage extends PageTools {
 	By entitlementLowerLimit = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/section/div/div[2]/div/div[2]/h3/span[1]");
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
-	
+	By emailSearchField = By.xpath("//table[@id='user-list-main']/thead/tr[2]/th[3]/input");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -208,6 +211,12 @@ public class ClientMasterPage extends PageTools {
 		waitForElementClickable(addClientButton);
 		click(addClientButton);
 		SelenideTools.sleep(1);
+	}
+
+	public void enterEmailInTheEmailSearchField(String email){
+		waitForElementVisibility(emailSearchField);
+		System.out.println(email);
+		type(email, emailSearchField);
 	}
 
 	public boolean isAddClientPopupWindowOpened() {
@@ -409,6 +418,15 @@ public class ClientMasterPage extends PageTools {
 	public boolean nouserRoleCompliancePresentInDropdown() {
 		SelenideElement userRoleCount = getSelenideElement(userRoleComplianceDropdownElements);
 		return isElementVisible(userRoleComplianceDropdownElements);
+	}
+
+	public boolean isRoleVisibleInTheRoleComplianceDropdown(String role){
+		waitForElementVisibility(userRoleComplianceDropdown);
+		return getElements(userRoleComplianceDropdownElements).contains(role);
+	}
+	public boolean isRoleVisibleInTheRoleManagementDropdown(String role){
+		waitForElementVisibility(userRoleManagementDropdown);
+		return getElements(userRoleManagementDropdownElements).contains(role);
 	}
 
 	public void clientLabel() {
@@ -872,6 +890,13 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Matching record not found");
 		}
 
+	}
+
+	public void clickOnTheClientName(int index){
+		waitForElementVisibility(resultTableRequirementName);
+		getElements(resultTableRequirementName).get(index).doubleClick();
+		getElements(resultTableRequirementName).get(index).doubleClick();
+		getElements(resultTableRequirementName).get(index).doubleClick();
 	}
 
 	public void openVersionRequirementsPage() {

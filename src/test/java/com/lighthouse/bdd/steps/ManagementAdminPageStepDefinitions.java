@@ -128,6 +128,7 @@ public class ManagementAdminPageStepDefinitions {
 	@Then("Click [Add User] button")
 	public void clickAddUserButton() {
 		Pages.clientMasterPage().clickAddUserButton();
+		SelenideTools.sleep(5);
 	}
 
 	@Then("Add User popup window opened")
@@ -488,5 +489,26 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
 		Assert.assertTrue(Pages.clientMasterPage().euiStates());
+	}
+
+	@Then("Type {string} in the email search on the [User Master] page")
+	public void typeInTheEmailSearchOnTheUserMasterPage(String email) {
+		Pages.clientMasterPage().enterEmailInTheEmailSearchField(email);
+	}
+
+	@And("Double click on the {int} record on the [User Master] page")
+	public void doubleClickOnTheRecordOnTheUserMasterPage(int index) {
+		Pages.clientMasterPage().clickOnTheClientName(index-1);
+	}
+
+	@When("Verify that {string} role is not available in the Roles-Management select on the [User Master] page")
+	public void verifyThatRoleIsNotAvailableInTheRolesManagementSelectOnTheUserMasterPage(String role) {
+		Assert.assertFalse(Pages.clientMasterPage().isRoleVisibleInTheRoleManagementDropdown(role));
+	}
+
+	@And("Verify that {string} role is not available in the Roles-Compliance Intelligence select on the [User Master] page")
+	public void verifyThatRoleIsNotAvailableInTheRolesComplianceIntelligenceSelectOnTheUserMasterPage(String role) {
+		Assert.assertFalse(Pages.clientMasterPage().isRoleVisibleInTheRoleComplianceDropdown(role));
+
 	}
 }
