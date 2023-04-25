@@ -66,4 +66,24 @@ public class ResearchNotificationPageStepDefinitions {
     public void aRecordWithTypeAndScopeDisplayedInTheTable(String type, String scope) {
         Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndNoteDisplayed(type, scope, Pages.versionRequirementsAdminPage().getChangeNoteText()));
     }
+    
+    @Then("Click on [Notifications] sidebar option")
+    public void clickNotifications() {
+    	Pages.researchNotificationPage().clickNotificationsButton();
+    }
+    
+    @Then("Click on [Intelligence] option")
+    public void clickIntelligenceOption() {
+    	Pages.researchNotificationPage().selectIntelligence();
+    }
+    
+    @Then("Verify [Research Notfications] page is opened")
+    public void verifyResearchNotificationsPage() {
+    	Pages.researchNotificationPage().verifyResearchNotificationsPageOpened();
+    }
+    
+    @Then("Verify the test wrapping in the Research Notifications page")
+    public void verifyTextWrapping() {
+    	Pages.researchNotificationPage().verifyTextWrappingOnNotificationsPage();
+    }
 }
