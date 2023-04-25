@@ -203,6 +203,11 @@ public class ViewResultsPageStepDefinitions {
         Pages.viewResultsPage().selectClient(client);
     }
     
+    @And("Verify the search bar under each column")
+    public void verifySearchBar() {
+        Pages.viewResultsPage().verifySearchBarUnderColumns();
+    }
+    
     @And("Click on result page view icon")
     public void clickResultViewIcon() {
         Pages.viewResultsPage().clickOnResultViewButton();
