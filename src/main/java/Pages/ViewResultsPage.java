@@ -37,9 +37,16 @@ public class ViewResultsPage extends PageTools {
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
     By progressBar = By.xpath("//tr//div[@class='progress']");
-
     By companySelect = By.xpath("//select[@class='company_val form-control']");
     By exportButton = By.xpath("//button[contains(text(),'Export')]");
+    By dateTimeInputSearchbar = By.xpath("//input[@placeholder=\"Search Date/Time\"]");
+    By companyNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Company Name\"]");
+    By facilityNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Facility Name\"]");
+    By initiatedByInputSearchbar = By.xpath("//input[@placeholder=\"Search Initiated By\"]");
+    By searchStatusInputSearchbar = By.xpath("//input[@placeholder=\"Search Status\"]");
+    By resultPageSearchbar = By.xpath("//div[2]/div/div/div[1]/div/table/thead/tr[2]/th/input");
+    By resultPageViewIcon = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
+    By categoryColumnText = By.xpath("//*[@id=\"DataTables_Table_1_wrapper\"]/div[2]/div/div/div[2]/div[1]/div/table/thead/tr[1]/th[2]");
 
     List<List<String>> tableRecords;
     List<List<String>> excelTableRecords;
@@ -359,5 +366,32 @@ public class ViewResultsPage extends PageTools {
             }
         }
         return data;
+    }
+    
+    public void verifySearchBarUnderColumns(){
+        waitForElementVisibility(dateTimeInputSearchbar);
+        waitForElementVisibility(companyNameInputSearchbar);
+        waitForElementVisibility(facilityNameInputSearchbar);
+        waitForElementVisibility(initiatedByInputSearchbar);
+        waitForElementVisibility(searchStatusInputSearchbar);
+        SelenideTools.sleep(5);
+        List<SelenideElement> elements = getElements(resultPageSearchbar);
+        if(elements.size() ==5) {
+        	System.out.println("Verified the count of search bar to be "+  elements.size());
+        }
+    }
+        
+    public void clickOnResultViewButton(){
+        waitForElementVisibility(resultPageViewIcon);
+        click(resultPageViewIcon);
+        SelenideTools.sleep(5);
+    }
+    
+    public void verifyCategoryColumnOnResultsPage(){
+        waitForElementVisibility(categoryColumnText);
+        String resultLabelText = "Category";
+        SelenideElement categoryColumnTextElement = getSelenideElement(categoryColumnText);
+        if(categoryColumnTextElement.getText().equals(resultLabelText))
+        		System.out.println("Found label text as" +  categoryColumnTextElement.getText());
     }
 }
