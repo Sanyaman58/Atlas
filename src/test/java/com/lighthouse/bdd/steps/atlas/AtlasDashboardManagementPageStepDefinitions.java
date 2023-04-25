@@ -77,4 +77,5 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	public void verifyReleaseNotesPresent() {
 		Pages.atlasDashboardManagementPage().verifyReleaseNotes();
 	}
+
 }

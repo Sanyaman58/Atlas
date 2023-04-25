@@ -49,4 +49,28 @@ public class RequirementsPageStepDefinitions {
     public void verifyRequirementHeaderSearchFields() {
         Pages.requirementsPage().verifyRequirementPageSearchFields();
     }
+
+
+    @When("Click on the {string} label on the [Requirements] page")
+    public void clickOnTheLabelOnTheRequirementsPage(String labelName) {
+        Pages.requirementsPage().clickOnTheTableLabel(labelName);
+    }
+
+    @Then("Right click on {int} record in the [Requirements] table")
+    public void rightClickOnRecordInTheRequirementsTable(int index) {
+        Pages.requirementsPage().rightClickOnTableRecord(index - 1);
+    }
+
+    @And("Click on Show Requirement Details context menu button on the [Requirements] page")
+    public void clickOnShowRequirementDetailsContextMenuButtonOnTheRequirementsPage() {
+        Pages.requirementsPage().clickShowRequirementsDetailsButton();
+    }
+
+    @Then("Verify that Product Line, Business Model and Change Note options are not visible")
+    public void verifyThatProductLineBusinessModelAndChangeNoteOptionsAreNotVisible() {
+        Assert.assertFalse(Pages.requirementsPage().isProductLineLabelVisible());
+        Assert.assertFalse(Pages.requirementsPage().isBusinessModelLabelVisible());
+        Assert.assertFalse(Pages.requirementsPage().isChangeNoteLabelVisible());
+    }
+
 }

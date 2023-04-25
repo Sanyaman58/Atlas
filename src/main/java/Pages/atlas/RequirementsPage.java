@@ -11,6 +11,9 @@ import com.codeborne.selenide.SelenideElement;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import static com.codeborne.selenide.Selenide.actions;
 
 public class RequirementsPage extends PageTools {
 	By requirementsPageTitle = By.xpath("//div[@id='task-grid']//p[contains(text(),'Requirements')]");
@@ -21,15 +24,38 @@ public class RequirementsPage extends PageTools {
 	By errorText = By.xpath("//div[@id='text_error']");
 	By errorWindowOkButton = By.xpath("//a[@id='modal-danger-ok']");
 	By requirementHeaderSearchField = By.xpath("//th[@class=\"header-text\"]//input[not(contains(@type, 'hidden'))]");
+	By requirementsPageTableLabels = By.xpath("//table/thead/tr[1]/th");
+	By showRequirementsDetailsButton = By.xpath("//div[@id='reserachRequirementDetails']");
+	By productLineLabel = By.xpath("//label[text()='Product Line']");
+	By businessModelLabel = By.xpath("//label[text()='Business Model']");
+	By changeNoteLabel = By.xpath("//label[text()='Change Note']");
 
 	public boolean isRequirementsPageOpened() {
 		waitForElementVisibility(requirementsPageTitle);
 		return isElementVisible(requirementsPageTitle);
 	}
 
+	public boolean isProductLineLabelVisible(){
+		return isElementVisible(productLineLabel);
+	}
+	public boolean isBusinessModelLabelVisible(){
+		return isElementVisible(businessModelLabel);
+	}
+
+	public boolean isChangeNoteLabelVisible(){
+		return isElementVisible(changeNoteLabel);
+	}
+
 	public void clickOnThePlusPDFButton(int index) {
 		waitForElementVisibility(requirementsTableRecords);
 		getElements(requirementsTableRecords).get(index).findElement(By.xpath("./td[14]/a")).click();
+	}
+
+	public void rightClickOnTableRecord(int index) {
+		waitForElementVisibility(requirementsTableRecords);
+		WebElement record = getElements(requirementsTableRecords).get(index).findElement(By.xpath("./td[12]"));
+		actions().contextClick(record).build().perform();
+		SelenideTools.sleep(1);
 	}
 
 	public void clickOnThePlusPDFButton() {
@@ -74,4 +100,16 @@ public class RequirementsPage extends PageTools {
 		}
 	}
 
+	public void clickOnTheTableLabel(String labelText){
+		waitForElementVisibility(requirementsPageTableLabels);
+		for(SelenideElement element : getElements(requirementsPageTableLabels)){
+			if(element.getText().equals(labelText) || element.getText().contains(labelText))
+				element.click();
+		}
+	}
+
+	public void clickShowRequirementsDetailsButton(){
+		waitForElementVisibility(showRequirementsDetailsButton);
+		click(showRequirementsDetailsButton);
+	}
 }
