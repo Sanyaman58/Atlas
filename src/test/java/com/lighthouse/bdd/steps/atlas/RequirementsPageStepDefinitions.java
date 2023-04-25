@@ -44,4 +44,9 @@ public class RequirementsPageStepDefinitions {
     public void clickOnThePDFButtonOfAnyRequirementOnTheRequirementsPage() {
         Pages.requirementsPage().clickOnThePlusPDFButton();
     }
+    
+    @And("Verify that the search filed is present with the Requirement Viewer section")
+    public void verifyRequirementHeaderSearchFields() {
+        Pages.requirementsPage().verifyRequirementPageSearchFields();
+    }
 }
