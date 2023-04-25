@@ -7,7 +7,8 @@ import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 public class AtlasDashboardManagementPage extends PageTools {
-	By dashboardGrid = By.xpath("//a[text()[contains(.,'Dashboard')]] | //a[@href='https://qa-atlas.lha.pharma.solutions/home'] | //img[@src='https://stagingatlas.pharma.solutions/theme/build/images/Group 907_p.svg']");
+	By dashboardGrid = By.xpath(
+			"//a[text()[contains(.,'Dashboard')]] | //a[@href='https://qa-atlas.lha.pharma.solutions/home'] | //img[@src='https://stagingatlas.pharma.solutions/theme/build/images/Group 907_p.svg']");
 	By requirementsManagementCollapse = By.xpath("//ul[@id='menu']/li[4]");
 	By requirementsSidebarButton = By.xpath("//ul[@id='menu']/li[4]/ul/li/a");
 	By activitiesSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[2]");
@@ -26,15 +27,14 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By questionnaireVersionsButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[8]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[9]/a");
 	By managementAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li[9]");
+	By homepageSidebarButton = By.xpath("//*[@id=\"menu\"]/li[2]/a");
+	By releaseNotesButton = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/div[2]/div/div/ul/li[4]/a");
 
-
-
-
-	public void openLighthouse(){
+	public void openLighthouse() {
 		SelenideTools.openUrl(Constants.URL);
 	}
 
-	public void openAtlas(){
+	public void openAtlas() {
 		SelenideTools.openUrl(Constants.ATLAS_URL);
 	}
 
@@ -42,10 +42,11 @@ public class AtlasDashboardManagementPage extends PageTools {
 		return Selenide.title();
 	}
 
-	public boolean isDashboardPageOpened(){
+	public boolean isDashboardPageOpened() {
 		SelenideTools.sleep(2);
 		return isElementVisible(dashboardGrid);
 	}
+
 	public void clickRequirementsManagementSidebarCollapseButton() {
 		waitForElementVisibility(requirementsManagementCollapse);
 		click(requirementsManagementCollapse);
@@ -70,8 +71,8 @@ public class AtlasDashboardManagementPage extends PageTools {
 		waitForElementVisibility(surveillanceIntelligenceSidebarCollapse);
 		click(surveillanceIntelligenceSidebarCollapse);
 	}
-	
-	//s
+
+	// s
 	public void clickManagementAdminSidebarCollapseButton() {
 		waitForElementVisibility(managementAdminSidebarCollapse);
 		click(managementAdminSidebarCollapse);
@@ -92,24 +93,33 @@ public class AtlasDashboardManagementPage extends PageTools {
 		click(intelligenceAdminSidebarCollapse);
 	}
 
-	public void clickResearchAdminSidebarButton(){
+	public void clickResearchAdminSidebarButton() {
 		waitForElementVisibility(researchSidebarButton);
 		click(researchSidebarButton);
 	}
 
-	public void clickRequirementsViewSidebarButton(){
+	public void clickRequirementsViewSidebarButton() {
 		waitForElementVisibility(requirementsViewSidebarButton);
 		click(requirementsViewSidebarButton);
 	}
 
-	public void clickAuditLogsSidebarButton(){
+	public void clickAuditLogsSidebarButton() {
 		waitForElementVisibility(auditLogSidebarButton);
 		click(auditLogSidebarButton);
 	}
 
-	public void clickVersionRequirementsSidebarButton(){
+	public void clickVersionRequirementsSidebarButton() {
 		waitForElementVisibility(versionRequirementsSidebarButton);
 		click(versionRequirementsSidebarButton);
+	}
+
+	public void clickHomepageSidebarButton() {
+		waitForElementVisibility(homepageSidebarButton);
+		click(homepageSidebarButton);
+	}
+
+	public void verifyReleaseNotes() {
+		waitForElementVisibility(releaseNotesButton);
 	}
 
 }
