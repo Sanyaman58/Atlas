@@ -5,6 +5,8 @@ import base.PageTools;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,6 +22,14 @@ public class ResearchNotificationPage extends PageTools {
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchNotificationsNoRecords = By.xpath("//td[@class='dataTables_empty']");
     String requirementName;
+    By notificationsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[8]/a");
+    By notificationInteligenceOption = By.xpath("//*[@id=\"menu\"]/li[8]/ul/li[4]/a");
+    By researchNotificationPageHeader = By.xpath("//h2[@class=\"card-heading \"]");
+    String researchNotificationHeaderText = "Research Notification";
+    By researchNotificationSearchBar = By.xpath("//input[@class=\"form-control form-control-sm\"]");
+    String searchNotificationText = "Manufacturer-Non-Resident (REPACKAGER, RELABLER, CMO, ACTUAL MANUFACTURER";
+    By readMore_LessButton = By.xpath("//button[@class=\"read-more read-more-btn\"]");
+    
     public String getRequirementName(){
         return requirementName;
     }
@@ -134,5 +144,38 @@ public class ResearchNotificationPage extends PageTools {
                 returnValue = true;
         }
         return returnValue;
+    }
+    
+    public void clickNotificationsButton(){
+        waitForElementVisibility(notificationsSidebarButton);
+        click(notificationsSidebarButton);
+        SelenideTools.sleep(4);
+    }
+    
+    public void selectIntelligence(){
+        waitForElementVisibility(notificationInteligenceOption);
+        click(notificationInteligenceOption);
+        SelenideTools.sleep(4);
+    }
+    
+    public void verifyResearchNotificationsPageOpened(){
+    	SelenideElement researchNotificationPageHeaderText = getSelenideElement(researchNotificationPageHeader);
+		assertEquals(researchNotificationPageHeaderText.getText(), researchNotificationHeaderText);
+    }
+    
+    public void verifyTextWrappingOnNotificationsPage(){
+    	SelenideElement researchNotificationSearchBarElement = getSelenideElement(researchNotificationSearchBar);
+        waitForElementVisibility(researchNotificationSearchBar);
+        researchNotificationSearchBarElement.setValue(searchNotificationText);
+        SelenideTools.sleep(3);
+        SelenideElement readMore_LessButtonElement = getSelenideElement(readMore_LessButton);
+        if(readMore_LessButtonElement.getText() == "Read More") {
+        	System.out.println("Text of wrap button found to be = "+ readMore_LessButtonElement.getText());
+        }
+        readMore_LessButtonElement.click();
+        
+        if(readMore_LessButtonElement.getText() == "Read Less") {
+        	System.out.println("Text of wrap button found to be = "+ readMore_LessButtonElement.getText());
+        }
     }
 }
