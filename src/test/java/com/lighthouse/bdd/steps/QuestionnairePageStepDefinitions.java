@@ -100,4 +100,14 @@ public class QuestionnairePageStepDefinitions {
     public void verifyTheQuestionsElements() {
         Assert.assertTrue(Pages.questionnairePage().isQuestionElementsVisible());
     }
+    
+    @And("Click on question [No] option")
+    public void clickNoButton() {
+        Pages.questionnairePage().clickQuestionNoButton();
+    }
+    
+    @And("Verify Child questions are disabled")
+    public void verifyDisabledChilsQuestion() {
+        Pages.questionnairePage().verifyDisabledQuestion();
+    }
 }
