@@ -3,10 +3,13 @@ package com.lighthouse.bdd.steps;
 import Pages.Pages;
 import Utils.SelenideTools;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class NewResearchPageStepDefinitions {
 
@@ -347,9 +350,31 @@ public class NewResearchPageStepDefinitions {
 		SelenideTools.sleep(5);
 		Selenide.refresh();
     }
+    
+    @And("Click on the [Intelligence] sidebar button")
+	public void clickIntelligenceSidebar() {
+		Pages.newResearchPage().clickIntelligenceSidebarButton();
+	}
+    
+    @And("Verify Intelligence dropdown options")
+	public void verifyIntelligenceDropdownOption() {
+		Pages.newResearchPage().verifyIntelligenceDropdown();
+	}
+    
+    @And("Verify the header label on Configuration setup page")
+	public void verifyHeaderLableOnCinfigurationPage() {
+		Pages.newResearchPage().verifyConfigurationHeaderText();
+	}
+    
+    @And("Verify the header text on the right section")
+	public void verifyHeaderTextOnRight() {
+		Pages.newResearchPage().verifyConfigurationHeaderTextOnRight();
+	}
+    
+    @And("Verify the Configuration page header text")
+	public void verifyConfigurationEtupHeaderText() {
+		Pages.newResearchPage().verifyConfigurationSetupText();
+	}
 
-//	@And("Verify [Delete Facility] button is enabled on [Configuration] page")
-//	public void verifyDeleteFacilityButtonIsEnabledOnConfigurationPage() {
-//		Assert.assertTrue(Pages.newResearchPage().isDeleteButtonVisible());
-//	}
+
 }
