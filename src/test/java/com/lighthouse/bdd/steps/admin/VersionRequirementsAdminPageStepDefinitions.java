@@ -238,6 +238,21 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getOldRequirementName());
     }
 
+    @And("Verify that [Yes] requirements checks include radio button is not checked on the [View Requirement] button")
+    public void verifyThatYesRequirementsChecksIncludeRadioButtonIsNotCheckedOnTheViewRequirementButton() {
+        Assert.assertFalse(Pages.versionRequirementsAdminPage().isIncludeRadioButtonChecked());
+    }
+
+    @And("Verify that [Yes] requirements checks include radio button is checked on the [View Requirement] button")
+    public void verifyThatYesRequirementsChecksIncludeRadioButtonIsCheckedOnTheViewRequirementButton() {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isIncludeRadioButtonChecked());
+    }
+
+    @When("Click on the [View Requirement] button of the {int} record on the [Versioned Requirements] page")
+    public void clickOnTheViewRequirementButtonOfTheRecordOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index);
+    }
+
 //    @And("Verify that the [Activate Requirement] view option is enabled")
 //    public void verifyThatTheActivateRequirementViewOptionIsEnabled() {
 //        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible());

@@ -141,8 +141,14 @@ public class ResearchAdminPageStepDefinitions {
 		Pages.researchAdminPage().isPermissionsPageOpened();
 	}
 
-	@And("Disable the [Delete Facility] checkbox for [System Admin]")
-	public void disableTheDeleteFacilityCheckboxForSystemAdmin() {
 
+	@When("Click on [View] button of any requirement on the [Active Requirements] page")
+	public void clickOnViewButtonOfAnyRequirementOnTheActiveRequirementsPage() {
+		Pages.researchAdminPage().clickOnViewActiveRequirementButton();
+	}
+
+	@Then("Click on the [Edit Requirement] button on the [Active Requirements] page")
+	public void clickOnTheEditRequirementButtonOnTheActiveRequirementsPage() {
+		Pages.researchAdminPage().clickOnEditRequirementButton();
 	}
 }

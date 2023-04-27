@@ -33,6 +33,8 @@ public class ResearchAdminPage extends PageTools {
 	By notificationsPageHeader = By.xpath("//h2[text()='Research Notifications']");
 	By EUIVersionPageHeader = By.xpath("//h2[text()='Versioned EUI']");
 	By permissionsPageHeader = By.xpath("//h2[text()='Research Results']");
+	By viewActiveRequirementButton = By.xpath("//a[@title='View Requirement']");
+	By editRequirementButton = By.xpath("//a[text()='Edit']");
 	By systemAdminDeleteFacilityCheckbox = By.xpath("//");
 
 	public void openLighthouse(){
@@ -46,6 +48,16 @@ public class ResearchAdminPage extends PageTools {
 	public boolean isResearchAdminPageOpened(){
 		SelenideTools.sleep(2);
 		return isElementVisible(researchAdminPageTitle);
+	}
+
+	public void clickOnViewActiveRequirementButton(){
+		waitForElementVisibility(viewActiveRequirementButton);
+		click(viewActiveRequirementButton);
+	}
+
+	public void clickOnEditRequirementButton(){
+		waitForElementVisibility(editRequirementButton);
+		click(editRequirementButton);
 	}
 	
 	public boolean isRequirementsAdminPageOpened(){
