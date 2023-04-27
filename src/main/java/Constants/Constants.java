@@ -39,6 +39,6 @@ public class Constants {
 	public final static boolean SEND_RESULT_TO_TESTRAIL = Boolean
 			.parseBoolean(System.getProperty("sendResultToRestRail", "false"));
 	public final static boolean SEND_RESULT_TO_TESTRAIL_CUCUMBER = Boolean
-			.parseBoolean(System.getProperty("sendResultToRestRail", "false"));
+			.parseBoolean(System.getProperty("sendResultToRestRail", "true"));
 
 }
