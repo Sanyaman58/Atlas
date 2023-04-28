@@ -7,6 +7,7 @@ import com.codeborne.selenide.Selenide;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Dimension;
 import org.testng.Assert;
 
 public class LoginPageStepDefinitions {
@@ -19,6 +20,8 @@ public class LoginPageStepDefinitions {
 	@When("Open Atlas")
 	public void openAtlas() {
 		Pages.loginPage().openAtlas();
+		SelenideTools.getDriver().manage().window().setSize(new Dimension(1920, 1080));
+
 	}
 
 	@Then("Enter login {string} on login page")

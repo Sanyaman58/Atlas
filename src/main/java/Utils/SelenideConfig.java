@@ -2,6 +2,7 @@ package Utils;
 
 import Constants.Constants;
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -24,6 +25,7 @@ public class SelenideConfig {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--window-size=1920,1080");
         chromeOptions.setAcceptInsecureCerts(true);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         if (Constants.REMOTE_URL != null) {
@@ -38,6 +40,7 @@ public class SelenideConfig {
             capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             capabilities.setCapability("browserName", "chrome");
             capabilities.setCapability("browserVersion", "112.0.5615.121");
+            capabilities.setCapability("window-size", "1920,1080");
         }
         capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
         return capabilities;
@@ -58,12 +61,11 @@ public class SelenideConfig {
 //        Configuration.fileDownload = FileDownloadMode.PROXY;
         Configuration.holdBrowserOpen = false;
         Configuration.startMaximized = true;
-        Configuration.browserSize = "1920x1080";
-        Configuration.browserCapabilities = getBrowserCapabilities();
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
         Configuration.screenshots = true;
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+        Configuration.browserSize = "1920x1080";
         Configuration.pollingInterval = 10000;
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 100000;

@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,6 +27,7 @@ public class QuestionnairePageStepDefinitions {
 
     @And("Click the [Next] button on the [Questionnaire] page")
     public void clickTheNextButtonOnTheQuestionnairePage() {
+        SelenideTools.sleep(2);
         Pages.questionnairePage().clickTheNextButton();
     }
 

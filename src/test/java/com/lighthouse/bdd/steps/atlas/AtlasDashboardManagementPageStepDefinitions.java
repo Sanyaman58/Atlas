@@ -12,6 +12,7 @@ public class AtlasDashboardManagementPageStepDefinitions {
 
 	@Then("Management Dashboard page is opened")
 	public void managementDashboardPageIsOpened() {
+		SelenideTools.sleep(5);
 		Assert.assertTrue(Pages.atlasDashboardManagementPage().isDashboardPageOpened());
 		SelenideTools.sleep(5);
 	}

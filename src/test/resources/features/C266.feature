@@ -14,9 +14,9 @@ Feature: C266
     Then The [Configuration] page is opened
     And Verify the header label on Configuration setup page
     And Verify the header text on the right section
-    And Select "Sachin" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    And Select "Sachin" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button

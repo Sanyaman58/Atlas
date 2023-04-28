@@ -333,7 +333,8 @@ public class VersionRequirementsAdminPage extends PageTools {
 	}
 
 	public void enterRequirementNameInTheSearchField(String requirementName){
-		waitForElementVisibility(requirementNameSearchField);
+		waitForElementPresent(requirementNameSearchField);
+		scrollToElement(requirementNameSearchField);
 		type(requirementName, requirementNameSearchField);
 		System.out.println(requirementName);
 	}
