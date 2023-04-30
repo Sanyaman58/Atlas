@@ -46,7 +46,7 @@ public class ViewResultsPage extends PageTools {
     By searchStatusInputSearchbar = By.xpath("//input[@placeholder=\"Search Status\"]");
     By resultPageSearchbar = By.xpath("//div[2]/div/div/div[1]/div/table/thead/tr[2]/th/input");
     By resultPageViewIcon = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
-    By categoryColumnText = By.xpath("//*[@id=\"DataTables_Table_1_wrapper\"]/div[2]/div/div/div[2]/div[1]/div/table/thead/tr[1]/th[2]");
+    By categoryColumnText = By.xpath("//div[@id='job-result-container']//table/thead/tr[1]/th[2]");
 
     List<List<String>> tableRecords;
     List<List<String>> excelTableRecords;

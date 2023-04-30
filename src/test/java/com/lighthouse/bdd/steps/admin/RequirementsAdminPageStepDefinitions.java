@@ -192,6 +192,7 @@ public class RequirementsAdminPageStepDefinitions {
     @And("Click the [Create New] button in the [Add New Requirement] section")
     public void clickTheCreateNewButtonInTheAddNewRequirementSection() {
         Pages.requirementsAdminPage().clickCreateNewRequirementButton();
+        SelenideTools.sleep(1);
     }
 
     @When("Enter random requirement name on the [Requirements View] page")

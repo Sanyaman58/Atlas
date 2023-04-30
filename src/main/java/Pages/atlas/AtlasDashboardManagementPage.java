@@ -16,7 +16,7 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By surveillanceIntelligenceSidebarCollapse = By.xpath("//ul[@id='menu']/li[5]");
 	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li/a");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
-	By intelligenceAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li[10]");
+	By intelligenceAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li/a[contains(text(),'Intelligence Admin')]");
 	By researchSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[1]/a");
 	By auditLogSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[2]/a");
 	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[3]/a");

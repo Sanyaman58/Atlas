@@ -6,7 +6,7 @@ Feature: C258
   Scenario: In User Master, SS-Admin should not be able to select SS-System Admin
     When Open Atlas
     Then Enter login "hofyikomli@gufum.com" on login page
-    And Enter password "Testing2022%%" on login page
+    And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [User Master] sidebar button

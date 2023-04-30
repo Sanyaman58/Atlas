@@ -20,7 +20,7 @@ public class LoginPageStepDefinitions {
 	@When("Open Atlas")
 	public void openAtlas() {
 		Pages.loginPage().openAtlas();
-		SelenideTools.getDriver().manage().window().setSize(new Dimension(1920, 1080));
+		SelenideTools.getDriver().manage().window().setSize(new Dimension(2560, 1440));
 
 	}
 

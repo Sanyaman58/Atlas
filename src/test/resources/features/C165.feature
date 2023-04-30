@@ -5,8 +5,8 @@
   @TestRail(165)
   Scenario: Verify that the requirement should not get duplicate after editing.
     When Open Atlas
-    Then Enter login "yepsizigna@gufum.com" on login page
-    And Enter password "Testing2022%%" on login page
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Versioned Requirements] sidebar button

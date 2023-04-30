@@ -36,7 +36,7 @@ public class NewResearchPage extends PageTools {
 			"//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td[text()='No data available in table']");
 	By tableJobsRadioButton = By.xpath(
 			"//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td/input[@name='copy_from_job_id']");
-	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')]");
+	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')] | //select[contains(@class,'new_client_id')]");
 	By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[5]/a");
 	By clientDropdownResults = By.xpath("//select[contains(@class,'new_client_id')]");
 	// By surveillanceIntelligenceSidebarButton =
