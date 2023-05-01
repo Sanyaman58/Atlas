@@ -213,6 +213,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterChangeNoteForCustomer(text);
     }
 
+    @When("Enter random note in the Change Note For Customer section on the [Versioned Requirements] page")
+    public void enterRandomNoteInTheChangeNoteForCustomerSectionOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().enterChangeNoteForCustomer(RandomStringUtils.random(10, true, false));
+    }
+
     @When("Get text from the search field on the [Versioned Requirements] page")
     public void getTextFromTheSearchFieldOnTheVersionedRequirementsPage() {
         Pages.versionRequirementsAdminPage().saveTextFromSearchField();

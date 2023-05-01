@@ -36,7 +36,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By requirementApprovedSearchField = By.xpath("//input[@placeholder='Search Approved']");
 	By requirementActivatedSearchField = By.xpath("//input[@placeholder='Search Activated']");
 	By requirementStatusSearchField = By.xpath("//input[@placeholder='Search Status']");
-	By changeNoteForCustomerInput = By.xpath("//textarea[name()='Change_Note_for_Customer']");
+	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
 	By yesIncludeRadioButton = By.xpath("//input[@checked and @id='requirements_checks_include_yes']");
 
 	String requirementSku;

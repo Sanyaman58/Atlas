@@ -90,6 +90,7 @@ public class ViewResultsPageStepDefinitions {
     public void getRequirementDataOfRecordsOnResearchResultsPage(int index) {
         Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
         Pages.viewResultsPage().saveCompanyNameOfTheTableRecord(index-1);
+        Pages.viewResultsPage().saveDateTimeOfTheTableRecord(index-1);
     }
 
     @Then("Verify that records on the [View Results] page are sorted alphabetically backwards by {string} label")
@@ -139,7 +140,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Verify that deleted result is not displayed in the [View Results] table")
     public void verifyThatDeletedResultIsNotDisplayedInTheViewResultsTable() {
-        Assert.assertFalse(Pages.viewResultsPage().isResultPresentInTheList(Pages.viewResultsPage().getCompanyNameOfTheTableRecord(), Pages.viewResultsPage().getFacilityNameOfTheTableRecord()));
+        Assert.assertFalse(Pages.viewResultsPage().isResultPresentInTheList(Pages.viewResultsPage().getCompanyNameOfTheTableRecord(), Pages.viewResultsPage().getFacilityNameOfTheTableRecord(), Pages.viewResultsPage().getDateTimeOfTheTableRecord()));
     }
 
     @And("Get the number of records of the result on [Research Results] page")

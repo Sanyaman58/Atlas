@@ -19,9 +19,9 @@ Feature: C115
       | Facility Name |
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    When Select "Sachin" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    When Select "Sachin" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -42,7 +42,7 @@ Feature: C115
     And Reload the browser
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    When Select "Sachin" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Saved"
     When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
     And Click on the [Audit Logs] sidebar button on Lighthouse

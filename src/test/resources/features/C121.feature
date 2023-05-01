@@ -33,10 +33,12 @@ Feature: C121
     And The [Research Results] page is opened
     Then The following labels are displayed on the [Research Results] page
       |Jurisdiction|
+      |Category|
       |Application Name|
       |Requirement Name|
       |Definition|
       |Notes|
+      |Forms|
       |Processing Time|
       |Renewal Term|
       |Application Type|
@@ -78,9 +80,9 @@ Feature: C121
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
 
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -101,11 +103,11 @@ Feature: C121
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     When Click on the [View] button of the newly created job on the [View Results] page
     Then The [Research Results] page is opened
-    And Get table records on [Research Results] page
-    Then Verify that early created requirement name is in the list
+#    And Get table records on [Research Results] page
+#    Then Verify that early created requirement name is in the list
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 
 

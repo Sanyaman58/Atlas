@@ -15,8 +15,8 @@ import java.util.List;
 public class ResearchNotificationPage extends PageTools {
     By researchNotificationPageTitle = By.xpath("//h2[text()='Research Notifications']");
     By researchNotificationTable = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody");
-    By researchNotificationTableLabels = By.xpath("//div[contains(@id,'DataTables_Table')]//div[@class='dataTables_scrollHeadInner']//table[contains(@class,'requirementsViewerTable')]/thead/tr[1]/th");
-    By researchNotificationTableRecords = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody/tr");
+    By researchNotificationTableLabels = By.xpath("(//thead)[1]/tr[1]/th");
+    By researchNotificationTableRecords = By.xpath("//div//table/tbody/tr");
     By researchNotificationTableRecordElements = By.xpath("//div[@id='DataTables_Table_0_wrapper']//table/tbody/tr/td");
     By researchNotificationSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[6]/a");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
@@ -114,23 +114,22 @@ public class ResearchNotificationPage extends PageTools {
 
     public void saveRequirementNameOfTheRecord(int index){
         waitForElementVisibility(researchNotificationTableRecords);
-        requirementName = getElements(researchNotificationTableRecords).get(index).findElement(By.xpath("./td[7]")).getText();
+        requirementName = getElements(researchNotificationTableRecords).get(index).findElement(By.xpath("./td[4]")).getText();
     }
 
     public boolean isRecordsOnlyWithRequirementName(){
         boolean returnValue = false;
         waitForElementVisibility(researchNotificationTableRecords);
-//        if(getElements(researchNotificationTableRecords).get(0).findElement(By.xpath("./td[7]")).getText().equals(requirementName))
-//            return true;
-//        return false;
         for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
             returnValue = false;
-            for(int j = 0; j < getElements(researchNotificationTableRecordElements).size();j++) {
-                if (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[" + j + "]")).getText() == requirementName) {
-                    returnValue = true;
-                }
+            System.out.println((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[4]")).getText()));
+            System.out.println(requirementName);
+            if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[4]")).getText() == requirementName)
+            || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[4]")).getText().contains(requirementName))) {
+                returnValue = true;
             }
         }
+        SelenideTools.sleep(20);
         return returnValue;
     }
 

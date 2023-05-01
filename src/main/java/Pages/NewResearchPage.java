@@ -50,7 +50,7 @@ public class NewResearchPage extends PageTools {
 	By alertYesDeleteButton = By.xpath("(//button[text()='Yes Delete'])[%s]");
 	By createdLabelSort = By.xpath("//table//tr/th[text()='Created']");
 	By intelligenceCountMessage = By.xpath("//div[@class='dataTables_info']");
-	By intelligenceSidebarButton = By.xpath("//*[@id=\"menu\"]/li[5]/a");
+	By intelligenceSidebarButton = By.xpath("//*[@id=\"menu\"]//a[contains(text(),'Intelligence')]");
 	By configurationSidebarOption = By.xpath("//*[@id=\"menu\"]/li[5]/ul/li[1]/a");
 	By knowledgeResultSidebarOption = By.xpath("//*[@id=\"menu\"]/li[5]/ul/li[2]/a");
 	By configurationSetupHeader = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[1]/div/div[2]/h4");

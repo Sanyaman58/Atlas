@@ -27,7 +27,7 @@ public class AtlasDashboardManagementPageStepDefinitions {
 		// SelenideTools.closeCurrentTab();
 		SelenideTools.sleep(2);
 		Assert.assertTrue(Pages.viewResultsPage().isViewResultsPageOpened());
-		SelenideTools.sleep(200);
+		SelenideTools.sleep(2);
 	}
 
 	@When("Click on the [Research] sidebar button")
