@@ -52,14 +52,34 @@ public class ResearchNotificationPageStepDefinitions {
         Pages.researchNotificationPage().saveRequirementNameOfTheRecord(index-1);
     }
 
+    @And("Get SKU of the {int} record on the [Research Notification] page")
+    public void getSKUOfTheRecordOnTheResearchNotificationPage(int index) {
+        Pages.researchNotificationPage().saveSKUOfTheRecord(index-1);
+    }
+
     @Then("Enter saved requirement's name in the activity search on the [Research Notification] page")
     public void enterSavedRequirementSNameInTheActivitySearchOnTheResearchNotificationPage() {
         Pages.researchNotificationPage().enterTextInTheSearchField(Pages.researchNotificationPage().getRequirementName());
     }
 
+//    @Then("Enter saved SKU in the activity search on the [Research Notification] page")
+//    public void enterSaveSKUInTheActivitySearchOnTheResearchNotificationPage() {
+//        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.researchNotificationPage().getSKU());
+//    }
+
+    @Then("Enter saved SKU in the activity search on the [Research Notification] page")
+    public void enterSavedSKUInTheActivitySearchOnTheResearchNotificationPage() {
+        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.researchNotificationPage().getSKU());
+    }
+
     @Then("Only records with entered requirement name are displayed on the [Research Notification] page")
     public void onlyRecordsWithEnteredRequirementNameAreDisplayedOnTheResearchNotificationPage() {
         Assert.assertTrue(Pages.researchNotificationPage().isRecordsOnlyWithRequirementName());
+    }
+
+    @Then("Only records with entered SKU are displayed on the [Research Notification] page")
+    public void onlyRecordsWithEnteredSKUAreDisplayedOnTheResearchNotificationPage() {
+        Assert.assertTrue(Pages.researchNotificationPage().isRecordsOnlyWithSKU());
     }
 
     @Then("A record with type {string} and {string} scope displayed in the table")

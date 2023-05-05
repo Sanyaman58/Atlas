@@ -28,11 +28,16 @@ public class ResearchNotificationPage extends PageTools {
     String researchNotificationHeaderText = "Research Notification";
     By researchNotificationSearchBar = By.xpath("//input[@class=\"form-control form-control-sm\"]");
     String searchNotificationText = "Manufacturer-Non-Resident (REPACKAGER, RELABLER, CMO, ACTUAL MANUFACTURER";
+    String SKU;
     By readMore_LessButton = By.xpath("//button[@class=\"read-more read-more-btn\"]");
     
     public String getRequirementName(){
         return requirementName;
     }
+    public String getSKU(){
+        return SKU;
+    }
+
     public boolean isResearchNotificationPageVisible(){
         waitForElementVisibility(researchNotificationPageTitle);
         return isElementVisible(researchNotificationPageTitle);
@@ -117,6 +122,11 @@ public class ResearchNotificationPage extends PageTools {
         requirementName = getElements(researchNotificationTableRecords).get(index).findElement(By.xpath("./td[4]")).getText();
     }
 
+    public void saveSKUOfTheRecord(int index){
+        waitForElementVisibility(researchNotificationTableRecords);
+        SKU = getElements(researchNotificationTableRecords).get(index).findElement(By.xpath("./td[2]")).getText();
+    }
+
     public boolean isRecordsOnlyWithRequirementName(){
         boolean returnValue = false;
         waitForElementVisibility(researchNotificationTableRecords);
@@ -126,6 +136,22 @@ public class ResearchNotificationPage extends PageTools {
             System.out.println(requirementName);
             if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[4]")).getText() == requirementName)
             || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[4]")).getText().contains(requirementName))) {
+                returnValue = true;
+            }
+        }
+        SelenideTools.sleep(20);
+        return returnValue;
+    }
+
+    public boolean isRecordsOnlyWithSKU(){
+        boolean returnValue = false;
+        waitForElementVisibility(researchNotificationTableRecords);
+        for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
+            returnValue = false;
+            System.out.println((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText()));
+            System.out.println(SKU);
+            if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText() == SKU)
+                    || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText().contains(SKU))) {
                 returnValue = true;
             }
         }

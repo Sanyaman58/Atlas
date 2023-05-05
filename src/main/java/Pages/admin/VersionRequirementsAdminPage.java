@@ -339,6 +339,13 @@ public class VersionRequirementsAdminPage extends PageTools {
 		System.out.println(requirementName);
 	}
 
+	public void enterSKUTheSearchField(String SKU){
+		waitForElementPresent(requirementSKUSearchField);
+		scrollToElement(requirementSKUSearchField);
+		type(SKU, requirementSKUSearchField);
+		System.out.println(SKU);
+	}
+
 	public void saveTextFromSearchField(){
 		waitForElementVisibility(requirementNameSearchField);
 		System.out.println("Value - "+getSelenideElement(requirementStatusSearchField).getValue());

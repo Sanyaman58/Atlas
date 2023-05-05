@@ -82,6 +82,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.researchNotificationPage().getRequirementName());
     }
 
+    @Then("Enter requirement SKU from the [Research Notifications] page in the SKU search on the [Versioned Requirements] page")
+    public void enterRequirementSKUFromResearchNotificationsInTheRequirementSearchOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterRequirementSkuInTheSearchField(Pages.researchNotificationPage().getSKU());
+    }
+
     @Then("Click on the [Approve Requirement] button of the record by {int} index on the [Versioned Requirements] page")
     public void clickOnTheApproveRequirementButtonOfTheNewlyCreatedRecordOnTheVersionedRequirementsPage(int index) {
         Pages.versionRequirementsAdminPage().clickOnApproveRequirementButton(index-1);

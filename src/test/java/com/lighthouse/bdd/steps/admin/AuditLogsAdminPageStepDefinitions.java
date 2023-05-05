@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps.admin;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -38,6 +39,7 @@ public class AuditLogsAdminPageStepDefinitions {
 
     @When("Get audit logs from the table")
     public void getAuditLogsFromTheTable() {
+        SelenideTools.sleep(2);
         Pages.auditLogsAdminPage().getLogsTableData();
     }
 }

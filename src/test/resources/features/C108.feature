@@ -4,14 +4,15 @@ Feature: C108
   @TestRail(108)
   Scenario: Admin Homepage
     When Open Atlas
-    Then Enter login "yepsizigna@gufum.com" on login page
-    And Enter password "Testing2022%%" on login page
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Research] sidebar button
     Then The [Research Admin] page is opened
     And Click on the [Requirements] button on admin
     Then The [Requirements Admin] page is opened
+#    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
     When Click on the [Research] sidebar button
     Then The [Research Admin] page is opened
     And Click on the [Questionnaire] button on admin

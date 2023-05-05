@@ -19,9 +19,9 @@ Feature: C115
       | Facility Name |
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -35,6 +35,7 @@ Feature: C115
     And The [Configuration] page is opened
     When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
     And Click on the [Audit Logs] sidebar button on Lighthouse
+    Then The [Audit Logs] page is opened
     Then Click on the "Time" label on the [Audit Logs] page
     Then Click on the "Time" label on the [Audit Logs] page
     When Get audit logs from the table
@@ -42,7 +43,7 @@ Feature: C115
     And Reload the browser
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Saved"
     When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
     And Click on the [Audit Logs] sidebar button on Lighthouse

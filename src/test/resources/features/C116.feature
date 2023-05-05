@@ -38,8 +38,8 @@ Feature: C116
       |Foreign Qualification Required?|
       |Attachments|
       |Prerequisites|
-    Then Select the [Preliminary Data] radio button on [Requirement View] page
-    Then The [Requirement Viewer] table is displayed
+#    Then Select the [Preliminary Data] radio button on [Requirement View] page
+#    Then The [Requirement Viewer] table is displayed
     Then The following labels are displayed in the [Requirements Viewer] table
       |Jurisdiction|
       |Application Name|

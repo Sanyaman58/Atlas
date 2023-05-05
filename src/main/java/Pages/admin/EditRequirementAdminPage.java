@@ -1,5 +1,6 @@
 package Pages.admin;
 
+import Pages.Pages;
 import Utils.SelenideTools;
 import base.PageTools;
 import org.apache.commons.io.FileUtils;
@@ -29,11 +30,12 @@ public class EditRequirementAdminPage extends PageTools {
 	public List<String> getGeneralInfo() throws IOException {
 			generalInfoForComparison = new ArrayList<>();
 			for (int i = 0; i < getElements(editRequirementGeneralInfo).size(); i++) {
-				generalInfoForComparison.add(getElements(editRequirementGeneralInfo).get(i).getValue());
-				System.out.println(getElements(editRequirementGeneralInfo).get(i).getValue());
+				generalInfoForComparison.add(getElements(editRequirementGeneralInfo).get(i).getText());
+				System.out.println(getElements(editRequirementGeneralInfo).get(i).getText());
 			}
 		System.out.println(generalInfoForComparison.size());
 			generalInfoForComparison.replaceAll(String::trim);
+			Pages.atlasDashboardManagementPage().clickResultsSidebarButton();
 			generalInfoForComparison.remove(2);
 			generalInfoForComparison.remove(7);
 			generalInfoForComparison.remove(2);

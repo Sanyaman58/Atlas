@@ -42,6 +42,7 @@ public class AuditLogsAdminPage extends PageTools {
 	}
 
 	public boolean isLogPresentInTheList(String type, String cName, String fName){
+		System.out.println(type+" "+cName+" "+fName);
 		for (List<String> tableRecord : tableRecords) {
 			if (tableRecord.contains(type)
 					|| tableRecord.contains(cName)
