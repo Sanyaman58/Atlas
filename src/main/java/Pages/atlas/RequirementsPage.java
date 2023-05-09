@@ -29,6 +29,8 @@ public class RequirementsPage extends PageTools {
 	By productLineLabel = By.xpath("//label[text()='Product Line']");
 	By businessModelLabel = By.xpath("//label[text()='Business Model']");
 	By changeNoteLabel = By.xpath("//label[text()='Change Note']");
+	By documentsPageTitle = By.xpath("//*[@id=\"task-grid\"]/div[2]/div/p");
+	By companyProfilePageTitle = By.xpath("//*[@id=\"wrapper\"]/main/section[1]/div/div[1]/div/p");
 
 	public boolean isRequirementsPageOpened() {
 		waitForElementVisibility(requirementsPageTitle);
@@ -111,5 +113,13 @@ public class RequirementsPage extends PageTools {
 	public void clickShowRequirementsDetailsButton(){
 		waitForElementVisibility(showRequirementsDetailsButton);
 		click(showRequirementsDetailsButton);
+	}
+	
+	public void isDocumentsPageOpened() {
+		waitForElementVisibility(documentsPageTitle);
+	}
+	
+	public void isCompanyProfilePageOpened() {
+		waitForElementVisibility(companyProfilePageTitle);
 	}
 }
