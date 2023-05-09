@@ -78,5 +78,17 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	public void verifyReleaseNotesPresent() {
 		Pages.atlasDashboardManagementPage().verifyReleaseNotes();
 	}
+	
+	@When("Click on [Document Repository] sidebar button on Atlas")
+	public void clickOnDocumentRepositoryButtonOnAtlas() {
+		Pages.atlasDashboardManagementPage().clickDocumentRepositorySidebarButton();
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Click on [Company Profile] sidebar button on Atlas")
+	public void clickOnCompanyProfileButtonOnAtlas() {
+		Pages.atlasDashboardManagementPage().clickComanyProfileSidebarButton();
+		SelenideTools.sleep(2);
+	}
 
 }
