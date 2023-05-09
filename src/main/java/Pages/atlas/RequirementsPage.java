@@ -163,9 +163,9 @@ public class RequirementsPage extends PageTools {
 		SelenideTools.sleep(2);
 		String disciplineClassAttribute = disciplineNavigationHeaderElement.getAttribute("class");
 		if (disciplineClassAttribute.contains("active")) {
-			System.out.println("Contact page is opened");
+			System.out.println("Discipline page is opened");
 		} else {
-			System.out.println("Contact page not opened");
+			System.out.println("Discipline page not opened");
 		}
 	}
 }
