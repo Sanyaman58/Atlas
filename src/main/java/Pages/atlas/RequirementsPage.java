@@ -29,6 +29,12 @@ public class RequirementsPage extends PageTools {
 	By productLineLabel = By.xpath("//label[text()='Product Line']");
 	By businessModelLabel = By.xpath("//label[text()='Business Model']");
 	By changeNoteLabel = By.xpath("//label[text()='Change Note']");
+	By companyProfilePageTitle = By.xpath("//*[@id=\"wrapper\"]/main/section[1]/div/div[1]/div/p");
+	By companyProfileViewDetails = By.xpath("//*[@title=\"View Details\"]//button");
+	By clientNavigationHeader = By.xpath("//*[@id=\"client-li-span\"]");
+	By projectsNavigationHeader = By.xpath("//*[@id=\"projects-li-span\"]");
+	By contactNavigationHeader = By.xpath("//*[@id=\"contact-li-span\"]");
+	By disciplineNavigationHeader = By.xpath("//*[@id=\"disciplines-li-span\"]");
 
 	public boolean isRequirementsPageOpened() {
 		waitForElementVisibility(requirementsPageTitle);
@@ -111,5 +117,55 @@ public class RequirementsPage extends PageTools {
 	public void clickShowRequirementsDetailsButton(){
 		waitForElementVisibility(showRequirementsDetailsButton);
 		click(showRequirementsDetailsButton);
+	}
+	
+	public void isCompanyProfilePageOpened() {
+		waitForElementVisibility(companyProfilePageTitle);
+	}
+	
+	public void clickCompanyViewDetailsButton() {
+		click(companyProfileViewDetails);
+		SelenideTools.sleep(5);
+		waitForElementVisibility(clientNavigationHeader);
+		
+	}
+	
+	public void verifyNavigationBetweenCompanyProfilePages() {
+		SelenideElement clientNavigationHeaderElement = getSelenideElement(clientNavigationHeader);
+		String classAttribute = clientNavigationHeaderElement.getAttribute("class");
+		if (classAttribute.contains("active")) {
+			System.out.println("Client page is opened");
+		} else {
+			System.out.println("Client page not opened");
+		}
+		SelenideElement projectsNavigationHeaderElement = getSelenideElement(projectsNavigationHeader);
+		projectsNavigationHeaderElement.click();
+		SelenideTools.sleep(2);
+		String projectsClassAttribute = projectsNavigationHeaderElement.getAttribute("class");
+		if (projectsClassAttribute.contains("active")) {
+			System.out.println("Projects page is opened");
+		} else {
+			System.out.println("Projects page not opened");
+		}
+		
+		SelenideElement contactNavigationHeaderElement = getSelenideElement(contactNavigationHeader);
+		contactNavigationHeaderElement.click();
+		SelenideTools.sleep(2);
+		String contactClassAttribute = contactNavigationHeaderElement.getAttribute("class");
+		if (projectsClassAttribute.contains("active")) {
+			System.out.println("Contact page is opened");
+		} else {
+			System.out.println("Contact page not opened");
+		}
+		
+		SelenideElement disciplineNavigationHeaderElement = getSelenideElement(disciplineNavigationHeader);
+		disciplineNavigationHeaderElement.click();
+		SelenideTools.sleep(2);
+		String disciplineClassAttribute = disciplineNavigationHeaderElement.getAttribute("class");
+		if (disciplineClassAttribute.contains("active")) {
+			System.out.println("Contact page is opened");
+		} else {
+			System.out.println("Contact page not opened");
+		}
 	}
 }
