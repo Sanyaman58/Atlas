@@ -29,6 +29,8 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By managementAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li[9]");
 	By homepageSidebarButton = By.xpath("//*[@id=\"menu\"]/li[2]/a");
 	By releaseNotesButton = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/div[2]/div/div/ul/li[4]/a");
+	By documentRepositorySidebarButton = By.xpath("//*[text()=\"Document Repository\"]");
+	By companyProfileSidebarButton = By.xpath("//*[text()=\"Company Profile\"]");
 
 	public void openLighthouse() {
 		SelenideTools.openUrl(Constants.URL);
@@ -120,6 +122,16 @@ public class AtlasDashboardManagementPage extends PageTools {
 
 	public void verifyReleaseNotes() {
 		waitForElementVisibility(releaseNotesButton);
+	}
+	
+	public void clickDocumentRepositorySidebarButton() {
+		waitForElementVisibility(documentRepositorySidebarButton);
+		click(documentRepositorySidebarButton);
+	}
+	
+	public void clickComanyProfileSidebarButton() {
+		waitForElementVisibility(companyProfileSidebarButton);
+		click(companyProfileSidebarButton);
 	}
 
 }
