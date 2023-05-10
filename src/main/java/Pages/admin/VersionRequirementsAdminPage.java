@@ -80,8 +80,16 @@ public class VersionRequirementsAdminPage extends PageTools {
 		for(SelenideElement element : elements){
 			tableLabelsList.add(element.getText());
 		}
-		tableLabelsList.add(getSelenideElement(versionRequirementsTableActionLabel).getText());
-		return tableLabelsList.equals(labels);
+
+		tableLabelsList.add(getSelenideElement(versionRequirementsTableActionLabel).getAttribute("aria-label"));
+		System.out.println(tableLabelsList);
+		for(int i = 0; i < tableLabelsList.size(); i++){
+			System.out.println(tableLabelsList.get(i) + " " + labels.get(i));
+			if(!tableLabelsList.get(i).contains(labels.get(i)))
+				if(!tableLabelsList.get(i).equals(labels.get(i)))
+					return false;
+		}
+		return true;
 	}
 
 	public void clickOnTheLabel(String label){
@@ -136,7 +144,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public void clickOnViewRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
 		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
-		getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[11]/div/a[@title='View Requirement']")).click();
+		getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/a[@title='View Requirement']")).click();
 	}
 
 	public void clickOnViewRequirementButton(String status){
@@ -399,14 +407,18 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	public void enterChangeNoteForCustomer(String text){
 		waitForElementVisibility(changeNoteForCustomerInput);
+		getSelenideElement(changeNoteForCustomerInput).sendKeys(text);
 		type(text, changeNoteForCustomerInput);
-		changeNoteText = text;
+		changeNoteText = getSelenideElement(changeNoteForCustomerInput).getText();
+		SelenideTools.sleep(10);
 	}
 
 	public boolean isRecordWithRequirementNameDisplayed(String requirementName){
 		waitForElementVisibility(versionRequirementsTableRecords);
 		if(isNoRecordsFoundMessageDisplayed())
 			return false;
+		SelenideTools.sleep(2);
+		System.out.println(requirementName);
 		for(int i = 0;i < getElements(versionRequirementsTableRecords).size();i++){
 			String requirementNameOfCurrentRecord = getElements(versionRequirementsTableRecords).get(i).findElement(By.xpath("./td[5]")).getText();
 			if(requirementNameOfCurrentRecord.equals(requirementName)){

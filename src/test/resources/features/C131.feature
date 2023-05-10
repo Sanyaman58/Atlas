@@ -31,10 +31,10 @@ Feature: C131
     And Verify that records on the [Research Notification] page are sorted alphabetically backwards by "Name" label
     And Enter invalid data in Serach field and verify validation
     And Enter valid data in Search field and verify the data
-    When Click on the [Requirements View] sidebar button
+    When Click on the [Requirements View] sidebar button on admin
     Then The [Requirements View] page is opened
     And Select 4 option Requirement category dropdown
-    And Select 2 option Requirement type from doropdown
+    And Select 1 option Requirement type from doropdown
     And Click on Create New button
     And Fill the required details on Requirement view page
     When Open Notification page

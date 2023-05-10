@@ -26,6 +26,7 @@ public class SelenideConfig {
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--allow-insecure-localhost");
         chromeOptions.setAcceptInsecureCerts(true);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         if (Constants.REMOTE_URL != null) {
@@ -59,7 +60,7 @@ public class SelenideConfig {
         Configuration.browserCapabilities = getBrowserCapabilities();
 //        Configuration.proxyEnabled = true;
 //        Configuration.fileDownload = FileDownloadMode.PROXY;
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = true;
         Configuration.startMaximized = true;
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;

@@ -37,7 +37,7 @@ public class RequirementsAdminPage extends PageTools {
 	By renewalTermGeneralInformationInput = By.xpath("//input[@name='Renewal_Term']");
 	By applicationTypeGeneralInformationInput = By.xpath("//select[@id='Application_Type']");
 	By notesGeneralInformationInput = By.xpath("//textarea[@name='Notes']");
-	By formsGeneralInformationInput = By.xpath("//textarea[@name='Forms']");
+	By formsGeneralInformationInput = By.xpath("//input[@name='Forms']");
 	By bondRequiredYRadioButton = By.xpath("//input[@id='bond-required_yes']");
 	By bondRequiredNRadioButton = By.xpath("//input[@id='bond-required_no']");
 	By stateRegisteredAgentYRadioButton = By.xpath("//input[@id='state-registered-yes']");

@@ -33,6 +33,7 @@ Feature: C249
     Then Click on the [Activate Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
     When Click on the [View Requirement] button of the 1 record on the [Versioned Requirements] page
+    When Click on the [Edit Requirement] button on the [Edit Requirement] page
     And Select the [Yes] requirements checks include radio button
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin

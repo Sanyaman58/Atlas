@@ -260,7 +260,7 @@ public class VersionRequirementsAdminPageStepDefinitions {
 
     @When("Click on the [View Requirement] button of the {int} record on the [Versioned Requirements] page")
     public void clickOnTheViewRequirementButtonOfTheRecordOnTheVersionedRequirementsPage(int index) {
-        Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index);
+        Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index-1);
     }
 
 //    @And("Verify that the [Activate Requirement] view option is enabled")
