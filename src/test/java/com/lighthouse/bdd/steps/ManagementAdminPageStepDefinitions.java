@@ -284,8 +284,8 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@And("Fill the required details on Requirement view page")
-	public void fillRequiredInfo(int index) {
-		Pages.clientMasterPage().fillInfoOnRequirementViewPage(index);
+	public void fillRequiredInfo() {
+		Pages.clientMasterPage().fillInfoOnRequirementViewPage();
 	}
 
 	@And("Open Notification page")
