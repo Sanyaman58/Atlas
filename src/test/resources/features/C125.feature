@@ -1,5 +1,4 @@
 @C125
-
 Feature: C125
 
   @TestRail(125)
@@ -17,9 +16,3 @@ Feature: C125
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Check 3 question in the [Question Selection] section on the [Requirements View] page
     Then Verify that 1 selector choice is "OR" on the [Requirements View] page
-    
-
-
-
-
-    

@@ -45,5 +45,5 @@ Feature: C101
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-#    Then Select "Test Pharma" client from the client dropdown
+    #    Then Select "Test Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

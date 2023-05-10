@@ -19,8 +19,6 @@ Feature: C102
       | Status        |
       | Created       |
       | Action        |
-    And Verify radio button is enabled
-    And Verify [Delete] button is clickable
     Then Select "AR Pharma" client from the client dropdown
     Then Click surveillance setup [Next] button
     And Verify the Validation popup

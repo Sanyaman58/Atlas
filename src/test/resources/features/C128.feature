@@ -1,10 +1,9 @@
 @C128
-
 Feature: C128
 
   @TestRail(128)
   Scenario: Verify that the Washington DC Jurisdiction Renamed to District of Columbia in the application
-  When Open Atlas
+    When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
     And Click the [Login] button
