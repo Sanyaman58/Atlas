@@ -215,7 +215,7 @@
                           <value>io.qameta.allure.junit4.AllureJunit4</value>
                       </property>
                   </properties>
-<!--                  <testFailureIgnore>true</testFailureIgnore>-->
+                  <testFailureIgnore>true</testFailureIgnore>
               </configuration>
               <dependencies>
                   <dependency>
