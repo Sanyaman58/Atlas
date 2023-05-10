@@ -33,9 +33,9 @@ Feature: C259
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -64,5 +64,5 @@ Feature: C259
     And Verify that log containing "(RES1 = MA) and (FIN1 = Y and FIN1.2 = Y and PRO1.1 = Y and PRO2 = Y and PRO5.2 = Y and PRO5.3 = Y and PRO5.4.2 = Y and PRO6.1 = Y)" description text is displayed on the [Activity Logs] page
 
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

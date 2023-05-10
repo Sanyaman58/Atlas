@@ -13,9 +13,9 @@ Feature: C103
     And Verify the [Surveillance Setup] section
     Then Validate fields on the [Surveillance Setup] page
     And Reload the browser
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button

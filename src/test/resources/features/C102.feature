@@ -21,20 +21,20 @@ Feature: C102
       | Action        |
     And Verify radio button is enabled
     And Verify [Delete] button is clickable
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Click surveillance setup [Next] button
     And Verify the Validation popup
     And Reload the browser
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button
     Then The [Jurisdiction] page is opened
     And Navigate back to surveillance page
     And Reload the browser
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     And Select radio button of existing job and click Next
