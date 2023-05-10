@@ -103,6 +103,7 @@ Feature: C116
     Then Click on the [Delete Requirement] button on the [Requirement View] page
     Then Window with "Are you sure want to delete this Versioned Requirement?" message is displayed
     And Click on Yes Delete button on the alert window
+    Then Select the [Preliminary Data] radio button on [Requirement View] page
     When Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     And Verify that deleted requirement is not displayed in the [Requirement Viewer] table
     When Click the [Create New] button in the [Add New Requirement] section
@@ -124,6 +125,8 @@ Feature: C116
     And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
+    When Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
+    And Refresh the page
     When Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     When Select "Select Status" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     And Select the [Preliminary Data] radio button on [Requirement View] page

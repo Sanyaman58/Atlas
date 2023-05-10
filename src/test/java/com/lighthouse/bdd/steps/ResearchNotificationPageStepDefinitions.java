@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -79,6 +80,7 @@ public class ResearchNotificationPageStepDefinitions {
 
     @Then("Only records with entered SKU are displayed on the [Research Notification] page")
     public void onlyRecordsWithEnteredSKUAreDisplayedOnTheResearchNotificationPage() {
+        SelenideTools.sleep(2);
         Assert.assertTrue(Pages.researchNotificationPage().isRecordsOnlyWithSKU());
     }
 

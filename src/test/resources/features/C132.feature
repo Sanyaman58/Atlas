@@ -53,10 +53,7 @@ Feature: C132
     And Click on the [Yes Approve] button on the [Requirements View] page
     Then Click on the [Activate Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
-    When Click on the [Intelligence] sidebar button
-    Then Click on the [Configuration] sidebar button on Lighthouse
-    And The [Configuration] page is opened
     When Click on the [Research Notification] sidebar button on Lighthouse
     Then The [Research Notification] page is opened
     When Enter saved SKU in the activity search on the [Research Notification] page
-    Then A record with type "Change" and "Changes were made to the following: [Change note for customer]" scope displayed in the table
+    Then A record with type "Activate" and "Changes were made to the following: [Change note for customer]" scope displayed in the table

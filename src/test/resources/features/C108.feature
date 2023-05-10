@@ -26,7 +26,7 @@ Feature: C108
     Then The [Research Admin] page is opened
     When Click on [Audit Logs] sidebar button
     Then The [Logs] page is opened
-    When Click on [Requirements View] sidebar button
+    When Click on the [Requirements View] sidebar button on admin
     Then The [Requirements Admin] is opened
     When Click on [Version Requirements] sidebar button
     Then The [Version Requirements] page is opened
