@@ -105,7 +105,7 @@ public class ClientMasterPage extends PageTools {
 	By permissionsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
 	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By systemAdminCheckBoxes = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[2]/input");
-	By versionedStatusInputField = By.xpath("//input[@placeholder=\"Search Status\"]");
+	By versionedStatusInputField = By.xpath("//thead/tr/th[10]/input");
 	By deleteRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[1]");
 	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
 	By requirementViewOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
