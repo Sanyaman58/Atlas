@@ -10,9 +10,9 @@ Feature: C101
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -29,7 +29,7 @@ Feature: C101
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Save Job] button
     Then The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
     When Select already created job in the table on the [New Research] page
     Then Click the [Copy From Research Job] button

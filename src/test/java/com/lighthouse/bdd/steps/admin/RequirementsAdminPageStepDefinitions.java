@@ -452,6 +452,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("Newly created job with status {string} is displayed in the table on the [Requirements View] page")
     public void newlyCreatedJobWithStatusIsDisplayedInTheTableOnTheRequirementsViewPage(String status) {
+        SelenideTools.sleep(5);
         Assert.assertTrue(Pages.requirementsAdminPage().isRecordWithStatusDisplayed(Pages.requirementsAdminPage().getState(),
                 Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName(),

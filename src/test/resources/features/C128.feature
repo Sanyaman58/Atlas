@@ -11,9 +11,9 @@ Feature: C128
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button

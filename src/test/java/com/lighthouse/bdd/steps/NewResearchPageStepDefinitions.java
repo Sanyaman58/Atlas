@@ -355,6 +355,7 @@ public class NewResearchPageStepDefinitions {
     public void refreshThePage() {
 		SelenideTools.sleep(5);
 		Selenide.refresh();
+		SelenideTools.sleep(5);
     }
     
     @And("Click on the [Intelligence] sidebar button")
