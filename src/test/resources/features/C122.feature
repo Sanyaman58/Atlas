@@ -11,8 +11,10 @@ Feature: C122
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    When Create a new surveillance with status [Incomplete] for "Pharma Solutions USA" client with 1 company name, 1 facility name and "Georgia" state
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
+    And Delete job from the table if exists
+    When Create a new surveillance with status [Incomplete] for "AB Test" client with 1 company name, 1 facility name and "Georgia" state
+    Then Select "AB Test" client from the client dropdown
     And Newly created job with status "Incomplete" is displayed in the table on the [New Research] page
     When Select newly created job on the [New Research] page
     Then The [Jurisdiction] page is opened
@@ -27,7 +29,7 @@ Feature: C122
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Save Job] button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
     Then Select newly created job on the [New Research] page
     Then The [Jurisdiction] page is opened
@@ -40,8 +42,9 @@ Feature: C122
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
 
     Then Click on the [Configuration] sidebar button on Lighthouse
+    Then Select "AB Test" client from the client dropdown
     Then Delete newly created configuration with status "Saved"
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Verify that the configuration is deleted on the [Configuration] page
     
 

@@ -13,6 +13,7 @@ public class ZipUtils {
 
     private List <String> fileList;
     public static final String OUTPUT_ZIP_FILE = System.getProperty("user.dir")+"/LHA Automation Test Report.zip";
+
     private static final String SOURCE_FOLDER = System.getProperty("user.dir")+"/allure-results"; // SourceFolder path
 
     public ZipUtils() {

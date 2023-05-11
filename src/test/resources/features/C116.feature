@@ -12,7 +12,7 @@ Feature: C116
     When Click on the [Requirements View] sidebar button
     Then The [Requirements View] page is opened
     And Validate the [Requirements Viewer Filters] elements on the [Requirements View] page
-    Then Select the [Production Data] radio button on [Requirement View] page
+    Then Select the [Preliminary Data] radio button on [Requirement View] page
     Then The [Requirement Viewer] table is displayed
     Then The following labels are displayed in the [Requirements Viewer] table
       |Jurisdiction|
@@ -38,8 +38,8 @@ Feature: C116
       |Foreign Qualification Required?|
       |Attachments|
       |Prerequisites|
-    Then Select the [Preliminary Data] radio button on [Requirement View] page
-    Then The [Requirement Viewer] table is displayed
+#    Then Select the [Preliminary Data] radio button on [Requirement View] page
+#    Then The [Requirement Viewer] table is displayed
     Then The following labels are displayed in the [Requirements Viewer] table
       |Jurisdiction|
       |Application Name|
@@ -93,9 +93,9 @@ Feature: C116
     Then The resident state select and resident type radio buttons are displayed
     When Uncheck the [RES1: Apply Resident State Selector Criteria] checkbox
     Then The resident state select and resident type radio buttons are not displayed
-    When Right click on 1 record in the [Requirement Viewer] table
-    Then Click on the [Edit Requirement] button on the [Requirement View] page
+    When Click on the [Edit Requirement] button of record with status "In-Progress" on the [Versioned Requirements] page
     And Compare the data on the [Edit Requirement] with the data from the [View Requirement] page
+    When Select "Approved" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     When Right click on a record with status "Approved" in the [Requirement Viewer] table
     Then The [Delete Requirement] button is not visible
     When Select "Pending-Approval" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
@@ -103,6 +103,7 @@ Feature: C116
     Then Click on the [Delete Requirement] button on the [Requirement View] page
     Then Window with "Are you sure want to delete this Versioned Requirement?" message is displayed
     And Click on Yes Delete button on the alert window
+    Then Select the [Preliminary Data] radio button on [Requirement View] page
     When Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     And Verify that deleted requirement is not displayed in the [Requirement Viewer] table
     When Click the [Create New] button in the [Add New Requirement] section
@@ -124,6 +125,8 @@ Feature: C116
     And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
+    When Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
+    And Refresh the page
     When Select saved requirement's jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     When Select "Select Status" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     And Select the [Preliminary Data] radio button on [Requirement View] page

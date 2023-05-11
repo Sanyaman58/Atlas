@@ -11,7 +11,7 @@ public class QuestionnaireAdminPageStepDefinitions {
 
     @Then("The [Questionnaire Admin] page is opened")
     public void theQuestionnaireAdminPageIsOpened() {
-        Assert.assertTrue(Pages.questionnaireAdminPage().isQuestionnaireAdminPageOpened());
+        Pages.questionnaireAdminPage().isQuestionnaireAdminPageOpened();
     }
 
     @Then("The [Questionnaire Versions] page is opened")
@@ -98,9 +98,14 @@ public class QuestionnaireAdminPageStepDefinitions {
         Pages.questionnaireAdminPage().clickOnContextMenuActivateDeactivateButton();
     }
 
-    @Then("Select {string} value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
-    public void selectValueOfTheActivateDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(String value, int index) {
-        Pages.questionnaireAdminPage().selectActivateDeactivate(index, value);
+    @Then("Select Activate value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
+    public void selectValueOfTheActivateDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(int index) {
+        Pages.questionnaireAdminPage().selectActivate(index);
+    }
+
+    @Then("Select Deactivate value of the Activate Deactivate select near the {int} question on the [Questionnaire Admin] page")
+    public void selectValueOfTheDeactivateSelectNearTheQuestionOnTheQuestionnaireAdminPage(int index) {
+        Pages.questionnaireAdminPage().selectDeactivate(index);
     }
 
     @Then("The {int} question is deactivated")
@@ -111,5 +116,15 @@ public class QuestionnaireAdminPageStepDefinitions {
     @Then("The {int} question is activated")
     public void theQuestionIsActivated(int index) {
         Assert.assertFalse(Pages.questionnaireAdminPage().isQuestionDeactivated(index));
+    }
+
+    @Then("The Activate questionnaire version button is not visible on the [Questionnaire Versions] page")
+    public void theActivateQuestionnaireVersionButtonIsNotVisibleOnTheQuestionnaireVersionsPage() {
+        Assert.assertFalse(Pages.questionnaireAdminPage().isActivateQuestionnaireVersionButtonVisible());
+    }
+
+    @And("The View questionnaire version button is visible on the [Questionnaire Versions] page")
+    public void theViewQuestionnaireVersionButtonIsVisibleOnTheQuestionnaireVersionsPage() {
+        Assert.assertTrue(Pages.questionnaireAdminPage().isViewQuestionnaireVersionButtonVisible());
     }
 }

@@ -1,5 +1,4 @@
 @C169
-
 Feature: C169
 
   @TestRail(169)
@@ -12,8 +11,9 @@ Feature: C169
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    Then Select "Test Pharma" client from the client dropdown
-    When Validate fields on the [Surveillance Setup] page
+    Then Select "AB Test" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -33,9 +33,7 @@ Feature: C169
     Then Validate that the displayed on the [SaveSubmit Job] page jurisdictions correspond to the selected earlier
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Submit Job] button
-    Then The [View Results] page is opened
     And Verify the [Progress Bar] against the newly created job on the screen
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Test Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
-

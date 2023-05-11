@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -52,9 +53,24 @@ public class ResearchNotificationPageStepDefinitions {
         Pages.researchNotificationPage().saveRequirementNameOfTheRecord(index-1);
     }
 
+    @And("Get SKU of the {int} record on the [Research Notification] page")
+    public void getSKUOfTheRecordOnTheResearchNotificationPage(int index) {
+        Pages.researchNotificationPage().saveSKUOfTheRecord(index-1);
+    }
+
     @Then("Enter saved requirement's name in the activity search on the [Research Notification] page")
     public void enterSavedRequirementSNameInTheActivitySearchOnTheResearchNotificationPage() {
         Pages.researchNotificationPage().enterTextInTheSearchField(Pages.researchNotificationPage().getRequirementName());
+    }
+
+//    @Then("Enter saved SKU in the activity search on the [Research Notification] page")
+//    public void enterSaveSKUInTheActivitySearchOnTheResearchNotificationPage() {
+//        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.researchNotificationPage().getSKU());
+//    }
+
+    @Then("Enter saved SKU in the activity search on the [Research Notification] page")
+    public void enterSavedSKUInTheActivitySearchOnTheResearchNotificationPage() {
+        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.researchNotificationPage().getSKU());
     }
 
     @Then("Only records with entered requirement name are displayed on the [Research Notification] page")
@@ -62,8 +78,34 @@ public class ResearchNotificationPageStepDefinitions {
         Assert.assertTrue(Pages.researchNotificationPage().isRecordsOnlyWithRequirementName());
     }
 
+    @Then("Only records with entered SKU are displayed on the [Research Notification] page")
+    public void onlyRecordsWithEnteredSKUAreDisplayedOnTheResearchNotificationPage() {
+        SelenideTools.sleep(2);
+        Assert.assertTrue(Pages.researchNotificationPage().isRecordsOnlyWithSKU());
+    }
+
     @Then("A record with type {string} and {string} scope displayed in the table")
     public void aRecordWithTypeAndScopeDisplayedInTheTable(String type, String scope) {
         Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndNoteDisplayed(type, scope, Pages.versionRequirementsAdminPage().getChangeNoteText()));
+    }
+    
+    @Then("Click on [Notifications] sidebar option")
+    public void clickNotifications() {
+    	Pages.researchNotificationPage().clickNotificationsButton();
+    }
+    
+    @Then("Click on [Intelligence] option")
+    public void clickIntelligenceOption() {
+    	Pages.researchNotificationPage().selectIntelligence();
+    }
+    
+    @Then("Verify [Research Notfications] page is opened")
+    public void verifyResearchNotificationsPage() {
+    	Pages.researchNotificationPage().verifyResearchNotificationsPageOpened();
+    }
+    
+    @Then("Verify the test wrapping in the Research Notifications page")
+    public void verifyTextWrapping() {
+    	Pages.researchNotificationPage().verifyTextWrappingOnNotificationsPage();
     }
 }

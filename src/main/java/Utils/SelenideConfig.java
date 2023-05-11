@@ -2,6 +2,7 @@ package Utils;
 
 import Constants.Constants;
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -24,12 +25,14 @@ public class SelenideConfig {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--allow-insecure-localhost");
         chromeOptions.setAcceptInsecureCerts(true);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         if (Constants.REMOTE_URL != null) {
             capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
             capabilities.setBrowserName(System.getProperty("browserName", "chrome"));
-            capabilities.setVersion(System.getProperty("browserVersion", "94.0"));
+            capabilities.setVersion(System.getProperty("browserVersion", "112.0.5615.121"));
             capabilities.setCapability("enableVNC", Boolean.parseBoolean(System.getProperty("enableVnc", "true")));
             capabilities.setCapability("enableVideo", Boolean.parseBoolean(System.getProperty("enableVideo", "true")));
             //capabilities.setCapability("videoName", String.format("video_%s.mp4", DateTime.getLocalDateTimeByPattern(VIDEO_NAME_PATTERN)));
@@ -37,7 +40,8 @@ public class SelenideConfig {
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
             capabilities.setCapability("browserName", "chrome");
-            capabilities.setCapability("browserVersion", "94.0");
+            capabilities.setCapability("browserVersion", "112.0.5615.121");
+            capabilities.setCapability("window-size", "1920,1080");
         }
         capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
         return capabilities;
@@ -58,12 +62,12 @@ public class SelenideConfig {
 //        Configuration.fileDownload = FileDownloadMode.PROXY;
         Configuration.holdBrowserOpen = false;
         Configuration.startMaximized = true;
-        Configuration.browserSize = "1920x1080";
-        Configuration.browserCapabilities = getBrowserCapabilities();
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
         Configuration.screenshots = true;
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+
+        Configuration.browserSize = "1920x1080";
         Configuration.pollingInterval = 10000;
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 100000;

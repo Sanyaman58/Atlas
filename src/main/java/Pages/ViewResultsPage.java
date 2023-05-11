@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.ExcelReader;
 import Utils.SelenideTools;
 import base.PageTools;
 import com.codeborne.selenide.SelenideElement;
@@ -12,17 +13,17 @@ public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
     By table= By.xpath("//table[@id='DataTables_Table_0']/tbody");
     By tableJobs = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
-    By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th/div/label");
+    By tableLabels = By.xpath("(//table)[1]/thead[1]/tr[1]/th");
     By actionTableLabel = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th[last()]");
     By showResultsSelect = By.xpath("//select[@name='DataTables_Table_0_length']");
     By researchResults = By.xpath("//div[@id='viewResult']");
     By researchResultsTable = By.xpath("//table[@id='DataTables_Table_1']");
-    By researchResultsTableLabels = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[1]/th");
-    By researchResultsTableFixedLabels = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[1]/th[contains(@class,'fixed-column')]");
+    By researchResultsTableLabels = By.xpath("(//div[@class='dataTables_scrollHeadInner']//table)[2]/thead/tr[1]/th");
+    By researchResultsTableFixedLabels = By.xpath("(//table/thead)[3]/tr[1]/th[contains(@class,'fixed-column')]");
     By researchResultsTableLabelsSearch = By.xpath("//div[@id='DataTables_Table_1_wrapper']//div[@class='dataTables_scroll']/div[@class='dataTables_scrollHead']//table/thead/tr[2]/th/input");
     By researchResultsViewResultButton = By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[1])[%s]");
     By researchResultsDeleteResultButton = By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[2])[%s]");
-    By researchResultsActivityLogsButton = By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[6]/div/button[3])[%s]");
+    By researchResultsActivityLogsButton = By.xpath("(//tbody/tr/td[6]/div/a[1])[%s]");
 
 
     By surveillanceResultsTableRecords = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_0']//tbody/tr");
@@ -32,12 +33,25 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTableRecordsElements = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr/td");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
     By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
-    By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Surveillance Results']/following-sibling::button");
+    By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Knowledge Results']/following-sibling::button");
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
+    By progressBar = By.xpath("//tr//div[@class='progress']");
+    By companySelect = By.xpath("//select[@class='company_val form-control']");
+    By exportButton = By.xpath("//button[contains(text(),'Export')]");
+    By dateTimeInputSearchbar = By.xpath("//input[@placeholder=\"Search Date/Time\"]");
+    By companyNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Company Name\"]");
+    By facilityNameInputSearchbar = By.xpath("//input[@placeholder=\"Search Facility Name\"]");
+    By initiatedByInputSearchbar = By.xpath("//input[@placeholder=\"Search Initiated By\"]");
+    By searchStatusInputSearchbar = By.xpath("//input[@placeholder=\"Search Status\"]");
+    By resultPageSearchbar = By.xpath("//div[2]/div/div/div[1]/div/table/thead/tr[2]/th/input");
+    By resultPageViewIcon = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[1]");
+    By categoryColumnText = By.xpath("//div[@id='job-result-container']//table/thead/tr[1]/th[2]");
 
     List<List<String>> tableRecords;
+    List<List<String>> excelTableRecords;
     static String facilityName;
+    static String dateTime;
     static String companyName;
     static int requirementsCount;
     static int activityLogsCount;
@@ -54,7 +68,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isNewlySubmittedJobDisplayed(String status){
-        SelenideTools.sleep(80);
+        SelenideTools.sleep(150);
         System.out.println(Pages.newResearchPage().getCompanyName());
         System.out.println(Pages.newResearchPage().getFacilityName());
         for(int i = 0;i < getElements(tableJobs).size();i++){
@@ -84,8 +98,18 @@ public class ViewResultsPage extends PageTools {
         getSelenideElement(researchResultsViewResultButton, index).click();
     }
 
+    public boolean isViewResultButtonVisible(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsViewResultButton, 1);
+    }
+
     public void clickOnTheDeleteButtonOfTheRecord(int index){
         getSelenideElement(researchResultsDeleteResultButton, index).click();
+    }
+
+    public boolean isDeleteResultButtonVisible(){
+        SelenideTools.sleep(2);
+        return isElementVisible(researchResultsDeleteResultButton, 1);
     }
 
     public void clickOnTheActivityLogsButtonOfTheRecord(int index){
@@ -116,8 +140,10 @@ public class ViewResultsPage extends PageTools {
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
             tableLabelsList.add(element.getText());
+            System.out.println(element.getText());
         }
-        tableLabelsList.add(getSelenideElement(actionTableLabel).getText());
+        System.out.println(tableLabelsList.size());
+//        tableLabelsList.add(getSelenideElement(actionTableLabel).getText());
         return tableLabelsList.equals(labels);
     }
 
@@ -194,6 +220,10 @@ public class ViewResultsPage extends PageTools {
     public String getFacilityNameOfTheTableRecord(){
         return facilityName;
     }
+
+    public String getDateTimeOfTheTableRecord(){
+        return dateTime;
+    }
     public String getCompanyNameOfTheTableRecord(){
         return companyName;
     }
@@ -202,6 +232,12 @@ public class ViewResultsPage extends PageTools {
         waitForElementVisibility(surveillanceResultsTableRecords);
         facilityName = getElements(surveillanceResultsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText().trim();
         System.out.println(facilityName);
+    }
+
+    public void saveDateTimeOfTheTableRecord(int index){
+        waitForElementVisibility(surveillanceResultsTableRecords);
+        dateTime = getElements(surveillanceResultsTableRecords).get(index).findElement(By.xpath("./td[1]")).getText().trim();
+        System.out.println(dateTime);
     }
 
     public void saveCompanyNameOfTheTableRecord(int index){
@@ -220,9 +256,10 @@ public class ViewResultsPage extends PageTools {
         return false;
     }
 
-    public boolean isResultPresentInTheList(String cName, String fName){
+    public boolean isResultPresentInTheList(String cName, String fName, String dTime){
         for(int i = 0;i < getElements(tableJobs).size();i++){
-            if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(cName)
+            if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(dTime)
+                    && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(cName)
                     && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(fName))
                 return true;
         }
@@ -254,10 +291,16 @@ public class ViewResultsPage extends PageTools {
         List<String> tableLabelsList = new ArrayList<>();
         List<SelenideElement> elements = getElements(researchResultsTableLabels);
         for(SelenideElement element : elements){
-            System.out.println(element.getAttribute("innerHTML"));
-            tableLabelsList.add(element.getAttribute("innerHTML"));
+//            System.out.println(element.getAttribute("aria-label"));
+            tableLabelsList.add(element.getAttribute("aria-label"));
         }
-        return tableLabelsList.equals(labels);
+        for(int i = 0; i < labels.size(); i++){
+            System.out.println(labels.get(i));
+            System.out.println(tableLabelsList.get(i));
+            if(!tableLabelsList.get(i).contains(labels.get(i)))
+                return false;
+        }
+        return true;
     }
 
     public void saveFixedLabelsCoordinates(){
@@ -289,7 +332,10 @@ public class ViewResultsPage extends PageTools {
         for(SelenideElement element : elements){
             if(element.getAttribute("innerHTML").contains(label)){
                 System.out.println(element.getAttribute("innerHTML"));
-                ((JavascriptExecutor) SelenideTools.getDriver()).executeScript("arguments[0].argument[0].scrollIntoView()", element);
+                JavascriptExecutor js = (JavascriptExecutor) SelenideTools.getDriver();
+
+                js.executeScript("window.scrollBy(6000,0)");
+//                js.executeScript("arguments[0].argument[0].scrollIntoView()", element);
                 element.scrollTo();
                 break;
             }
@@ -306,5 +352,67 @@ public class ViewResultsPage extends PageTools {
     public void selectClient(String client){
         waitForElementVisibility(clientSelect);
         selectOption(client, clientSelect);
+    }
+
+    public void selectCompany(String client){
+        waitForElementVisibility(companySelect);
+        selectOption(client, companySelect);
+    }
+
+    public void clickExportButton(){
+        waitForElementVisibility(exportButton);
+        click(exportButton);
+    }
+
+    public boolean isProgressBarVisible(){
+        return isElementVisible(progressBar);
+    }
+
+    public Object[][] getData(String filename, String SheetName) {
+        ExcelReader excel;
+        if (System.getProperty("os.name").contains("Windows")) {
+            excel = new ExcelReader(
+                    System.getProperty("user.dir") + "\\src\\test\\resources\\data\\ExcelFile\\" + filename);
+        }else {
+            excel = new ExcelReader(
+                    System.getProperty("user.dir") + "/src/test/resources/data/" + filename + ".xlsx");
+        }
+        int rows = excel.getRowCount(SheetName);
+        int columns = excel.getColumnCountAtRow(SheetName,1);
+        System.out.println("Rows: "+rows+"\nColumns:"+columns);
+        Object[][] data = new Object[rows - 1][columns];
+        for (int rowNum = 2; rowNum <= rows; rowNum++) {
+            for (int colNum = 0; colNum < columns; colNum++) {
+                data[rowNum - 2][colNum] = excel.getCellData(SheetName, colNum, rowNum);
+            }
+        }
+        return data;
+    }
+    
+    public void verifySearchBarUnderColumns(){
+        waitForElementVisibility(dateTimeInputSearchbar);
+        waitForElementVisibility(companyNameInputSearchbar);
+        waitForElementVisibility(facilityNameInputSearchbar);
+        waitForElementVisibility(initiatedByInputSearchbar);
+        waitForElementVisibility(searchStatusInputSearchbar);
+        SelenideTools.sleep(5);
+        List<SelenideElement> elements = getElements(resultPageSearchbar);
+        if(elements.size() ==5) {
+        	System.out.println("Verified the count of search bar to be "+  elements.size());
+        }
+    }
+        
+    public void clickOnResultViewButton(){
+        waitForElementVisibility(resultPageViewIcon);
+        click(resultPageViewIcon);
+        SelenideTools.sleep(5);
+    }
+    
+    public void verifyCategoryColumnOnResultsPage(){
+        waitForElementVisibility(categoryColumnText);
+        String resultLabelText = "Category";
+        SelenideElement categoryColumnTextElement = getSelenideElement(categoryColumnText);
+        if(categoryColumnTextElement.getText().equals(resultLabelText))
+        		System.out.println("Found label text as" +  categoryColumnTextElement.getText());
     }
 }

@@ -11,11 +11,17 @@ import Utils.Waits;
 import Utils.ZipUtils;
 
 import com.codeborne.selenide.Selenide;
+
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.cucumber.java.*;
 import io.qameta.allure.Allure;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
@@ -32,6 +38,14 @@ public class Hooks extends AllureLogger {
     private Map<String, Long> cycleNames = new HashMap<>();
     TestRailTool testRailTool;
 
+    @BeforeAll
+    static void setupAllureReports() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
+        );
+    }
+
     @Before
     public void setUpBrowser(){
         logInfo("Creating web driver configuration...");
@@ -47,7 +61,7 @@ public class Hooks extends AllureLogger {
 //        logInfo("Web driver closed!");
 //    }
 
-    @After(order = 2)
+    @After()
     public void afterScenario(Scenario scenario) throws IOException {
         String scenarioName = scenario.getName();
         String testCaseIdFromScenario = scenario.getName().split(",")[0];
@@ -93,7 +107,7 @@ public class Hooks extends AllureLogger {
     private void addTestCaseToTestRun() {
         testRailTool.updateTestRun(Long.parseLong(caseId));
     }
-    
+
     @AfterAll
 	public static void after_all() {
 		ZipUtils.generateZipFile();
@@ -103,4 +117,5 @@ public class Hooks extends AllureLogger {
     	
     	System.out.println("this after all method --------------------------------------------------------------");
 	}
+
 }

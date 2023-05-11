@@ -12,6 +12,7 @@ public class JurisdictionPageStepDefinitions {
     @Then("The [Jurisdiction] page is opened")
     public void theQuestionnairePageIsOpened() {
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
+        SelenideTools.sleep(3);
     }
 
     @When("Select {string} state on the [Jurisdiction] page")
@@ -55,11 +56,25 @@ public class JurisdictionPageStepDefinitions {
         Assert.assertTrue(Pages.newResearchPage().isSurveillanceSetupPageOpened());
         Pages.newResearchPage().goBackInBrowser();
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
-        Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
     }
 
-    @Then("Verify that all 52 states are visible and enabled")
+    @Then("Verify that all 53 states are visible and enabled")
     public void verifyThatAllStatesAreVisibleAndEnabled() {
         Pages.jurisdictionPage().areAllStatesCheckboxesVisibleAndClickable();
+    }
+    
+    @When("Verify Jurisdictions state is {string} as selected earlier on the [Jurisdiction] page")
+    public void verifyJurisdictionState(String Selectedstate) {
+        Pages.jurisdictionPage().selectedState(Selectedstate);
+    }
+
+    @And("EUI states radio buttons are visible")
+    public void euiStatesRadioButtonsAreVisible() {
+        Assert.assertTrue(Pages.jurisdictionPage().isEUIStatesRadioButtonsVisible());
+    }
+
+    @Then("Verify that {string} state is displayed on the [Jurisdiction] page")
+    public void verifyThatDistrictOfColumbiaStateIsDisplayedOnTheJurisdictionPage(String state) {
+        Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPresent(state));
     }
 }

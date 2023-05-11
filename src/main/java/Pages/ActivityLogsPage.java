@@ -10,10 +10,10 @@ public class ActivityLogsPage extends PageTools {
     By activityLogsPageTitle = By.xpath("//h2[contains(text(),'Activity logs')]");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
 
-    By table= By.xpath("//table[@id='DataTables_Table_0']/tbody");
-    By tableLogs = By.xpath("//table[@id='DataTables_Table_0']/tbody/tr");
+    By table= By.xpath("//table/tbody");
+    By tableLogs = By.xpath("//table/tbody/tr");
     By tableLogsNoRecords = By.xpath("//td[@class='dataTables_empty']");
-    By tableLabels = By.xpath("//div[@class='dataTables_scroll']//table/thead/tr/th");
+    By tableLabels = By.xpath("//table/thead/tr/th");
 
 
     List<List<String>> tableRecords;
@@ -28,12 +28,18 @@ public class ActivityLogsPage extends PageTools {
         SelenideTools.sleep(3);
         waitForElementVisibility(searchField);
         type(text, searchField);
+        System.out.println(text);
     }
 
     public boolean isRecordDescriptionContainsText(String text){
         waitForElementVisibility(tableLogs);
-        String logDescription = getSelenideElement(tableLogs).findElement(By.xpath("./td[2]")).getText();
-        return logDescription.contains(text);
+        System.out.println(text);
+        for(int i = 0; i < getElements(tableLogs).size();i++){
+            System.out.println(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText());
+            if(getElements(tableLogs).get(i).findElement(By.xpath("./td[2]")).getText().contains(text))
+                return true;
+        }
+        return false;
     }
 
     public int getNumberOfLogs(){

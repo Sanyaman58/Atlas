@@ -70,7 +70,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Verify that early created requirement name is in the list")
     public void verifyThatEarlyCreatedRequirementNameIsInTheList() {
-        SelenideTools.sleep(5);
+        SelenideTools.sleep(10);
         Assert.assertTrue(Pages.viewResultsPage().isRequirementPresentInTheList(Pages.requirementsAdminPage().getState()
                 , Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName()));
@@ -90,6 +90,7 @@ public class ViewResultsPageStepDefinitions {
     public void getRequirementDataOfRecordsOnResearchResultsPage(int index) {
         Pages.viewResultsPage().saveRequirementNameOfTheTableRecord(index-1);
         Pages.viewResultsPage().saveCompanyNameOfTheTableRecord(index-1);
+        Pages.viewResultsPage().saveDateTimeOfTheTableRecord(index-1);
     }
 
     @Then("Verify that records on the [View Results] page are sorted alphabetically backwards by {string} label")
@@ -139,7 +140,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Verify that deleted result is not displayed in the [View Results] table")
     public void verifyThatDeletedResultIsNotDisplayedInTheViewResultsTable() {
-        Assert.assertFalse(Pages.viewResultsPage().isResultPresentInTheList(Pages.viewResultsPage().getCompanyNameOfTheTableRecord(), Pages.viewResultsPage().getFacilityNameOfTheTableRecord()));
+        Assert.assertFalse(Pages.viewResultsPage().isResultPresentInTheList(Pages.viewResultsPage().getCompanyNameOfTheTableRecord(), Pages.viewResultsPage().getFacilityNameOfTheTableRecord(), Pages.viewResultsPage().getDateTimeOfTheTableRecord()));
     }
 
     @And("Get the number of records of the result on [Research Results] page")
@@ -170,5 +171,51 @@ public class ViewResultsPageStepDefinitions {
     @Then("{int} record is displayed in the table on the [View Results] page")
     public void recordIsDisplayedInTheTableOnTheViewResultsPage(int numberOfRecords) {
         Assert.assertTrue(Pages.viewResultsPage().getNumberOfResults()==numberOfRecords);
+    }
+
+    @And("Verify that [View Result] button is visible")
+    public void verifyThatViewResultButtonIsVisible() {
+        Assert.assertTrue(Pages.viewResultsPage().isViewResultButtonVisible());
+    }
+
+    @And("Verify that [Delete Result] button is visible")
+    public void verifyThatDeleteResultButtonIsVisible() {
+        Assert.assertTrue(Pages.viewResultsPage().isDeleteResultButtonVisible());
+
+    }
+
+    @And("Select {string} company from the client dropdown on the [View Results] page")
+    public void selectCompanyFromTheClientDropdownOnTheViewResultsPage(String text) {
+        Pages.viewResultsPage().selectCompany(text);
+    }
+
+    @When("Click on the [Export] button on the [Research Results] page")
+    public void clickOnTheExportButtonOnTheResearchResultsPage() {
+        Pages.viewResultsPage().clickExportButton();
+    }
+
+    @And("Verify the [Progress Bar] against the newly created job on the screen")
+    public void verifyTheProgressBarAgainstTheNewlyCreatedJobOnTheScreen() {
+        Assert.assertTrue(Pages.viewResultsPage().isProgressBarVisible());
+    }
+
+    @Then("Select {string} client from the client dropdown on [View Results] page")
+    public void selectClientFromTheClientDropdownOnViewResultsPage(String client) {
+        Pages.viewResultsPage().selectClient(client);
+    }
+    
+    @And("Verify the search bar under each column")
+    public void verifySearchBar() {
+        Pages.viewResultsPage().verifySearchBarUnderColumns();
+    }
+    
+    @And("Click on result page view icon")
+    public void clickResultViewIcon() {
+        Pages.viewResultsPage().clickOnResultViewButton();
+    }
+    
+    @And("Verify the [Category] column on Knowledge Results page")
+    public void verifyCategoryColumn() {
+        Pages.viewResultsPage().verifyCategoryColumnOnResultsPage();
     }
 }

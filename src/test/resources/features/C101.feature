@@ -1,5 +1,4 @@
 @C101
-
 Feature: C101
 
   @TestRail(101)
@@ -11,9 +10,9 @@ Feature: C101
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -30,7 +29,7 @@ Feature: C101
     And Validate that the displayed on the [SaveSubmit Job] page questions and answers correspond to the selected earlier
     When Click on the [Save Job] button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Newly created job with status "Saved" is displayed in the table on the [New Research] page
     When Select already created job in the table on the [New Research] page
     Then Click the [Copy From Research Job] button
@@ -46,6 +45,5 @@ Feature: C101
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "Pharma Solutions USA" client from the client dropdown
+#    Then Select "Test Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
-

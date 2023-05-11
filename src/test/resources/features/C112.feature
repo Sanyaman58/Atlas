@@ -10,13 +10,16 @@ Feature: C112
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    When Select "Test Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     And Select "Georgia" state on the [Jurisdiction] page
     And Validate that the checkbox is to the left of the Jurisdiction text
+    And Select all jurisdictions on the [Jurisdiction] page
     And Click the [Next] button on the [Jurisdiction] page
     And Click the [Next] button on the [Questionnaire] page
     And Verify the left position of Jurisdiction checkbox on save and submit configuration page

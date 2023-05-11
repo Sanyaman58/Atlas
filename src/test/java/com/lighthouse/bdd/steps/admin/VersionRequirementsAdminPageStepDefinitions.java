@@ -82,6 +82,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.researchNotificationPage().getRequirementName());
     }
 
+    @Then("Enter requirement SKU from the [Research Notifications] page in the SKU search on the [Versioned Requirements] page")
+    public void enterRequirementSKUFromResearchNotificationsInTheRequirementSearchOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterRequirementSkuInTheSearchField(Pages.researchNotificationPage().getSKU());
+    }
+
     @Then("Click on the [Approve Requirement] button of the record by {int} index on the [Versioned Requirements] page")
     public void clickOnTheApproveRequirementButtonOfTheNewlyCreatedRecordOnTheVersionedRequirementsPage(int index) {
         Pages.versionRequirementsAdminPage().clickOnApproveRequirementButton(index-1);
@@ -213,6 +218,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterChangeNoteForCustomer(text);
     }
 
+    @When("Enter random note in the Change Note For Customer section on the [Versioned Requirements] page")
+    public void enterRandomNoteInTheChangeNoteForCustomerSectionOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().enterChangeNoteForCustomer(RandomStringUtils.random(10, true, false));
+    }
+
     @When("Get text from the search field on the [Versioned Requirements] page")
     public void getTextFromTheSearchFieldOnTheVersionedRequirementsPage() {
         Pages.versionRequirementsAdminPage().saveTextFromSearchField();
@@ -237,4 +247,47 @@ public class VersionRequirementsAdminPageStepDefinitions {
     public void enterOldRequirementNameInTheRequirementSearchOnTheVersionedRequirementsPage() {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getOldRequirementName());
     }
+
+    @And("Verify that [Yes] requirements checks include radio button is not checked on the [View Requirement] button")
+    public void verifyThatYesRequirementsChecksIncludeRadioButtonIsNotCheckedOnTheViewRequirementButton() {
+        Assert.assertFalse(Pages.versionRequirementsAdminPage().isIncludeRadioButtonChecked());
+    }
+
+    @And("Verify that [Yes] requirements checks include radio button is checked on the [View Requirement] button")
+    public void verifyThatYesRequirementsChecksIncludeRadioButtonIsCheckedOnTheViewRequirementButton() {
+        Assert.assertTrue(Pages.versionRequirementsAdminPage().isIncludeRadioButtonChecked());
+    }
+
+    @When("Click on the [View Requirement] button of the {int} record on the [Versioned Requirements] page")
+    public void clickOnTheViewRequirementButtonOfTheRecordOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index-1);
+    }
+
+//    @And("Verify that the [Activate Requirement] view option is enabled")
+//    public void verifyThatTheActivateRequirementViewOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible());
+//    }
+
+//    @And("Verify [Delete Requirement] option is enabled")
+//    public void verifyDeleteRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementDeleteButtonVisible());
+//
+//    }
+
+//    @And("Verify that the [Edit Requirement] option is enabled")
+//    public void verifyThatTheEditRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementEditButtonVisible());
+//
+//    }
+
+//    @And("Verify that the [View Requirement] option is enabled")
+//    public void verifyThatTheViewRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementViewButtonVisible());
+//
+//    }
+
+//    @And("Verify that the [Approve Requirement] option is enabled")
+//    public void verifyThatTheApproveRequirementOptionIsEnabled() {
+//        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementApproveButtonVisible());
+//    }
 }

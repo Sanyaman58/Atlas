@@ -1,5 +1,4 @@
-@C109 @Test
-
+	@C109 @Test
 Feature: C109
 
   @TestRail(109)
@@ -11,11 +10,9 @@ Feature: C109
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
-    Then Click [Submit new job] button
-    And Pop up window with "Please enter all required fields" message is displayed
-    And Close pop up window
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
+    And Delete job from the table if exists
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -28,7 +25,15 @@ Feature: C109
     Then Get the questions values
     When Click on the [Surveillance Setup] breadcrumb
     Then The [Configuration] page is opened
-    When Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Newly created job with status "Incomplete" is displayed in the table on the [New Research] page
-    And Delete newly created configuration with status "Incomplete"
-
+    And Select already created job in the table on the [New Research] page
+    And Select radio button of existing job and click Next
+    Then The [Jurisdiction] page is opened
+    Then Click the [Next] button on the [Jurisdiction] page
+    Then The [Questionnaire] page is opened
+    And Validate the [Questionnaire] page elements
+    Then Get the questions values
+    And Click the [Next] button on the [Questionnaire] page
+    Then The [SaveSubmit Job] page is opened
+    And Verify Jurisdictions state is "Georgia" as selected earlier on the [Jurisdiction] page

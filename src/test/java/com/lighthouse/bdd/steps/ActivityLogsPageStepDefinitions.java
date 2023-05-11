@@ -51,4 +51,20 @@ public class ActivityLogsPageStepDefinitions {
     public void getActivityLogsCount() {
         Pages.activityLogsPage().saveActivityLogsRecordsCount();
     }
+
+    @And("Verify that log containing created earlier requirement in description text is displayed on the [Activity Logs] page")
+    public void verifyThatLogContainingCreatedEarlierRequirementInDescriptionTextIsDisplayedOnTheActivityLogsPage() {
+        String SKU = Pages.versionRequirementsAdminPage().getRequirementSku();
+        String trimSKU = SKU.substring(SKU.length() - 9);
+        Assert.assertTrue(Pages.activityLogsPage().isRecordDescriptionContainsText(trimSKU));
+
+    }
+
+    @Then("Enter requirement SKU in the activity search on the [Activity Logs] page")
+    public void enterRequirementSKUInTheActivitySearchOnTheActivityLogsPage() {
+        String SKU = Pages.versionRequirementsAdminPage().getRequirementSku();
+        String trimSKU = SKU.substring(SKU.length() - 9);
+        System.out.println(trimSKU);
+        Pages.activityLogsPage().enterTextInTheSearchField(trimSKU);
+    }
 }

@@ -36,7 +36,7 @@ Feature: C167
     Then The [Configuration] page is opened
     Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    When Select "AB Test" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -87,7 +87,7 @@ Feature: C167
     Then The [Configuration] page is opened
     Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    When Select "AB Test" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button

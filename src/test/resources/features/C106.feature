@@ -1,5 +1,4 @@
 @C106
-
 Feature: C106
 
   @TestRail(106)
@@ -15,21 +14,18 @@ Feature: C106
     Then The [View Results] page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "Pharma Solutions USA" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
     Then The [Jurisdiction] page is opened
     When Select "Georgia" state on the [Jurisdiction] page
     And Select all jurisdictions on the [Jurisdiction] page
-    And Verify the breadcrumbs on the [Jurisdiction] page
     When Click the [Next] button on the [Jurisdiction] page
     Then Verify the breadcrumbs on the [Questionnaire] page
     When Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
     Then Verify the breadcrumbs on the [SaveSubmit Job] page
     And Verify the buttons on the [SaveSubmit Job] page
-
-

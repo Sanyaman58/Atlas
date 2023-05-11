@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 public class NewResearchPage extends PageTools {
 
-	By surveillanceSetupPageTitle = By.xpath("//h2[text()='Surveillance Configuration']");
+	By surveillanceSetupPageTitle = By.xpath("//h2[text()='Configuration']");
 	By companyLabelAsterisk = By.xpath("//div[@class='form-row']/label[contains(text(),'Company')]/span[@class='red']");
 	By facilityLabelAsterisk = By
 			.xpath("//div[@class='form-row']/label[contains(text(),'Facility')]/span[@class='red']");
@@ -36,16 +36,26 @@ public class NewResearchPage extends PageTools {
 			"//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td[text()='No data available in table']");
 	By tableJobsRadioButton = By.xpath(
 			"//table[@id='DataTables_Table_0']/tbody[@class='get-dynamic-jobs']/tr/td/input[@name='copy_from_job_id']");
-	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')]");
-	By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[5]");
+	By clientDropdown = By.xpath("//select[contains(@class,'Client_id')] | //select[contains(@class,'new_client_id')]");
+	By surveillanceIntelligenceSidebarButton = By.xpath("//ul[@id='menu']/li[5]/a");
+	By clientDropdownResults = By.xpath("//select[contains(@class,'new_client_id')]");
+	// By surveillanceIntelligenceSidebarButton =
+	// By.xpath("//ul[@id='menu']/li[5]");
 	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[1]/a");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");
 	By surveillanceSetupBreadcrumb = By
-			.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Surveillance Setup')]");
+			.xpath("//h4[contains(@class,'cardInner-heading')]/a/span[contains(text(),'Configuration Setup')]");
 	By configurationDeleteButton = By.xpath("//button[contains(@class,'delete-job-research')]");
 	By alertYesDeleteButton = By.xpath("(//button[text()='Yes Delete'])[%s]");
 	By createdLabelSort = By.xpath("//table//tr/th[text()='Created']");
+	By intelligenceCountMessage = By.xpath("//div[@class='dataTables_info']");
+	By intelligenceSidebarButton = By.xpath("//*[@id=\"menu\"]//a[contains(text(),'Intelligence')]");
+	By configurationSidebarOption = By.xpath("//*[@id=\"menu\"]/li[5]/ul/li[1]/a");
+	By knowledgeResultSidebarOption = By.xpath("//*[@id=\"menu\"]/li[5]/ul/li[2]/a");
+	By configurationSetupHeader = By.xpath("//*[@id=\"mange-job-research\"]/div/div[1]/div[1]/div/div[2]/h4");
+	By configurationPageRightHeader = By.xpath("//*[@id=\"mange-job-research\"]/div/div[2]/div[1]/div/div[2]/h4");
+	By configurationSetupHeaderElement = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[2]/div/div[1]/div/h4/a/span");
 
 	String companyName;
 	String facilityName;
@@ -215,6 +225,7 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public int getNumberOfJobs() {
+		System.out.println(getElements(tableJobs).size());
 		if (isElementVisible(noDataInTable))
 			return 0;
 		else
@@ -322,6 +333,11 @@ public class NewResearchPage extends PageTools {
 		getElements(configurationDeleteButton).get(number).click();
 	}
 
+	public boolean isDeleteButtonVisible() {
+		SelenideTools.sleep(2);
+		return isElementVisible(configurationDeleteButton);
+	}
+
 	public void clickOnTheDeleteButton(String status) {
 		for (int i = 0; i < getElements(tableJobs).size(); i++) {
 			if (getElements(tableJobs).get(i).findElement(By.xpath("./td[4]")).getText().equals(status)
@@ -364,12 +380,12 @@ public class NewResearchPage extends PageTools {
 		doubleClick(alertYesDeleteButton, 3);
 	}
 
-	public boolean verifyThatTheJobIsDeleted(){
-		if(isElementVisible(noDataInTable))
+	public boolean verifyThatTheJobIsDeleted() {
+		if (isElementVisible(noDataInTable))
 			return true;
-		for (SelenideElement element: getElements(tableJobs)) {
-			if(element.findElement(By.xpath("./td[2]")).getText().equals(companyName))
-				if(element.findElement(By.xpath("./td[3]")).getText().equals(facilityName))
+		for (SelenideElement element : getElements(tableJobs)) {
+			if (element.findElement(By.xpath("./td[2]")).getText().equals(companyName))
+				if (element.findElement(By.xpath("./td[3]")).getText().equals(facilityName))
 					return false;
 		}
 		return true;
@@ -383,6 +399,59 @@ public class NewResearchPage extends PageTools {
 			doubleClick(alertYesDeleteButton, 2);
 		} else if (isElementVisible(alertYesDeleteButton, 3)) {
 			doubleClick(alertYesDeleteButton, 3);
+		}
+	}
+
+	By configurationTableNextButton = By.xpath("//button[@id=\"copyfrom_research_job\"]");
+
+	public void selectConfigurationTableNextButton() {
+		waitForElementVisibility(configurationTableNextButton);
+		click(configurationTableNextButton);
+		SelenideTools.sleep(5);
+	}
+
+	public boolean isIntelligenceCountMessageDisplayed() {
+		return isElementVisible(intelligenceCountMessage);
+	}
+
+	public void clickIntelligenceSidebarButton() {
+		waitForElementVisibility(intelligenceSidebarButton);
+		click(intelligenceSidebarButton);
+		SelenideTools.sleep(4);
+	}
+
+	public void verifyIntelligenceDropdown() {
+		waitForElementVisibility(configurationSidebarOption);
+		waitForElementVisibility(knowledgeResultSidebarOption);
+	}
+
+	public void verifyConfigurationHeaderText() {
+		SelenideElement configurationSetupHeaderElement = getSelenideElement(configurationSetupHeader);
+		waitForElementVisibility(configurationSetupHeader);
+		if (configurationSetupHeaderElement.getText().contains("Start New Configuration")) {
+			System.out.println("Expected test found "+ configurationSetupHeaderElement.getText());
+		} else {
+			System.out.println("Exepected configuration header text not found");
+		}
+	}
+	
+	public void verifyConfigurationHeaderTextOnRight() {
+		SelenideElement configurationSetupHeaderRightElement = getSelenideElement(configurationPageRightHeader);
+		waitForElementVisibility(configurationPageRightHeader);
+		if (configurationSetupHeaderRightElement.getText().contains("Modify Existing Configuration")) {
+			System.out.println("Expected test found "+ configurationSetupHeaderRightElement.getText());
+		} else {
+			System.out.println("Expected configuration header text not found");
+		}
+	}
+	
+	public void verifyConfigurationSetupText() {
+		SelenideElement configurationSetupHeaderElementText = getSelenideElement(configurationSetupHeaderElement);
+		waitForElementVisibility(configurationSetupHeaderElement);
+		if (configurationSetupHeaderElementText.getText().contains("Configuration Setup")) {
+			System.out.println("Expected test found "+ configurationSetupHeaderElementText.getText());
+		} else {
+			System.out.println("Expected configuration header text not found");
 		}
 	}
 
