@@ -60,7 +60,7 @@ public class SelenideConfig {
         Configuration.browserCapabilities = getBrowserCapabilities();
 //        Configuration.proxyEnabled = true;
 //        Configuration.fileDownload = FileDownloadMode.PROXY;
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.startMaximized = true;
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
