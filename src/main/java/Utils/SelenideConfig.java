@@ -60,12 +60,12 @@ public class SelenideConfig {
         Configuration.browserCapabilities = getBrowserCapabilities();
 //        Configuration.proxyEnabled = true;
 //        Configuration.fileDownload = FileDownloadMode.PROXY;
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.startMaximized = true;
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
         Configuration.screenshots = true;
-        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         Configuration.browserSize = "1920x1080";
         Configuration.pollingInterval = 10000;
         Configuration.pageLoadStrategy = "eager";
