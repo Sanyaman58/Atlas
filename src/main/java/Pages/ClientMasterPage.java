@@ -1405,13 +1405,12 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 	
-	public boolean euiStates() {
+	public void euiStates() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = " + endUpInStatesTitleElement);
 		List<SelenideElement> jurisdictionPageStatesElement = getElements(jurisdictionPageStates);
 		if (jurisdictionPageStatesElement.size() > 0) {
 			System.out.println("EUI states visible");
 		}
-		return endUpInStatesTitleElement;
 	}
 }
