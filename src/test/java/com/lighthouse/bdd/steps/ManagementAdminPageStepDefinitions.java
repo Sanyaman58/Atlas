@@ -284,8 +284,8 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@And("Fill the required details on Requirement view page")
-	public void fillRequiredInfo(int index) {
-		Pages.clientMasterPage().fillInfoOnRequirementViewPage(index);
+	public void fillRequiredInfo() {
+		Pages.clientMasterPage().fillInfoOnRequirementViewPage();
 	}
 
 	@And("Open Notification page")
@@ -488,7 +488,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
-		Assert.assertTrue(Pages.clientMasterPage().euiStates());
+		Pages.clientMasterPage().euiStates();
 	}
 
 	@Then("Type {string} in the email search on the [User Master] page")

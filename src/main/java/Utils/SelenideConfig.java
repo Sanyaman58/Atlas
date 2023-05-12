@@ -16,12 +16,13 @@ import java.util.logging.Logger;
 public class SelenideConfig {
     private static final String VIDEO_NAME_PATTERN = "HH:mm:ss:SSS";
 
-    /*For Selenoid*/
+    /* For Selenoid */
     private static DesiredCapabilities getBrowserCapabilities() {
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
-        //chromePrefs.put("download.directory_upgrade", true);
-        //chromePrefs.put("download.default_directory", System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"data"+File.separator+"ExcelFile+File.separator");
+        // chromePrefs.put("download.directory_upgrade", true);
+        // chromePrefs.put("download.default_directory",
+        // System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"data"+File.separator+"ExcelFile+File.separator");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.addArguments("--ignore-certificate-errors");
@@ -35,7 +36,8 @@ public class SelenideConfig {
             capabilities.setVersion(System.getProperty("browserVersion", "112.0.5615.121"));
             capabilities.setCapability("enableVNC", Boolean.parseBoolean(System.getProperty("enableVnc", "true")));
             capabilities.setCapability("enableVideo", Boolean.parseBoolean(System.getProperty("enableVideo", "true")));
-            //capabilities.setCapability("videoName", String.format("video_%s.mp4", DateTime.getLocalDateTimeByPattern(VIDEO_NAME_PATTERN)));
+            // capabilities.setCapability("videoName", String.format("video_%s.mp4",
+            // DateTime.getLocalDateTimeByPattern(VIDEO_NAME_PATTERN)));
             capabilities.setCapability("sessionTimeout", "5m");
             capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
@@ -58,8 +60,8 @@ public class SelenideConfig {
             Configuration.remote = Constants.REMOTE_URL;
         }
         Configuration.browserCapabilities = getBrowserCapabilities();
-//        Configuration.proxyEnabled = true;
-//        Configuration.fileDownload = FileDownloadMode.PROXY;
+        // Configuration.proxyEnabled = true;
+        // Configuration.fileDownload = FileDownloadMode.PROXY;
         Configuration.holdBrowserOpen = false;
         Configuration.startMaximized = true;
         Configuration.fastSetValue = false;
@@ -72,6 +74,7 @@ public class SelenideConfig {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 100000;
         Configuration.reportsFolder = "screenshots/";
-        Configuration.downloadsFolder = (System.getProperty("user.dir")+ File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"data");
+        Configuration.downloadsFolder = (System.getProperty("user.dir") + File.separator + "src" + File.separator
+                + "test" + File.separator + "resources" + File.separator + "data");
     }
 }

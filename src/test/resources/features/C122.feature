@@ -1,5 +1,4 @@
 @C122
-
 Feature: C122
 
   @TestRail(122)
@@ -40,15 +39,8 @@ Feature: C122
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
-
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then Select "AB Test" client from the client dropdown
     Then Delete newly created configuration with status "Saved"
     Then Select "AB Test" client from the client dropdown
     And Verify that the configuration is deleted on the [Configuration] page
-    
-
-
-
-
-    

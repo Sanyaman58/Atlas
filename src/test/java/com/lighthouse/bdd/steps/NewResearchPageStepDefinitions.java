@@ -160,6 +160,12 @@ public class NewResearchPageStepDefinitions {
 		SelenideTools.sleep(10);
 		SelenideTools.switchToLastTab();
 	}
+	
+	@When("Click on the [Requirements View] button")
+	public void clickOnTheCRequirementsViewButton() {
+		Pages.atlasDashboardManagementPage().clickRequirementsViewSidebarButton();
+		SelenideTools.sleep(8);
+	}
 
 	@When("Click on the [Audit Logs] sidebar button")
 	public void clickOnTheAuditLogsSidebarButton() {

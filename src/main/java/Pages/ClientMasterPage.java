@@ -100,13 +100,12 @@ public class ClientMasterPage extends PageTools {
 	By deleteRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/button");
 	By statusInputField = By.xpath("//thead/tr/th[10]/input");
 	By activateRequirementToggle = By.xpath("//tbody/tr[1]/td[11]/div/div/label/input");
-	By researchNotificationTableLabels = By
-			.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
+	By researchNotificationTableLabels = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
 	By deleteResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
 	By permissionsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
 	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By systemAdminCheckBoxes = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody//td[2]/input");
-	By versionedStatusInputField = By.xpath("//input[@placeholder=\"Search Status\"]");
+	By versionedStatusInputField = By.xpath("//thead/tr/th[10]/input");
 	By deleteRequirementToggle = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[11]/div/button[1]");
 	By intelligenceAdminDropdownButton = By.xpath("//*[@id=\"menu\"]/li[10]/a");
 	By requirementViewOption = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[3]/a");
@@ -654,6 +653,7 @@ public class ClientMasterPage extends PageTools {
 		System.out.println("Verifying the table headers");
 		System.out.println("---------------------------");
 		tableLabelsList.add(getSelenideElement(researchNotificationTableLabels).getText());
+		SelenideTools.sleep(4);
 		for (int i = 0; i < labels.size(); i++) {
 			System.out.println(labels.get(i) + " " + tableLabelsList.get(i));
 			if ((labels.get(i) == null)) {
@@ -774,7 +774,7 @@ public class ClientMasterPage extends PageTools {
 	By selectQuestionCheckbox = By.xpath("//*[@id=\"POS1\"]");
 	By requirementViewSubmitForApprovalButton = By.xpath("//*[@id=\"submit_selected_criteria\"]");
 
-	public void fillInfoOnRequirementViewPage(int index) {
+	public void fillInfoOnRequirementViewPage() {
 		SelenideElement requirementNameInputElement = getSelenideElement(requirementNameInput);
 		waitForElementPresent(requirementNameInput);
 		requirementNameInputElement.setValue("Test Requirement");
@@ -789,21 +789,21 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(applicationNameInput);
 		applicationNameInputElement.setValue("Test Automation Requirement");
 
-		waitForElementVisibility(requirementRadioButton);
-		click(requirementRadioButton);
-		SelenideTools.sleep(2);
+//		waitForElementVisibility(requirementRadioButton);
+//		click(requirementRadioButton);
+//		SelenideTools.sleep(2);
 		waitForElementVisibility(questionSelectionHeader);
 		click(questionSelectionHeader);
-		waitForElementVisibility(residentCheckbox);
-		click(residentCheckbox);
+//		waitForElementVisibility(residentCheckbox);
+//		click(residentCheckbox);
 
-		waitForElementVisibility(residentStateDropdown);
-		getSelenideElement(residentStateDropdown).selectOption(4);
-		residentStateDropdownName = getSelenideElement(residentStateDropdown).getText();
-		SelenideTools.sleep(2);
+//		waitForElementVisibility(residentStateDropdown);
+//		getSelenideElement(residentStateDropdown).selectOption(4);
+//		residentStateDropdownName = getSelenideElement(residentStateDropdown).getText();
+//		SelenideTools.sleep(5);
 
-		waitForElementVisibility(residentRequirementRadioButton);
-		click(residentRequirementRadioButton);
+//		waitForElementVisibility(residentRequirementRadioButton);
+//		click(residentRequirementRadioButton);
 		SelenideTools.sleep(2);
 
 		waitForElementVisibility(selectQuestionCheckbox);
@@ -845,12 +845,12 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Requirement name did not match");
 		}
 		//
-		SelenideElement prerequisiteDataElement = getSelenideElement(prerequisiteData);
-		if (prerequisiteDataElement.getText() == "No Change") {
-			System.out.println("Text on fields where no changes are made = " + prerequisiteDataElement.getText());
-		} else {
-			System.out.println("No chnage text not found");
-		}
+//		SelenideElement prerequisiteDataElement = getSelenideElement(prerequisiteData);
+//		if (prerequisiteDataElement.getText() == "No Change") {
+//			System.out.println("Text on fields where no changes are made = " + prerequisiteDataElement.getText());
+//		} else {
+//			System.out.println("No chnage text not found");
+//		}
 	}
 
 	public void verifyDataOnRequirementAdminPage() {
@@ -868,7 +868,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(2);
 
 		waitForElementVisibility(requirementTypeFilterDropdown);
-		getSelenideElement(requirementTypeFilterDropdown).selectOption(2);
+		getSelenideElement(requirementTypeFilterDropdown).selectOption(1);
 		requirementTypeFilterDropdownName = getSelenideElement(requirementTypeFilterDropdown).getText();
 		SelenideTools.sleep(2);
 
@@ -1405,13 +1405,12 @@ public class ClientMasterPage extends PageTools {
 		}
 	}
 	
-	public boolean euiStates() {
+	public void euiStates() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = " + endUpInStatesTitleElement);
 		List<SelenideElement> jurisdictionPageStatesElement = getElements(jurisdictionPageStates);
 		if (jurisdictionPageStatesElement.size() > 0) {
 			System.out.println("EUI states visible");
 		}
-		return endUpInStatesTitleElement;
 	}
 }

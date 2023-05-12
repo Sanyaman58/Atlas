@@ -3,7 +3,7 @@
 Feature: C151
 
   @TestRail(151)
-  Scenario: Verify the status of the configuration with the apostrophe in it's company, facility and client names on the "Results" page
+  Scenario: Verify the status of the configuration with the apostrophe in its company, facility and client names on the "Results" page
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
