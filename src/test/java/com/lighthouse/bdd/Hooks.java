@@ -11,6 +11,12 @@ import Utils.Waits;
 import Utils.ZipUtils;
 
 import com.codeborne.selenide.Selenide;
+
+import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.cucumber.java.*;
 import io.qameta.allure.Allure;
@@ -101,14 +107,15 @@ public class Hooks extends AllureLogger {
     private void addTestCaseToTestRun() {
         testRailTool.updateTestRun(Long.parseLong(caseId));
     }
-    
-//    @AfterAll
-//	public static void after_all() {
-//		ZipUtils.generateZipFile();
-//		Waits.wait3s();
-//		String message = "The report is attached as zip file, download ans extract the zip file. Run the command 'Allure Serve' to view report in browser.";
-//		SendEmail.SendEmailNow(message);
-//
-//    	System.out.println("this after all method --------------------------------------------------------------");
-//	}
+
+    @AfterAll
+	public static void after_all() {
+		ZipUtils.generateZipFile();
+		Waits.wait3s();
+		String message = "The report is attached as zip file, download ans extract the zip file. Run the command 'Allure Serve' to view report in browser.";
+		SendEmail.SendEmailNow(message);
+    	
+    	System.out.println("this after all method --------------------------------------------------------------");
+	}
+
 }
