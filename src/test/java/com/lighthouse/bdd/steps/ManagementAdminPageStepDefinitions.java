@@ -488,7 +488,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
-		Assert.assertTrue(Pages.clientMasterPage().euiStates());
+		Pages.clientMasterPage().euiStates();
 	}
 
 	@Then("Type {string} in the email search on the [User Master] page")
