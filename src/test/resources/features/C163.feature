@@ -4,8 +4,8 @@ Feature: C163
   @TestRail(163)
   Scenario: Verify the Permissions for the role "SS-System Admin"
     When Open Atlas
-    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
-    And Enter password "Testing2022!!" on login page
+    Then Enter login "parkotitro@gufum.com" on login page
+    And Enter password "Testing2022%%" on login page
     When Click the [Login] button
     Then Management Dashboard page is opened
     And Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
