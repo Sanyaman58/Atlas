@@ -263,6 +263,16 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index-1);
     }
 
+    @And("Enter requirement name saved from the [Edit Requirement] page on the [Versioned Requirements] page")
+    public void enterRequirementNameSavedFromTheEditRequirementPageOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().enterTextInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
+
+    @And("Get SKU of the {int} record on the [Versioned Requirements] page")
+    public void getSKUOfTheRecordOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().saveRequirementSku(index-1);
+    }
+
 //    @And("Verify that the [Activate Requirement] view option is enabled")
 //    public void verifyThatTheActivateRequirementViewOptionIsEnabled() {
 //        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible());

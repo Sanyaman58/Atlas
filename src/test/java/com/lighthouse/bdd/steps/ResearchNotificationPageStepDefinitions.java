@@ -86,6 +86,7 @@ public class ResearchNotificationPageStepDefinitions {
 
     @Then("A record with type {string} and {string} scope displayed in the table")
     public void aRecordWithTypeAndScopeDisplayedInTheTable(String type, String scope) {
+        SelenideTools.sleep(3);
         Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndNoteDisplayed(type, scope, Pages.versionRequirementsAdminPage().getChangeNoteText()));
     }
     
@@ -107,5 +108,10 @@ public class ResearchNotificationPageStepDefinitions {
     @Then("Verify the test wrapping in the Research Notifications page")
     public void verifyTextWrapping() {
     	Pages.researchNotificationPage().verifyTextWrappingOnNotificationsPage();
+    }
+
+    @When("Enter saved SKU in the Versioned Requirement page on the [Research Notification] page")
+    public void enterSavedSKUInTheVersionedRequirementPageOnTheResearchNotificationPage() {
+        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
     }
 }

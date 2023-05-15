@@ -149,7 +149,7 @@ public class ClientMasterPage extends PageTools {
 	By firstActivateDeactivateDropdown = By.xpath("//*[@id=\"is_active-FIN1.1.1\"]");
 	By questionnairePageSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By questionnairePageExitButton = By.xpath("//button[@id=\"exit-state\"]");
-	By questionnaireVersionSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[8]/a");
+	By questionnaireVersionSidebarButton = By.xpath("//a[contains(text(), 'Questionnaire Versions')]");
 	By questionnaireVersionPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 	By questionnairePageVersionLabel = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]//div[1]//th[3]/div/label");
 	By approveButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button[1]");

@@ -429,6 +429,6 @@ public class VersionRequirementsAdminPage extends PageTools {
 	}
 	public void saveRequirementSku(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
-
+		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
 	}
 }

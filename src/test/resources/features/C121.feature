@@ -27,7 +27,7 @@ Feature: C121
     When Enter "fdsafsdafdsfasd" in the search field on the [View Results] page
     Then No records are displayed on the [View Results] page
     When Enter "2023" in the search field on the [View Results] page
-    When Enter "" in the search field on the [View Results] page
+    When Enter "Completed with match" in the search field on the [View Results] page
     When Click on the "Status" label
     Then Click on the [View] button of the 1 job on the [View Results] page
     And The [Research Results] page is opened
@@ -60,6 +60,7 @@ Feature: C121
 #    And Verify that data in exported file is the same as on the [Research Results] page
     Then Close [Research Results] window
     When Enter "Completed with no match" in the search field on the [View Results] page
+    When Click on the "Status" label
     Then Click on the [View] button of the 1 job on the [View Results] page
     And No records are displayed on the [View Results] page
     Then Close [Research Results] window
@@ -69,8 +70,9 @@ Feature: C121
     Then Verify that alert message with "The selected research result will be deleted and cannot be undone. Are you sure want to delete?" message is displayed
     And Click on Yes Delete button on the alert window
     Then Verify that deleted result is not displayed in the [View Results] table
+    When Click on the "Status" label
     Then Click on the [View] button of the 1 job on the [View Results] page
-    And Get the number of records of the result on [Research Results] page
+     And Get the number of records of the result on [Research Results] page
     Then Close [Research Results] window
     When Click on the [Activity Logs] button of the 1 job on the [View Results] page
     And Enter "Selector Successfully matched for Active Requirement SKU" in the activity search on the [Activity Logs] page

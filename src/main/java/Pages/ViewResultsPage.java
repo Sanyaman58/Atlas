@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
@@ -158,7 +159,7 @@ public class ViewResultsPage extends PageTools {
     public void clickOnTheLabel(String label){
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
-            if(element.getText()==label) {
+            if(element.getText().equals(label) || element.getText().contains(label)) {
                 element.click();
                 break;
             }
@@ -174,9 +175,17 @@ public class ViewResultsPage extends PageTools {
                     tableRecords.add(getSelenideElement(table).findElement(By.xpath("./tr["+(j+1)+"]/td["+(i+1)+"]")).getText());
             }
         }
-        List<String> sortedTableRecords = tableRecords;
-        Collections.sort(sortedTableRecords);
-        return sortedTableRecords.equals(tableRecords);
+        System.out.println(tableRecords);
+        List<String> sortedTableRecords = tableRecords.stream().sorted().collect(Collectors.toList());
+        System.out.println(sortedTableRecords);
+        System.out.println(tableRecords);
+        for(int i = 0; i < sortedTableRecords.size(); i++){
+            System.out.println(sortedTableRecords.get(i) + " " + tableRecords.get(i));
+            if(!sortedTableRecords.get(i).equals(tableRecords.get(i)))
+                return false;
+        }
+        return true;
+//        return sortedTableRecords.equals(tableRecords);
     }
 
     public boolean verifyThatRecordsSortedDescendingByTheLabel(String label){

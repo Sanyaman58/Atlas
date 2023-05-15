@@ -3,7 +3,7 @@
 Feature: C114
 
   @TestRail(114)
-  Scenario: UI/UX Internal User Surveillance Setup
+  Scenario: UI/UX External User Surveillance Setup
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -37,7 +37,7 @@ Feature: C114
     And Verify that the configuration is deleted on the [Configuration] page
     When Log out from Lighthouse
     When Open Atlas
-    Then Enter login "hofyikomli@gufum.com" on login page
+    Then Enter login "parkotitro@gufum.com" on login page
     And Enter password "Testing2022%%" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened

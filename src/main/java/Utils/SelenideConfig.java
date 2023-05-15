@@ -65,7 +65,7 @@ public class SelenideConfig {
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
         Configuration.screenshots = true;
-        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
         Configuration.browserSize = "1920x1080";
         Configuration.pollingInterval = 10000;
         Configuration.pageLoadStrategy = "eager";
