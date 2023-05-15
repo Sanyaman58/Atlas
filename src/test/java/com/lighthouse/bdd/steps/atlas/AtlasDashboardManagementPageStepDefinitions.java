@@ -78,5 +78,12 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	public void verifyReleaseNotesPresent() {
 		Pages.atlasDashboardManagementPage().verifyReleaseNotes();
 	}
+	
+	@When("Click on the [Research] button")
+	public void clickOnTheResearchButton() {
+		Pages.atlasDashboardManagementPage().clickResearchAdminSidebarButton();
+		SelenideTools.sleep(10);
+		Assert.assertTrue(Pages.researchAdminPage().isResearchAdminPageOpened());
+	}
 
 }

@@ -27,7 +27,7 @@ public class ResearchNotificationPage extends PageTools {
     By researchNotificationPageHeader = By.xpath("//h2[@class=\"card-heading \"]");
     String researchNotificationHeaderText = "Research Notification";
     By researchNotificationSearchBar = By.xpath("//input[@class=\"form-control form-control-sm\"]");
-    String searchNotificationText = "Third-Party Logistics Provider";
+    String searchNotificationText = "Changes were made to the following: [Criteria] [Notes] [Forms] [Bond] [Fee Controlled Substance] [Fee Renewal]";
     String SKU;
     By readMore_LessButton = By.xpath("//button[@class=\"read-more read-more-btn\"]");
     

@@ -75,7 +75,8 @@ public class SendEmail {
             		"ambreen.younas@pharma.solutions,"+
             		"ambreeny4191@gmail.com,"+
             		"madhavi.cirasanambati@pharma.solutions,"+
-            		"uchenna.ofoma@pharma.solutions"
+            		"uchenna.ofoma@pharma.solutions,"+
+            		"sachin.arora@pharma.solutions"
             		));
             
             // Add a configuration set header. Comment or delete the 
@@ -84,6 +85,7 @@ public class SendEmail {
                 
             
             String currentDateTime = new SimpleDateFormat("dd-MMM-yyyy_h:mm a z").format(Calendar.getInstance().getTime());
+
             msg.setSubject("Web Automation LHA Tests Run Report on "+currentDateTime);
             msg.setText("Report is attached as a zip file, download, extract in a folder and you can see report files there.");
             Multipart multipart = new MimeMultipart();

@@ -24,8 +24,6 @@ Feature: C110
     And Enter the name of question and Click [Add] button
     And Right click on displayed question and select [Edit Question] option
     And Edit the particular question and verify the edit fields
-    #And Right click on question and verify the activate and deactivate functionality
-    #And The [Research Admin] page is opened
     When Click on the [Questionnaire Versions] sidebar button
     Then Activate the newly created questionnaire
     When Click on the [Configuration] sidebar button

@@ -12,19 +12,17 @@ Feature: C108
     Then The [Research Admin] page is opened
     And Click on the [Requirements] button on admin
     Then The [Requirements Admin] page is opened
-#    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
-    When Click on the [Research] sidebar button on admin
+    When Click on the [Research] button
     Then The [Research Admin] page is opened
     And Click on the [Questionnaire] button on admin
     Then The [Questionnaire Admin] page is opened
-    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
-    When Click on the [Research] sidebar button on admin
+    When Click on the [Research] button
     Then The [Research Admin] page is opened
     And Click on the [Ends Up In State] button on admin
     Then The [Ends Up In States Admin] page is opened
     And Reload the browser
     And Verify the child buttons under [Intelligence Admin] section
-    When Click on the [Research] sidebar button on admin
+    When Click on the [Research] button
     Then The [Research Admin] page is opened
     When Click on [Audit Logs] sidebar button
     Then The [Logs] page is opened
