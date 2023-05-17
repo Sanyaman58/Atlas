@@ -1006,6 +1006,8 @@ public class ClientMasterPage extends PageTools {
 
 	public void verifyActivateButton() {
 		SelenideElement versionedStatusInputFieldElement = getSelenideElement(versionedStatusInputField);
+		versionedStatusInputFieldElement.scrollIntoView(true);
+		SelenideTools.sleep(5);
 		waitForElementVisibility(versionedStatusInputField);
 		versionedStatusInputFieldElement.val("Approved");
 		SelenideTools.sleep(2);
