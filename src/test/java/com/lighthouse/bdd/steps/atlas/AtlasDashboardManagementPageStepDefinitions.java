@@ -65,7 +65,7 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	@When("Click on the [Intelligence Admin] sidebar collapse button")
 	public void clickOnTheIntelligenceAdminSidebarCollapseButton() {
 		Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
-		SelenideTools.sleep(2);
+		SelenideTools.sleep(5);
 	}
 
 	@When("Click the [Home] sidebar button")
