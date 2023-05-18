@@ -114,7 +114,7 @@ public class Hooks extends AllureLogger {
 		Waits.wait3s();
 		String message = "The report is attached as zip file, download ans extract the zip file. Run the command 'Allure Serve' to view report in browser.";
 		SendEmail.SendEmailNow(message);
-    	
+
     	System.out.println("this after all method --------------------------------------------------------------");
 	}
 

@@ -128,14 +128,14 @@ public class ClientMasterPage extends PageTools {
 	By reorderSourceButton = By.xpath("//*[@id=\"sort_cat-0\"]/div/h4/i[1]");
 	By reorderSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By reorderDropButton = By.xpath("//*[@id=\"sort_cat-1\"]/div/h4/i[1]");
-	By questionLabel = By.xpath("//label[@id=\"hover-FIN1.1.1\"]//span[1]");
+	By questionLabel = By.xpath("//label[@id=\"hover-FIN1.1\"]//span[1]");
 	By questionContextMenu = By.xpath("//*[@id=\"context-menu-question\"]/ul");
 	By addNewQuestionOption = By.xpath("//*[@id=\"context-menu-question\"]/ul/li[1]/a");
 	By addQuestionPlusIcon = By.xpath("//i[@class=\"icon fa fa-plus add-icon-question \"]");
-	By finQuestionPlusIcon = By.xpath("//i[@id=\"add-question-sub-FIN1.1.1\"]");
-	By questionInputField = By.xpath("//textarea[@id=\"add-question-FIN1.1.1-0\"]");
-	By addQuestionAddButton = By.xpath("//button[@id=\"add-question-FIN1.1.1-0\"]");
-	By addQuestionCancelButton = By.xpath("//button[@id=\"cancel-question-FIN1.1.1-0\"]");
+	By finQuestionPlusIcon = By.xpath("//i[@id=\"add-question-sub-FIN1.1\"]");
+	By questionInputField = By.xpath("//textarea[@id=\"add-question-FIN1.1-0\"]");
+	By addQuestionAddButton = By.xpath("//button[@id=\"add-question-FIN1.1-0\"]");
+	By addQuestionCancelButton = By.xpath("//button[@id=\"cancel-question-FIN1.1-0\"]");
 	By questionnaireSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By questionPopupEditOption = By.xpath("//*[@id=\"context-menu-question\"]/ul/li[2]/a/i");
 	By questionsEditIcon = By.xpath("//i[@class=\"fa fa-edit edit-icon\"]");
@@ -148,7 +148,7 @@ public class ClientMasterPage extends PageTools {
 	By firstActivateDeactivateDropdown = By.xpath("//*[@id=\"is_active-FIN1.1.1\"]");
 	By questionnairePageSaveButton = By.xpath("//button[@id=\"save_in_dynamo\"]");
 	By questionnairePageExitButton = By.xpath("//button[@id=\"exit-state\"]");
-	By questionnaireVersionSidebarButton = By.xpath("//a[contains(text(), 'Questionnaire Versions')]");
+	By questionnaireVersionSidebarButton = By.xpath("//a[contains(@href, '/versions/questionnaire')]");
 	By questionnaireVersionPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
 	By questionnairePageVersionLabel = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]//div[1]//th[3]/div/label");
 	By approveButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[8]/div/button[1]");

@@ -114,4 +114,15 @@ public class ResearchNotificationPageStepDefinitions {
     public void enterSavedSKUInTheVersionedRequirementPageOnTheResearchNotificationPage() {
         Pages.researchNotificationPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
     }
+
+    @When("Enter saved application name in the Versioned Requirement page on the [Research Notification] page")
+    public void enterSavedApplicationNameInTheVersionedRequirementPageOnTheResearchNotificationPage() {
+        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
+    }
+
+    @Then("A record with type {string} and changed processing time scope displayed in the table")
+    public void aRecordWithTypeAndChangedProcessingTimeScopeDisplayedInTheTable(String type) {
+        SelenideTools.sleep(3);
+        Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndTermDisplayed(type, Pages.versionRequirementsAdminPage().getChangeNoteText()));
+    }
 }

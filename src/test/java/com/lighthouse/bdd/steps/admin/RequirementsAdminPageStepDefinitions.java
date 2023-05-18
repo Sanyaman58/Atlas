@@ -259,7 +259,7 @@ public class RequirementsAdminPageStepDefinitions {
     @And("Click on the [Yes Approve] button on the [Requirements View] page")
     public void clickOnTheYesApproveButtonOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().clickYesApproveButton();
-        SelenideTools.sleep(10);
+        SelenideTools.sleep(20);
     }
 
     @When("Click on the [Intelligence Admin] sidebar collapse button on Lighthouse")
@@ -277,6 +277,12 @@ public class RequirementsAdminPageStepDefinitions {
     public void getRequirementNameFromTheEditRequirementName() {
         SelenideTools.sleep(6);
         Pages.requirementsAdminPage().getRequirementNameFromEditRequirement();
+    }
+
+    @Then("Get application name from the [Edit Requirement] page")
+    public void getApplicationNameFromTheEditRequirementName() {
+        SelenideTools.sleep(6);
+        Pages.requirementsAdminPage().getApplicationNameFromEditRequirement();
     }
 
 

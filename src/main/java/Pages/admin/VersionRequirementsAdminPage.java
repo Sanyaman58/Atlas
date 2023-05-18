@@ -38,9 +38,11 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By requirementStatusSearchField = By.xpath("//input[@placeholder='Search Status']");
 	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
 	By yesIncludeRadioButton = By.xpath("//input[@checked and @id='requirements_checks_include_yes']");
+	By processingTimeInput = By.xpath("//input[@name='Application_ProcessingTime']");
 
 	String requirementSku;
 	String changeNoteText;
+	String processingTime;
 	String searchFieldText;
 	public String getSearchFieldText(){
 		return searchFieldText;
@@ -48,7 +50,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public String getChangeNoteText(){
 		return changeNoteText;
 	}
-
+	public String getProcessingTime() { return processingTime;}
 	public String getRequirementSku(){
 		return requirementSku;
 	}
@@ -408,8 +410,19 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public void enterChangeNoteForCustomer(String text){
 		waitForElementVisibility(changeNoteForCustomerInput);
 		getSelenideElement(changeNoteForCustomerInput).sendKeys(text);
+		getSelenideElement(changeNoteForCustomerInput).click();
 		type(text, changeNoteForCustomerInput);
+		System.out.println(text);
 		changeNoteText = getSelenideElement(changeNoteForCustomerInput).getText();
+		System.out.println(changeNoteText);
+		SelenideTools.sleep(10);
+	}
+
+	public void enterProcessingTime(String text){
+		SelenideTools.sleep(2);
+		waitForElementVisibility(processingTimeInput);
+		type(text, processingTimeInput);
+		processingTime = getSelenideElement(processingTimeInput).getText();
 		SelenideTools.sleep(10);
 	}
 

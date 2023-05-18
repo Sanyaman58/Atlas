@@ -65,11 +65,11 @@ public class SelenideConfig {
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
         Configuration.screenshots = true;
-        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-        Configuration.browserSize = "1920x1080";
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+        Configuration.browserSize = "2560x1440";
         Configuration.pollingInterval = 10000;
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 100000;
+        Configuration.timeout = 15000;
         Configuration.reportsFolder = "screenshots/";
         Configuration.downloadsFolder = (System.getProperty("user.dir")+ File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"data");
     }

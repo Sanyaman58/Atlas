@@ -44,8 +44,11 @@ public class ResearchNotificationPage extends PageTools {
     }
 
     public void clickOnResearchNotificationSidebarButton(){
-    	Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
         SelenideTools.sleep(2);
+        if(!isElementVisible(researchNotificationSidebarButton)) {
+            Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+            SelenideTools.sleep(2);
+        }
         waitForElementVisibility(researchNotificationSidebarButton);
         click(researchNotificationSidebarButton);
         SelenideTools.sleep(10);
@@ -166,6 +169,18 @@ public class ResearchNotificationPage extends PageTools {
             if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText().equals(type)
 //                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[8]")).getText().contains(scope)
                 && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[14]")).getText().equals(note))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean isRecordWithTypeAndScopeAndTermDisplayed(String type, String note){
+        for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText());
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[22]")).getText());
+            if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText().equals(type)
+//                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[8]")).getText().contains(scope)
+                    && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[22]")).getText().equals(note))
                 return true;
         }
         return false;

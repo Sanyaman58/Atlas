@@ -19,7 +19,7 @@ Feature: C102
       | Status        |
       | Created       |
       | Action        |
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Click surveillance setup [Next] button
     And Verify the Validation popup
     And Reload the browser
