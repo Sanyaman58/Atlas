@@ -166,6 +166,8 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void selectPreliminaryDataRadioButton(){
+		SelenideElement preliminaryDataRadioButtonElement = getSelenideElement(preliminaryDataRadioButton);
+		preliminaryDataRadioButtonElement.scrollIntoView(true);
 		waitForElementVisibility(preliminaryDataRadioButton);
 		scrollToElement(preliminaryDataRadioButton);
 		click(preliminaryDataRadioButton);
