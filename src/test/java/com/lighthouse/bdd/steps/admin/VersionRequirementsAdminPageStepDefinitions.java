@@ -273,6 +273,11 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().saveRequirementSku(index-1);
     }
 
+    @And("Enter random processing time on the [Requirements View] page")
+    public void enterRandomProcessingTimeOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterProcessingTime(RandomStringUtils.random(5, false, true));
+    }
+
 //    @And("Verify that the [Activate Requirement] view option is enabled")
 //    public void verifyThatTheActivateRequirementViewOptionIsEnabled() {
 //        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible());

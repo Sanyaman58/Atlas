@@ -16,6 +16,7 @@ Feature: C195
     And Click the [Create New] button in the [Add New Requirement] section
     When Enter random requirement name on the [Requirements View] page
     And Enter random application name on the [Requirements View] page
+
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
 #    And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page

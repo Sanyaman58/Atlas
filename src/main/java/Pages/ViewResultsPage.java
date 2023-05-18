@@ -374,6 +374,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isProgressBarVisible(){
+        SelenideTools.sleep(10);
         return isElementVisible(progressBar);
     }
 

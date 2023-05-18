@@ -18,6 +18,7 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
 	By intelligenceAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li/a[contains(text(),'Intelligence Admin')]");
 	By researchSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[1]/a");
+	By documentRepositorySidebarButton = By.xpath("//a[contains(text(),'Document Repository')]");
 	By auditLogSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[2]/a");
 	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[3]/a");
 	By versionRequirementsSidebarButton = By.xpath("//ul[@id='menu']/li[10]/ul/li[4]/a");
@@ -29,6 +30,9 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By managementAdminSidebarCollapse = By.xpath("//ul[@id='menu']/li[9]");
 	By homepageSidebarButton = By.xpath("//*[@id=\"menu\"]/li[2]/a");
 	By releaseNotesButton = By.xpath("//*[@id=\"wrapper\"]/main/div[1]/div[2]/div/div/ul/li[4]/a");
+	By notificationsCollapseButton = By.xpath("//a[text()='Notifications ']");
+	By notificationsDocumentsSidebarButton = By.xpath("//a[@id='notify-header-doc']");
+	By documentsNotificationsPage = By.xpath("//p[contains(text(),'Document Notification')]");
 
 	public void openLighthouse() {
 		SelenideTools.openUrl(Constants.URL);
@@ -45,6 +49,21 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public boolean isDashboardPageOpened() {
 		SelenideTools.sleep(2);
 		return isElementVisible(dashboardGrid);
+	}
+
+	public void clickNotificationsAtlasCollapseButton(){
+		waitForElementVisibility(notificationsCollapseButton);
+		click(notificationsCollapseButton);
+	}
+
+	public boolean isDocumentsNotificationsPageOpened(){
+		SelenideTools.sleep(5);
+		return isElementVisible(documentsNotificationsPage);
+	}
+
+	public void clickNotificationsDocumentsSidebarButton(){
+		waitForElementVisibility(notificationsDocumentsSidebarButton);
+		click(notificationsDocumentsSidebarButton);
 	}
 
 	public void clickRequirementsManagementSidebarCollapseButton() {
@@ -96,6 +115,11 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickResearchAdminSidebarButton() {
 		waitForElementVisibility(researchSidebarButton);
 		click(researchSidebarButton);
+	}
+
+	public void clickDocumentRepositorySidebarButton() {
+		waitForElementVisibility(documentRepositorySidebarButton);
+		click(documentRepositorySidebarButton);
 	}
 
 	public void clickRequirementsViewSidebarButton() {

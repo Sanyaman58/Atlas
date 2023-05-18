@@ -10,10 +10,10 @@ Feature: C107
     Then Management Dashboard page is opened
      When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     When Validate fields on the [Surveillance Setup] page
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
