@@ -1,5 +1,4 @@
 @C168
-
 Feature: C168
 
   @TestRail(168)
@@ -17,6 +16,3 @@ Feature: C168
     Then The records with "Alabama" jurisdiction is displayed in the table on the [Requirement View] page
     And Select "Sachin" requirement name in the Requirements Viewer Filters on the [Requirement View] page
     Then The records with "Sachin" requirement name is displayed in the table on the [Requirement View] page
-
-
-
