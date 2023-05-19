@@ -1189,6 +1189,7 @@ public class ClientMasterPage extends PageTools {
 	}
 
 	public void addNewQuestion() {
+		SelenideTools.sleep(5);
 		waitForElementVisibility(questionLabel);
 		SelenideElement questionLabelElement = getSelenideElement(questionLabel);
 		Actions actions = new Actions(WebDriverRunner.getWebDriver());
