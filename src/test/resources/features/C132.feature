@@ -1,5 +1,4 @@
 @C132
-
 Feature: C132
 
   @TestRail(132)
@@ -14,32 +13,32 @@ Feature: C132
     When Click on the [Research Notification] sidebar button on Lighthouse
     Then The [Research Notification] page is opened
     Then The following labels are displayed in the [Research Notification] table
-      |Date/Time|
-      |SKU|
-      |Type|
-      |Name|
-      |Selector|
-      |Definition|
-      |Prerequisites|
-      |Attachments|
-      |Fees|
-      |Forms|
-      |Application Type|
-      |Application Fee|
-      |Additional Application Fees|
-      |Bond Fee|
-      |Controlled Substance Fee|
-      |Renewal Fee|
-      |Designated Rep Required?|
-      |Foreign Qualification Required?|
-      |Registered Agent Required?|
-      |Version Number|
-      |Change made by|
-      |Process Time|
-      |Renewal Period|
-      |Bond Required|
-      |Notes|
-      |Change Note|
+      | Date/Time                       |
+      | SKU                             |
+      | Type                            |
+      | Name                            |
+      | Selector                        |
+      | Definition                      |
+      | Prerequisites                   |
+      | Attachments                     |
+      | Fees                            |
+      | Forms                           |
+      | Application Type                |
+      | Application Fee                 |
+      | Additional Application Fees     |
+      | Bond Fee                        |
+      | Controlled Substance Fee        |
+      | Renewal Fee                     |
+      | Designated Rep Required?        |
+      | Foreign Qualification Required? |
+      | Registered Agent Required?      |
+      | Version Number                  |
+      | Change made by                  |
+      | Process Time                    |
+      | Renewal Period                  |
+      | Bond Required                   |
+      | Notes                           |
+      | Change Note                     |
     When Click on the "Name" label on the [Research Notification] page
     Then Verify that records on the [Research Notification] page are sorted alphabetically by "Name" label
     When Click on the "Name" label on the [Research Notification] page
