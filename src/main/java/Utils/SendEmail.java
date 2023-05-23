@@ -76,6 +76,7 @@ public class SendEmail {
             		"ambreeny4191@gmail.com,"+
             		"madhavi.cirasanambati@pharma.solutions,"+
             		"uchenna.ofoma@pharma.solutions,"+
+            		"sachin.arora@pharma.solutions,"+
                     "nikita.danilevskiy@pharma.solutions"
             		));
             
