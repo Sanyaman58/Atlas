@@ -10,13 +10,13 @@ Feature: C129
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Click [Submit new job] button
     And Pop up window with "Please enter all required fields" message is displayed
     And Close pop up window
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -39,5 +39,5 @@ Feature: C129
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

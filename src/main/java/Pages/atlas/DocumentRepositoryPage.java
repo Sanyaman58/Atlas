@@ -20,8 +20,18 @@ public class DocumentRepositoryPage extends PageTools {
 	By editDocumentWindow = By.xpath("//p[contains(text(), 'Edit Document')]");
 	By editDocumentCloseButton = By.xpath("//div[@class='modal-content']//button[@onclick='showKeyPressConfirm()']/span");
 	By selectFileButton = By.xpath("//button[@id='FileUpload']");
+	By requestDocumentButton = By.xpath("//button[@id='adddocument']");
+	By addRequestDocumentWindow = By.xpath("//p[contains(text(), 'Add Request Document')]");
+	By documentCategorySelect = By.xpath("//select[@id='DocCategoryId']");
+	By ownerNameInput = By.xpath("//input[@id='OwnerName']");
+	By assigneeSelect = By.xpath("//select[@id='Assignee']");
+	By documentTypeSelect = By.xpath("//select[@id='DocNameId']");
+	By addRequestDocumentSaveButton = By.xpath("//button[@id='add_edit_document_save_btn']");
+	String ownerName;
 
-
+	public String getOwnerName() {
+		return ownerName;
+	}
 
 	public boolean isDocumentRepositoryPageOpened() {
 		waitForElementVisibility(documentRepositoryPageTitle);
@@ -68,5 +78,49 @@ public class DocumentRepositoryPage extends PageTools {
 		return isElementClickable(selectFileButton);
 	}
 
+	public void clickRequestDocumentButton(){
+		waitForElementClickable(requestDocumentButton);
+		click(requestDocumentButton);
+	}
+
+	public boolean isAddRequestDocumentWindowVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(addRequestDocumentWindow);
+	}
+
+	public void selectDocumentCategory(String category){
+		waitForElementVisibility(documentCategorySelect);
+		selectOption(category, documentCategorySelect);
+	}
+
+	public void enterOwnerName(String name){
+		waitForElementVisibility(ownerNameInput);
+		type(name, ownerNameInput);
+		ownerName = name;
+	}
+
+	public void selectAssignee(String assignee){
+		waitForElementVisibility(assigneeSelect);
+		selectOption(assignee, assigneeSelect);
+	}
+
+	public void selectDocumentType(String type){
+		waitForElementVisibility(documentTypeSelect);
+		selectOption(type, documentTypeSelect);
+	}
+
+	public void clickAddRequestDocumentSaveButton(){
+		waitForElementVisibility(addRequestDocumentSaveButton);
+		click(addRequestDocumentSaveButton);
+	}
+
+	public boolean isDocumentWithOwnerDisplayed(String name){
+		waitForElementVisibility(documentRepositoryTableRecords);
+		for(int i = 0; i < getElements(documentRepositoryTableRecords).size(); i++){
+			if(getElements(documentRepositoryTableRecords).get(i).findElement(By.xpath("./td[5]")).getText().equals(name))
+				return true;
+		}
+		return false;
+	}
 
 }

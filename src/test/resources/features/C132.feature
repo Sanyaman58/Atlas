@@ -15,6 +15,10 @@ Feature: C132
     Then The [Research Notification] page is opened
     Then The following labels are displayed in the [Research Notification] table
       |Date/Time|
+      |Jurisdiction|
+      |Category|
+      |Application Name|
+      |Requirement Name|
       |SKU|
       |Type|
       |Name|

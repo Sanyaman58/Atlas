@@ -11,7 +11,7 @@ Feature: C138
     Then Management Dashboard page is opened
     When Click on the [Versioned Requirements] sidebar button
     Then Versioned Requirement page is opened
-    When Enter "AL-DEA" requirement SKU in the requirement search on the [Versioned Requirements] page
-    And Enter "Test" requirement name in the requirement search on the [Versioned Requirements] page
-    And Enter "(RES1 = AL) and (FIN1 = Y or FIN1.1 = Y or POS1 = Y)" requirement query criteria in the requirement search on the [Versioned Requirements] page
+    When Enter "AK-StateLicensing" requirement SKU in the requirement search on the [Versioned Requirements] page
+    And Enter "503B Outsourcii" requirement name in the requirement search on the [Versioned Requirements] page
+    And Enter "(FIN1 = Y and FIN1 = Y)" requirement query criteria in the requirement search on the [Versioned Requirements] page
     Then The entries are displayed on the [Versioned Requirements] page
