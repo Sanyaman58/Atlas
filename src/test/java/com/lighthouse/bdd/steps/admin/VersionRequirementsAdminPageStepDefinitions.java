@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps.admin;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -70,6 +71,7 @@ public class VersionRequirementsAdminPageStepDefinitions {
     @Then("Enter requirement name in the requirement search on the [Versioned Requirements] page")
     public void enterRequirementNameInTheRequirementSearchOnTheRequirementsViewPage() {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+        SelenideTools.sleep(5);
     }
 
     @Then("Enter requirement name in the search field on the [Versioned Requirements] page")
