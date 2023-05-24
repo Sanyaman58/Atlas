@@ -170,6 +170,8 @@ public class ClientMasterPage extends PageTools {
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By emailSearchField = By.xpath("//table[@id='user-list-main']/thead/tr[2]/th[3]/input");
+	By addNewRequirementButton = By.xpath("//*[@title=\"Add New Requirement\"]");
+	By addRequirementPopupHeader = By.xpath("//*[@id=\"modal-content\"]/div/div[1]/div/div/p");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -1413,5 +1415,16 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("EUI states visible");
 		}
 		return endUpInStatesTitleElement;
+	}
+	
+	public void clickAddRequirementButton() {
+		waitForElementVisibility(addNewRequirementButton);
+		click(addNewRequirementButton);
+		SelenideTools.sleep(3);
+		waitForElementVisibility(addRequirementPopupHeader);
+	}
+	
+	public void fillNewRequirementDeatils() {
+		
 	}
 }
