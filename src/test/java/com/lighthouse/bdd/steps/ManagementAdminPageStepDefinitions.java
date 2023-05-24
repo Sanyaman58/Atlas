@@ -481,11 +481,6 @@ public class ManagementAdminPageStepDefinitions {
         Pages.clientMasterPage().noEntitlementMessage();
     }
 	
-//	@Then("Verify the [Intelligence Entitlement] message is shown")
-//    public void verifyEntitlementMessage() {
-//        Pages.clientMasterPage().verifyEntitlementMessage();
-//	}
-	
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
 		Assert.assertTrue(Pages.clientMasterPage().euiStates());
@@ -509,6 +504,15 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Verify that {string} role is not available in the Roles-Compliance Intelligence select on the [User Master] page")
 	public void verifyThatRoleIsNotAvailableInTheRolesComplianceIntelligenceSelectOnTheUserMasterPage(String role) {
 		Assert.assertFalse(Pages.clientMasterPage().isRoleVisibleInTheRoleComplianceDropdown(role));
-
 	}
+	
+	@And("Click on [Add Requirement] button")
+    public void clickAddRequirement() {
+        Pages.clientMasterPage().clickAddRequirementButton();
+    }
+	
+	@And("Fill all the required details on new Requirement popup")
+    public void fillRequirementDetails() {
+        Pages.clientMasterPage().fillNewRequirementDeatils();
+    }
 }
