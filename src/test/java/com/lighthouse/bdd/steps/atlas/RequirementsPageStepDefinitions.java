@@ -82,5 +82,15 @@ public class RequirementsPageStepDefinitions {
     public void theCompanyProfilePageIsOpened() {
         Pages.requirementsPage().isCompanyProfilePageOpened();
     }
+    
+    @Then("Click on Profile [View Details] button")
+    public void clickViewDetails() {
+        Pages.requirementsPage().clickCompanyViewDetailsButton();
+    }
+    
+    @Then("Verify the navigation between the company profile pages")
+    public void verifyCopanyProfileNavigations() {
+        Pages.requirementsPage().verifyNavigationBetweenCompanyProfilePages();
+    }
 
 }
