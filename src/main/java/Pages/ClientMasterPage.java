@@ -1565,5 +1565,25 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(6);
 		click(sucessPopupOkButton);
 	}
+	
+	By activityVideoLink = By.xpath("//*[@id=\"URL\"]");
+	
+	public void openExistingActivity() {
+		waitForElementVisibility(existingRequirement);
+		SelenideElement existingActivityElement = getSelenideElement(existingRequirement);
+		existingActivityElement.doubleClick();
+		SelenideTools.sleep(5);
+	}
+	
+	public void clickEditActivityPopupSaveButton() {
+		waitForElementVisibility(adRequirementPopupSaveButton);
+		SelenideElement adRequirementPopupSaveButtonElement = getSelenideElement(adRequirementPopupSaveButton);
+		adRequirementPopupSaveButtonElement.click();
+		SelenideTools.sleep(5);
+		click(sucessPopupOkButton);
+		SelenideTools.sleep(3);
+	}
+	
+	
 
 }
