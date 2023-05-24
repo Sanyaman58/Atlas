@@ -36,6 +36,8 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By notificationsCollapseButton = By.xpath("//a[text()='Notifications ']");
 	By notificationsDocumentsSidebarButton = By.xpath("//a[@id='notify-header-doc']");
 	By documentsNotificationsPage = By.xpath("//p[contains(text(),'Document Notification')]");
+	By activityTracklogSidebarButton = By.xpath("//*[text()=\"Activity Tracking\"]");
+	By activityPageHeader = By.xpath("//*[@id=\"activity-grid\"]/div[2]/div/p");
 
 	public void openLighthouse() {
 		SelenideTools.openUrl(Constants.URL);
@@ -157,6 +159,16 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickComanyProfileSidebarButton() {
 		waitForElementVisibility(companyProfileSidebarButton);
 		click(companyProfileSidebarButton);
+	}
+	
+	public void clickActivityTracklogSidebarButton(){
+		waitForElementVisibility(activityTracklogSidebarButton);
+		click(activityTracklogSidebarButton);
+	}
+	
+	public boolean isActivityPageOpened() {
+		SelenideTools.sleep(2);
+		return isElementVisible(activityPageHeader);
 	}
 
 }
