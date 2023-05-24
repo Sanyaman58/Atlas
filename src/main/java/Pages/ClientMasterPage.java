@@ -169,6 +169,8 @@ public class ClientMasterPage extends PageTools {
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By emailSearchField = By.xpath("//table[@id='user-list-main']/thead/tr[2]/th[3]/input");
+	By addNewRequirementButton = By.xpath("//*[@title=\"Add New Requirement\"]");
+	By addRequirementPopupHeader = By.xpath("//*[@id=\"modal-content\"]/div/div[1]/div/div/p");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -1415,5 +1417,75 @@ public class ClientMasterPage extends PageTools {
 		if (jurisdictionPageStatesElement.size() > 0) {
 			System.out.println("EUI states visible");
 		}
+	}
+	
+	public void clickAddRequirementButton() {
+		waitForElementVisibility(addNewRequirementButton);
+		click(addNewRequirementButton);
+		SelenideTools.sleep(3);
+		waitForElementVisibility(addRequirementPopupHeader);
+	}
+	
+	By companyDropdown = By.xpath("//select[@id=\"CompanyKey\"]");
+	By facilityDropdwon = By.xpath("//select[@id=\"FacilityKeyPair\"]");
+	By jurisdictionDropdownField = By.xpath("//select[@id=\"StatesKey\"]");
+	By requirementTypreDropdwon = By.xpath("//select[@id=\"RequirementTypeNewKey\"]");
+	By requirementCategoryDropdownField = By.xpath("//select[@id=\"RequirementTypeKey\"]");
+	By requirementNameInputField = By.xpath("//*[@id=\"FormerLicenseName\"]");
+	String newRequirementName;
+	By adRequirementPopupSaveButton = By.xpath("//button[@id=\"modal-save\"]");
+	By requirementStatusDropdown = By.xpath("//select[@id=\"LicenseStatusMasterKey\"]");
+	
+	public void selectCompany(String company) {
+		waitForElementVisibility(companyDropdown);
+		selectOption(company, companyDropdown);
+	}
+	
+	public void selectFacility(String facility) {
+		waitForElementVisibility(facilityDropdwon);
+		selectOption(facility, facilityDropdwon);
+	}
+	
+	public void selectJurisdiction(String jurisdiction) {
+		waitForElementVisibility(jurisdictionDropdownField);
+		selectOption(jurisdiction, jurisdictionDropdownField);
+	}
+	
+	public void selectRequirementType(String requirement) {
+		waitForElementVisibility(requirementTypreDropdwon);
+		selectOption(requirement, requirementTypreDropdwon);
+	}
+	
+	public void selectRequirementCategory(String requirementCategory) {
+		waitForElementVisibility(requirementCategoryDropdownField);
+		selectOption(requirementCategory, requirementCategoryDropdownField);
+	}
+	
+	public void selectRequirementStatus(String requirementStatus) {
+		waitForElementVisibility(requirementStatusDropdown);
+		selectOption(requirementStatus, requirementStatusDropdown);
+	}
+	
+	public void enterRandomRequirementName(String name){
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementNameInputField);
+		getSelenideElement(requirementNameInputField).clear();
+		type(name, requirementNameInputField);
+		newRequirementName = name;
+		System.out.println("Entered requirement name = "+ newRequirementName);
+	}
+	
+	public void clickRequirementSavebutton() {
+		waitForElementVisibility(adRequirementPopupSaveButton);
+		click(adRequirementPopupSaveButton);
+		SelenideTools.sleep(3);
+	}
+	
+	By sucessPopupOkButton = By.xpath("//*[@id=\"successok\"]");
+	
+	public void clickRequirementsSuccesspopupSavebutton() {
+		waitForElementVisibility(sucessPopupOkButton);
+		click(sucessPopupOkButton);
+		SelenideTools.sleep(3);
 	}
 }
