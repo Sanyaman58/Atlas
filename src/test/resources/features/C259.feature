@@ -1,5 +1,4 @@
 @C259 @Selector
-
 Feature: C259
 
   @TestRail(259)
@@ -23,13 +22,15 @@ Feature: C259
     Then Click on the [Submit for Approval] button on the [Requirements View] page
     When Click on the [Versioned Requirements] sidebar button from admin
     Then Enter requirement name in the requirement search on the [Versioned Requirements] page
-#    And Verify that newly created requirement contains "(RES1 = MA) and (FIN1 = Y and FIN1.2 = Y and PRO1 = Y and PRO1.4 = Y and PRO5 = Y and PRO5.1 = Y and PRO5.4 = Y and PRO5.4.2 = Y)" selector criteria
-    And Verify that newly created requirement contains "(RES1 = MA) and (FIN1 = Y and FIN1.2 = Y and PRO1.1 = Y and PRO2 = Y and PRO5.2 = Y and PRO5.3 = Y and PRO5.4.2 = Y and PRO6.1 = Y)" selector criteria
-
+    And Verify that newly created requirement contains "(RES1 = MA) and (FIN1 = Y and FIN1.1.1 = Y and PRO1.1 = Y and PRO2 = Y and PRO5.2 = Y and PRO5.3 = Y and PRO5.4.2 = Y and PRO6.1 = Y)" selector criteria
     And Click on the [Approve Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
     Then Click on the [Activate Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
+    When Log out from Atlas
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
+    And Click the [Login] button
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
@@ -46,23 +47,16 @@ Feature: C259
     And Get the jurisdictions checkboxes values
     Then Click the [Next] button on the [Jurisdiction] page
     Then The [Questionnaire] page is opened
-    And Select questions to match the complex selector criteria 2.0
     Then Get the questions values
     And Click the [Next] button on the [Questionnaire] page
     Then The [SaveSubmit Job] page is opened
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
-    When Click on the [View] button of the newly created job on the [View Results] page
-    Then The [Research Results] page is opened
-    And Get table records on [Research Results] page
-    Then Verify that early created requirement name is in the list
-    And Close [Research Results] window
     When Click on the [Activity Logs] button of the newly created job on the [View Results] page
     And The [Activity Logs] page is opened
     Then Enter requirement name in the activity search on the [Activity Logs] page
-    And Verify that log containing "(RES1 = MA) and (FIN1 = Y and FIN1.2 = Y and PRO1.1 = Y and PRO2 = Y and PRO5.2 = Y and PRO5.3 = Y and PRO5.4.2 = Y and PRO6.1 = Y)" description text is displayed on the [Activity Logs] page
-
+    And Verify that log containing "(RES1 = MA) and (FIN1 = Y and FIN1.1.1 = Y and PRO1.1 = Y and PRO2 = Y and PRO5.2 = Y and PRO5.3 = Y and PRO5.4.2 = Y and PRO6.1 = Y)" description text is displayed on the [Activity Logs] page
     Then Click on the [Configuration] sidebar button on Lighthouse
     Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

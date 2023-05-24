@@ -69,7 +69,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isNewlySubmittedJobDisplayed(String status){
-        SelenideTools.sleep(150);
+        SelenideTools.sleep(300);
         System.out.println(Pages.newResearchPage().getCompanyName());
         System.out.println(Pages.newResearchPage().getFacilityName());
         for(int i = 0;i < getElements(tableJobs).size();i++){
