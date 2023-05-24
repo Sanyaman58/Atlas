@@ -576,4 +576,57 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().openExistingRequirement();
 		SelenideTools.sleep(5);
 	}
+	
+	@When("Select any column and click on [Add Activity] button")
+	public void clickAddActivityButton() {
+		Pages.clientMasterPage().selectActivityColumn();
+		Pages.clientMasterPage().clickAddActivityButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select {string} requirement from requirement activity dropdown list")
+	public void selectRequirementActivity(String requirementActivity) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectRequirementActivity(requirementActivity);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Enter Activity start date")
+	public void enterActivityDate() {
+		Pages.clientMasterPage().enterActivityStartDate();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click Add Activity popup [Next] button")
+	public void clickActivityNextButton() {
+		Pages.clientMasterPage().clickPopupNextButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select {string} type from add type dropdown list")
+	public void selectTypeFromDropdown(String type) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectType(type);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} task status from task status dropdown list")
+	public void selectTaskStatusFromDropdow(String taskStatus) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectTaskStatus(taskStatus);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} from assignee dropdown list")
+	public void selectAssigneeFromDropdow(String assignee) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectAssignee(assignee);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Click on Add Activity popup save button")
+	public void addActivitySaveButton() {
+		Pages.clientMasterPage().clickActivityPopupSaveButton();
+		SelenideTools.sleep(5);
+	}
 }
