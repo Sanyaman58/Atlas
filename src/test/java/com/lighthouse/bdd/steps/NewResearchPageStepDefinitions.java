@@ -110,8 +110,9 @@ public class NewResearchPageStepDefinitions {
 
 	@When("Select {string} client from the client dropdown")
 	public void selectClientFromTheClientDropdown(String client) {
+		SelenideTools.sleep(3);
 		Pages.newResearchPage().selectClient(client);
-		SelenideTools.sleep(4);
+		SelenideTools.sleep(2);
 	}
 
 	@When("The client dropdown is visible and clickable")
@@ -137,10 +138,10 @@ public class NewResearchPageStepDefinitions {
 	@When("Click on the [Configuration] sidebar button")
 	public void clickOnTheConfigurationSidebarButton() {
 		Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
-		SelenideTools.sleep(2);
+		SelenideTools.sleep(5);
 		Pages.newResearchPage().clickConfigurationSidebarButton();
-		SelenideTools.sleep(10);
-		SelenideTools.switchToLastTab();
+		SelenideTools.sleep(20);
+//		SelenideTools.switchToLastTab();
 	}
 
 	@When("Click on the [Results] sidebar button")
@@ -159,6 +160,12 @@ public class NewResearchPageStepDefinitions {
 		Pages.atlasDashboardManagementPage().clickRequirementsViewSidebarButton();
 		SelenideTools.sleep(10);
 		SelenideTools.switchToLastTab();
+	}
+	
+	@When("Click on the [Requirements View] button")
+	public void clickOnTheCRequirementsViewButton() {
+		Pages.atlasDashboardManagementPage().clickRequirementsViewSidebarButton();
+		SelenideTools.sleep(8);
 	}
 
 	@When("Click on the [Audit Logs] sidebar button")
@@ -349,6 +356,7 @@ public class NewResearchPageStepDefinitions {
     public void refreshThePage() {
 		SelenideTools.sleep(5);
 		Selenide.refresh();
+		SelenideTools.sleep(5);
     }
     
     @And("Click on the [Intelligence] sidebar button")

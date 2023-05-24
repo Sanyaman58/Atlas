@@ -110,6 +110,7 @@ public class ViewResultsPageStepDefinitions {
 
     @Then("Click on the [View] button of the {int} job on the [View Results] page")
     public void clickOnTheViewButtonOfTheJobOnTheViewResultsPage(int index) {
+        SelenideTools.sleep(1);
         Pages.viewResultsPage().clickOnTheViewButtonOfTheRecord(index);
     }
 

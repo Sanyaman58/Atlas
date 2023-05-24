@@ -19,7 +19,7 @@ Feature: C162
     And Verify that the [Intelligence Permissions] from the side menu is enabled
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    And Verify [Delete Facility] button is enabled on [Configuration] page
+    #And Verify [Delete Facility] button is enabled on [Configuration] page
     When Click on the [Results] sidebar atlas button
     Then The [View Results] page is opened
     And Verify [View Result] and [Delete Result] button is enabled

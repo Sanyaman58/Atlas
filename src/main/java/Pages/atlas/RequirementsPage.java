@@ -35,6 +35,8 @@ public class RequirementsPage extends PageTools {
 	By projectsNavigationHeader = By.xpath("//*[@id=\"projects-li-span\"]");
 	By contactNavigationHeader = By.xpath("//*[@id=\"contact-li-span\"]");
 	By disciplineNavigationHeader = By.xpath("//*[@id=\"disciplines-li-span\"]");
+	By documentsPageTitle = By.xpath("//*[@id=\"task-grid\"]/div[2]/div/p");
+	// By companyProfilePageTitle = By.xpath("//*[@id=\"wrapper\"]/main/section[1]/div/div[1]/div/p");
 
 	public boolean isRequirementsPageOpened() {
 		waitForElementVisibility(requirementsPageTitle);
@@ -168,4 +170,11 @@ public class RequirementsPage extends PageTools {
 			System.out.println("Discipline page not opened");
 		}
 	}
+	public void isDocumentsPageOpened() {
+		waitForElementVisibility(documentsPageTitle);
+	}
+	
+	// public void isCompanyProfilePageOpened() {
+	// 	waitForElementVisibility(companyProfilePageTitle);
+	// }
 }

@@ -1,5 +1,4 @@
 @C126
-
 Feature: C126
 
   @TestRail(126)
@@ -24,9 +23,3 @@ Feature: C126
     When Click on the [Versioned Requirements] sidebar button from admin
     Then Enter requirement name in the requirement search on the [Versioned Requirements] page
     And Verify that newly created requirement contains "(FIN1 = Y)" selector criteria
-
-
-
-
-
-    

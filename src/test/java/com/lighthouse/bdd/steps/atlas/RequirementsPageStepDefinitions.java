@@ -73,6 +73,11 @@ public class RequirementsPageStepDefinitions {
         Assert.assertFalse(Pages.requirementsPage().isChangeNoteLabelVisible());
     }
     
+    @Then("The [Documents] page is opened")
+    public void theDocumentsPageIsOpened() {
+        Pages.requirementsPage().isDocumentsPageOpened();
+    }
+    
     @Then("The [Company Profile] page is opened")
     public void theCompanyProfilePageIsOpened() {
         Pages.requirementsPage().isCompanyProfilePageOpened();

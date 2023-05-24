@@ -12,7 +12,7 @@ public class JurisdictionPageStepDefinitions {
     @Then("The [Jurisdiction] page is opened")
     public void theQuestionnairePageIsOpened() {
         Assert.assertTrue(Pages.jurisdictionPage().isJurisdictionPageOpened());
-        SelenideTools.sleep(3);
+        SelenideTools.sleep(5);
     }
 
     @When("Select {string} state on the [Jurisdiction] page")

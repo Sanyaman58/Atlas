@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -45,6 +46,7 @@ public class SaveSubmitJobPageStepDefinitions {
     @When("Click on the [Submit Job] button")
     public void clickOnTheSubmitJobButton() {
         Pages.saveSubmitJobPage().clickSubmitConfigurationButton();
+        SelenideTools.sleep(12);
     }
 
     @Then("Verify the breadcrumbs on the [SaveSubmit Job] page")

@@ -26,6 +26,7 @@ public class SelenideConfig {
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--allow-insecure-localhost");
         chromeOptions.setAcceptInsecureCerts(true);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         if (Constants.REMOTE_URL != null) {
@@ -64,7 +65,7 @@ public class SelenideConfig {
         Configuration.fastSetValue = false;
         Configuration.savePageSource = false;
         Configuration.screenshots = true;
-        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
         Configuration.browserSize = "1920x1080";
         Configuration.pollingInterval = 10000;
         Configuration.pageLoadStrategy = "eager";

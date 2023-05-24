@@ -27,7 +27,7 @@ public class ResearchNotificationPage extends PageTools {
     By researchNotificationPageHeader = By.xpath("//h2[@class=\"card-heading \"]");
     String researchNotificationHeaderText = "Research Notification";
     By researchNotificationSearchBar = By.xpath("//input[@class=\"form-control form-control-sm\"]");
-    String searchNotificationText = "Manufacturer-Non-Resident (REPACKAGER, RELABLER, CMO, ACTUAL MANUFACTURER";
+    String searchNotificationText = "Changes were made to the following: [Criteria] [Notes] [Forms] [Bond] [Fee Controlled Substance] [Fee Renewal]";
     String SKU;
     By readMore_LessButton = By.xpath("//button[@class=\"read-more read-more-btn\"]");
     
@@ -44,8 +44,11 @@ public class ResearchNotificationPage extends PageTools {
     }
 
     public void clickOnResearchNotificationSidebarButton(){
-    	Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
         SelenideTools.sleep(2);
+        if(!isElementVisible(researchNotificationSidebarButton)) {
+            Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
+            SelenideTools.sleep(2);
+        }
         waitForElementVisibility(researchNotificationSidebarButton);
         click(researchNotificationSidebarButton);
         SelenideTools.sleep(10);
@@ -150,8 +153,8 @@ public class ResearchNotificationPage extends PageTools {
             returnValue = false;
             System.out.println((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText()));
             System.out.println(SKU);
-            if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText() == SKU)
-                    || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText().contains(SKU))) {
+            if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText().replaceAll("\\s","") == SKU.replaceAll("\\s",""))
+                    || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText().replaceAll("\\s","").contains(SKU.replaceAll("\\s","")))) {
                 returnValue = true;
             }
         }
@@ -160,15 +163,27 @@ public class ResearchNotificationPage extends PageTools {
     }
 
     public boolean isRecordWithTypeAndScopeAndNoteDisplayed(String type, String scope, String note){
-        boolean returnValue = false;
         for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
-            returnValue = false;
-            if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[4]")).getText().contains(type)
-                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[8]")).getText().contains(scope)
-                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[9]")).getText().contains(type))
-                returnValue = true;
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText());
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[14]")).getText());
+            if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText().equals(type)
+//                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[8]")).getText().contains(scope)
+                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[14]")).getText().equals(note))
+                return true;
         }
-        return returnValue;
+        return false;
+    }
+
+    public boolean isRecordWithTypeAndScopeAndTermDisplayed(String type, String note){
+        for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText());
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[22]")).getText());
+            if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText().equals(type)
+//                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[8]")).getText().contains(scope)
+                    && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[22]")).getText().equals(note))
+                return true;
+        }
+        return false;
     }
     
     public void clickNotificationsButton(){

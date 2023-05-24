@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ViewResultsPage extends PageTools {
     By viewResultsPageTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div[1]/div[1]/h2");
@@ -36,7 +37,7 @@ public class ViewResultsPage extends PageTools {
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Knowledge Results']/following-sibling::button");
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
-    By progressBar = By.xpath("//tr//div[@class='progress']");
+    By progressBar = By.xpath("//div[@role=\"progressbar\"]");
     By companySelect = By.xpath("//select[@class='company_val form-control']");
     By exportButton = By.xpath("//button[contains(text(),'Export')]");
     By dateTimeInputSearchbar = By.xpath("//input[@placeholder=\"Search Date/Time\"]");
@@ -68,7 +69,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isNewlySubmittedJobDisplayed(String status){
-        SelenideTools.sleep(150);
+        SelenideTools.sleep(300);
         System.out.println(Pages.newResearchPage().getCompanyName());
         System.out.println(Pages.newResearchPage().getFacilityName());
         for(int i = 0;i < getElements(tableJobs).size();i++){
@@ -158,7 +159,7 @@ public class ViewResultsPage extends PageTools {
     public void clickOnTheLabel(String label){
         List<SelenideElement> elements = getElements(tableLabels);
         for(SelenideElement element : elements){
-            if(element.getText()==label) {
+            if(element.getText().equals(label) || element.getText().contains(label)) {
                 element.click();
                 break;
             }
@@ -174,9 +175,17 @@ public class ViewResultsPage extends PageTools {
                     tableRecords.add(getSelenideElement(table).findElement(By.xpath("./tr["+(j+1)+"]/td["+(i+1)+"]")).getText());
             }
         }
-        List<String> sortedTableRecords = tableRecords;
-        Collections.sort(sortedTableRecords);
-        return sortedTableRecords.equals(tableRecords);
+        System.out.println(tableRecords);
+        List<String> sortedTableRecords = tableRecords.stream().sorted().collect(Collectors.toList());
+        System.out.println(sortedTableRecords);
+        System.out.println(tableRecords);
+        for(int i = 0; i < sortedTableRecords.size(); i++){
+            System.out.println(sortedTableRecords.get(i) + " " + tableRecords.get(i));
+            if(!sortedTableRecords.get(i).equals(tableRecords.get(i)))
+                return false;
+        }
+        return true;
+//        return sortedTableRecords.equals(tableRecords);
     }
 
     public boolean verifyThatRecordsSortedDescendingByTheLabel(String label){
@@ -365,6 +374,7 @@ public class ViewResultsPage extends PageTools {
     }
 
     public boolean isProgressBarVisible(){
+        SelenideTools.sleep(10);
         return isElementVisible(progressBar);
     }
 

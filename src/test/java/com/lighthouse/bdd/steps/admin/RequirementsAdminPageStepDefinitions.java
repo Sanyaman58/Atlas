@@ -259,7 +259,7 @@ public class RequirementsAdminPageStepDefinitions {
     @And("Click on the [Yes Approve] button on the [Requirements View] page")
     public void clickOnTheYesApproveButtonOnTheRequirementsViewPage() {
         Pages.requirementsAdminPage().clickYesApproveButton();
-        SelenideTools.sleep(10);
+        SelenideTools.sleep(20);
     }
 
     @When("Click on the [Intelligence Admin] sidebar collapse button on Lighthouse")
@@ -277,6 +277,12 @@ public class RequirementsAdminPageStepDefinitions {
     public void getRequirementNameFromTheEditRequirementName() {
         SelenideTools.sleep(6);
         Pages.requirementsAdminPage().getRequirementNameFromEditRequirement();
+    }
+
+    @Then("Get application name from the [Edit Requirement] page")
+    public void getApplicationNameFromTheEditRequirementName() {
+        SelenideTools.sleep(6);
+        Pages.requirementsAdminPage().getApplicationNameFromEditRequirement();
     }
 
 
@@ -452,6 +458,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @Then("Newly created job with status {string} is displayed in the table on the [Requirements View] page")
     public void newlyCreatedJobWithStatusIsDisplayedInTheTableOnTheRequirementsViewPage(String status) {
+        SelenideTools.sleep(5);
         Assert.assertTrue(Pages.requirementsAdminPage().isRecordWithStatusDisplayed(Pages.requirementsAdminPage().getState(),
                 Pages.requirementsAdminPage().getApplicationName(),
                 Pages.requirementsAdminPage().getRequirementName(),

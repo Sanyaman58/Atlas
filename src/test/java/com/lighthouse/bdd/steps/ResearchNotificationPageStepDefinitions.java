@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -79,11 +80,13 @@ public class ResearchNotificationPageStepDefinitions {
 
     @Then("Only records with entered SKU are displayed on the [Research Notification] page")
     public void onlyRecordsWithEnteredSKUAreDisplayedOnTheResearchNotificationPage() {
+        SelenideTools.sleep(2);
         Assert.assertTrue(Pages.researchNotificationPage().isRecordsOnlyWithSKU());
     }
 
     @Then("A record with type {string} and {string} scope displayed in the table")
     public void aRecordWithTypeAndScopeDisplayedInTheTable(String type, String scope) {
+        SelenideTools.sleep(3);
         Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndNoteDisplayed(type, scope, Pages.versionRequirementsAdminPage().getChangeNoteText()));
     }
     
@@ -105,5 +108,21 @@ public class ResearchNotificationPageStepDefinitions {
     @Then("Verify the test wrapping in the Research Notifications page")
     public void verifyTextWrapping() {
     	Pages.researchNotificationPage().verifyTextWrappingOnNotificationsPage();
+    }
+
+    @When("Enter saved SKU in the Versioned Requirement page on the [Research Notification] page")
+    public void enterSavedSKUInTheVersionedRequirementPageOnTheResearchNotificationPage() {
+        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
+    }
+
+    @When("Enter saved application name in the Versioned Requirement page on the [Research Notification] page")
+    public void enterSavedApplicationNameInTheVersionedRequirementPageOnTheResearchNotificationPage() {
+        Pages.researchNotificationPage().enterTextInTheSearchField(Pages.versionRequirementsAdminPage().getRequirementSku());
+    }
+
+    @Then("A record with type {string} and changed processing time scope displayed in the table")
+    public void aRecordWithTypeAndChangedProcessingTimeScopeDisplayedInTheTable(String type) {
+        SelenideTools.sleep(3);
+        Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndTermDisplayed(type, Pages.versionRequirementsAdminPage().getChangeNoteText()));
     }
 }

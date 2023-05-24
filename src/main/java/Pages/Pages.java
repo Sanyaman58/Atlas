@@ -2,6 +2,7 @@ package Pages;
 
 import Pages.admin.*;
 import Pages.atlas.AtlasDashboardManagementPage;
+import Pages.atlas.DocumentRepositoryPage;
 import Pages.atlas.RequirementsPage;
 import Utils.AllureLogger;
 
@@ -32,6 +33,8 @@ public class Pages extends AllureLogger {
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
     private static RequirementsPage requirementsPage;
+
+	private static DocumentRepositoryPage documentRepositoryPage;
 
 	public static LoginPage loginPage() {
 		if (loginPage == null) {
@@ -199,5 +202,12 @@ public class Pages extends AllureLogger {
         }
         return euiVersionAdminPage;
     }
+
+	public static DocumentRepositoryPage documentRepositoryPage() {
+		if (documentRepositoryPage == null) {
+			documentRepositoryPage = new DocumentRepositoryPage();
+		}
+		return documentRepositoryPage;
+	}
 
 }
