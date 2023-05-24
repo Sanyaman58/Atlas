@@ -1426,7 +1426,66 @@ public class ClientMasterPage extends PageTools {
 		waitForElementVisibility(addRequirementPopupHeader);
 	}
 	
-	public void fillNewRequirementDeatils() {
-		
+	By companyDropdown = By.xpath("//select[@id=\"CompanyKey\"]");
+	By facilityDropdwon = By.xpath("//select[@id=\"FacilityKeyPair\"]");
+	By jurisdictionDropdownField = By.xpath("//select[@id=\"StatesKey\"]");
+	By requirementTypreDropdwon = By.xpath("//select[@id=\"RequirementTypeNewKey\"]");
+	By requirementCategoryDropdownField = By.xpath("//select[@id=\"RequirementTypeKey\"]");
+	By requirementNameInputField = By.xpath("//*[@id=\"FormerLicenseName\"]");
+	String newRequirementName;
+	By adRequirementPopupSaveButton = By.xpath("//button[@id=\"modal-save\"]");
+	By requirementStatusDropdown = By.xpath("//select[@id=\"LicenseStatusMasterKey\"]");
+	
+	public void selectCompany(String company) {
+		waitForElementVisibility(companyDropdown);
+		selectOption(company, companyDropdown);
+	}
+	
+	public void selectFacility(String facility) {
+		waitForElementVisibility(facilityDropdwon);
+		selectOption(facility, facilityDropdwon);
+	}
+	
+	public void selectJurisdiction(String jurisdiction) {
+		waitForElementVisibility(jurisdictionDropdownField);
+		selectOption(jurisdiction, jurisdictionDropdownField);
+	}
+	
+	public void selectRequirementType(String requirement) {
+		waitForElementVisibility(requirementTypreDropdwon);
+		selectOption(requirement, requirementTypreDropdwon);
+	}
+	
+	public void selectRequirementCategory(String requirementCategory) {
+		waitForElementVisibility(requirementCategoryDropdownField);
+		selectOption(requirementCategory, requirementCategoryDropdownField);
+	}
+	
+	public void selectRequirementStatus(String requirementStatus) {
+		waitForElementVisibility(requirementStatusDropdown);
+		selectOption(requirementStatus, requirementStatusDropdown);
+	}
+	
+	public void enterRandomRequirementName(String name){
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementNameInputField);
+		getSelenideElement(requirementNameInputField).clear();
+		type(name, requirementNameInputField);
+		newRequirementName = name;
+		System.out.println("Entered requirement name = "+ newRequirementName);
+	}
+	
+	public void clickRequirementSavebutton() {
+		waitForElementVisibility(adRequirementPopupSaveButton);
+		click(adRequirementPopupSaveButton);
+		SelenideTools.sleep(3);
+	}
+	
+	By sucessPopupOkButton = By.xpath("//*[@id=\"successok\"]");
+	
+	public void clickRequirementsSuccesspopupSavebutton() {
+		waitForElementVisibility(sucessPopupOkButton);
+		click(sucessPopupOkButton);
+		SelenideTools.sleep(3);
 	}
 }
