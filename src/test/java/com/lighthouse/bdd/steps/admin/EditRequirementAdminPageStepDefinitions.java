@@ -23,4 +23,9 @@ public class EditRequirementAdminPageStepDefinitions {
     @And("Compare the data on the [Edit Requirement] with the data from the [View Requirement] page")
     public void compareTheDataOnTheEditRequirementWithTheDataFromTheViewRequirementPage() throws IOException {
         Pages.viewRequirementsAdminPage().compareInfoLists(Pages.editRequirementAdminPage().getGeneralInfo());}
+
+    @When("Click on the [Edit Requirement] button on the [Edit Requirement] page")
+    public void clickOnTheEditRequirementButtonOnTheEditRequirementPage() {
+        Pages.editRequirementAdminPage().clickOnEditButton();
+    }
 }

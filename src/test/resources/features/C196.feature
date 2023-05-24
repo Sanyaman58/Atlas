@@ -11,7 +11,7 @@ Feature: C196
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     And Select already created job by index 1 in the table on the [New Research] page
@@ -36,6 +36,6 @@ Feature: C196
     And Get table records on [Research Results] page
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 

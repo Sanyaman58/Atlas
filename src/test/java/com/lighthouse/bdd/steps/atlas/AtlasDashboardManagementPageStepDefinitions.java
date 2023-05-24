@@ -64,8 +64,9 @@ public class AtlasDashboardManagementPageStepDefinitions {
 
 	@When("Click on the [Intelligence Admin] sidebar collapse button")
 	public void clickOnTheIntelligenceAdminSidebarCollapseButton() {
+		SelenideTools.sleep(10);
 		Pages.atlasDashboardManagementPage().clickIntelligenceAdminSidebarCollapseButton();
-		SelenideTools.sleep(2);
+		SelenideTools.sleep(5);
 	}
 
 	@When("Click the [Home] sidebar button")
@@ -90,5 +91,31 @@ public class AtlasDashboardManagementPageStepDefinitions {
 		Pages.atlasDashboardManagementPage().clickComanyProfileSidebarButton();
 		SelenideTools.sleep(2);
 	}
+	
+	@When("Click on the [Research] button")
+	public void clickOnTheResearchButton() {
+		Pages.atlasDashboardManagementPage().clickResearchAdminSidebarButton();
+		SelenideTools.sleep(10);
+		Assert.assertTrue(Pages.researchAdminPage().isResearchAdminPageOpened());
+	}
 
+    @When("Click on the [Document Repository] sidebar button")
+    public void clickOnTheDocumentRepositorySidebarButton() {
+		Pages.atlasDashboardManagementPage().clickDocumentRepositorySidebarButton();
+    }
+
+    @When("Click on the [Notifications] atlas collapse button")
+    public void clickOnTheNotificationsAtlasCollapseButton() {
+		Pages.atlasDashboardManagementPage().clickNotificationsAtlasCollapseButton();
+    }
+
+	@And("Click on the [Documents] sidebar button under the [Notifications] section")
+	public void clickOnTheDocumentsSidebarButtonUnderTheNotificationsSection() {
+		Pages.atlasDashboardManagementPage().clickNotificationsDocumentsSidebarButton();
+	}
+
+	@Then("The [Documents Notifications] page is opened")
+	public void theDocumentsNotificationsPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isDocumentsNotificationsPageOpened());
+	}
 }

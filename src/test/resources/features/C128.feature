@@ -1,10 +1,9 @@
 @C128
-
 Feature: C128
 
   @TestRail(128)
   Scenario: Verify that the Washington DC Jurisdiction Renamed to District of Columbia in the application
-  When Open Atlas
+    When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
     And Click the [Login] button
@@ -12,9 +11,9 @@ Feature: C128
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     And Reload the browser
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Select 1 company name
     And Select 1 facility name
     When Click surveillance setup [Next] button

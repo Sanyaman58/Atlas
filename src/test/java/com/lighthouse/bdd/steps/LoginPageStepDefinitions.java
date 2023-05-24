@@ -20,8 +20,8 @@ public class LoginPageStepDefinitions {
 	@When("Open Atlas")
 	public void openAtlas() {
 		Pages.loginPage().openAtlas();
-		SelenideTools.getDriver().manage().window().setSize(new Dimension(2560, 1440));
-
+		SelenideTools.getDriver().manage().window().maximize();
+//		SelenideTools.getDriver().manage().window().setSize(new Dimension(2560, 1440));
 	}
 
 	@Then("Enter login {string} on login page")
@@ -32,6 +32,7 @@ public class LoginPageStepDefinitions {
 	@Then("Enter password {string} on login page")
 	public void enterPasswordOnLoginPage(String password) {
 		Pages.loginPage().enterPassword(password);
+		SelenideTools.sleep(3);
 	}
 
 	@When("Click the [Login] button")

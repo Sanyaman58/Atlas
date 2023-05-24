@@ -37,7 +37,7 @@ public class RequirementsAdminPage extends PageTools {
 	By renewalTermGeneralInformationInput = By.xpath("//input[@name='Renewal_Term']");
 	By applicationTypeGeneralInformationInput = By.xpath("//select[@id='Application_Type']");
 	By notesGeneralInformationInput = By.xpath("//textarea[@name='Notes']");
-	By formsGeneralInformationInput = By.xpath("//textarea[@name='Forms']");
+	By formsGeneralInformationInput = By.xpath("//input[@name='Forms']");
 	By bondRequiredYRadioButton = By.xpath("//input[@id='bond-required_yes']");
 	By bondRequiredNRadioButton = By.xpath("//input[@id='bond-required_no']");
 	By stateRegisteredAgentYRadioButton = By.xpath("//input[@id='state-registered-yes']");
@@ -91,7 +91,7 @@ public class RequirementsAdminPage extends PageTools {
 
 	By approveButton = By.xpath("//button[@id='approve_requirement_changes']");
 	By yesApproveButton = By.xpath("//button[@id='yes_btn']");
-	By intelligenceAdminSidebarCollapseButton = By.xpath("//ul[@id='menu']/li[10]");
+	By intelligenceAdminSidebarCollapseButton = By.xpath("//a[contains(text(),'Intelligence Admin')]");
 	By editJurisdictionSelect = By.xpath("//select[@id='filter_Jurisdiction']");
 	By editRequirementCategorySelect = By.xpath("//select[@id='edit_Requirement_Category']");
 	By editRequirementTypeSelect = By.xpath("//select[@id='edit_Requirement_Type']");
@@ -166,6 +166,8 @@ public class RequirementsAdminPage extends PageTools {
 	}
 
 	public void selectPreliminaryDataRadioButton(){
+		SelenideElement preliminaryDataRadioButtonElement = getSelenideElement(preliminaryDataRadioButton);
+		preliminaryDataRadioButtonElement.scrollIntoView(true);
 		waitForElementVisibility(preliminaryDataRadioButton);
 		scrollToElement(preliminaryDataRadioButton);
 		click(preliminaryDataRadioButton);
@@ -463,6 +465,10 @@ public class RequirementsAdminPage extends PageTools {
 
 	public void getRequirementNameFromEditRequirement(){
 		requirementName = getSelenideElement(requirementNameGeneralInformationInput).getValue();
+	}
+
+	public void getApplicationNameFromEditRequirement(){
+		applicationName = getSelenideElement(applicationNameGeneralInformationInput).getValue();
 	}
 
 	public boolean isChangeNoteForCustomerWorking(){

@@ -41,7 +41,7 @@ public class NewResearchPage extends PageTools {
 	By clientDropdownResults = By.xpath("//select[contains(@class,'new_client_id')]");
 	// By surveillanceIntelligenceSidebarButton =
 	// By.xpath("//ul[@id='menu']/li[5]");
-	By configurationSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[1]/a");
+	By configurationSidebarButton = By.xpath("//a[contains(@href,'facility-setup')]");
 	By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
 	By permissionsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[3]/a");
 	By surveillanceSetupBreadcrumb = By
@@ -66,8 +66,10 @@ public class NewResearchPage extends PageTools {
 	}
 
 	public void logOut() {
+		SelenideTools.sleep(1);
 		waitForElementVisibility(profileDropdown);
 		click(profileDropdown);
+		SelenideTools.sleep(1);
 		waitForElementVisibility(logOutButton);
 		click(logOutButton);
 	}

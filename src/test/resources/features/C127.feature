@@ -1,5 +1,4 @@
 @C127
-
 Feature: C127
 
   @TestRail(127)
@@ -18,7 +17,7 @@ Feature: C127
     And Enter random application name on the [Requirements View] page
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
-#    And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
+    #    And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
     And Check 3 question in the [Question Selection] section on the [Requirements View] page
     And Delete last question from the [Selector Criteria]
     Then Click on the [Submit for Approval] button on the [Requirements View] page
@@ -31,9 +30,9 @@ Feature: C127
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -61,9 +60,6 @@ Feature: C127
     And The [Activity Logs] page is opened
     Then Enter created requirement's name in the activity search on the [Activity Logs] page
     And Verify that logs are displayed on the [Activity Logs] page
-
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
-
-

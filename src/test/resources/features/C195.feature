@@ -16,6 +16,7 @@ Feature: C195
     And Click the [Create New] button in the [Add New Requirement] section
     When Enter random requirement name on the [Requirements View] page
     And Enter random application name on the [Requirements View] page
+
     Then Click on the [Question Selection] collapse on the [Requirements View] page
     And Select "Alaska" jurisdiction in the [General Information] section on the [Requirements View] page
 #    And Select In-State radio button for the state "Alaska" of the RES1 question on the [Requirement View] page
@@ -31,9 +32,9 @@ Feature: C195
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button

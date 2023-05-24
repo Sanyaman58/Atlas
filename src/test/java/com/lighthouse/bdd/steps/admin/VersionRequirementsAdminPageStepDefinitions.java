@@ -1,6 +1,7 @@
 package com.lighthouse.bdd.steps.admin;
 
 import Pages.Pages;
+import Utils.SelenideTools;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -70,6 +71,7 @@ public class VersionRequirementsAdminPageStepDefinitions {
     @Then("Enter requirement name in the requirement search on the [Versioned Requirements] page")
     public void enterRequirementNameInTheRequirementSearchOnTheRequirementsViewPage() {
         Pages.versionRequirementsAdminPage().enterRequirementNameInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+        SelenideTools.sleep(5);
     }
 
     @Then("Enter requirement name in the search field on the [Versioned Requirements] page")
@@ -260,7 +262,22 @@ public class VersionRequirementsAdminPageStepDefinitions {
 
     @When("Click on the [View Requirement] button of the {int} record on the [Versioned Requirements] page")
     public void clickOnTheViewRequirementButtonOfTheRecordOnTheVersionedRequirementsPage(int index) {
-        Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index);
+        Pages.versionRequirementsAdminPage().clickOnViewRequirementButton(index-1);
+    }
+
+    @And("Enter requirement name saved from the [Edit Requirement] page on the [Versioned Requirements] page")
+    public void enterRequirementNameSavedFromTheEditRequirementPageOnTheVersionedRequirementsPage() {
+        Pages.versionRequirementsAdminPage().enterTextInTheSearchField(Pages.requirementsAdminPage().getRequirementName());
+    }
+
+    @And("Get SKU of the {int} record on the [Versioned Requirements] page")
+    public void getSKUOfTheRecordOnTheVersionedRequirementsPage(int index) {
+        Pages.versionRequirementsAdminPage().saveRequirementSku(index-1);
+    }
+
+    @And("Enter random processing time on the [Requirements View] page")
+    public void enterRandomProcessingTimeOnTheRequirementsViewPage() {
+        Pages.versionRequirementsAdminPage().enterProcessingTime(RandomStringUtils.random(5, false, true));
     }
 
 //    @And("Verify that the [Activate Requirement] view option is enabled")
