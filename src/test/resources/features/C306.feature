@@ -13,4 +13,12 @@ Feature: C306
     When Click on the [Requirements] button on Atlas
     Then The [Requirements] page is opened
     And Click on [Add Requirement] button
-    And Fill all the required details on new Requirement popup
+    Then Select "Comppany USA" company from company dropdown list
+    Then Select "Facility" from facility dropdown list
+    Then Select "Alabama" jurisdiction from jurisdiction dropdown list
+    Then Select "Initial" requirement type from requirement type dropdown list
+    Then Select "Federal License" requirement category from requirement category dropdown list
+    Then Select "Client to Maintain" requirement status from requirement status dropdown list
+    When Enter random requirement name on Add Requirement popup
+    And Click on [Add Requirement] popup save button
+    And Click on requirement successful popup okay button
