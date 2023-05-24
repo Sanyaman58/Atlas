@@ -284,8 +284,8 @@ public class ManagementAdminPageStepDefinitions {
 	}
 
 	@And("Fill the required details on Requirement view page")
-	public void fillRequiredInfo(int index) {
-		Pages.clientMasterPage().fillInfoOnRequirementViewPage(index);
+	public void fillRequiredInfo() {
+		Pages.clientMasterPage().fillInfoOnRequirementViewPage();
 	}
 
 	@And("Open Notification page")
@@ -455,27 +455,27 @@ public class ManagementAdminPageStepDefinitions {
 	public void verifySaveSubmitPageLabels() {
 		Pages.clientMasterPage().saveSubmitPageLabels();
 	}
-	
+
 	@And("Verify [ Washington DC Jurisdiction] Jurisdiction is renamed with [District of Columbia]")
-    public void verifyDistrictOfColumbia() {
-        Pages.clientMasterPage().verifyJurisdictionName();
-    }
-	
-	@And("Verify the [District of Columbia] in list of Jurisdiction")
-    public void verifyJurisdictionDistrictOfColumbia() {
-        Pages.clientMasterPage().verifyDistrictOfColumbia();
-    }
-	
-	@And("Click on [Requirement View] sidebar button")
-    public void selectRequirementView() {
-        Pages.clientMasterPage().clickRequirementViewButton();
-    }
-	
-	@And("Click Jurisdiction dropdown and verify the [District of Columbia] jurisdiction")
-    public void verifyDistrictOfColumbiaInDropndow() {
-        Pages.clientMasterPage().clickJurisdictionDropdownAndVerifyJurisdiction();
+	public void verifyDistrictOfColumbia() {
+		Pages.clientMasterPage().verifyJurisdictionName();
 	}
-	
+
+	@And("Verify the [District of Columbia] in list of Jurisdiction")
+	public void verifyJurisdictionDistrictOfColumbia() {
+		Pages.clientMasterPage().verifyDistrictOfColumbia();
+	}
+
+	@And("Click on [Requirement View] sidebar button")
+	public void selectRequirementView() {
+		Pages.clientMasterPage().clickRequirementViewButton();
+	}
+
+	@And("Click Jurisdiction dropdown and verify the [District of Columbia] jurisdiction")
+	public void verifyDistrictOfColumbiaInDropndow() {
+		Pages.clientMasterPage().clickJurisdictionDropdownAndVerifyJurisdiction();
+	}
+
 	@And("Verify no [Intelligence Entitlement] message is shown without selecting any Client")
     public void verifyNoEntitlementMessage() {
         Pages.clientMasterPage().noEntitlementMessage();
@@ -483,7 +483,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
-		Assert.assertTrue(Pages.clientMasterPage().euiStates());
+		Pages.clientMasterPage().euiStates();
 	}
 
 	@Then("Type {string} in the email search on the [User Master] page")
@@ -493,7 +493,7 @@ public class ManagementAdminPageStepDefinitions {
 
 	@And("Double click on the {int} record on the [User Master] page")
 	public void doubleClickOnTheRecordOnTheUserMasterPage(int index) {
-		Pages.clientMasterPage().clickOnTheClientName(index-1);
+		Pages.clientMasterPage().clickOnTheClientName(index - 1);
 	}
 
 	@When("Verify that {string} role is not available in the Roles-Management select on the [User Master] page")

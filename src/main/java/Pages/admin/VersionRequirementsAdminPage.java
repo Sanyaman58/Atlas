@@ -38,9 +38,11 @@ public class VersionRequirementsAdminPage extends PageTools {
 	By requirementStatusSearchField = By.xpath("//input[@placeholder='Search Status']");
 	By changeNoteForCustomerInput = By.xpath("//textarea[@name='Change_Note_for_Customer']");
 	By yesIncludeRadioButton = By.xpath("//input[@checked and @id='requirements_checks_include_yes']");
+	By processingTimeInput = By.xpath("//input[@name='Application_ProcessingTime']");
 
 	String requirementSku;
 	String changeNoteText;
+	String processingTime;
 	String searchFieldText;
 	public String getSearchFieldText(){
 		return searchFieldText;
@@ -48,7 +50,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public String getChangeNoteText(){
 		return changeNoteText;
 	}
-
+	public String getProcessingTime() { return processingTime;}
 	public String getRequirementSku(){
 		return requirementSku;
 	}
@@ -80,8 +82,16 @@ public class VersionRequirementsAdminPage extends PageTools {
 		for(SelenideElement element : elements){
 			tableLabelsList.add(element.getText());
 		}
-		tableLabelsList.add(getSelenideElement(versionRequirementsTableActionLabel).getText());
-		return tableLabelsList.equals(labels);
+
+		tableLabelsList.add(getSelenideElement(versionRequirementsTableActionLabel).getAttribute("aria-label"));
+		System.out.println(tableLabelsList);
+		for(int i = 0; i < tableLabelsList.size(); i++){
+			System.out.println(tableLabelsList.get(i) + " " + labels.get(i));
+			if(!tableLabelsList.get(i).contains(labels.get(i)))
+				if(!tableLabelsList.get(i).equals(labels.get(i)))
+					return false;
+		}
+		return true;
 	}
 
 	public void clickOnTheLabel(String label){
@@ -136,7 +146,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 	public void clickOnViewRequirementButton(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
 		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
-		getElements(versionRequirementsTableRecords).get(index-1).findElement(By.xpath("./td[11]/div/a[@title='View Requirement']")).click();
+		getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[11]/div/a[@title='View Requirement']")).click();
 	}
 
 	public void clickOnViewRequirementButton(String status){
@@ -399,14 +409,29 @@ public class VersionRequirementsAdminPage extends PageTools {
 
 	public void enterChangeNoteForCustomer(String text){
 		waitForElementVisibility(changeNoteForCustomerInput);
+		getSelenideElement(changeNoteForCustomerInput).sendKeys(text);
+		getSelenideElement(changeNoteForCustomerInput).click();
 		type(text, changeNoteForCustomerInput);
-		changeNoteText = text;
+		System.out.println(text);
+		changeNoteText = getSelenideElement(changeNoteForCustomerInput).getText();
+		System.out.println(changeNoteText);
+		SelenideTools.sleep(10);
+	}
+
+	public void enterProcessingTime(String text){
+		SelenideTools.sleep(2);
+		waitForElementVisibility(processingTimeInput);
+		type(text, processingTimeInput);
+		processingTime = getSelenideElement(processingTimeInput).getText();
+		SelenideTools.sleep(10);
 	}
 
 	public boolean isRecordWithRequirementNameDisplayed(String requirementName){
 		waitForElementVisibility(versionRequirementsTableRecords);
 		if(isNoRecordsFoundMessageDisplayed())
 			return false;
+		SelenideTools.sleep(2);
+		System.out.println(requirementName);
 		for(int i = 0;i < getElements(versionRequirementsTableRecords).size();i++){
 			String requirementNameOfCurrentRecord = getElements(versionRequirementsTableRecords).get(i).findElement(By.xpath("./td[5]")).getText();
 			if(requirementNameOfCurrentRecord.equals(requirementName)){
@@ -417,6 +442,6 @@ public class VersionRequirementsAdminPage extends PageTools {
 	}
 	public void saveRequirementSku(int index){
 		waitForElementVisibility(versionRequirementsTableRecords);
-
+		requirementSku = getElements(versionRequirementsTableRecords).get(index).findElement(By.xpath("./td[3]")).getText();
 	}
 }

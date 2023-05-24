@@ -13,7 +13,7 @@ public class ResearchAdminPage extends PageTools {
 	By requirementsAdminButton = By.xpath("//a[@id='requirements']");
 	By questionnaireAdminButton = By.xpath("//a[@id='questionnaire']");
 	By endsUpInStateAdminButton = By.xpath("//a[@id='ends-up-states']");
-	By researchSidebarButton = By.xpath("(//*[@id='menu']/li[10]/ul/li[1]/a");
+	By researchSidebarButton = By.xpath("(//a[contains(@href, 'research')])[4]");
 	By requirementsViewSidebarButton = By.xpath("//ul[@id='menu']//a[contains(@href,'requirement-view')]");
 	By notificationsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'notifications')])[last()]");
 	By euiVersionsSidebarButton = By.xpath("(//ul[@id='menu']//a[contains(@href,'EUI')])[last()]");

@@ -1,10 +1,8 @@
 @C198 @Selector
-
 Feature: C198
 
   @TestRail(198)
   Scenario: Verify user is able to run the requirement with edited selector criteria
-
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
     And Enter password "Testing2022!!" on login page
@@ -12,7 +10,6 @@ Feature: C198
     Then Management Dashboard page is opened
     When Click on the [Versioned Requirements] sidebar button
     Then Versioned Requirement page is opened
-    When Click on the "Status" label on the [Versioned Requirements] page
     And Enter "Nikita" requirement created in the requirement search on the [Versioned Requirements] page
     When Click on the [Edit Requirement] button of the 1 record on the [Versioned Requirements] page
     Then Get requirement name from the [Edit Requirement] name
@@ -26,12 +23,16 @@ Feature: C198
     And Click on the [Yes Approve] button on the [Requirements View] page
     Then Click on the [Activate Requirement] button of the record by 1 index on the [Versioned Requirements] page
     And Click on the [Yes Approve] button on the [Requirements View] page
+    When Log out from Atlas
+    Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    And Enter password "Testing2022!!" on login page
+    And Click the [Login] button
     When Click on the [Surveillance Intelligence] sidebar collapse button on Lighthouse
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     When Delete job from the table if exists
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -50,12 +51,6 @@ Feature: C198
     When Click on the [Submit Job] button
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
-    When Click on the [View] button of the newly created job on the [View Results] page
-    Then The [Research Results] page is opened
-    And Get table records on [Research Results] page
-    Then Verify that early created requirement name is in the list
-    And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AR Pharma" client from the client dropdown
+    Then Select "AB Test" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
-

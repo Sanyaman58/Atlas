@@ -114,11 +114,7 @@ public class BaseClass extends Utilities {
 			return false;
 		}
 	}
-	
-//	public static void shiftWindowHandle(int val) {
-//		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-//		driver.switchTo().window(tabs.get(val));
-//	}
+
 	
 	public String randomNumberString(int len) {
 		String AB = "123456789";
@@ -128,21 +124,6 @@ public class BaseClass extends Utilities {
 			sb.append(AB.charAt(rnd.nextInt(AB.length())));
 		return sb.toString();
 	}
-	
-//	public void hoverAndClick(String xpathOfHover,String xpathOfClick) {
-//		WebElement elementOfHover = driver.findElement(By.xpath(xpathOfHover));
-//		WebElement elementOfClick = driver.findElement(By.xpath(xpathOfClick));
-//		Actions builder = new Actions(driver);
-//		builder.moveToElement(elementOfHover).perform();
-//		try{
-//			Thread.sleep(1000);
-//		}
-//		catch(Exception e) {
-//
-//		}
-//		builder.moveToElement(elementOfClick).click().perform();
-////		waitTime(3000);
-//	}
 	
 	public Object[][] getData(String filename, String SheetName) {
 		ExcelReader excel;
