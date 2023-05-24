@@ -1488,4 +1488,15 @@ public class ClientMasterPage extends PageTools {
 		click(sucessPopupOkButton);
 		SelenideTools.sleep(3);
 	}
+	
+	By existingRequirement = By.xpath("//tbody/tr[3]/td[1]");
+	
+	
+	public void openExistingRequirement() {
+		waitForElementVisibility(existingRequirement);
+		SelenideElement existingRequirementElement = getSelenideElement(existingRequirement);
+		existingRequirementElement.doubleClick();
+		SelenideTools.sleep(3);
+	}
+
 }
