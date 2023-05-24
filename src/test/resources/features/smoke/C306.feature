@@ -2,7 +2,7 @@
 Feature: C306
 
   @TestRail(306) @smoke
-  Scenario: Verify user is able to navigate to all the grid
+  Scenario: Verify user is able to add the new requirement in Add Requirement page
     When Open Atlas
     Then The [Login] page is opened
     And Validate the [Login] page elements
