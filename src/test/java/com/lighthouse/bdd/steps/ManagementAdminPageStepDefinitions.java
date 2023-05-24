@@ -570,4 +570,10 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().clickRequirementsSuccesspopupSavebutton();
 		SelenideTools.sleep(5);
 	}
+	
+	@When("Open any existing requirement")
+	public void clickExistingRequirement() {
+		Pages.clientMasterPage().openExistingRequirement();
+		SelenideTools.sleep(5);
+	}
 }
