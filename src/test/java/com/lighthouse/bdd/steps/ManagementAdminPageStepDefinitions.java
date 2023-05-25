@@ -629,4 +629,16 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().clickActivityPopupSaveButton();
 		SelenideTools.sleep(5);
 	}
+	
+	@When("Select a already created activity")
+	public void openExistingActivity() {
+		Pages.clientMasterPage().openExistingActivity();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click on Edit Activity popup save button")
+	public void editActivitySaveButton() {
+		Pages.clientMasterPage().clickEditActivityPopupSaveButton();
+		SelenideTools.sleep(5);
+	}
 }
