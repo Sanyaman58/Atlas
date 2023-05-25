@@ -38,6 +38,7 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By documentsNotificationsPage = By.xpath("//p[contains(text(),'Document Notification')]");
 	By activityTracklogSidebarButton = By.xpath("//*[text()=\"Activity Tracking\"]");
 	By activityPageHeader = By.xpath("//*[@id=\"activity-grid\"]/div[2]/div/p");
+	By tasksPageHeader = By.xpath("//*[@id=\"task-grid\"]/div[2]/div/p");
 
 	public void openLighthouse() {
 		SelenideTools.openUrl(Constants.URL);
@@ -169,6 +170,18 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public boolean isActivityPageOpened() {
 		SelenideTools.sleep(2);
 		return isElementVisible(activityPageHeader);
+	}
+	
+	By taskManagementSidebarButton = By.xpath("//*[text()=\"Task Management\"]");
+	
+	public void clickTaskManagementSidebarButton(){
+		waitForElementVisibility(taskManagementSidebarButton);
+		click(taskManagementSidebarButton);
+	}
+	
+	public boolean isTasksPageOpened() {
+		SelenideTools.sleep(2);
+		return isElementVisible(tasksPageHeader);
 	}
 
 }
