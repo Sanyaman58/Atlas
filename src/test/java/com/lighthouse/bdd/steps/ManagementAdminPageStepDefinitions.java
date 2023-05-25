@@ -641,4 +641,36 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().clickEditActivityPopupSaveButton();
 		SelenideTools.sleep(5);
 	}
+	
+	@When("Select any column and click on [Go to Task] button")
+	public void clickGoToTaskButton() {
+		Pages.clientMasterPage().selectGoToTaskBUtton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click on [Add Task] button")
+	public void clickAddTaskButton() {
+		Pages.clientMasterPage().clickPopupAddTaskButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select {string} type from type dropdown list of Add Task popup")
+	public void selectTypeOnTaskPopup(String type) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectTypeFromDropdown(type);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} Task status from task status dropdown list of Add Task popup")
+	public void selectTaskStatusOnTaskPopup(String taskStatus) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectTaskStatusFromDropdown(taskStatus);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Click on Add task popup save button")
+	public void addTaskPopupSaveButton() {
+		Pages.clientMasterPage().clickAddTaskPopupSaveButton();
+		SelenideTools.sleep(5);
+	}
 }
