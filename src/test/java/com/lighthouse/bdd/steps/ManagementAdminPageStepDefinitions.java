@@ -673,4 +673,10 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().clickAddTaskPopupSaveButton();
 		SelenideTools.sleep(5);
 	}
+	
+	@When("Assign the task to the same user from which task is created")
+	public void assignTaskToSameUser() {
+		Pages.clientMasterPage().assignTaskToExistingUser();
+		SelenideTools.sleep(5);
+	}
 }
