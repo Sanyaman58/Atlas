@@ -69,6 +69,14 @@ public class AtlasDashboardManagementPageStepDefinitions {
 		Pages.atlasDashboardManagementPage().clickActivityTracklogSidebarButton();
 		SelenideTools.sleep(3);
 	}
+	
+	@When("Click on the [Task Management] button on Atlas")
+	public void clickOnTheTaskManagementButtonOnAtlas() {
+		Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.atlasDashboardManagementPage().clickTaskManagementSidebarButton();
+		SelenideTools.sleep(3);
+	}
 
 	@When("Click on the [Intelligence Admin] sidebar collapse button")
 	public void clickOnTheIntelligenceAdminSidebarCollapseButton() {
@@ -131,6 +139,13 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	public void isActivityTrackLogPageOpened() {
 		SelenideTools.sleep(5);
 		Assert.assertTrue(Pages.atlasDashboardManagementPage().isActivityPageOpened());
+		SelenideTools.sleep(5);
+	}
+	
+	@Then("The [Tasks] page is opened")
+	public void isTasksPageOpened() {
+		SelenideTools.sleep(5);
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isTasksPageOpened());
 		SelenideTools.sleep(5);
 	}
 }
