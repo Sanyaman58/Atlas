@@ -1621,8 +1621,22 @@ public class ClientMasterPage extends PageTools {
 		click(addTaskPopupSaveButton);
 		SelenideTools.sleep(3);
 		click(sucessPopupOkButton);
-
 	}
 
+	By createdByUserText = By.xpath("//input[@id=\"TaskAuthor\"]");
+	String createdByName;
+	
+	public void assignTaskToExistingUser() {
+		SelenideElement createdByUserTextElement = getSelenideElement(createdByUserText);
+		createdByName = createdByUserTextElement.getAttribute("value");
+		System.out.println("Created by user name found = "+ createdByName);
+		click(selectAssigne);
+		SelenideTools.sleep(4);
+		SelenideElement selectAssigneElement = getSelenideElement(selectAssigne);
+		selectAssigneElement.sendKeys(createdByName);
+		SelenideTools.sleep(4);
+		selectAssigneElement.pressEnter();
+		SelenideTools.sleep(10);
+	}
 
 }
