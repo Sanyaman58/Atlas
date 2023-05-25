@@ -1565,16 +1565,16 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(6);
 		click(sucessPopupOkButton);
 	}
-	
+
 	By activityVideoLink = By.xpath("//*[@id=\"URL\"]");
-	
+
 	public void openExistingActivity() {
 		waitForElementVisibility(existingRequirement);
 		SelenideElement existingActivityElement = getSelenideElement(existingRequirement);
 		existingActivityElement.doubleClick();
 		SelenideTools.sleep(5);
 	}
-	
+
 	public void clickEditActivityPopupSaveButton() {
 		waitForElementVisibility(adRequirementPopupSaveButton);
 		SelenideElement adRequirementPopupSaveButtonElement = getSelenideElement(adRequirementPopupSaveButton);
@@ -1583,7 +1583,46 @@ public class ClientMasterPage extends PageTools {
 		click(sucessPopupOkButton);
 		SelenideTools.sleep(3);
 	}
+
+	By goToTaskButton = By.xpath("//tbody/tr[3]/td[15]");
+	By clickAddTaskButton = By.xpath("//*[@id=\"tasks\"]/div[1]/nav/div/button");
+
+	public void selectGoToTaskBUtton() {
+		waitForElementVisibility(goToTaskButton);
+		SelenideElement goToTaskButtonElement = getSelenideElement(goToTaskButton);
+		goToTaskButtonElement.click();
+		SelenideTools.sleep(6);
+	}
+
+	public void clickPopupAddTaskButton() {
+		waitForElementVisibility(clickAddTaskButton);
+		SelenideElement clickAddTaskButtonElement = getSelenideElement(clickAddTaskButton);
+		clickAddTaskButtonElement.click();
+		SelenideTools.sleep(6);
+	}
 	
+	By typeFromAddTask = By.xpath("//select[@id=\"TaskTypeKey\"]");
+	By taskStatusOnAddTask = By.xpath("//select[@id=\"TaskStandingKey\"]");
 	
+	public void selectTypeFromDropdown(String type) {
+		waitForElementVisibility(typeFromAddTask);
+		selectOption(type, typeFromAddTask);
+	}
+	
+	public void selectTaskStatusFromDropdown(String taskStatus) {
+		waitForElementVisibility(taskStatusOnAddTask);
+		selectOption(taskStatus, taskStatusOnAddTask);
+	}
+	
+	By addTaskPopupSaveButton = By.xpath("//*[@id=\"task-save\"]");
+	
+	public void clickAddTaskPopupSaveButton() {
+		waitForElementVisibility(addTaskPopupSaveButton);
+		click(addTaskPopupSaveButton);
+		SelenideTools.sleep(3);
+		click(sucessPopupOkButton);
+
+	}
+
 
 }
