@@ -1,7 +1,7 @@
 @C318 @Smoke
 Feature: C318
 
-  @TestRail(318)
+  @TestRail(318) @smoke
   Scenario: Verify user is able to navigate to Document notifications page
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page
