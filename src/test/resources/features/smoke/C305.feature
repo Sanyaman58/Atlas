@@ -6,8 +6,8 @@ Feature: C305
     When Open Atlas
     Then The [Login] page is opened
     And Validate the [Login] page elements
-    When Enter login "qaexternalssUser01@mailinator.com" on login page
-    When Enter password "qaExternalSSuser@01" on login page
+    When Enter login "nikita.danilevskiy@pharma.solutions" on login page
+    When Enter password "Testing2022!!" on login page
     When Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Requirements] button on Atlas
