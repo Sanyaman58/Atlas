@@ -12,7 +12,7 @@ Feature: C317
     Then The [Document Repository] page is opened
     When Select "AB Test" client from the client select on the [Document Repository] page
     Then Enter "ownerel" text in the search field on the [Document Repository] page
-    And Double click on the 1 record on the [Document Repository] page
+    And Double click on the record on the [Document Repository] page
     Then The [Edit Document] window is opened
     When Close the [Edit Document] window
     Then Verify that +PDF button is visible
