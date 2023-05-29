@@ -573,6 +573,7 @@ public class ManagementAdminPageStepDefinitions {
 	
 	@When("Open any existing requirement")
 	public void clickExistingRequirement() {
+		SelenideTools.sleep(5);
 		Pages.clientMasterPage().openExistingRequirement();
 		SelenideTools.sleep(5);
 	}
