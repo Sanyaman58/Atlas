@@ -11,4 +11,3 @@ Feature: C318
     When Click on the [Notifications] atlas collapse button
     And Click on the [Documents] sidebar button under the [Notifications] section
     Then The [Documents Notifications] page is opened
-    Then The [Documents Notifications] page is opened
