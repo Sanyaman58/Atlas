@@ -21,7 +21,6 @@ public class LoginPageStepDefinitions {
 	public void openAtlas() {
 		Pages.loginPage().openAtlas();
 		SelenideTools.getDriver().manage().window().maximize();
-//		SelenideTools.getDriver().manage().window().setSize(new Dimension(2560, 1440));
 	}
 
 	@Then("Enter login {string} on login page")
@@ -50,11 +49,12 @@ public class LoginPageStepDefinitions {
 			// SelenideTools.closeCurrentTab();
 			Pages.emailVerificationPage().enterValidationCode();
 			Pages.emailVerificationPage().clickOnValidationSubmitButton();
+			SelenideTools.sleep(8);
 		}
 
 //        SelenideTools.getDriver().switchTo().alert().accept();
 //        SelenideTools.sleep(2);
-    }
+	}
 
 	@Then("Validate the [Login] page elements")
 	public void validateTheLoginPageElements() {
