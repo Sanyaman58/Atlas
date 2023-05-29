@@ -10,10 +10,10 @@ Feature: C100
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     When Validate fields on the [Surveillance Setup] page
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     When Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -36,5 +36,5 @@ Feature: C100
     Then The [View Results] page is opened
     And Verify that newly created job with status "Completed with match" is displayed in the table on the [View Results] page
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"

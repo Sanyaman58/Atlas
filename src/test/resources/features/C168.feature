@@ -14,5 +14,5 @@ Feature: C168
     When Select "Select Requirement Names" requirement name in the Requirements Viewer Filters on the [Requirement View] page
     Then Select "Alabama" jurisdiction in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     Then The records with "Alabama" jurisdiction is displayed in the table on the [Requirement View] page
-    And Select "Sachin" requirement name in the Requirements Viewer Filters on the [Requirement View] page
-    Then The records with "Sachin" requirement name is displayed in the table on the [Requirement View] page
+    And Select "503B Outsourcing" requirement name in the Requirements Viewer Filters on the [Requirement View] page
+    Then The records with "503B Outsourcing" requirement name is displayed in the table on the [Requirement View] page

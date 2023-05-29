@@ -33,7 +33,7 @@ public class ViewResultsPage extends PageTools {
     By researchResultsTableRecords = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr");
     By researchResultsTableRecordsElements = By.xpath("//div[@class='dataTables_scrollBody']//table[@id='DataTables_Table_1']//tbody/tr/td");
     By searchField = By.xpath("//div[@id='DataTables_Table_0_filter']/label/input");
-    By researchResultsNoRecords = By.xpath("//td[@class='dataTables_empty']");
+    By researchResultsNoRecords = By.xpath("//td[text()='No Research Jobs Found']");
     By closeViewResultsWindowButton = By.xpath("//div[@id='viewResult']//h2[text()='Knowledge Results']/following-sibling::button");
     By resultsSidebarButton = By.xpath("//ul[@id='menu']/li[5]/ul/li[2]/a");
     By clientSelect = By.xpath("//select[@class='new_client_id form-control']");
@@ -75,6 +75,7 @@ public class ViewResultsPage extends PageTools {
         for(int i = 0;i < getElements(tableJobs).size();i++){
             System.out.println(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText());
             System.out.println(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText());
+            System.out.println(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[5])["+(i+1)+"]")).getText());
             if(getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[2])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getCompanyName())
                     && getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[3])["+(i+1)+"]")).getText().equals(Pages.newResearchPage().getFacilityName())
                     && (getSelenideElement(By.xpath("(//table[@id='DataTables_Table_0']/tbody/tr/td[5])["+(i+1)+"]")).getText().equals(status)

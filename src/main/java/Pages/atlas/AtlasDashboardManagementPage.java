@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 public class AtlasDashboardManagementPage extends PageTools {
 	By dashboardGrid = By.xpath(
 			"//a[text()[contains(.,'Dashboard')]] | //a[@href='https://qa-atlas.lha.pharma.solutions/home'] | //img[@src='https://stagingatlas.pharma.solutions/theme/build/images/Group 907_p.svg']");
-	By requirementsManagementCollapse = By.xpath("//ul[@id='menu']/li[4]");
 	By requirementsSidebarButton = By.xpath("//ul[@id='menu']/li[4]/ul/li/a");
 	By activitiesSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[2]");
 	By tasksSidebarButton = By.xpath("(//ul[@id='menu']/li[4]/ul/li/a)[3]");
@@ -33,6 +32,19 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By notificationsCollapseButton = By.xpath("//a[text()='Notifications ']");
 	By notificationsDocumentsSidebarButton = By.xpath("//a[@id='notify-header-doc']");
 	By documentsNotificationsPage = By.xpath("//p[contains(text(),'Document Notification')]");
+	By tasksNotificationsSidebarButton = By.xpath("//a[@id='notify-header-task']");
+	By tasksNotificationPage = By.xpath("//p[contains(text(), 'Task Notification')]");
+	By documentsNotificationsSidebarButton = By.xpath("//a[@id='notify-header-doc']");
+	By documentsNotificationPage = By.xpath("//p[contains(text(), 'Document Notification')]");
+	By expirationNotificationsSidebarButton = By.xpath("//a[@id='notify-header-LicenseExp']");
+	By expirationNotificationPage = By.xpath("//p[contains(text(), 'Requirement Expiry Notification')]");
+	By intelligenceNotificationsSidebarButton = By.xpath("//a[contains(text(),'Intelligence -')]");
+	By intelligenceNotificationPage = By.xpath("//h2[contains(text(), 'Research Notification')]");
+	By requirementsManagementCollapse = By.xpath("//a[text()='Requirements Management ']");
+	By taskManagerSidebarButton = By.xpath("//a[text()='Task Management']");
+	By taskManagerPage = By.xpath("//span[contains(text(),'Tasks')]");
+	By popUpOkButton = By.xpath("//a[@id='successok']");
+
 
 	public void openLighthouse() {
 		SelenideTools.openUrl(Constants.URL);
@@ -74,6 +86,11 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickRequirementsSidebarButton() {
 		waitForElementVisibility(requirementsSidebarButton);
 		click(requirementsSidebarButton);
+	}
+
+	public void clickTaskManagerSidebarButton() {
+		waitForElementVisibility(taskManagerSidebarButton);
+		click(taskManagerSidebarButton);
 	}
 
 	public void clickActivitiesSidebarButton() {
@@ -140,6 +157,56 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickHomepageSidebarButton() {
 		waitForElementVisibility(homepageSidebarButton);
 		click(homepageSidebarButton);
+	}
+
+	public void clickTasksNotificationsSidebarButton() {
+		waitForElementVisibility(tasksNotificationsSidebarButton);
+		click(tasksNotificationsSidebarButton);
+	}
+
+	public void clickDocumentsNotificationsSidebarButton() {
+		waitForElementVisibility(documentsNotificationsSidebarButton);
+		click(documentsNotificationsSidebarButton);
+	}
+
+	public void clickExpirationNotificationsSidebarButton() {
+		waitForElementVisibility(expirationNotificationsSidebarButton);
+		click(expirationNotificationsSidebarButton);
+	}
+
+	public void clickIntelligenceNotificationsSidebarButton() {
+		waitForElementVisibility(intelligenceNotificationsSidebarButton);
+		click(intelligenceNotificationsSidebarButton);
+	}
+
+	public boolean isTasksNotificationPageOpened(){
+		waitForElementVisibility(tasksNotificationPage);
+		return isElementVisible(tasksNotificationPage);
+	}
+
+	public boolean isExpirationNotificationPageOpened(){
+		waitForElementVisibility(expirationNotificationPage);
+		return isElementVisible(expirationNotificationPage);
+	}
+
+	public boolean isDocumentsNotificationPageOpened(){
+		waitForElementVisibility(documentsNotificationPage);
+		return isElementVisible(documentsNotificationPage);
+	}
+
+	public boolean isIntelligenceNotificationPageOpened(){
+		waitForElementVisibility(intelligenceNotificationPage);
+		return isElementVisible(intelligenceNotificationPage);
+	}
+
+	public boolean isTaskManagerPageOpened(){
+		waitForElementVisibility(taskManagerPage);
+		return isElementVisible(taskManagerPage);
+	}
+
+	public void clickOnOkPopupButton(){
+		waitForElementVisibility(popUpOkButton);
+		click(popUpOkButton);
 	}
 
 	public void verifyReleaseNotes() {

@@ -15,12 +15,12 @@ import java.util.List;
 
 public class RequirementsAdminPage extends PageTools {
 	By requirementsAdminPageTitle = By.xpath("//h2[text()='Requirements Admin']");
-	By requirementCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[3]//div[contains(@class,'collapsible')]");
-	By attachmentsCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[4]//div[contains(@class,'collapsible')]");
-	By prerequisitesCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[5]//div[contains(@class,'collapsible')]");
-	By productLineCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[6]//div[contains(@class,'collapsible')]");
-	By businessModelCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[7]//div[contains(@class,'collapsible')]");
-	By questionSelectionCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[8]//div[contains(@class,'collapsible')]");
+	By requirementCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[3]//div[contains(@class,'collapsible')] | (//section/div[@class='card'])[2]");
+	By attachmentsCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[4]//div[contains(@class,'collapsible')] | (//section/div[@class='card'])[3]");
+	By prerequisitesCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[5]//div[contains(@class,'collapsible')] | (//section/div[@class='card'])[4]");
+	By productLineCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[6]//div[contains(@class,'collapsible')] | (//section/div[@class='card'])[5]");
+	By businessModelCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[7]//div[contains(@class,'collapsible')] | (//section/div[@class='card'])[6]");
+	By questionSelectionCollapseButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[8]//div[contains(@class,'collapsible')] | (//section/div[@class='card'])[7]");
 	By questionSelectionCollapseActiveButton = By.xpath("//form[@id='versionned_requirement_form']/div/div[8]//div[contains(@class,'collapsible active')]");
 	By productionDataRadioButton = By.xpath("//input[@id='production-data']/following-sibling::label");
 	By preliminaryDataRadioButton = By.xpath("//input[@id='preliminary-data']/following-sibling::label");
@@ -37,7 +37,7 @@ public class RequirementsAdminPage extends PageTools {
 	By renewalTermGeneralInformationInput = By.xpath("//input[@name='Renewal_Term']");
 	By applicationTypeGeneralInformationInput = By.xpath("//select[@id='Application_Type']");
 	By notesGeneralInformationInput = By.xpath("//textarea[@name='Notes']");
-	By formsGeneralInformationInput = By.xpath("//input[@name='Forms']");
+	By formsGeneralInformationInput = By.xpath("//textarea[@name='Forms']");
 	By bondRequiredYRadioButton = By.xpath("//input[@id='bond-required_yes']");
 	By bondRequiredNRadioButton = By.xpath("//input[@id='bond-required_no']");
 	By stateRegisteredAgentYRadioButton = By.xpath("//input[@id='state-registered-yes']");
@@ -595,6 +595,12 @@ public class RequirementsAdminPage extends PageTools {
 		scrollToElement(submitForApprovalButton);
 		waitForElementVisibility(submitForApprovalButton);
 		click(submitForApprovalButton);
+	}
+
+	public void clickSubmitForApprovalButtonIfVisible(){
+		SelenideTools.sleep(2);
+		if(isElementClickable(submitForApprovalButton))
+			click(submitForApprovalButton);
 	}
 	public boolean isSubmitForApprovalButtonVisible(){
 		SelenideTools.sleep(5);

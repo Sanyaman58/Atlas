@@ -24,7 +24,7 @@ public class NewResearchPage extends PageTools {
 	By companyNameSelect = By.xpath("//select[@id='company_name']");
 	By facilityNameSelect = By.xpath("//select[@id='facility_name']");
 	By errorMessage = By.xpath("//div[@id='text_error']");
-	By profileDropdown = By.xpath("//li[contains(@class,'profile-dropdown')]/a[@id='dropdown06']/i");
+	By profileDropdown = By.xpath("//li[contains(@class,'profile-dropdown')]/a[@id='dropdown06']/i | (//li[contains(@class,'profile-name')]/a[@id='dropdown06']/i)[2]");
 	By logOutButton = By.xpath("//div[contains(@class,'dropdown-menu')]/a[text()='Logout']");
 	By alertOkButton = By
 			.xpath("//div[@class='modal-content']/div[contains(@class,'modal-footer')]/button[text()='OK']");

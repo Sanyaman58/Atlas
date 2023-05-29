@@ -4,6 +4,7 @@ import Pages.admin.*;
 import Pages.atlas.AtlasDashboardManagementPage;
 import Pages.atlas.DocumentRepositoryPage;
 import Pages.atlas.RequirementsPage;
+import Pages.atlas.TaskManagerPage;
 import Utils.AllureLogger;
 
 public class Pages extends AllureLogger {
@@ -33,8 +34,8 @@ public class Pages extends AllureLogger {
     //                              Atlas                                  //
     private static AtlasDashboardManagementPage atlasDashboardManagementPage;
     private static RequirementsPage requirementsPage;
-
 	private static DocumentRepositoryPage documentRepositoryPage;
+	private static TaskManagerPage taskManagerPage;
 
 	public static LoginPage loginPage() {
 		if (loginPage == null) {
@@ -208,6 +209,13 @@ public class Pages extends AllureLogger {
 			documentRepositoryPage = new DocumentRepositoryPage();
 		}
 		return documentRepositoryPage;
+	}
+
+	public static TaskManagerPage taskManagerPage() {
+		if (taskManagerPage == null) {
+			taskManagerPage = new TaskManagerPage();
+		}
+		return taskManagerPage;
 	}
 
 }

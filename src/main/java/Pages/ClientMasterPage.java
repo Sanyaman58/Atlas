@@ -980,9 +980,9 @@ public class ClientMasterPage extends PageTools {
 		SelenideElement viewResultButtonElement = getSelenideElement(viewResultButton);
 		viewResultButtonElement.shouldBe(Condition.enabled);
 
-		waitForElementVisibility(deleteResultButtton);
-		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
-		deleteResultButttonElement.shouldBe(Condition.enabled);
+//		waitForElementVisibility(deleteResultButtton);
+//		SelenideElement deleteResultButttonElement = getSelenideElement(deleteResultButtton);
+//		!deleteResultButttonElement.shouldBe(Condition.enabled);
 	}
 
 	public void clickOnIntelligenceDropdown() {

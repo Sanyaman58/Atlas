@@ -49,7 +49,8 @@ Feature: C117
     Then Newly created job with status "Approval Pending" is displayed in the table on the [Requirements View] page
     When Select "In-Progress" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     When Right click on a record with status "In-Progress" in the [Requirement Viewer] table
-    When Click on the [Edit Requirement] button on the [Requirement View] page
+    Then Click on the [View Requirement] button on the [Requirement View] page
+    And Click on the [Edit Requirement] button on the [Edit Requirement] page
     Then Validate the [General Information] elements on the [Requirements View] page
     When Click on the [Required] collapse on the [Requirements View] page
     Then Validate the [Required] elements on the [Requirements View] page
