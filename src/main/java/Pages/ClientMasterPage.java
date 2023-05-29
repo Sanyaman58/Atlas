@@ -1426,7 +1426,7 @@ public class ClientMasterPage extends PageTools {
 	public void clickAddRequirementButton() {
 		waitForElementVisibility(addNewRequirementButton);
 		click(addNewRequirementButton);
-		SelenideTools.sleep(3);
+		SelenideTools.sleep(4);
 		waitForElementVisibility(addRequirementPopupHeader);
 	}
 
