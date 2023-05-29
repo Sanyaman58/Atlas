@@ -19,6 +19,7 @@ public class DocumentRepositoryPageStepDefinitions {
 
     @When("Select {string} client from the client select on the [Document Repository] page")
     public void selectClientFromTheClientSelectOnTheDocumentRepositoryPage(String client) {
+        SelenideTools.sleep(2);
         Pages.documentRepositoryPage().selectClient(client);
     }
 
@@ -99,5 +100,16 @@ public class DocumentRepositoryPageStepDefinitions {
     public void aNewlyCreatedDocumentIsDisplayedInTheTableOnTheDocumentRepositoryPage() {
         SelenideTools.sleep(5);
         Assert.assertTrue(Pages.documentRepositoryPage().isDocumentWithOwnerDisplayed(Pages.documentRepositoryPage().getOwnerName()));
+    }
+
+    @Then("A newly created document is not displayed in the table on the [Document Repository] page")
+    public void aNewlyCreatedDocumentIsNotDisplayedInTheTableOnTheDocumentRepositoryPage() {
+        SelenideTools.sleep(5);
+        Assert.assertTrue(!Pages.documentRepositoryPage().isDocumentWithOwnerDisplayed(Pages.documentRepositoryPage().getOwnerName()));
+    }
+
+    @And("Select [Yes] confidential document radio button on [Add Request Document] window")
+    public void selectYesConfidentialDocumentRadioButtonOnAddRequestDocumentWindow() {
+        Pages.documentRepositoryPage().selectYesConfidentialDocumentRadioButton();
     }
 }

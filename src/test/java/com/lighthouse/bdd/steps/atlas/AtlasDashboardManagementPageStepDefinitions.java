@@ -62,6 +62,14 @@ public class AtlasDashboardManagementPageStepDefinitions {
 		SelenideTools.sleep(3);
 	}
 
+	@When("Click on the [Task Manager] button on Atlas")
+	public void clickOnTheTaskManagerButtonOnAtlas() {
+		Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
+		SelenideTools.sleep(2);
+		Pages.atlasDashboardManagementPage().clickTaskManagerSidebarButton();
+		SelenideTools.sleep(3);
+	}
+
 	@When("Click on the [Intelligence Admin] sidebar collapse button")
 	public void clickOnTheIntelligenceAdminSidebarCollapseButton() {
 		SelenideTools.sleep(10);
@@ -105,5 +113,49 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	@Then("The [Documents Notifications] page is opened")
 	public void theDocumentsNotificationsPageIsOpened() {
 		Assert.assertTrue(Pages.atlasDashboardManagementPage().isDocumentsNotificationsPageOpened());
+	}
+
+	@Then("Click on the [Tasks] notification sidebar button")
+	public void clickOnTheTasksNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickTasksNotificationsSidebarButton();
+	}
+
+	@Then("Click on the [Documents] notification sidebar button")
+	public void clickOnTheDocumentsNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickDocumentsNotificationsSidebarButton();
+	}
+
+	@Then("Click on the [Expiration] notification sidebar button")
+	public void clickOnTheExpirationNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickExpirationNotificationsSidebarButton();
+	}
+
+	@Then("Click on the [Intelligence] notification sidebar button")
+	public void clickOnTheIntelligenceNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickIntelligenceNotificationsSidebarButton();
+	}
+
+	@Then("The [Tasks] notification page is opened")
+	public void theTasksNotificationPageIsOpened() {
+	}
+
+	@Then("The [Documents] notification page is opened")
+	public void theDocumentsNotificationPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isDocumentsNotificationsPageOpened());
+	}
+
+	@Then("The [Expiration] notification page is opened")
+	public void theExpirationNotificationPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isExpirationNotificationPageOpened());
+	}
+
+	@Then("The [Intelligence] notification page is opened")
+	public void theIntelligenceNotificationPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isIntelligenceNotificationPageOpened());
+	}
+
+	@And("Click on OK button")
+	public void clickOnOKButton() {
+		Pages.atlasDashboardManagementPage().clickOnOkPopupButton();
 	}
 }

@@ -14,6 +14,7 @@ public class DocumentRepositoryPage extends PageTools {
 	By documentRepositoryPageTitle = By.xpath("//div[@id='task-grid']//p[contains(text(),'Documents')]");
 	By documentRepositoryTableRecord = By.xpath("//table[@id='document-list-main']/tbody/tr[%s]");
 	By documentRepositoryTableRecords = By.xpath("//table[@id='document-list-main']/tbody/tr");
+	By documentRepositoryTableNoRecords = By.xpath("//table[@id='document-list-main']/tbody/tr/td[contains(text(),'No data available in table')]");
 	By documentRepositoryTableRecordsPdfUploadButton = By.xpath("//table[@id='document-list-main']/tbody/tr/td[15]/a");
 	By documentRepositoryClientSelect = By.xpath("//select[@id='DocClientKey']");
 	By documentRepositorySearchField = By.xpath("//input[@type='search']");
@@ -27,6 +28,7 @@ public class DocumentRepositoryPage extends PageTools {
 	By assigneeSelect = By.xpath("//select[@id='Assignee']");
 	By documentTypeSelect = By.xpath("//select[@id='DocNameId']");
 	By addRequestDocumentSaveButton = By.xpath("//button[@id='add_edit_document_save_btn']");
+	By yesConfidentialDocumentRadioButton = By.xpath("//input[@id='DocConyes']");
 	String ownerName;
 
 	public String getOwnerName() {
@@ -116,6 +118,8 @@ public class DocumentRepositoryPage extends PageTools {
 
 	public boolean isDocumentWithOwnerDisplayed(String name){
 		waitForElementVisibility(documentRepositoryTableRecords);
+		if(isElementVisible(documentRepositoryTableNoRecords))
+			return false;
 		for(int i = 0; i < getElements(documentRepositoryTableRecords).size(); i++){
 			if(getElements(documentRepositoryTableRecords).get(i).findElement(By.xpath("./td[5]")).getText().equals(name))
 				return true;
@@ -123,4 +127,8 @@ public class DocumentRepositoryPage extends PageTools {
 		return false;
 	}
 
+	public void selectYesConfidentialDocumentRadioButton(){
+		waitForElementVisibility(yesConfidentialDocumentRadioButton);
+		click(yesConfidentialDocumentRadioButton);
+	}
 }

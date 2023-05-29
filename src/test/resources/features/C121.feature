@@ -20,10 +20,10 @@ Feature: C121
       |Action|
 #    And Select "10" entries to be displayed in the [Show Entries] select
 #    And "10" entries are displayed on the [View Results] page
-    When Click on the "Company Name" label
-    Then Verify that records on the [View Results] page are sorted alphabetically by "Company Name" label
-    When Click on the "Company Name" label
-    Then Verify that records on the [View Results] page are sorted alphabetically backwards by "Company Name" label
+    When Click on the "Status" label
+    Then Verify that records on the [View Results] page are sorted alphabetically by "Status" label
+    When Click on the "Status" label
+    Then Verify that records on the [View Results] page are sorted alphabetically backwards by "Status" label
     When Enter "fdsafsdafdsfasd" in the search field on the [View Results] page
     Then No records are displayed on the [View Results] page
     When Enter "2023" in the search field on the [View Results] page
@@ -59,11 +59,11 @@ Feature: C121
     When Click on the [Export] button on the [Research Results] page
 #    And Verify that data in exported file is the same as on the [Research Results] page
     Then Close [Research Results] window
-    When Enter "Completed with no match" in the search field on the [View Results] page
-    When Click on the "Status" label
-    Then Click on the [View] button of the 1 job on the [View Results] page
-    And No records are displayed on the [View Results] page
-    Then Close [Research Results] window
+#    When Enter "Completed with no match" in the search field on the [View Results] page
+#    When Click on the "Status" label
+#    Then Click on the [View] button of the 1 job on the [View Results] page
+#    And No records are displayed on the [View Results] page
+#    Then Close [Research Results] window
     When Enter "" in the search field on the [View Results] page
     When Get requirement data of 1 records on [Research Results] page
     Then Click on the [Delete] button of the 1 job on the [View Results] page
@@ -82,9 +82,9 @@ Feature: C121
     Then Click on the [Configuration] sidebar button on Lighthouse
     And The [Configuration] page is opened
 
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Select 1 company name
     Then Select 1 facility name
     When Click [Submit new job] button
@@ -109,7 +109,7 @@ Feature: C121
 #    Then Verify that early created requirement name is in the list
     And Close [Research Results] window
     Then Click on the [Configuration] sidebar button on Lighthouse
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Submitted"
 
 

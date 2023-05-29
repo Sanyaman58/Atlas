@@ -55,10 +55,12 @@ Feature: C132
     And Get SKU of the 1 record on the [Research Notification] page
     When Enter saved SKU in the activity search on the [Research Notification] page
     Then Only records with entered SKU are displayed on the [Research Notification] page
-    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
+#    When Click on the [Intelligence Admin] sidebar collapse button on Lighthouse
     When Click on the [Versioned Requirements] sidebar button from admin
     Then Versioned Requirement page is opened
     And Enter requirement SKU from the [Research Notifications] page in the SKU search on the [Versioned Requirements] page
+    Then Approve the requirement if not approved on the [Versioned Requirements] page
+    And Activate the requirement if not activated on the [Versioned Requirements] page
     And Click on the [Edit Requirement] button of record with status "Activated" on the [Versioned Requirements] page
     And Enter random processing time on the [Requirements View] page
     Then Click on the [Submit for Approval] button on the [Requirements View] page
