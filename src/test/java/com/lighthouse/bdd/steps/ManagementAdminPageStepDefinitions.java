@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 
 import java.util.List;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 
 import com.codeborne.selenide.Selenide;
@@ -481,11 +482,6 @@ public class ManagementAdminPageStepDefinitions {
 		Pages.clientMasterPage().noEntitlementMessage();
 	}
 
-//	@Then("Verify the [Intelligence Entitlement] message is shown")
-//    public void verifyEntitlementMessage() {
-//        Pages.clientMasterPage().verifyEntitlementMessage();
-//	}
-
 	@And("Verify the EUI states on Jurisdictions page")
 	public void verifyEuiStatesVisible() {
 		Pages.clientMasterPage().euiStates();
@@ -509,6 +505,178 @@ public class ManagementAdminPageStepDefinitions {
 	@And("Verify that {string} role is not available in the Roles-Compliance Intelligence select on the [User Master] page")
 	public void verifyThatRoleIsNotAvailableInTheRolesComplianceIntelligenceSelectOnTheUserMasterPage(String role) {
 		Assert.assertFalse(Pages.clientMasterPage().isRoleVisibleInTheRoleComplianceDropdown(role));
+	}
 
+	@And("Click on [Add Requirement] button")
+	public void clickAddRequirement() {
+		Pages.clientMasterPage().clickAddRequirementButton();
+	}
+
+	@When("Select {string} company from company dropdown list")
+	public void selectCompanyFromTheCompanyDropdown(String company) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectCompany(company);
+		SelenideTools.sleep(2);
+	}
+
+	@When("Select {string} from facility dropdown list")
+	public void selectFacilityFromFacilityDropdown(String facility) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectFacility(facility);
+		SelenideTools.sleep(2);
+	}
+
+	@When("Select {string} jurisdiction from jurisdiction dropdown list")
+	public void selectJurisdictionFromJurisdictionDropdown(String jurisdiction) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectJurisdiction(jurisdiction);
+		SelenideTools.sleep(2);
+	}
+
+	@When("Select {string} requirement type from requirement type dropdown list")
+	public void selectRequirementFromRequirementTypeDropdown(String requirement) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectRequirementType(requirement);
+		SelenideTools.sleep(2);
+	}
+
+	@When("Select {string} requirement category from requirement category dropdown list")
+	public void selectRequirementCategory(String requirementCategory) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectRequirementCategory(requirementCategory);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} requirement status from requirement status dropdown list")
+	public void selectRequirementStatus(String requirementStatus) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectRequirementStatus(requirementStatus);
+		SelenideTools.sleep(2);
+	}
+
+	@When("Enter random requirement name on Add Requirement popup")
+	public void enterRandomRequirementName() {
+		Pages.clientMasterPage().enterRandomRequirementName(RandomStringUtils.random(10, true, false));
+	}
+
+	@When("Click on [Add Requirement] popup save button")
+	public void clickAddRequirementSaveButton() {
+		Pages.clientMasterPage().clickRequirementSavebutton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click on requirement successful popup okay button")
+	public void clickrequirementSuccessfulSaveButton() {
+		Pages.clientMasterPage().clickRequirementsSuccesspopupSavebutton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Open any existing requirement")
+	public void clickExistingRequirement() {
+		Pages.clientMasterPage().openExistingRequirement();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select any column and click on [Add Activity] button")
+	public void clickAddActivityButton() {
+		Pages.clientMasterPage().selectActivityColumn();
+		Pages.clientMasterPage().clickAddActivityButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select {string} requirement from requirement activity dropdown list")
+	public void selectRequirementActivity(String requirementActivity) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectRequirementActivity(requirementActivity);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Enter Activity start date")
+	public void enterActivityDate() {
+		Pages.clientMasterPage().enterActivityStartDate();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click Add Activity popup [Next] button")
+	public void clickActivityNextButton() {
+		Pages.clientMasterPage().clickPopupNextButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select {string} type from add type dropdown list")
+	public void selectTypeFromDropdown(String type) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectType(type);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} task status from task status dropdown list")
+	public void selectTaskStatusFromDropdow(String taskStatus) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectTaskStatus(taskStatus);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} from assignee dropdown list")
+	public void selectAssigneeFromDropdow(String assignee) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectAssignee(assignee);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Click on Add Activity popup save button")
+	public void addActivitySaveButton() {
+		Pages.clientMasterPage().clickActivityPopupSaveButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select a already created activity")
+	public void openExistingActivity() {
+		Pages.clientMasterPage().openExistingActivity();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click on Edit Activity popup save button")
+	public void editActivitySaveButton() {
+		Pages.clientMasterPage().clickEditActivityPopupSaveButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select any column and click on [Go to Task] button")
+	public void clickGoToTaskButton() {
+		Pages.clientMasterPage().selectGoToTaskBUtton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Click on [Add Task] button")
+	public void clickAddTaskButton() {
+		Pages.clientMasterPage().clickPopupAddTaskButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Select {string} type from type dropdown list of Add Task popup")
+	public void selectTypeOnTaskPopup(String type) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectTypeFromDropdown(type);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Select {string} Task status from task status dropdown list of Add Task popup")
+	public void selectTaskStatusOnTaskPopup(String taskStatus) {
+		SelenideTools.sleep(3);
+		Pages.clientMasterPage().selectTaskStatusFromDropdown(taskStatus);
+		SelenideTools.sleep(2);
+	}
+	
+	@When("Click on Add task popup save button")
+	public void addTaskPopupSaveButton() {
+		Pages.clientMasterPage().clickAddTaskPopupSaveButton();
+		SelenideTools.sleep(5);
+	}
+	
+	@When("Assign the task to the same user from which task is created")
+	public void assignTaskToSameUser() {
+		Pages.clientMasterPage().assignTaskToExistingUser();
+		SelenideTools.sleep(5);
 	}
 }

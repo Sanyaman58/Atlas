@@ -100,7 +100,8 @@ public class ClientMasterPage extends PageTools {
 	By deleteRequirementButton = By.xpath("//tbody/tr[1]/td[11]/div/button");
 	By statusInputField = By.xpath("//thead/tr/th[10]/input");
 	By activateRequirementToggle = By.xpath("//tbody/tr[1]/td[11]/div/div/label/input");
-	By researchNotificationTableLabels = By.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
+	By researchNotificationTableLabels = By
+			.xpath("//*[@id=\"DataTables_Table_0_wrapper\"]/div[2]/div/div/div[1]/div/table/thead/tr/th");
 	By deleteResultButton = By.xpath("//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[6]/div/button[2]");
 	By permissionsSidebarButton = By.xpath("//*[@id=\"menu\"]/li[10]/ul/li[9]/a");
 	By researchResultPageHeader = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
@@ -169,6 +170,11 @@ public class ClientMasterPage extends PageTools {
 	By endUpInStatesTitle = By.xpath("//*[@id=\"wrapper\"]/main/div/section/div/div[1]/h2");
 	By jurisdictionPageStates = By.xpath("//label[@class=\"ml-1 jurisdictions_check-text\"]");
 	By emailSearchField = By.xpath("//table[@id='user-list-main']/thead/tr[2]/th[3]/input");
+	By addNewRequirementButton = By.xpath("//*[@title=\"Add New Requirement\"]");
+	By addRequirementPopupHeader = By.xpath("//*[@id=\"modal-content\"]/div/div[1]/div/div/p");
+	By selectTaskType = By.xpath("//select[@id=\"TaskTypeKey\"]");
+	By selectTaskStatus = By.xpath("//select[@id=\"TaskStandingKey\"]");
+	By selectAssigne = By.xpath("//select[@id=\"AssignedUserKey\"]");
 
 	HashMap<String, Boolean> statesCheckboxes = new HashMap<>();
 	HashMap<String, Boolean> statesCheckboxesToCompare = new HashMap<>();
@@ -212,7 +218,7 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(1);
 	}
 
-	public void enterEmailInTheEmailSearchField(String email){
+	public void enterEmailInTheEmailSearchField(String email) {
 		waitForElementVisibility(emailSearchField);
 		System.out.println(email);
 		type(email, emailSearchField);
@@ -419,11 +425,12 @@ public class ClientMasterPage extends PageTools {
 		return isElementVisible(userRoleComplianceDropdownElements);
 	}
 
-	public boolean isRoleVisibleInTheRoleComplianceDropdown(String role){
+	public boolean isRoleVisibleInTheRoleComplianceDropdown(String role) {
 		waitForElementVisibility(userRoleComplianceDropdown);
 		return getElements(userRoleComplianceDropdownElements).contains(role);
 	}
-	public boolean isRoleVisibleInTheRoleManagementDropdown(String role){
+
+	public boolean isRoleVisibleInTheRoleManagementDropdown(String role) {
 		waitForElementVisibility(userRoleManagementDropdown);
 		return getElements(userRoleManagementDropdownElements).contains(role);
 	}
@@ -892,7 +899,7 @@ public class ClientMasterPage extends PageTools {
 
 	}
 
-	public void clickOnTheClientName(int index){
+	public void clickOnTheClientName(int index) {
 		waitForElementVisibility(resultTableRequirementName);
 		getElements(resultTableRequirementName).get(index).doubleClick();
 		getElements(resultTableRequirementName).get(index).doubleClick();
@@ -1189,6 +1196,7 @@ public class ClientMasterPage extends PageTools {
 	}
 
 	public void addNewQuestion() {
+		SelenideTools.sleep(5);
 		waitForElementVisibility(questionLabel);
 		SelenideElement questionLabelElement = getSelenideElement(questionLabel);
 		Actions actions = new Actions(WebDriverRunner.getWebDriver());
@@ -1270,7 +1278,8 @@ public class ClientMasterPage extends PageTools {
 		SelenideTools.sleep(2);
 //		waitForElementVisibility(activateDeactivateDropdown);
 		List<SelenideElement> activateDeactivateDropdownElement = getElements(activateDeactivateDropdown);
-		System.out.println("Total count of all the activate and deactivate dropdown = "+ activateDeactivateDropdownElement.size());
+		System.out.println("Total count of all the activate and deactivate dropdown = "
+				+ activateDeactivateDropdownElement.size());
 
 		SelenideElement firstActivateDeactivateDropdownElement = getSelenideElement(firstActivateDeactivateDropdown);
 		firstActivateDeactivateDropdownElement.selectOption(1);
@@ -1337,53 +1346,51 @@ public class ClientMasterPage extends PageTools {
 			element1.isDisplayed();
 		}
 	}
-	
+
 	public void verifyJurisdictionName() {
 		List<SelenideElement> jurisdictionNameElement = getElements(jurisdictionName);
-		for(int i =0; i<jurisdictionNameElement.size(); i++) {
+		for (int i = 0; i < jurisdictionNameElement.size(); i++) {
 			String jurisdictionText = jurisdictionNameElement.get(i).getText();
-			if(jurisdictionText.contains(washingtonText)) {
+			if (jurisdictionText.contains(washingtonText)) {
 				System.out.println("Washington DC Jurisdiction found in Jurisdiction list");
 				throw new AssertionError("Element " + i + " contains text: " + washingtonText);
-			}
-			else {
+			} else {
 				System.out.println("Washington DC Jurisdiction not found in Jurisdiction list");
 			}
 		}
 	}
-	
+
 	public void verifyDistrictOfColumbia() {
 		List<SelenideElement> jurisdictionNameElement = getElements(jurisdictionName);
-		for(int i =0; i<jurisdictionNameElement.size(); i++) {
+		for (int i = 0; i < jurisdictionNameElement.size(); i++) {
 			String jurisdictionText = jurisdictionNameElement.get(i).getText();
-			if(jurisdictionText.contains(disctrictOfColumbiaText)) {
+			if (jurisdictionText.contains(disctrictOfColumbiaText)) {
 				System.out.println("Washington DC Jurisdiction is renamed with District of Columbia");
-			}
-			else {
+			} else {
 				System.out.println("Washington DC Jurisdiction is not renamed with District of Columbia");
 			}
 		}
 	}
-	
+
 	public void clickRequirementViewButton() {
 		waitForElementVisibility(requirementViewButton);
 		click(requirementViewButton);
 		SelenideTools.sleep(5);
 		waitForElementVisibility(requirementViewPageHeader);
 	}
-	
+
 	public void clickJurisdictionDropdownAndVerifyJurisdiction() {
 		waitForElementVisibility(jurisdictionDropdown);
 		click(jurisdictionDropdown);
 		List<SelenideElement> jurisdictionDropdownOptionElement = getElements(jurisdictionDropdownOption);
-		for(int i = 0; i < jurisdictionDropdownOptionElement.size(); i++) {
+		for (int i = 0; i < jurisdictionDropdownOptionElement.size(); i++) {
 			String jurisdictionDropdownOptionText = jurisdictionDropdownOptionElement.get(i).getText();
-			if(jurisdictionDropdownOptionText.contains("District of Columbia")) {
+			if (jurisdictionDropdownOptionText.contains("District of Columbia")) {
 				System.out.println("Found [District of Columbia in the list of Jurisdiction]");
 			}
 		}
 	}
-	
+
 	public void noEntitlementMessage() {
 		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
 		if (entitlementHeaderElement.isDisplayed() == false) {
@@ -1392,12 +1399,12 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Entitlement header is present");
 		}
 	}
-	
+
 	public void verifyEntitlementMessage() {
 		List<SelenideElement> enitilementUpperLimitElement = getElements(enitilementUpperLimit);
 		List<SelenideElement> entitlementLowerLimitElement = getElements(entitlementLowerLimit);
 		SelenideElement entitlementHeaderElement = getSelenideElement(entitlementHeader);
-		if(entitlementHeaderElement.isDisplayed() == true) {
+		if (entitlementHeaderElement.isDisplayed() == true) {
 			System.out.println("Entrilement header displayed");
 		}
 		if (enitilementUpperLimitElement.size() > entitlementLowerLimitElement.size()) {
@@ -1406,7 +1413,7 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("Correct entitlement message is not shown");
 		}
 	}
-	
+
 	public void euiStates() {
 		boolean endUpInStatesTitleElement = getSelenideElement(endUpInStatesTitle).isDisplayed();
 		System.out.println("Element displayed = " + endUpInStatesTitleElement);
@@ -1415,4 +1422,221 @@ public class ClientMasterPage extends PageTools {
 			System.out.println("EUI states visible");
 		}
 	}
+
+	public void clickAddRequirementButton() {
+		waitForElementVisibility(addNewRequirementButton);
+		click(addNewRequirementButton);
+		SelenideTools.sleep(3);
+		waitForElementVisibility(addRequirementPopupHeader);
+	}
+
+	By companyDropdown = By.xpath("//select[@id=\"CompanyKey\"]");
+	By facilityDropdwon = By.xpath("//select[@id=\"FacilityKeyPair\"]");
+	By jurisdictionDropdownField = By.xpath("//select[@id=\"StatesKey\"]");
+	By requirementTypreDropdwon = By.xpath("//select[@id=\"RequirementTypeNewKey\"]");
+	By requirementCategoryDropdownField = By.xpath("//select[@id=\"RequirementTypeKey\"]");
+	By requirementNameInputField = By.xpath("//*[@id=\"FormerLicenseName\"]");
+	String newRequirementName;
+	By adRequirementPopupSaveButton = By.xpath("//button[@id=\"modal-save\"]");
+	By requirementStatusDropdown = By.xpath("//select[@id=\"LicenseStatusMasterKey\"]");
+
+	public void selectCompany(String company) {
+		waitForElementVisibility(companyDropdown);
+		selectOption(company, companyDropdown);
+	}
+
+	public void selectFacility(String facility) {
+		waitForElementVisibility(facilityDropdwon);
+		selectOption(facility, facilityDropdwon);
+	}
+
+	public void selectJurisdiction(String jurisdiction) {
+		waitForElementVisibility(jurisdictionDropdownField);
+		selectOption(jurisdiction, jurisdictionDropdownField);
+	}
+
+	public void selectRequirementType(String requirement) {
+		waitForElementVisibility(requirementTypreDropdwon);
+		selectOption(requirement, requirementTypreDropdwon);
+	}
+
+	public void selectRequirementCategory(String requirementCategory) {
+		waitForElementVisibility(requirementCategoryDropdownField);
+		selectOption(requirementCategory, requirementCategoryDropdownField);
+	}
+
+	public void selectRequirementStatus(String requirementStatus) {
+		waitForElementVisibility(requirementStatusDropdown);
+		selectOption(requirementStatus, requirementStatusDropdown);
+	}
+
+	public void enterRandomRequirementName(String name) {
+		SelenideTools.sleep(5);
+		waitForElementVisibility(requirementNameInputField);
+		getSelenideElement(requirementNameInputField).clear();
+		type(name, requirementNameInputField);
+		newRequirementName = name;
+		System.out.println("Entered requirement name = " + newRequirementName);
+	}
+
+	public void clickRequirementSavebutton() {
+		waitForElementVisibility(adRequirementPopupSaveButton);
+		click(adRequirementPopupSaveButton);
+		SelenideTools.sleep(3);
+	}
+
+	By sucessPopupOkButton = By.xpath("//*[@id=\"successok\"]");
+
+	public void clickRequirementsSuccesspopupSavebutton() {
+		waitForElementVisibility(sucessPopupOkButton);
+		click(sucessPopupOkButton);
+		SelenideTools.sleep(3);
+	}
+
+	By existingRequirement = By.xpath("//tbody/tr[3]/td[1]");
+
+	public void openExistingRequirement() {
+		waitForElementVisibility(existingRequirement);
+		SelenideElement existingRequirementElement = getSelenideElement(existingRequirement);
+		existingRequirementElement.doubleClick();
+		SelenideTools.sleep(3);
+	}
+
+	public void selectActivityColumn() {
+		waitForElementVisibility(existingRequirement);
+		SelenideElement existingRequirementElement = getSelenideElement(existingRequirement);
+		existingRequirementElement.click();
+		SelenideTools.sleep(2);
+	}
+
+	By addActivityButton = By.xpath("//button[@id=\"addActivity\"]");
+
+	public void clickAddActivityButton() {
+		waitForElementVisibility(addActivityButton);
+		SelenideElement addActivityButtonElement = getSelenideElement(addActivityButton);
+		addActivityButtonElement.click();
+		SelenideTools.sleep(5);
+	}
+
+	By requirementActivityDropdown = By.xpath("//select[@id=\"LicenseActivityKey\"]");
+
+	public void selectRequirementActivity(String requirementActivity) {
+		waitForElementVisibility(requirementActivityDropdown);
+		selectOption(requirementActivity, requirementActivityDropdown);
+	}
+
+	By activityStartDate = By.xpath("//input[@id=\"ActivityStartDate\"]");
+	By addActivityPopupNextButton = By.xpath("//*[@id=\"modal-task-slider\"]");
+	By addActivitySaveButton = By.xpath("//*[@id=\"task-modal-save\"]");
+
+	public void enterActivityStartDate() {
+		waitForElementVisibility(activityStartDate);
+		SelenideElement activityStartDateElement = getSelenideElement(activityStartDate);
+		activityStartDateElement.sendKeys("01012023");
+		SelenideTools.sleep(2);
+	}
+
+	public void clickPopupNextButton() {
+		waitForElementVisibility(addActivityPopupNextButton);
+		SelenideElement addActivityPopupNextButtonElement = getSelenideElement(addActivityPopupNextButton);
+		addActivityPopupNextButtonElement.click();
+		SelenideTools.sleep(2);
+	}
+
+	public void selectType(String type) {
+		waitForElementVisibility(selectTaskType);
+		selectOption(type, selectTaskType);
+	}
+
+	public void selectTaskStatus(String taskStatus) {
+		waitForElementVisibility(selectTaskStatus);
+		selectOption(taskStatus, selectTaskStatus);
+	}
+
+	public void selectAssignee(String assignee) {
+		waitForElementVisibility(selectAssigne);
+		selectOption(assignee, selectAssigne);
+	}
+
+	public void clickActivityPopupSaveButton() {
+		waitForElementVisibility(addActivitySaveButton);
+		SelenideElement addActivitySaveButtonElement = getSelenideElement(addActivitySaveButton);
+		addActivitySaveButtonElement.click();
+		SelenideTools.sleep(6);
+		click(sucessPopupOkButton);
+	}
+
+	By activityVideoLink = By.xpath("//*[@id=\"URL\"]");
+
+	public void openExistingActivity() {
+		waitForElementVisibility(existingRequirement);
+		SelenideElement existingActivityElement = getSelenideElement(existingRequirement);
+		existingActivityElement.doubleClick();
+		SelenideTools.sleep(5);
+	}
+
+	public void clickEditActivityPopupSaveButton() {
+		waitForElementVisibility(adRequirementPopupSaveButton);
+		SelenideElement adRequirementPopupSaveButtonElement = getSelenideElement(adRequirementPopupSaveButton);
+		adRequirementPopupSaveButtonElement.click();
+		SelenideTools.sleep(5);
+		click(sucessPopupOkButton);
+		SelenideTools.sleep(3);
+	}
+
+	By goToTaskButton = By.xpath("//tbody/tr[3]/td[15]");
+	By clickAddTaskButton = By.xpath("//*[@id=\"tasks\"]/div[1]/nav/div/button");
+
+	public void selectGoToTaskBUtton() {
+		waitForElementVisibility(goToTaskButton);
+		SelenideElement goToTaskButtonElement = getSelenideElement(goToTaskButton);
+		goToTaskButtonElement.click();
+		SelenideTools.sleep(6);
+	}
+
+	public void clickPopupAddTaskButton() {
+		waitForElementVisibility(clickAddTaskButton);
+		SelenideElement clickAddTaskButtonElement = getSelenideElement(clickAddTaskButton);
+		clickAddTaskButtonElement.click();
+		SelenideTools.sleep(6);
+	}
+	
+	By typeFromAddTask = By.xpath("//select[@id=\"TaskTypeKey\"]");
+	By taskStatusOnAddTask = By.xpath("//select[@id=\"TaskStandingKey\"]");
+	
+	public void selectTypeFromDropdown(String type) {
+		waitForElementVisibility(typeFromAddTask);
+		selectOption(type, typeFromAddTask);
+	}
+	
+	public void selectTaskStatusFromDropdown(String taskStatus) {
+		waitForElementVisibility(taskStatusOnAddTask);
+		selectOption(taskStatus, taskStatusOnAddTask);
+	}
+	
+	By addTaskPopupSaveButton = By.xpath("//*[@id=\"task-save\"]");
+	
+	public void clickAddTaskPopupSaveButton() {
+		waitForElementVisibility(addTaskPopupSaveButton);
+		click(addTaskPopupSaveButton);
+		SelenideTools.sleep(3);
+		click(sucessPopupOkButton);
+	}
+
+	By createdByUserText = By.xpath("//input[@id=\"TaskAuthor\"]");
+	String createdByName;
+	
+	public void assignTaskToExistingUser() {
+		SelenideElement createdByUserTextElement = getSelenideElement(createdByUserText);
+		createdByName = createdByUserTextElement.getAttribute("value");
+		System.out.println("Created by user name found = "+ createdByName);
+		click(selectAssigne);
+		SelenideTools.sleep(4);
+		SelenideElement selectAssigneElement = getSelenideElement(selectAssigne);
+		selectAssigneElement.sendKeys(createdByName);
+		SelenideTools.sleep(4);
+		selectAssigneElement.pressEnter();
+		SelenideTools.sleep(10);
+	}
+
 }

@@ -110,8 +110,9 @@ public class NewResearchPageStepDefinitions {
 
 	@When("Select {string} client from the client dropdown")
 	public void selectClientFromTheClientDropdown(String client) {
+		SelenideTools.sleep(3);
 		Pages.newResearchPage().selectClient(client);
-		SelenideTools.sleep(4);
+		SelenideTools.sleep(2);
 	}
 
 	@When("The client dropdown is visible and clickable")
@@ -137,10 +138,10 @@ public class NewResearchPageStepDefinitions {
 	@When("Click on the [Configuration] sidebar button")
 	public void clickOnTheConfigurationSidebarButton() {
 		Pages.atlasDashboardManagementPage().clickSurveillanceIntelligenceSidebarCollapseButton();
-		SelenideTools.sleep(2);
+		SelenideTools.sleep(5);
 		Pages.newResearchPage().clickConfigurationSidebarButton();
-		SelenideTools.sleep(10);
-		SelenideTools.switchToLastTab();
+		SelenideTools.sleep(20);
+//		SelenideTools.switchToLastTab();
 	}
 
 	@When("Click on the [Results] sidebar button")

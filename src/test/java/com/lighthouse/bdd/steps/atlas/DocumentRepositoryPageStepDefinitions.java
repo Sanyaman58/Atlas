@@ -28,10 +28,10 @@ public class DocumentRepositoryPageStepDefinitions {
         Pages.documentRepositoryPage().enterTextInSearchField(text);
     }
 
-    @And("Double click on the {int} record on the [Document Repository] page")
-    public void doubleClickOnTheRecordOnTheDocumentRepositoryPage(int index) {
+    @And("Double click on the record on the [Document Repository] page")
+    public void doubleClickOnTheRecordOnTheDocumentRepositoryPage() {
         SelenideTools.sleep(2);
-        Pages.documentRepositoryPage().doubleClickOnRecord(index);
+        Pages.documentRepositoryPage().doubleClickOnRecord();
     }
 
     @Then("The [Edit Document] window is opened")

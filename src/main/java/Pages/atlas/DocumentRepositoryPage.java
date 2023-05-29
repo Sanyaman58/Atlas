@@ -12,13 +12,13 @@ import static com.codeborne.selenide.Selenide.actions;
 
 public class DocumentRepositoryPage extends PageTools {
 	By documentRepositoryPageTitle = By.xpath("//div[@id='task-grid']//p[contains(text(),'Documents')]");
-	By documentRepositoryTableRecord = By.xpath("//table[@id='document-list-main']/tbody/tr[%s]");
+	By documentRepositoryTableRecord = By.xpath("//table[@id='document-list-main']/tbody/tr[1]/td[1]");
 	By documentRepositoryTableRecords = By.xpath("//table[@id='document-list-main']/tbody/tr");
 	By documentRepositoryTableNoRecords = By.xpath("//table[@id='document-list-main']/tbody/tr/td[contains(text(),'No data available in table')]");
 	By documentRepositoryTableRecordsPdfUploadButton = By.xpath("//table[@id='document-list-main']/tbody/tr/td[15]/a");
 	By documentRepositoryClientSelect = By.xpath("//select[@id='DocClientKey']");
 	By documentRepositorySearchField = By.xpath("//input[@type='search']");
-	By editDocumentWindow = By.xpath("//p[contains(text(), 'Edit Document')]");
+	By editDocumentWindow = By.xpath("//p[contains(text(),'Edit Document')]");
 	By editDocumentCloseButton = By.xpath("//div[@class='modal-content']//button[@onclick='showKeyPressConfirm()']/span");
 	By selectFileButton = By.xpath("//button[@id='FileUpload']");
 	By requestDocumentButton = By.xpath("//button[@id='adddocument']");
@@ -40,6 +40,7 @@ public class DocumentRepositoryPage extends PageTools {
 		return isElementVisible(documentRepositoryPageTitle);
 	}
 	public boolean isEditDocumentWindowOpened() {
+		SelenideTools.sleep(4);
 		waitForElementVisibility(editDocumentWindow);
 		return isElementVisible(editDocumentWindow);
 	}
@@ -55,12 +56,13 @@ public class DocumentRepositoryPage extends PageTools {
 		type(text, documentRepositorySearchField);
 	}
 
-	public void doubleClickOnRecord(int index){
-		waitForElementVisibility(documentRepositoryTableRecord, index);
-		doubleClick(documentRepositoryTableRecord, index);
+	public void doubleClickOnRecord(){
+		waitForElementVisibility(documentRepositoryTableRecord);
+		doubleClick(documentRepositoryTableRecord);
 	}
 
 	public void closeEditDocumentWindow(){
+		SelenideTools.sleep(4);
 		waitForElementVisibility(editDocumentCloseButton);
 		click(editDocumentCloseButton);
 	}
