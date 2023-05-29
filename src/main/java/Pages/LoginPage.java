@@ -32,7 +32,7 @@ public class LoginPage extends PageTools {
 	}
 
 	public void openAtlas() {
-		SelenideTools.openUrl(Constants.ATLAS_URL);
+		SelenideTools.openUrl(Constants.ATLAS_STAGING_URL);
 	}
 
 	public String getTabName() {
