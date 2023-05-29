@@ -123,6 +123,13 @@ public class ResearchNotificationPageStepDefinitions {
     @Then("A record with type {string} and changed processing time scope displayed in the table")
     public void aRecordWithTypeAndChangedProcessingTimeScopeDisplayedInTheTable(String type) {
         SelenideTools.sleep(3);
-        Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndTermDisplayed(type, Pages.versionRequirementsAdminPage().getChangeNoteText()));
+        Assert.assertTrue(Pages.researchNotificationPage().isRecordWithTypeAndScopeAndTermDisplayed(type, Pages.versionRequirementsAdminPage().getProcessingTime()));
+    }
+
+    @When("Switch to first tab")
+    public void switchToLastTab() {
+        SelenideTools.closeCurrentTab();
+        SelenideTools.switchToFirstTab();
+
     }
 }

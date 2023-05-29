@@ -125,7 +125,7 @@ public class NewResearchPageStepDefinitions {
 		Assert.assertFalse(Pages.newResearchPage().isNewlyCreatedJobDisplayed(status));
 	}
 
-	@When("The client dropdown is not visible and clickable")
+	@When("The client dropdown is visible and not clickable")
 	public void theClientDropdownIsNotVisibleAndClickable() {
 		Assert.assertFalse(Pages.newResearchPage().isSelectClientVisibleAndClickable());
 	}

@@ -61,20 +61,12 @@ public class AtlasDashboardManagementPageStepDefinitions {
 		Pages.atlasDashboardManagementPage().clickRequirementsSidebarButton();
 		SelenideTools.sleep(3);
 	}
-	
-	@When("Click on the [Activity Tracklog] button on Atlas")
-	public void clickOnTheActivityButtonOnAtlas() {
+
+	@When("Click on the [Task Manager] button on Atlas")
+	public void clickOnTheTaskManagerButtonOnAtlas() {
 		Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
 		SelenideTools.sleep(2);
-		Pages.atlasDashboardManagementPage().clickActivityTracklogSidebarButton();
-		SelenideTools.sleep(3);
-	}
-	
-	@When("Click on the [Task Management] button on Atlas")
-	public void clickOnTheTaskManagementButtonOnAtlas() {
-		Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
-		SelenideTools.sleep(2);
-		Pages.atlasDashboardManagementPage().clickTaskManagementSidebarButton();
+		Pages.atlasDashboardManagementPage().clickTaskManagerSidebarButton();
 		SelenideTools.sleep(3);
 	}
 
@@ -94,18 +86,6 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	@When("Verify [Release Notes] is present on the Homepage")
 	public void verifyReleaseNotesPresent() {
 		Pages.atlasDashboardManagementPage().verifyReleaseNotes();
-	}
-	
-	@When("Click on [Document Repository] sidebar button on Atlas")
-	public void clickOnDocumentRepositoryButtonOnAtlas() {
-		Pages.atlasDashboardManagementPage().clickDocumentRepositorySidebarButton();
-		SelenideTools.sleep(2);
-	}
-	
-	@When("Click on [Company Profile] sidebar button on Atlas")
-	public void clickOnCompanyProfileButtonOnAtlas() {
-		Pages.atlasDashboardManagementPage().clickComanyProfileSidebarButton();
-		SelenideTools.sleep(2);
 	}
 	
 	@When("Click on the [Research] button")
@@ -134,18 +114,48 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	public void theDocumentsNotificationsPageIsOpened() {
 		Assert.assertTrue(Pages.atlasDashboardManagementPage().isDocumentsNotificationsPageOpened());
 	}
-	
-	@Then("The [Avtivity] page is opened")
-	public void isActivityTrackLogPageOpened() {
-		SelenideTools.sleep(5);
-		Assert.assertTrue(Pages.atlasDashboardManagementPage().isActivityPageOpened());
-		SelenideTools.sleep(5);
+
+	@Then("Click on the [Tasks] notification sidebar button")
+	public void clickOnTheTasksNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickTasksNotificationsSidebarButton();
 	}
-	
-	@Then("The [Tasks] page is opened")
-	public void isTasksPageOpened() {
-		SelenideTools.sleep(5);
-		Assert.assertTrue(Pages.atlasDashboardManagementPage().isTasksPageOpened());
-		SelenideTools.sleep(5);
+
+	@Then("Click on the [Documents] notification sidebar button")
+	public void clickOnTheDocumentsNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickDocumentsNotificationsSidebarButton();
+	}
+
+	@Then("Click on the [Expiration] notification sidebar button")
+	public void clickOnTheExpirationNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickExpirationNotificationsSidebarButton();
+	}
+
+	@Then("Click on the [Intelligence] notification sidebar button")
+	public void clickOnTheIntelligenceNotificationSidebarButton() {
+		Pages.atlasDashboardManagementPage().clickIntelligenceNotificationsSidebarButton();
+	}
+
+	@Then("The [Tasks] notification page is opened")
+	public void theTasksNotificationPageIsOpened() {
+	}
+
+	@Then("The [Documents] notification page is opened")
+	public void theDocumentsNotificationPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isDocumentsNotificationsPageOpened());
+	}
+
+	@Then("The [Expiration] notification page is opened")
+	public void theExpirationNotificationPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isExpirationNotificationPageOpened());
+	}
+
+	@Then("The [Intelligence] notification page is opened")
+	public void theIntelligenceNotificationPageIsOpened() {
+		Assert.assertTrue(Pages.atlasDashboardManagementPage().isIntelligenceNotificationPageOpened());
+	}
+
+	@And("Click on OK button")
+	public void clickOnOKButton() {
+		Pages.atlasDashboardManagementPage().clickOnOkPopupButton();
 	}
 }

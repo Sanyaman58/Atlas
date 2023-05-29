@@ -422,7 +422,7 @@ public class VersionRequirementsAdminPage extends PageTools {
 		SelenideTools.sleep(2);
 		waitForElementVisibility(processingTimeInput);
 		type(text, processingTimeInput);
-		processingTime = getSelenideElement(processingTimeInput).getText();
+		processingTime = text;
 		SelenideTools.sleep(10);
 	}
 

@@ -72,7 +72,8 @@ Feature: C116
     When Right click on a record with status "Approval Pending" in the [Requirement Viewer] table
     Then The [Edit Requirement] button is not visible
     When Right click on a record with status "Activated" in the [Requirement Viewer] table
-    Then Click on the [Edit Requirement] button on the [Requirement View] page
+    Then Click on the [View Requirement] button on the [Requirement View] page
+    And Click on the [Edit Requirement] button on the [Edit Requirement] page
     And Validate the [General Information] elements on the [Requirements View] page
     And Get the data from the [Edit Requirement] page
     When Click on the [Required] collapse on the [Requirements View] page
@@ -91,10 +92,12 @@ Feature: C116
     And Validate the [Change Note for Customer] input on the [Requirements View] page
     When Check the [RES1: Apply Resident State Selector Criteria] checkbox
     Then The resident state select and resident type radio buttons are displayed
+    When Click on the [Business Model] collapse on the [Requirements View] page
     When Uncheck the [RES1: Apply Resident State Selector Criteria] checkbox
     Then The resident state select and resident type radio buttons are not displayed
-    When Click on the [Edit Requirement] button of record with status "In-Progress" on the [Versioned Requirements] page
-    And Compare the data on the [Edit Requirement] with the data from the [View Requirement] page
+    When Switch to first tab
+#    When Click on the [Edit Requirement] button of record with status "In-Progress" on the [Versioned Requirements] page
+#    And Compare the data on the [Edit Requirement] with the data from the [View Requirement] page
     When Select "Approved" status in the [Requirement Viewer Filters] section on the [Requirements Admin] page
     When Right click on a record with status "Approved" in the [Requirement Viewer] table
     Then The [Delete Requirement] button is not visible

@@ -127,7 +127,7 @@ public class ResearchNotificationPage extends PageTools {
 
     public void saveSKUOfTheRecord(int index){
         waitForElementVisibility(researchNotificationTableRecords);
-        SKU = getElements(researchNotificationTableRecords).get(index).findElement(By.xpath("./td[2]")).getText();
+        SKU = getElements(researchNotificationTableRecords).get(index).findElement(By.xpath("./td[6]")).getText();
     }
 
     public boolean isRecordsOnlyWithRequirementName(){
@@ -151,10 +151,10 @@ public class ResearchNotificationPage extends PageTools {
         waitForElementVisibility(researchNotificationTableRecords);
         for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
             returnValue = false;
-            System.out.println((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText()));
+            System.out.println((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[6]")).getText()));
             System.out.println(SKU);
-            if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText().replaceAll("\\s","") == SKU.replaceAll("\\s",""))
-                    || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[2]")).getText().replaceAll("\\s","").contains(SKU.replaceAll("\\s","")))) {
+            if ((getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[6]")).getText().replaceAll("\\s","") == SKU.replaceAll("\\s",""))
+                    || (getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[6]")).getText().replaceAll("\\s","").contains(SKU.replaceAll("\\s","")))) {
                 returnValue = true;
             }
         }
@@ -175,12 +175,13 @@ public class ResearchNotificationPage extends PageTools {
     }
 
     public boolean isRecordWithTypeAndScopeAndTermDisplayed(String type, String note){
+        System.out.println(note);
         for(int i = 0; i < getElements(researchNotificationTableRecords).size(); i++){
-            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText());
-            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[22]")).getText());
-            if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[3]")).getText().equals(type)
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[7]")).getText());
+            System.out.println(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[26]")).getText());
+            if(getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[7]")).getText().equals(type)
 //                && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[8]")).getText().contains(scope)
-                    && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[22]")).getText().equals(note))
+                    && getElements(researchNotificationTableRecords).get(i).findElement(By.xpath("./td[26]")).getText().equals(note))
                 return true;
         }
         return false;

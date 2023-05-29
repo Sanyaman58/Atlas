@@ -85,6 +85,7 @@ public class RequirementsAdminPageStepDefinitions {
     @Then("Click on the [View Requirement] button on the [Requirement View] page")
     public void clickOnTheViewRequirementButtonOnTheRequirementViewPage() {
         Pages.requirementsAdminPage().clickOnViewButtonOfTheContextMenu();
+        SelenideTools.switchToLastTab();
     }
 
     @When("Right click on a record with status {string} in the [Requirement Viewer] table")
@@ -403,6 +404,7 @@ public class RequirementsAdminPageStepDefinitions {
 
     @And("Verify that deleted requirement is not displayed in the [Requirement Viewer] table")
     public void verifyThatDeletedRequirementIsNotDisplayedInTheRequirementViewerTable() {
+        SelenideTools.sleep(5);
         Assert.assertFalse(Pages.requirementsAdminPage().isRecordDisplayed(Pages.requirementsAdminPage().getState(), Pages.requirementsAdminPage().getRequirementName(), Pages.requirementsAdminPage().getApplicationName()));
     }
 

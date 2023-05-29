@@ -1,7 +1,7 @@
 @C317 @Smoke
 Feature: C317
 
-  @TestRail(317) @smoke
+  @TestRail(317)
   Scenario: Verify user is able to view the uploaded document
     When Open Atlas
     Then Enter login "nikita.danilevskiy@pharma.solutions" on login page

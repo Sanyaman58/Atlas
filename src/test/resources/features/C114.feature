@@ -11,9 +11,9 @@ Feature: C114
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
     When The client dropdown is visible and clickable
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete job from the table if exists
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Select 1 company name
     And Select 1 facility name
     When Click [Submit new job] button
@@ -27,19 +27,19 @@ Feature: C114
     Then The [SaveSubmit Job] page is opened
     When Click on the [Save Job] button
     Then The [Configuration] page is opened
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     Then Newly created job with status "Saved" is displayed in the table on the [New Research] page
-    When Select "GFIT" client from the client dropdown
+    When Select "Test251" client from the client dropdown
     Then Newly created job with status "Saved" is not displayed in the table on the [New Research] page
-    Then Select "AB Test" client from the client dropdown
+    Then Select "AR Pharma" client from the client dropdown
     And Delete newly created configuration with status "Saved"
     And Verify that the configuration is deleted on the [Configuration] page
     When Log out from Lighthouse
     When Open Atlas
-    Then Enter login "parkotitro@gufum.com" on login page
+    Then Enter login "yepsizigna@gufum.com" on login page
     And Enter password "Testing2022%%" on login page
     And Click the [Login] button
     Then Management Dashboard page is opened
     When Click on the [Configuration] sidebar button
     Then The [Configuration] page is opened
-    When The client dropdown is not visible and clickable
+    When The client dropdown is visible and not clickable

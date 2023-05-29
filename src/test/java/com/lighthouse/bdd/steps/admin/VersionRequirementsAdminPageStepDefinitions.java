@@ -280,6 +280,24 @@ public class VersionRequirementsAdminPageStepDefinitions {
         Pages.versionRequirementsAdminPage().enterProcessingTime(RandomStringUtils.random(5, false, true));
     }
 
+    @Then("Approve the requirement if not approved on the [Versioned Requirements] page")
+    public void approveTheRequirementIfNotApprovedOnTheVersionedRequirementsPage() {
+        if(Pages.versionRequirementsAdminPage().isRequirementApproveButtonVisible()) {
+            Pages.versionRequirementsAdminPage().clickOnApproveRequirementButton(0);
+            Pages.requirementsAdminPage().clickYesApproveButton();
+            SelenideTools.sleep(20);
+        }
+    }
+
+    @And("Activate the requirement if not activated on the [Versioned Requirements] page")
+    public void activateTheRequirementIfNotActivatedOnTheVersionedRequirementsPage() {
+        if(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible()) {
+            Pages.versionRequirementsAdminPage().clickOnActivateRequirementButton(0);
+            Pages.requirementsAdminPage().clickYesApproveButton();
+            SelenideTools.sleep(20);
+        }
+    }
+
 //    @And("Verify that the [Activate Requirement] view option is enabled")
 //    public void verifyThatTheActivateRequirementViewOptionIsEnabled() {
 //        Assert.assertTrue(Pages.versionRequirementsAdminPage().isRequirementActivateButtonVisible());
