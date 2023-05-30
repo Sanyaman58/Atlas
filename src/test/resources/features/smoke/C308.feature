@@ -18,5 +18,5 @@ Feature: C308
     And Click Add Activity popup [Next] button
     Then Select "Addition of CMO" type from add type dropdown list
     Then Select "Board Pending" task status from task status dropdown list
-    Then Select "Nikita Danilevskiy" from assignee dropdown list
+    Then Select "Sachin. Arora" from assignee dropdown list
     And Click on Add Activity popup save button

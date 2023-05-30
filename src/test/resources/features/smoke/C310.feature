@@ -16,5 +16,5 @@ Feature: C310
     And Click on [Add Task] button
     Then Select "Addition of CMO" type from type dropdown list of Add Task popup
     Then Select "Board Pending" Task status from task status dropdown list of Add Task popup
-    Then Select "Nikita Danilevskiy" from assignee dropdown list
+    Then Select "Sachin. Arora" from assignee dropdown list
     And Click on Add task popup save button
