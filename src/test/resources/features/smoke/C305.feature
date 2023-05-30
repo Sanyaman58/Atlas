@@ -12,7 +12,7 @@ Feature: C305
     Then Management Dashboard page is opened
     When Click on the [Requirements] button on Atlas
     Then The [Requirements] page is opened
-    When Click on [Document Repository] sidebar button on Atlas
+    When Click on the [Document Repository] sidebar button
     Then The [Documents] page is opened
     When Click on [Company Profile] sidebar button on Atlas
     Then The [Company Profile] page is opened

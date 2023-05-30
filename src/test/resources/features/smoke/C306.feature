@@ -13,8 +13,8 @@ Feature: C306
     When Click on the [Requirements] button on Atlas
     Then The [Requirements] page is opened
     And Click on [Add Requirement] button
-    Then Select "Comppany USA" company from company dropdown list
-    Then Select "Facility" from facility dropdown list
+    Then Select "AR PTest" company from company dropdown list
+    Then Select "AR Test" from facility dropdown list
     Then Select "Alabama" jurisdiction from jurisdiction dropdown list
     Then Select "Initial" requirement type from requirement type dropdown list
     Then Select "Federal License" requirement category from requirement category dropdown list

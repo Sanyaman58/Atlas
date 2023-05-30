@@ -21,7 +21,7 @@ public class LoginPageStepDefinitions {
 	public void openAtlas() {
 		Pages.loginPage().openAtlas();
 		SelenideTools.getDriver().manage().window().maximize();
-//		SelenideTools.getDriver().manage().window().setSize(new Dimension(2560, 1440));
+		SelenideTools.getDriver().manage().window().setSize(new Dimension(2560, 1440));
 	}
 
 	@Then("Enter login {string} on login page")

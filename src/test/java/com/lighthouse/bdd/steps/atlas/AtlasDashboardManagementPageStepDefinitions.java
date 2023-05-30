@@ -56,8 +56,11 @@ public class AtlasDashboardManagementPageStepDefinitions {
 
 	@When("Click on the [Requirements] button on Atlas")
 	public void clickOnTheRequirementsButtonOnAtlas() {
-		Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
-		SelenideTools.sleep(2);
+		if(!Pages.atlasDashboardManagementPage().isRequirementsSidebarButtonVisible()) {
+			SelenideTools.sleep(2);
+			Pages.atlasDashboardManagementPage().clickRequirementsManagementSidebarCollapseButton();
+			SelenideTools.sleep(2);
+		}
 		Pages.atlasDashboardManagementPage().clickRequirementsSidebarButton();
 		SelenideTools.sleep(3);
 	}
@@ -157,5 +160,10 @@ public class AtlasDashboardManagementPageStepDefinitions {
 	@And("Click on OK button")
 	public void clickOnOKButton() {
 		Pages.atlasDashboardManagementPage().clickOnOkPopupButton();
+	}
+
+	@When("Click on [Company Profile] sidebar button on Atlas")
+	public void clickOnCompanyProfileSidebarButtonOnAtlas() {
+		Pages.atlasDashboardManagementPage().clickOnCompanyProfileSidebarButton();
 	}
 }

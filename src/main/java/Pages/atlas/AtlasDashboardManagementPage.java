@@ -44,6 +44,7 @@ public class AtlasDashboardManagementPage extends PageTools {
 	By taskManagerSidebarButton = By.xpath("//a[text()='Task Management']");
 	By taskManagerPage = By.xpath("//span[contains(text(),'Tasks')]");
 	By popUpOkButton = By.xpath("//a[@id='successok']");
+	By companyProfileSidebarButton = By.xpath("//a[text()='Company Profile']");
 
 
 	public void openLighthouse() {
@@ -86,6 +87,11 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickRequirementsSidebarButton() {
 		waitForElementVisibility(requirementsSidebarButton);
 		click(requirementsSidebarButton);
+	}
+
+	public boolean isRequirementsSidebarButtonVisible(){
+		SelenideTools.sleep(2);
+		return isElementVisible(requirementsSidebarButton);
 	}
 
 	public void clickTaskManagerSidebarButton() {
@@ -207,6 +213,11 @@ public class AtlasDashboardManagementPage extends PageTools {
 	public void clickOnOkPopupButton(){
 		waitForElementVisibility(popUpOkButton);
 		click(popUpOkButton);
+	}
+
+	public void clickOnCompanyProfileSidebarButton(){
+		waitForElementVisibility(companyProfileSidebarButton);
+		click(companyProfileSidebarButton);
 	}
 
 	public void verifyReleaseNotes() {
